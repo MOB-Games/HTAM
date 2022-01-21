@@ -9,3 +9,5 @@
   - Each dialog decision gets some numeric value, if at the end it is above a certain threshold the character joins, if below a certain threshold the character attacks
 - Social skills: on level up the player gets social points he can add to skills such as bluff, intimidate, beg, flattery, logic, etc. The level of these skills
   affect the options a player can use in dialog (must cross certain threshold to use certain dialog options)
+- Sneak skill determines if the player reached the battle area undetected. If so he can sneak attack or set a trap depending on the difference between his sneak and
+  the opponent's perception. Each trap requires different sneak according to how hard it is to set up
