@@ -11,3 +11,11 @@
   affect the options a player can use in dialog (must cross certain threshold to use certain dialog options)
 - Sneak skill determines if the player reached the battle area undetected. If so he can sneak attack or set a trap depending on the difference between his sneak and
   the opponent's perception. Each trap requires different sneak according to how hard it is to set up
+- ??? Instead of buying equipment you upgrade it. This will save us getting assets for equipment, setting all their values and changing the appearnce of the characters
+  - Armor upgrade has 2 options:
+    - Bulk-Up: Increases defence but also speed penalty
+    - Strip-Down: Decreases speed penalty but also defence
+    - Notes:
+      - Bulk-Up and Strip-Down do not cancel each other out
+      - Bulk-Up should be more dominant since defence can go really high but speed penalty shouldn't be that high
+  - Weapon upgrade will have an option to increase damage and maybe options for type damage (fire, lightning, holy, curse) or an option for decreasing the energy cost of special moves
