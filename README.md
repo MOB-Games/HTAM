@@ -18,4 +18,10 @@
     - Notes:
       - Bulk-Up and Strip-Down do not cancel each other out
       - Bulk-Up should be more dominant since defence can go really high but speed penalty shouldn't be that high
-  - Weapon upgrade will have an option to increase damage and maybe options for type damage (fire, lightning, holy, curse) or an option for decreasing the energy cost of special moves
+  - Weapon upgrade has 2 options:
+    - Bulk-Up: Increases damage but also energy cost of moves
+    - Strip-Down: Decreases energy cost but also damage
+    - Notes:
+      - Bulk-Up and Strip-Down do not cancel each other out
+      - Bulk-Up should be more dominant since damage can go really high but energy cost shouldn't be that high
+
