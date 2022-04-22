@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core
+namespace Core.DataTypes
 {
     [CreateAssetMenu]
     public class IntegerVariable : ScriptableObject

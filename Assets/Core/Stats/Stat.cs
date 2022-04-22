@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core
+namespace Core.Stats
 {
     [CreateAssetMenu]
     public class Stat : ScriptableObject
