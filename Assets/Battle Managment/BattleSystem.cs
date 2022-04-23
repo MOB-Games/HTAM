@@ -31,8 +31,6 @@ public class BattleSystem : MonoBehaviour
     {
         if (_turnOrder.Count == 0) 
             SetTurnOrderForRound();
-        var x = _turnOrder.Pop();
-        Debug.Log(x);
-        startTurnEvent.Raise(x);
+        startTurnEvent.Raise(_turnOrder.Pop());
     }
 }

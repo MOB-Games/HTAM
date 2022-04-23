@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     private int _currentDamage;
     private static readonly int TriggerAttack = Animator.StringToHash("TriggerAttack");
+    private static readonly int TriggerAttacked = Animator.StringToHash("TriggerAttacked");
 
     private void OnEnable()
     {
@@ -27,7 +28,7 @@ public class Player : MonoBehaviour
         _animator.SetTrigger(TriggerAttack);
     }
 
-    private void DoDamage()
+    private void Attack()
     {
         enemyAttackedEvent.Raise(stats.damage.value);
     }
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     {
         var relativeDamage = damage - stats.defense.value;
         _currentDamage = relativeDamage > 0 ? relativeDamage : 1;
-        _animator.Play("Attacked");
+        _animator.SetTrigger(TriggerAttacked);
     }
 
     private void TakeDamage()

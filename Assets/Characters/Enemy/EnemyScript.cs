@@ -19,23 +19,21 @@ public class EnemyScript : MonoBehaviour
     private Animator _animator;
 
     private int _currentDamage;
-    private static readonly int TriggerAttack = Animator.StringToHash("TriggerEnemyAttack");
+    private static readonly int TriggerAttack = Animator.StringToHash("TriggerAttack");
+    private static readonly int TriggerAttacked = Animator.StringToHash("TriggerAttacked");
 
     private void OnEnable()
     {
-        Debug.Log("enable");
         _animator = GetComponent<Animator>();
     }
 
     public void PlayTurn(int id)
     {
-        Debug.Log("hi");
         if (id != 2) return;
-        Debug.Log("there");
         _animator.SetTrigger(TriggerAttack);
     }
 
-    private void DoDamage()
+    private void Attack()
     {
         playerAttackedEvent.Raise(damage);
     }
@@ -47,9 +45,10 @@ public class EnemyScript : MonoBehaviour
     
     public void Attacked(int damage)
     {
+        Debug.Log("ggg");
         var relativeDamage = damage - defense;
         _currentDamage = relativeDamage > 0 ? relativeDamage : 1;
-        _animator.Play("Attacked");
+        _animator.SetTrigger(TriggerAttacked);
     }
 
     private void TakeDamage()
