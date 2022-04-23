@@ -41,13 +41,22 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Core\Stats\StatBlock.cs" />
-     <Compile Include="Assets\Core\Stats\Stat.cs" />
-     <Compile Include="Assets\Core\DataTypes\IntegerVariable.cs" />
-     <Compile Include="Assets\Core\Events\GameEventListener.cs" />
      <Compile Include="Assets\Core\Events\GameEvent.cs" />
-     <Compile Include="Assets\Characters\Enemy\EnemyScript.cs" />
+     <Compile Include="Assets\Core\Stats\StatBlock.cs" />
+     <Compile Include="Assets\Battle Managment\StartTurnListener.cs" />
+     <Compile Include="Assets\Core\Events\GameIntEvent.cs" />
      <Compile Include="Assets\Battle Managment\BattleSystem.cs" />
+     <Compile Include="Assets\Core\Events\GameEventListener.cs" />
+     <Compile Include="Assets\Core\Events\GameEventListenerTemplate.cs" />
+     <Compile Include="Assets\Characters\Player\PlayerAttackedListener.cs" />
+     <Compile Include="Assets\Core\Stats\Stat.cs" />
+     <Compile Include="Assets\Core\Events\GameEventTemplate.cs" />
+     <Compile Include="Assets\Battle Managment\EndTurnListener.cs" />
+     <Compile Include="Assets\Characters\Enemy\EnemyScript.cs" />
+     <Compile Include="Assets\Characters\Enemy\EnemyAttackedListener.cs" />
+     <Compile Include="Assets\Core\DataTypes\IntegerVariable.cs" />
+     <Compile Include="Assets\Core\Events\GameIntEventListener.cs" />
+     <Compile Include="Assets\Characters\Player\Player.cs" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Users\mmirb\Documents\Unity editors\2021.3.0f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.dll</HintPath>
      </Reference>

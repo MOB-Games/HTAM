@@ -4,10 +4,10 @@ using UnityEngine.Serialization;
 
 namespace Core.Events
 {
-    public class GameEventListener : MonoBehaviour
+    public class GameEventListenerTemplate<T> : MonoBehaviour
     {
-        public GameEvent gameEvent;
-        public UnityEvent response;
+        public GameEventTemplate<T> gameEvent;
+        public UnityEvent<T> response;
 
         private void OnEnable()
         {
@@ -19,9 +19,10 @@ namespace Core.Events
             gameEvent.UnregisterListener(this);
         }
 
-        public void OnEventRaised()
+        public void OnEventRaised(T param)
         {
-            response.Invoke();
+            response.Invoke(param);
         }
     }
 }
+

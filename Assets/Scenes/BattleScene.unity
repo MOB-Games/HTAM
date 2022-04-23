@@ -348,63 +348,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: -100
   m_TargetDisplay: 0
---- !u!1001 &1180174012
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5217080582421210143, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 00d208a15256be445a3e932886e81f82, type: 3}
 --- !u!1 &1490248005
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,6 +358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1490248007}
   - component: {fileID: 1490248006}
+  - component: {fileID: 1490248008}
   m_Layer: 0
   m_Name: BattleSystem
   m_TagString: Untagged
@@ -434,6 +378,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f571f6c03894512498c2c83996ad8495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpeed: {fileID: 11400000, guid: 0df67c34a9076014c8f55ab8f7427064, type: 2}
+  enemyPrefab: {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
+  startTurnEvent: {fileID: 11400000, guid: 8a3f1e368b1d0324ca8a3286816c6016, type: 2}
 --- !u!4 &1490248007
 Transform:
   m_ObjectHideFlags: 0
@@ -449,6 +396,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1490248008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490248005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b9e8297f035904883d3684d92a578d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 2d1c4a401239a8b4db24c514485f9225, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1490248006}
+        m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
+        m_MethodName: NextTurn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1803166712
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +489,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092569239
 GameObject:
@@ -526,6 +501,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2092569242}
   - component: {fileID: 2092569241}
+  - component: {fileID: 2092569244}
+  - component: {fileID: 2092569243}
+  - component: {fileID: 2092569245}
+  - component: {fileID: 2092569246}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -598,5 +577,96 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2092569243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092569239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad72184bbaf64fc419ffa0c0d5786844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 0af51371b220e824bab4bca3e1313ead, type: 2}
+  endTurnEvent: {fileID: 11400000, guid: 2d1c4a401239a8b4db24c514485f9225, type: 2}
+  enemyAttackedEvent: {fileID: 11400000, guid: ae451f6faf585d845878d98908802cc9, type: 2}
+--- !u!114 &2092569244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092569239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8d3b0da3a41824db25ead735b8a905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8a3f1e368b1d0324ca8a3286816c6016, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2092569243}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PlayTurn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2092569245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092569239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e55cdad75bd6c5478031e56db30a9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3376142e3b57ee44f9937d5ba2127773, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2092569243}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Attacked
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!95 &2092569246
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092569239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4fb9c9ef484fa04685c1b04821aaf73, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

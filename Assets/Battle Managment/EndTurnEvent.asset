@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26178d8834149d840a2eb953801b0066, type: 3}
-  m_Name: PlayerAttacked
+  m_Script: {fileID: 11500000, guid: 10f1fae2fee203f4d89c841bbd6410c9, type: 3}
+  m_Name: EndTurnEvent
   m_EditorClassIdentifier: 
