@@ -1,4 +1,4 @@
-# TBD
+# Heir of the Three Armed Man
 2d, adventure oriented game
 - Player moves from town to town, with paths separating each town.
 - Each path has 5-10 encounters: battle, treasure, dialog

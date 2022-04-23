@@ -1,6 +1,7 @@
 .idea
+*.meta
+*.csproj
 obj
 Library
 Temp
 Logs
-Assembly-CSharp.csproj
