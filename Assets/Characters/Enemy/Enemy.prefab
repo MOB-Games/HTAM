@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2117644339757057864}
   - component: {fileID: 4505227176924624714}
   - component: {fileID: 401080829}
+  - component: {fileID: -2948092397023849684}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -106,7 +107,8 @@ MonoBehaviour:
   defense: 5
   speed: 5
   playerAttackedEvent: {fileID: 11400000, guid: 3376142e3b57ee44f9937d5ba2127773, type: 2}
-  endTurnEvent: {fileID: 11400000, guid: 2d1c4a401239a8b4db24c514485f9225, type: 2}
+  endTurnEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
+  clickEvent: {fileID: 11400000, guid: c49163612214ee941b021eaa74215f78, type: 2}
 --- !u!114 &-2117644339757057864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,10 +118,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5217080582421210112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d8d3b0da3a41824db25ead735b8a905, type: 3}
+  m_Script: {fileID: 11500000, guid: cc4b1e92f5052d347965a0604097ab90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8a3f1e368b1d0324ca8a3286816c6016, type: 2}
+  gameEvent: {fileID: 11400000, guid: f34e539415826584d87594f11a7c0232, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -183,3 +185,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &-2948092397023849684
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

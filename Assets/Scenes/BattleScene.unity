@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -208,6 +209,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &664109260
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,12 +392,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1490248005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f571f6c03894512498c2c83996ad8495, type: 3}
+  m_Script: {fileID: 11500000, guid: ecfb56ce4d391894f8bafbffa552f738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: {fileID: 11400000, guid: 0df67c34a9076014c8f55ab8f7427064, type: 2}
   enemyPrefab: {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
-  startTurnEvent: {fileID: 11400000, guid: 8a3f1e368b1d0324ca8a3286816c6016, type: 2}
+  startTurnEvent: {fileID: 11400000, guid: f34e539415826584d87594f11a7c0232, type: 2}
 --- !u!4 &1490248007
 Transform:
   m_ObjectHideFlags: 0
@@ -405,10 +422,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1490248005}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85b9e8297f035904883d3684d92a578d, type: 3}
+  m_Script: {fileID: 11500000, guid: 89933b09f6e2b4f40b01844ffd1e5ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 2d1c4a401239a8b4db24c514485f9225, type: 2}
+  gameEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -505,6 +522,8 @@ GameObject:
   - component: {fileID: 2092569243}
   - component: {fileID: 2092569245}
   - component: {fileID: 2092569246}
+  - component: {fileID: 2092569247}
+  - component: {fileID: 2092569248}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -592,8 +611,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 0af51371b220e824bab4bca3e1313ead, type: 2}
-  endTurnEvent: {fileID: 11400000, guid: 2d1c4a401239a8b4db24c514485f9225, type: 2}
+  endTurnEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
   enemyAttackedEvent: {fileID: 11400000, guid: ae451f6faf585d845878d98908802cc9, type: 2}
+  clickEvent: {fileID: 11400000, guid: c49163612214ee941b021eaa74215f78, type: 2}
 --- !u!114 &2092569244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,10 +623,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2092569239}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d8d3b0da3a41824db25ead735b8a905, type: 3}
+  m_Script: {fileID: 11500000, guid: cc4b1e92f5052d347965a0604097ab90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 8a3f1e368b1d0324ca8a3286816c6016, type: 2}
+  gameEvent: {fileID: 11400000, guid: f34e539415826584d87594f11a7c0232, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -670,3 +690,57 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2092569247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092569239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4905d2981fca5d4db0df73f6ab54881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: c49163612214ee941b021eaa74215f78, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2092569243}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: HandleClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!61 &2092569248
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092569239}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

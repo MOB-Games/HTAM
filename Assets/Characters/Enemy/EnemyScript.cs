@@ -1,10 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Core.Events;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class EnemyScript : MonoBehaviour
+public class EnemyScript : MonoBehaviour, IPointerClickHandler
 {
     public int hp;
     public int energy;
@@ -15,6 +14,7 @@ public class EnemyScript : MonoBehaviour
 
     public GameIntEvent playerAttackedEvent;
     public GameEvent endTurnEvent;
+    public GameClickEvent clickEvent;
     
     private Animator _animator;
 
@@ -45,7 +45,6 @@ public class EnemyScript : MonoBehaviour
     
     public void Attacked(int damage)
     {
-        Debug.Log("ggg");
         var relativeDamage = damage - defense;
         _currentDamage = relativeDamage > 0 ? relativeDamage : 1;
         _animator.SetTrigger(TriggerAttacked);
@@ -55,5 +54,10 @@ public class EnemyScript : MonoBehaviour
     {
         hp -= _currentDamage;
         _currentDamage = 0;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        clickEvent.Raise(eventData);
     }
 }
