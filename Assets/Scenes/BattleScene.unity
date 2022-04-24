@@ -518,11 +518,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2092569242}
   - component: {fileID: 2092569241}
-  - component: {fileID: 2092569244}
   - component: {fileID: 2092569243}
+  - component: {fileID: 2092569244}
   - component: {fileID: 2092569245}
-  - component: {fileID: 2092569246}
   - component: {fileID: 2092569247}
+  - component: {fileID: 2092569246}
   - component: {fileID: 2092569248}
   m_Layer: 0
   m_Name: Player
@@ -610,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad72184bbaf64fc419ffa0c0d5786844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
+  id: 1
   endTurnEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
   attackEvent: {fileID: 11400000, guid: ae451f6faf585d845878d98908802cc9, type: 2}
   clickEvent: {fileID: 11400000, guid: c49163612214ee941b021eaa74215f78, type: 2}
