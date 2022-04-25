@@ -1,5 +1,5 @@
 
-namespace Core
+namespace Core.CharacterTypes
 {
     public abstract class Enemy : Combatant
     {

@@ -2,7 +2,7 @@ using Core.Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Core
+namespace Core.CharacterTypes
 {
     public abstract class Combatant : MonoBehaviour, IPointerClickHandler
     {

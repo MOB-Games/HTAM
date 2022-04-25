@@ -5,7 +5,7 @@ using Core.Stats;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Core
+namespace Core.CharacterTypes
 {
     public class Playable : Combatant
     {
