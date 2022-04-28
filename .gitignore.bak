@@ -5,4 +5,4 @@ obj
 Library
 Temp
 Logs
-Assets/TextMesh Pro/*
+Assets/TextMesh Pro/Shaders/TMPro.cginc

@@ -2,5 +2,5 @@ using Core.Events;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Game Event (click)")]
 public class GameClickEvent : GameEventTemplate<PointerEventData> { }

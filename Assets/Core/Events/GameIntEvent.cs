@@ -1,5 +1,5 @@
 using Core.Events;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Game Event (int)")]
 public class GameIntEvent : GameEventTemplate<int> { }
