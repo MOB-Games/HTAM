@@ -1,3 +1,5 @@
+using Core.Enums;
+using UnityEngine;
 
 namespace Core.CharacterTypes
 {
@@ -10,28 +12,63 @@ namespace Core.CharacterTypes
         public int defense;
         public int speed;
 
-        protected override int GetDefense()
+        protected int MinExp;
+        protected int MaxExp;
+
+        protected override int GetStat(StatType statType)
         {
-            return defense;
+            switch (statType)
+            {
+                case StatType.Hp:
+                    return hp;
+                case StatType.Energy:
+                    return energy;
+                case StatType.Damage:
+                    return damage;
+                case StatType.Defense:
+                    return defense;
+                case StatType.Speed:
+                    return speed;
+                
+            }
+            // avoiding error
+            return 0;
         }
 
-        protected override int GetDamage()
+        protected override void ChangeStat(StatType statType, int change)
         {
-            return damage;
-        }
-
-        protected override void ReduceHp()
-        {
-            hp -= CurrentDamage;
+            switch (statType)
+            {
+                case StatType.Hp:
+                    hp += change;
+                    break;
+                case StatType.Energy:
+                    energy += change;
+                    break;
+                case StatType.Damage:
+                    damage += change;
+                    break;
+                case StatType.Defense:
+                    defense += change;
+                    break;
+                case StatType.Speed:
+                    speed += change;
+                    break;
+            }
         }
 
         protected abstract void PlayTurn();
 
         public override void TurnStarted(int turnId)
         {
-            if (id != turnId) return;
+            if (Id != turnId) return;
             MyTurn = true;
             PlayTurn();
+        }
+
+        public int ExpDrop()
+        {
+            return Random.Range(MinExp, MaxExp);
         }
     }
 }
