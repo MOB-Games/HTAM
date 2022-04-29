@@ -1,7 +1,6 @@
-using System;
-using System.Threading.Tasks;
 using Core.Enums;
 using Core.Events;
+using Core.Stats;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,13 +8,14 @@ namespace Core.CharacterTypes
 {
     public abstract class Combatant : MonoBehaviour, IPointerClickHandler
     {
+        public int id;
+        public StatBlock stats;
         public GameEvent endTurnEvent;
         public GameIntEvent attackEvent;
         public GameIntEvent diedEvent;
         public GameClickEvent clickEvent;
 
         protected bool MyTurn = false;
-        protected int Id;
         protected Animator Animator;
         protected static readonly int TriggerAttack = Animator.StringToHash("TriggerAttack");
         protected static readonly int TriggerAttacked = Animator.StringToHash("TriggerAttacked");
@@ -25,12 +25,6 @@ namespace Core.CharacterTypes
         {
             Animator = GetComponent<Animator>();
         }
-
-        // returns the value of the corresponding stat (instead of having a getter for each stat
-        protected abstract int GetStat(StatType statType);
-        
-        // changes the value of the corresponding stat (instead of having a getter for each stat
-        protected abstract void ChangeStat(StatType statType, int change);
 
         // this function should trigger when the battle system raises the next turn event
         public abstract void TurnStarted(int turnId);
@@ -43,25 +37,24 @@ namespace Core.CharacterTypes
 
         private void Attack()
         {
-            attackEvent.Raise(GetStat(StatType.Damage));
+            attackEvent.Raise(stats.damage.value);
         }
 
         public void Attacked(int damage)
         {
             Animator.SetTrigger(TriggerAttacked);
-            var relativeDamage = damage - GetStat(StatType.Defense);
+            var relativeDamage = damage - stats.defense.value;
             var takenDamage = relativeDamage > 0 ? relativeDamage : 1;
-            ChangeStat(StatType.Hp, -takenDamage);
-            if (GetStat(StatType.Hp) <= 0)
+            stats.hp.value -= takenDamage;
+            if (stats.hp.value <= 0)
             {
-                Debug.Log($"trigger die {Id}");
                 Animator.SetTrigger(TriggerDie);
             }
         }
 
         public void Die()
         {
-            diedEvent.Raise(Id);
+            diedEvent.Raise(id);
         }
 
         public void OnPointerClick(PointerEventData eventData)

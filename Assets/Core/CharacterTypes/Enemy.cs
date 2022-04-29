@@ -1,67 +1,36 @@
 using Core.Enums;
+using Core.Stats;
 using UnityEngine;
 
 namespace Core.CharacterTypes
 {
     public abstract class Enemy : Combatant
     {
+        // stats that the enemy wil start with
         public int hp;
         public int energy;
-
         public int damage;
         public int defense;
         public int speed;
-
+        
+        // range of exp this enemy can give
         public int minExp;
         public int maxExp;
 
-        protected override int GetStat(StatType statType)
+        public void InitStats()
         {
-            switch (statType)
-            {
-                case StatType.Hp:
-                    return hp;
-                case StatType.Energy:
-                    return energy;
-                case StatType.Damage:
-                    return damage;
-                case StatType.Defense:
-                    return defense;
-                case StatType.Speed:
-                    return speed;
-                
-            }
-            // avoiding error
-            return 0;
-        }
-
-        protected override void ChangeStat(StatType statType, int change)
-        {
-            switch (statType)
-            {
-                case StatType.Hp:
-                    hp += change;
-                    break;
-                case StatType.Energy:
-                    energy += change;
-                    break;
-                case StatType.Damage:
-                    damage += change;
-                    break;
-                case StatType.Defense:
-                    defense += change;
-                    break;
-                case StatType.Speed:
-                    speed += change;
-                    break;
-            }
+            stats.hp.value = stats.hp.baseValue = hp;
+            stats.energy.value = stats.energy.baseValue = energy;
+            stats.damage.value = stats.damage.baseValue = damage;
+            stats.defense.value = stats.defense.baseValue = defense;
+            stats.speed.value = stats.speed.baseValue = speed;
         }
 
         protected abstract void PlayTurn();
 
         public override void TurnStarted(int turnId)
         {
-            if (Id != turnId) return;
+            if (id != turnId) return;
             MyTurn = true;
             PlayTurn();
         }

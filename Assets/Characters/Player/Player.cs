@@ -5,6 +5,6 @@ public class Player : Playable
 {
     private void Awake()
     {
-        Id = CharacterId.Player;
+        id = CharacterId.Player;
     }
 }
