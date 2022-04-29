@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerHP
   m_EditorClassIdentifier: 
   baseValue: 100
-  value: 87
+  value: 98

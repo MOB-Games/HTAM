@@ -2,7 +2,7 @@ using Core.CharacterTypes;
 using Core.Enums;
 using UnityEngine;
 
-public class EnemyScript : Enemy
+public class SquareEnemy : Enemy
 {
     private void Awake()
     {

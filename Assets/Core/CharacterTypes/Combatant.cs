@@ -35,11 +35,9 @@ namespace Core.CharacterTypes
         // this function should trigger when the battle system raises the next turn event
         public abstract void TurnStarted(int turnId);
 
-        private async void EndTurn()
+        private void EndTurn()
         {
             MyTurn = false;
-            // without the wait a dead character might play before it dies
-            //await Task.Delay(TimeSpan.FromSeconds(0.35));
             endTurnEvent.Raise();
         }
 

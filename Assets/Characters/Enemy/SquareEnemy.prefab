@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 401080829}
   - component: {fileID: -2948092397023849684}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: SquareEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,11 +105,11 @@ MonoBehaviour:
   attackEvent: {fileID: 11400000, guid: 3376142e3b57ee44f9937d5ba2127773, type: 2}
   diedEvent: {fileID: 11400000, guid: 363e9048c6b2c074992fc20b1fb51770, type: 2}
   clickEvent: {fileID: 11400000, guid: c49163612214ee941b021eaa74215f78, type: 2}
-  hp: 20
+  hp: 5
   energy: 50
-  damage: 5
+  damage: 500
   defense: 5
-  speed: 5
+  speed: 50
 --- !u!114 &-2117644339757057864
 MonoBehaviour:
   m_ObjectHideFlags: 0

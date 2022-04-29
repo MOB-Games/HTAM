@@ -13,6 +13,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject enemyPrefab;
     public GameIntEvent startTurnEvent;
     public GameObject winWindow;
+    public GameObject loseWindow;
     public TextMeshProUGUI expText;
 
     private bool _battleFinished = false;
@@ -25,7 +26,7 @@ public class BattleSystem : MonoBehaviour
     {
         _combatantsSpeed.Add(CharacterId.Player, playerSpeed.value);
         var inst = Instantiate(enemyPrefab, new Vector3(8, 0, 0), Quaternion.identity);
-        var enemyScript = inst.GetComponent<EnemyScript>();
+        var enemyScript = inst.GetComponent<SquareEnemy>();
         _combatantsSpeed.Add(CharacterId.Enemy1, enemyScript.speed);
         _enemies.Add(CharacterId.Enemy1, enemyScript);
         SetTurnOrderForRound();
@@ -50,6 +51,11 @@ public class BattleSystem : MonoBehaviour
 
     public void Death(int id)
     {
+        if (id == CharacterId.Player)
+        {
+            _battleFinished = true;
+            loseWindow.SetActive(true);
+        }
         _combatantsSpeed.Remove(id);
         _turnOrder.Remove(id);
         if (_enemies.TryGetValue(id, out var deadEnemy))
