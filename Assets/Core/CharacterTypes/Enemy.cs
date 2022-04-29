@@ -12,8 +12,8 @@ namespace Core.CharacterTypes
         public int defense;
         public int speed;
 
-        protected int MinExp;
-        protected int MaxExp;
+        public int minExp;
+        public int maxExp;
 
         protected override int GetStat(StatType statType)
         {
@@ -68,7 +68,7 @@ namespace Core.CharacterTypes
 
         public int ExpDrop()
         {
-            return Random.Range(MinExp, MaxExp);
+            return Random.Range(minExp, maxExp);
         }
     }
 }

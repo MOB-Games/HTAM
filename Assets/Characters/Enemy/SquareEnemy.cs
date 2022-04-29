@@ -7,8 +7,8 @@ public class SquareEnemy : Enemy
     private void Awake()
     {
         Id = CharacterId.Enemy1;
-        MinExp = 2;
-        MaxExp = 10;
+        minExp = 2;
+        maxExp = 10;
     }
     protected override void PlayTurn()
     {

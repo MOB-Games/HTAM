@@ -110,6 +110,8 @@ MonoBehaviour:
   damage: 500
   defense: 5
   speed: 50
+  minExp: 2
+  maxExp: 10
 --- !u!114 &-2117644339757057864
 MonoBehaviour:
   m_ObjectHideFlags: 0
