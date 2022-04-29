@@ -20,8 +20,9 @@ namespace Core.CharacterTypes
         {
             // detect who was clicked, open menu, menu needs to deal with whatever option is chosen on the clicked target
             if (!MyTurn) return;
-            if (eventData.pointerPress.TryGetComponent(typeof(SquareEnemy), out Component enemyScript))
+            if (eventData.pointerPress.TryGetComponent(out Enemy enemyComponent))
             {
+                TargetId = enemyComponent.id;
                 Animator.SetTrigger(TriggerAttack);
                 //return;
             }

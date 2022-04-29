@@ -1,3 +1,4 @@
+using System;
 using Core.Enums;
 using Core.Events;
 using Core.Stats;
@@ -11,11 +12,12 @@ namespace Core.CharacterTypes
         public int id;
         public StatBlock stats;
         public GameEvent endTurnEvent;
-        public GameIntEvent attackEvent;
+        public GameBattleActionEvent actionEvent;
         public GameIntEvent diedEvent;
         public GameClickEvent clickEvent;
 
         protected bool MyTurn = false;
+        protected int TargetId;
         protected Animator Animator;
         protected static readonly int TriggerAttack = Animator.StringToHash("TriggerAttack");
         protected static readonly int TriggerAttacked = Animator.StringToHash("TriggerAttacked");
@@ -37,19 +39,56 @@ namespace Core.CharacterTypes
 
         private void Attack()
         {
-            attackEvent.Raise(stats.damage.value);
+            actionEvent.Raise(TargetId, -stats.damage.value, StatType.Hp);
         }
 
-        public void Attacked(int damage)
+        private void ChangeStat(int change, StatType affectedStat)
         {
-            Animator.SetTrigger(TriggerAttacked);
-            var relativeDamage = damage - stats.defense.value;
-            var takenDamage = relativeDamage > 0 ? relativeDamage : 1;
-            stats.hp.value -= takenDamage;
-            if (stats.hp.value <= 0)
+            switch (affectedStat)
             {
-                Animator.SetTrigger(TriggerDie);
+                case StatType.Hp:
+                    stats.hp.value += change;
+                    break;
+                case StatType.Energy:
+                    stats.energy.value += change;
+                    break;
+                case StatType.Damage:
+                    stats.damage.value += change;
+                    break;
+                case StatType.Defense:
+                    stats.defense.value += change;
+                    break;
+                case StatType.Speed:
+                    stats.speed.value += change;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(affectedStat), affectedStat, null);
             }
+        }
+
+        public void ActionTaken(int targetId, int change, StatType affectedStat)
+        {
+            if (id != targetId) return;
+            if (change < 0) // attacked or debuffed 
+            {
+                Animator.SetTrigger(TriggerAttacked);
+                if (affectedStat == StatType.Hp)
+                {
+                    change += stats.defense.value;
+                    if (change >= 0) change = -1; // minimal damage
+                    stats.hp.value += change; // change is always negative
+                    if (stats.hp.value <= 0)
+                    {
+                        Animator.SetTrigger(TriggerDie);
+                    }
+                    return;
+                }
+            }
+            else
+            {
+                // trigger a animation for healing or buffing
+            }
+            ChangeStat(change, affectedStat);
         }
 
         public void Die()

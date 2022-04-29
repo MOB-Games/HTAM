@@ -12,6 +12,7 @@ public class SquareEnemy : Enemy
     }
     protected override void PlayTurn()
     {
+        TargetId = CharacterId.Player;
         Animator.SetTrigger(TriggerAttack);
     }
 }
