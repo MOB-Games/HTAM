@@ -852,7 +852,9 @@ MonoBehaviour:
   enemy1Stats: {fileID: 11400000, guid: 6e70c02760a7f104986969890092ef6a, type: 2}
   enemy2Stats: {fileID: 11400000, guid: b569807b1d00e404a923541da8ddb7d3, type: 2}
   enemy3Stats: {fileID: 11400000, guid: b0f389b6c97f9534ebcbde4c793ff588, type: 2}
-  squareEnemyPrefab: {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
+  enemyPrefabs:
+  - {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
+  - {fileID: 5217080582421210112, guid: 1cca8c75974a6e4419569f63017ea0fb, type: 3}
   startTurnEvent: {fileID: 11400000, guid: f34e539415826584d87594f11a7c0232, type: 2}
   winWindow: {fileID: 109192120}
   loseWindow: {fileID: 2146732422}

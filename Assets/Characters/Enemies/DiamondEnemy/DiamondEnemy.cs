@@ -1,13 +1,12 @@
 using Core.CharacterTypes;
 using Core.Enums;
-using UnityEngine;
 
-public class SquareEnemy : Enemy
+public class DiamondEnemy : Enemy
 {
     private void Awake()
     {
-        minExp = 2;
-        maxExp = 10;
+        minExp = 15;
+        maxExp = 30;
     }
     protected override void PlayTurn()
     {
