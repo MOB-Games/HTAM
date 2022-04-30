@@ -1,10 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Core;
-using Core.Enums;
-using Core.Stats;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Core.CharacterTypes
@@ -29,7 +22,7 @@ namespace Core.CharacterTypes
             if (eventData.pointerPress.TryGetComponent(out Enemy enemyComponent))
             {
                 TargetId = enemyComponent.id;
-                Animator.SetTrigger(TriggerAttack);
+                StartCoroutine(AnimateAttack());
                 //return;
             }
         }
