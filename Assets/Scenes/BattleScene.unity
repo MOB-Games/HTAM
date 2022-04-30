@@ -1443,7 +1443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  characterInfo: {fileID: 0}
+  characterInfo: {fileID: 11400000, guid: 7e4cf8474776ebc4e8bd310389632d16, type: 2}
   endTurnEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
   actionEvent: {fileID: 11400000, guid: 8073861abec51e54ca4bcee663caa37d, type: 2}
   diedEvent: {fileID: 11400000, guid: 363e9048c6b2c074992fc20b1fb51770, type: 2}
