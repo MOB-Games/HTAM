@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core;
@@ -10,6 +11,11 @@ namespace Core.CharacterTypes
 {
     public class Playable : Combatant
     {
+        private void Start()
+        {
+            Stats = characterInfo.GetStatBlock(id);
+        }
+
         public override void TurnStarted(int turnId)
         {
             if (id != turnId) return;
@@ -18,7 +24,7 @@ namespace Core.CharacterTypes
 
         public void HandleClick(PointerEventData eventData)
         {
-            // detect who was clicked, open menu, menu needs to deal with whatever option is chosen on the clicked target
+            // open menu, menu needs to deal with whatever option is chosen on the clicked target
             if (!MyTurn) return;
             if (eventData.pointerPress.TryGetComponent(out Enemy enemyComponent))
             {

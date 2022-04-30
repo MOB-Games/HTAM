@@ -1,6 +1,8 @@
+using System;
 using Core.Enums;
 using Core.Stats;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Core.CharacterTypes
 {
@@ -19,11 +21,12 @@ namespace Core.CharacterTypes
 
         public void InitStats()
         {
-            stats.hp.value = stats.hp.baseValue = hp;
-            stats.energy.value = stats.energy.baseValue = energy;
-            stats.damage.value = stats.damage.baseValue = damage;
-            stats.defense.value = stats.defense.baseValue = defense;
-            stats.speed.value = stats.speed.baseValue = speed;
+            Stats = characterInfo.GetStatBlock(id);
+            Stats.hp.value = Stats.hp.baseValue = hp;
+            Stats.energy.value = Stats.energy.baseValue = energy;
+            Stats.damage.value = Stats.damage.baseValue = damage;
+            Stats.defense.value = Stats.defense.baseValue = defense;
+            Stats.speed.value = Stats.speed.baseValue = speed;
         }
 
         protected abstract void PlayTurn();

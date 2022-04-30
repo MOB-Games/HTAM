@@ -10,7 +10,7 @@ namespace Core.CharacterTypes
     public abstract class Combatant : MonoBehaviour, IPointerClickHandler
     {
         public int id;
-        public StatBlock stats;
+        public CharacterInfo characterInfo;
         public GameEvent endTurnEvent;
         public GameBattleActionEvent actionEvent;
         public GameIntEvent diedEvent;
@@ -18,6 +18,7 @@ namespace Core.CharacterTypes
 
         protected bool MyTurn = false;
         protected int TargetId;
+        protected StatBlock Stats;
         protected Animator Animator;
         protected static readonly int TriggerAttack = Animator.StringToHash("TriggerAttack");
         protected static readonly int TriggerAttacked = Animator.StringToHash("TriggerAttacked");
@@ -39,7 +40,7 @@ namespace Core.CharacterTypes
 
         private void Attack()
         {
-            actionEvent.Raise(TargetId, -stats.damage.value, StatType.Hp);
+            actionEvent.Raise(TargetId, -Stats.damage.value, StatType.Hp);
         }
 
         private void ChangeStat(int change, StatType affectedStat)
@@ -47,19 +48,19 @@ namespace Core.CharacterTypes
             switch (affectedStat)
             {
                 case StatType.Hp:
-                    stats.hp.value += change;
+                    Stats.hp.value += change;
                     break;
                 case StatType.Energy:
-                    stats.energy.value += change;
+                    Stats.energy.value += change;
                     break;
                 case StatType.Damage:
-                    stats.damage.value += change;
+                    Stats.damage.value += change;
                     break;
                 case StatType.Defense:
-                    stats.defense.value += change;
+                    Stats.defense.value += change;
                     break;
                 case StatType.Speed:
-                    stats.speed.value += change;
+                    Stats.speed.value += change;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(affectedStat), affectedStat, null);
@@ -74,10 +75,10 @@ namespace Core.CharacterTypes
                 Animator.SetTrigger(TriggerAttacked);
                 if (affectedStat == StatType.Hp)
                 {
-                    change += stats.defense.value;
+                    change += Stats.defense.value;
                     if (change >= 0) change = -1; // minimal damage
-                    stats.hp.value += change; // change is always negative
-                    if (stats.hp.value <= 0)
+                    Stats.hp.value += change; // change is always negative
+                    if (Stats.hp.value <= 0)
                     {
                         Animator.SetTrigger(TriggerDie);
                     }

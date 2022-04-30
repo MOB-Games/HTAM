@@ -846,12 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfb56ce4d391894f8bafbffa552f738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 11400000, guid: 0af51371b220e824bab4bca3e1313ead, type: 2}
-  partyMember1Stats: {fileID: 0}
-  partyMember2Stats: {fileID: 0}
-  enemy1Stats: {fileID: 11400000, guid: 6e70c02760a7f104986969890092ef6a, type: 2}
-  enemy2Stats: {fileID: 11400000, guid: b569807b1d00e404a923541da8ddb7d3, type: 2}
-  enemy3Stats: {fileID: 11400000, guid: b0f389b6c97f9534ebcbde4c793ff588, type: 2}
+  characterInfo: {fileID: 11400000, guid: 7e4cf8474776ebc4e8bd310389632d16, type: 2}
   enemyPrefabs:
   - {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
   - {fileID: 5217080582421210112, guid: 1cca8c75974a6e4419569f63017ea0fb, type: 3}
@@ -1448,7 +1443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  stats: {fileID: 11400000, guid: 0af51371b220e824bab4bca3e1313ead, type: 2}
+  characterInfo: {fileID: 0}
   endTurnEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
   actionEvent: {fileID: 11400000, guid: 8073861abec51e54ca4bcee663caa37d, type: 2}
   diedEvent: {fileID: 11400000, guid: 363e9048c6b2c074992fc20b1fb51770, type: 2}
