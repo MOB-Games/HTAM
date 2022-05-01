@@ -1,18 +1,16 @@
 using Core.CharacterTypes;
 using Core.Enums;
-using UnityEngine;
 
-public class SquareEnemy : Enemy
+public class DiamondEnemy : Enemy
 {
     private void Awake()
     {
-        Id = CharacterId.Enemy1;
-        MinExp = 2;
-        MaxExp = 10;
+        minExp = 15;
+        maxExp = 30;
     }
     protected override void PlayTurn()
     {
-        Debug.Log($"trigger attack {Id}");
+        TargetId = CharacterId.Player;
         Animator.SetTrigger(TriggerAttack);
     }
 }

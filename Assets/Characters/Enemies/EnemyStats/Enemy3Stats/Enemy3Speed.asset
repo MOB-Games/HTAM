@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54162cb9c21179d4880ea8355e4400b1, type: 3}
-  m_Name: EnemyAttackedEvent
+  m_Script: {fileID: 11500000, guid: f0f0f652536de1a43b1e9c1e64b0a992, type: 3}
+  m_Name: Enemy3Speed
   m_EditorClassIdentifier: 
+  baseValue: 0
+  value: 0

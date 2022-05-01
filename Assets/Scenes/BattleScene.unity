@@ -846,8 +846,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecfb56ce4d391894f8bafbffa552f738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: {fileID: 11400000, guid: 0df67c34a9076014c8f55ab8f7427064, type: 2}
-  enemyPrefab: {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
+  characterInfo: {fileID: 11400000, guid: 7e4cf8474776ebc4e8bd310389632d16, type: 2}
+  enemyPrefabs:
+  - {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
+  - {fileID: 5217080582421210112, guid: 1cca8c75974a6e4419569f63017ea0fb, type: 3}
   startTurnEvent: {fileID: 11400000, guid: f34e539415826584d87594f11a7c0232, type: 2}
   winWindow: {fileID: 109192120}
   loseWindow: {fileID: 2146732422}
@@ -1350,8 +1352,8 @@ GameObject:
   - component: {fileID: 2092569241}
   - component: {fileID: 2092569243}
   - component: {fileID: 2092569244}
-  - component: {fileID: 2092569245}
   - component: {fileID: 2092569247}
+  - component: {fileID: 2092569249}
   - component: {fileID: 2092569246}
   - component: {fileID: 2092569248}
   m_Layer: 0
@@ -1440,11 +1442,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad72184bbaf64fc419ffa0c0d5786844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  characterInfo: {fileID: 11400000, guid: 7e4cf8474776ebc4e8bd310389632d16, type: 2}
   endTurnEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
-  attackEvent: {fileID: 11400000, guid: ae451f6faf585d845878d98908802cc9, type: 2}
+  actionEvent: {fileID: 11400000, guid: 8073861abec51e54ca4bcee663caa37d, type: 2}
   diedEvent: {fileID: 11400000, guid: 363e9048c6b2c074992fc20b1fb51770, type: 2}
   clickEvent: {fileID: 11400000, guid: c49163612214ee941b021eaa74215f78, type: 2}
-  stats: {fileID: 11400000, guid: 0af51371b220e824bab4bca3e1313ead, type: 2}
 --- !u!114 &2092569244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,34 +1467,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2092569243}
         m_TargetAssemblyTypeName: Core.Combatant, Assembly-CSharp
         m_MethodName: TurnStarted
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &2092569245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2092569239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e55cdad75bd6c5478031e56db30a9b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 3376142e3b57ee44f9937d5ba2127773, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2092569243}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Attacked
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1575,6 +1550,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2092569249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092569239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3549dfe1da16b724f98b2e3e311e6ae2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 8073861abec51e54ca4bcee663caa37d, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2092569243}
+        m_TargetAssemblyTypeName: Core.CharacterTypes.Combatant, Assembly-CSharp
+        m_MethodName: ActionTaken
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2146732422
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,74 +1,46 @@
+using System;
 using Core.Enums;
+using Core.Stats;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Core.CharacterTypes
 {
     public abstract class Enemy : Combatant
     {
+        // stats that the enemy wil start with
         public int hp;
         public int energy;
-
         public int damage;
         public int defense;
         public int speed;
+        
+        // range of exp this enemy can give
+        public int minExp;
+        public int maxExp;
 
-        protected int MinExp;
-        protected int MaxExp;
-
-        protected override int GetStat(StatType statType)
+        public void InitStats()
         {
-            switch (statType)
-            {
-                case StatType.Hp:
-                    return hp;
-                case StatType.Energy:
-                    return energy;
-                case StatType.Damage:
-                    return damage;
-                case StatType.Defense:
-                    return defense;
-                case StatType.Speed:
-                    return speed;
-                
-            }
-            // avoiding error
-            return 0;
-        }
-
-        protected override void ChangeStat(StatType statType, int change)
-        {
-            switch (statType)
-            {
-                case StatType.Hp:
-                    hp += change;
-                    break;
-                case StatType.Energy:
-                    energy += change;
-                    break;
-                case StatType.Damage:
-                    damage += change;
-                    break;
-                case StatType.Defense:
-                    defense += change;
-                    break;
-                case StatType.Speed:
-                    speed += change;
-                    break;
-            }
+            Stats = characterInfo.GetStatBlock(id);
+            Stats.hp.value = Stats.hp.baseValue = hp;
+            Stats.energy.value = Stats.energy.baseValue = energy;
+            Stats.damage.value = Stats.damage.baseValue = damage;
+            Stats.defense.value = Stats.defense.baseValue = defense;
+            Stats.speed.value = Stats.speed.baseValue = speed;
         }
 
         protected abstract void PlayTurn();
 
         public override void TurnStarted(int turnId)
         {
-            if (Id != turnId) return;
+            if (id != turnId) return;
             MyTurn = true;
             PlayTurn();
         }
 
         public int ExpDrop()
         {
-            return Random.Range(MinExp, MaxExp);
+            return Random.Range(minExp, maxExp);
         }
     }
 }

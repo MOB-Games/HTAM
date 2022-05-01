@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5217080582421210142}
   - component: {fileID: 8812435421798477021}
   - component: {fileID: -2117644339757057864}
-  - component: {fileID: 4505227176924624714}
+  - component: {fileID: 8752748244225254453}
   - component: {fileID: 401080829}
   - component: {fileID: -2948092397023849684}
   m_Layer: 0
@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5217080582421210112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -101,15 +101,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e96ac7684dce2a49a4fcf4fae10084d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  characterInfo: {fileID: 11400000, guid: 7e4cf8474776ebc4e8bd310389632d16, type: 2}
   endTurnEvent: {fileID: 11400000, guid: f0f6c14c2307ff84ebd55cf81cf1d7b9, type: 2}
-  attackEvent: {fileID: 11400000, guid: 3376142e3b57ee44f9937d5ba2127773, type: 2}
+  actionEvent: {fileID: 11400000, guid: 8073861abec51e54ca4bcee663caa37d, type: 2}
   diedEvent: {fileID: 11400000, guid: 363e9048c6b2c074992fc20b1fb51770, type: 2}
   clickEvent: {fileID: 11400000, guid: c49163612214ee941b021eaa74215f78, type: 2}
   hp: 5
   energy: 50
-  damage: 500
+  damage: 5
   defense: 5
-  speed: 50
+  speed: 5
+  minExp: 2
+  maxExp: 10
 --- !u!114 &-2117644339757057864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +142,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4505227176924624714
+--- !u!114 &8752748244225254453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,16 +151,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5217080582421210112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b54cb2c7cb1c4e04ebd04e16d1f597ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 3549dfe1da16b724f98b2e3e311e6ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: ae451f6faf585d845878d98908802cc9, type: 2}
+  gameEvent: {fileID: 11400000, guid: 8073861abec51e54ca4bcee663caa37d, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8812435421798477021}
-        m_TargetAssemblyTypeName: EnemyScript, Assembly-CSharp
-        m_MethodName: Attacked
+        m_TargetAssemblyTypeName: Core.CharacterTypes.Combatant, Assembly-CSharp
+        m_MethodName: ActionTaken
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
