@@ -54,7 +54,7 @@ public class ActiveSkills : MonoBehaviour
     private void TargetClicked(PointerEventData eventData)
     {
         var targetId = eventData.pointerPress.GetComponent<ID>().id;
-        CombatEvents.OpenMenu(targetId,
+        CombatEvents.OpenMenu(_id, targetId,
             eventData.pointerPress.TryGetComponent(out EnemyBehavior _) ? offensiveSkills : defensiveSkills);
     }
     

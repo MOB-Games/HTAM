@@ -14,15 +14,19 @@ public class SkillMenuManager : MonoBehaviour
         CombatEvents.OnSkillChosen += CloseMenu;
     }
 
-    private void SetupMenu(CombatantId targetId, List<GameObject> skillPrefabs)
+    private void SetupMenu(CombatantId userId, CombatantId targetId, List<GameObject> skillPrefabs)
     {
+        var currentEnergy = CombatantInfo.GetStatBlock(userId).energy.value;
+        var currentHp = CombatantInfo.GetStatBlock(userId).hp.value;
         float buttonHeight = 3;
         foreach (var inst in skillPrefabs.Select(skillPrefab => Instantiate(skillPrefab,
                      new Vector3(0, buttonHeight, 0), Quaternion.identity, skillMenu.transform)))
         {
             buttonHeight -= 1.5f;
             var skill = inst.GetComponent<Skill>();
-            inst.GetComponent<Button>().onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill));
+            var button = inst.GetComponent<Button>();
+            button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill));
+            button.interactable = skill.energyCost < currentEnergy && skill.hpCost < currentHp;
         }
         skillMenu.SetActive(true);
     }

@@ -247,8 +247,8 @@ MonoBehaviour:
       baseValue: 0
       value: 0
     damage:
-      baseValue: 5
-      value: 5
+      baseValue: 7
+      value: 7
     defense:
       baseValue: 5
       value: 5

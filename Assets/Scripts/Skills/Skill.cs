@@ -45,8 +45,8 @@ public class Skill : MonoBehaviour
     public SkillId id;
     public string skillName;
     public bool melee;
-    public uint energyCost;
-    public uint hpCost;
+    public int energyCost;
+    public int hpCost;
     [HideInInspector]
     public int level;
     public TargetType targetType;

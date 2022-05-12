@@ -12,7 +12,7 @@ public static class CombatEvents
     public static event Action<CombatantId> OnStartTurn;
     public static event Action OnEndTurn;
     public static event Action<PointerEventData> OnClick;
-    public static event Action<CombatantId, List<GameObject>> OnOpenMenu;
+    public static event Action<CombatantId, CombatantId, List<GameObject>> OnOpenMenu;
     public static event Action<CombatantId, Skill> OnSkillChosen;
     public static event Action<CombatantId, SkillResult> OnSkillUsed; 
     public static event Action<CombatantId> OnCombatantDied;
@@ -51,9 +51,9 @@ public static class CombatEvents
         OnClick?.Invoke(eventData);
     }
     
-    public static void OpenMenu(CombatantId targetId, List<GameObject> skillPrefabs)
+    public static void OpenMenu(CombatantId userId, CombatantId targetId, List<GameObject> skillPrefabs)
     {
-        OnOpenMenu?.Invoke(targetId, skillPrefabs);
+        OnOpenMenu?.Invoke(userId, targetId, skillPrefabs);
     }
     
     public static void SkillChosen(CombatantId targetId, Skill skill)

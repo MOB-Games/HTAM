@@ -56,12 +56,15 @@ public class SkillExecutor : MonoBehaviour
             _combatantEvents.MoveToTarget(CombatantInfo.GetLocation(targetId));
             await Task.Delay(TimeSpan.FromSeconds(1.2));
         }
-        _combatantEvents.Attack();
+        _combatantEvents.Attack(); // this should change to be according to result.effect in the future
         await Task.Delay(TimeSpan.FromSeconds(0.15));
         CombatEvents.SkillUsed(targetId, result);
         await Task.Delay(TimeSpan.FromSeconds(0.4));
-        _combatantEvents.Return();
-        await Task.Delay(TimeSpan.FromSeconds(1.2));
+        if (isMelee)
+        {
+            _combatantEvents.Return();
+            await Task.Delay(TimeSpan.FromSeconds(1.2));
+        }
         CombatEvents.EndTurn();
     }
 
@@ -73,6 +76,8 @@ public class SkillExecutor : MonoBehaviour
             var result = skill.GetResult(_id, id);
             Execute(id, skill.melee, result).GetAwaiter();
         }
+        _combatantEvents.StatChange(StatType.Hp, -skill.hpCost);
+        _combatantEvents.StatChange(StatType.Energy, -skill.energyCost);
     }
 
     private void OnDestroy()
