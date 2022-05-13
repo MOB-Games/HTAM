@@ -31,6 +31,7 @@ namespace Core.Stats
 
         public void LoadStats(StatBlock stats)
         {
+            Debug.Log("load stats");
             stats.hp.baseValue = hp.baseValue;
             stats.energy.baseValue = energy.baseValue;
             stats.damage.baseValue = damage.baseValue;

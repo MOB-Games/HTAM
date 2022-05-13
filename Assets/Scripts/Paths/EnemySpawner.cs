@@ -97,7 +97,7 @@ public class EnemySpawner : MonoBehaviour
                 var id = _enemyIds[i];
                 var inst = Instantiate(GetEnemyPrefabToCreate(), CombatantInfo.GetLocation(id), Quaternion.identity);
                 inst.GetComponent<ID>().id = id;
-                CombatantInfo.AddCombatant(id, inst.GetComponent<StatModifier>().stats);
+                CombatEvents.CombatantAdded(inst);
             }
         }
         else
@@ -108,7 +108,7 @@ public class EnemySpawner : MonoBehaviour
                 var enemyIndex = enemiesForStages.EnemyPrefabIndex(stage, i);
                 var inst = Instantiate(enemyPrefabs[enemyIndex], CombatantInfo.GetLocation(id), Quaternion.identity);
                 inst.GetComponent<ID>().id = id;
-                CombatantInfo.AddCombatant(id, inst.GetComponent<StatModifier>().stats);
+                CombatEvents.CombatantAdded(inst);
             }
         }
     }

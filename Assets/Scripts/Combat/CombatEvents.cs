@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public static class CombatEvents
 {
     public static event Action OnLoadScene;
+    public static event Action<GameObject> OnCombatantAdded;
     public static event Action OnPartyEnter;
     public static event Action OnStartCombat;
     public static event Action<CombatantId> OnStartTurn;
@@ -24,6 +25,11 @@ public static class CombatEvents
     public static void LoadScene()
     {
         OnLoadScene?.Invoke();
+    }
+    
+    public static void CombatantAdded(GameObject combatant)
+    {
+        OnCombatantAdded?.Invoke(combatant);
     }
     
     public static void PartyEnter()

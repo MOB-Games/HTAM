@@ -9,7 +9,6 @@ public class MemoryManager : MonoBehaviour
 
     private void Start()
     {
-        CombatEvents.OnFinalDrop += LootDrop;
         _stats = GetComponent<StatModifier>().stats;
         state.stats.LoadStats(_stats);
         var activeSkills = GetComponent<ActiveSkills>();
@@ -17,6 +16,7 @@ public class MemoryManager : MonoBehaviour
             state.skillLevels.ToDictionary(keySelector: s => s.id, elementSelector: s => s.level);
         activeSkills.offensiveSkills = state.activeOffensiveSkills;
         activeSkills.defensiveSkills = state.activeDefensiveSkills;
+        CombatEvents.OnFinalDrop += LootDrop;
     }
 
     private void LootDrop(Drop drop)
