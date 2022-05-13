@@ -19,8 +19,11 @@ MonoBehaviour:
   skillLevels:
   - id: 0
     level: 0
+  - id: 1
+    level: 0
   activeOffensiveSkills:
   - {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f, type: 3}
-  activeDefensiveSkills: []
+  activeDefensiveSkills:
+  - {fileID: 4003426218498401328, guid: ff0724cab1e6d6946b2fd3b471fac74c, type: 3}
   availableOffensiveSkills: []
   availableDefensiveSkills: []

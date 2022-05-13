@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerDamage
   m_EditorClassIdentifier: 
   baseValue: 20
-  value: 100
+  value: 20
