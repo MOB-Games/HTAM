@@ -9,12 +9,14 @@ using UnityEngine.UI;
 public class Path
 {
     public readonly PathInfo Info;
-    public readonly EnemySpawner Spawner;
+    public readonly EnemySpawner EnemySpawner;
+    // public readonly TownSpawner TownSpawner;
 
-    public Path(PathInfo info, EnemySpawner spawner)
+    public Path(PathInfo info, EnemySpawner enemySpawner)
     {
         Info = info;
-        Spawner = spawner;
+        EnemySpawner = enemySpawner;
+        // TownSpawner = townSpawner;
     }
 }
 
@@ -26,10 +28,7 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (var pathPrefab in from pathPrefab in pathPrefabs 
-                 let p = pathPrefab.GetComponent<PathInfo>() 
-                 let e = pathPrefab.GetComponent<EnemyBehavior>() 
-                 select pathPrefab)
+        foreach (var pathPrefab in pathPrefabs)
         {
             _paths.Add(new Path(pathPrefab.GetComponent<PathInfo>(), pathPrefab.GetComponent<EnemySpawner>()));
         }
@@ -84,7 +83,7 @@ public class StageManager : MonoBehaviour
     {
         var path = _paths[gameProgress.currentPath];
         Camera.main!.GetComponentInChildren<Image>().sprite = path.Info.background;
-        path.Spawner.Spawn(StageCleared() ? -1 : gameProgress.currentStage);
+        path.EnemySpawner.Spawn(StageCleared() ? -1 : gameProgress.currentStage);
     }
 
     private void LoadStage()

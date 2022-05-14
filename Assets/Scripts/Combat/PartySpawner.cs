@@ -22,21 +22,21 @@ public class PartySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        var inst = Instantiate(playerPrefab, CombatantInfo.GetLocation(CombatantId.Player) + 6 * Vector3.left,
+        var inst = Instantiate(playerPrefab, CombatantInfo.GetLocation(CombatantId.Player) + 10 * Vector3.left,
             Quaternion.identity);
         inst.GetComponent<ID>().id = CombatantId.Player;
         CombatEvents.CombatantAdded(inst);
         
         if (partyMemberTopPrefab != null)
         {
-            inst = Instantiate(partyMemberTopPrefab, CombatantInfo.GetLocation(CombatantId.PartyMemberTop) + 6 * Vector3.left,
+            inst = Instantiate(partyMemberTopPrefab, CombatantInfo.GetLocation(CombatantId.PartyMemberTop) + 10 * Vector3.left,
                 Quaternion.identity);
             inst.GetComponent<ID>().id = CombatantId.PartyMemberTop;
             CombatEvents.CombatantAdded(inst);
         }
         if (partyMemberBottomPrefab != null)
         {
-            inst = Instantiate(partyMemberBottomPrefab, CombatantInfo.GetLocation(CombatantId.PartyMemberBottom) + 6 * Vector3.left,
+            inst = Instantiate(partyMemberBottomPrefab, CombatantInfo.GetLocation(CombatantId.PartyMemberBottom) + 10 * Vector3.left,
                 Quaternion.identity);
             inst.GetComponent<ID>().id = CombatantId.PartyMemberBottom;
             CombatEvents.CombatantAdded(inst);
