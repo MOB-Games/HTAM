@@ -136,6 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   skillName: Attack
+  description: Basic Attack - you attack the opponent with yor damage against his
+    defense
   melee: 1
   energyCost: 0
   hpCost: 0

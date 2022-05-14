@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   skillName: Heal
+  description: Heal 20 hp
   melee: 0
   energyCost: 15
   hpCost: 0

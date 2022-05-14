@@ -44,6 +44,7 @@ public class Skill : MonoBehaviour
 {
     public SkillId id;
     public string skillName;
+    public string description;
     public bool melee;
     public int energyCost;
     public int hpCost;
@@ -59,6 +60,14 @@ public class Skill : MonoBehaviour
         if (level >= parametersPerLevel.Count)
             throw new ArgumentOutOfRangeException(
                 $"Tried to use skill {id} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
+    }
+
+    public string GetDescription()
+    {
+        return $"{skillName}\n" +
+               $"{description}\n\n" +
+               $"Energy Cost: {energyCost}\n" +
+               $"Hp Cost: {hpCost}";
     }
 
     public SkillResult GetResult(CombatantId attackerId, CombatantId defenderId)

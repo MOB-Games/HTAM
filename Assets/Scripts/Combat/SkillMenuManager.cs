@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Enums;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillMenuManager : MonoBehaviour
+public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject skillMenu;
+    public GameObject TooltipBox;
 
     private void Start()
     {
@@ -29,6 +32,32 @@ public class SkillMenuManager : MonoBehaviour
             button.interactable = skill.energyCost < currentEnergy && skill.hpCost < currentHp;
         }
         skillMenu.SetActive(true);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        foreach (var hoveredGo in eventData.hovered)
+        {
+            if (hoveredGo.TryGetComponent<Skill>(out var skill))
+            {
+                var currentPos = TooltipBox.transform.position;
+                var newPos = new Vector3(currentPos.x, hoveredGo.transform.position.y, currentPos.z);
+                TooltipBox.transform.position = newPos;
+                var tooltip = TooltipBox.GetComponentInChildren<TextMeshProUGUI>();
+                var message = skill.GetDescription();
+                if (!hoveredGo.GetComponent<Button>().interactable)
+                {
+                    message += "\n\n<color=red>*Insufficient energy or hp</color>";
+                }
+                tooltip.text = message;
+                TooltipBox.SetActive(true);
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        TooltipBox.SetActive(false);
     }
 
     private void CloseMenu(CombatantId targetId, Skill skill)
