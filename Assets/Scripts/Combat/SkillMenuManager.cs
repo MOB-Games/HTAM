@@ -30,6 +30,8 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
             var button = inst.GetComponent<Button>();
             button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill));
             button.interactable = skill.energyCost < currentEnergy && skill.hpCost < currentHp;
+            if (!button.interactable)
+                inst.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
         }
         skillMenu.SetActive(true);
     }

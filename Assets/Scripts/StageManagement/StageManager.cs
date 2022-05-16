@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,13 +9,11 @@ public class Path
 {
     public readonly PathInfo Info;
     public readonly EnemySpawner EnemySpawner;
-    // public readonly TownSpawner TownSpawner;
 
     public Path(PathInfo info, EnemySpawner enemySpawner)
     {
         Info = info;
         EnemySpawner = enemySpawner;
-        // TownSpawner = townSpawner;
     }
 }
 
@@ -30,10 +27,14 @@ public class StageManager : MonoBehaviour
     {
         foreach (var pathPrefab in pathPrefabs)
         {
-            _paths.Add(new Path(pathPrefab.GetComponent<PathInfo>(), pathPrefab.GetComponent<EnemySpawner>()));
+            _paths.Add(new Path(pathPrefab.GetComponent<PathInfo>(), 
+                pathPrefab.GetComponent<EnemySpawner>()));
         }
 
         CombatEvents.OnLoadScene += LoadCombatStage;
+        CombatEvents.OnWin += StageCleared;
+        if (gameProgress.currentStage == -1)
+            LoadTownStage();
     }
 
     private void OnValidate()
@@ -41,6 +42,11 @@ public class StageManager : MonoBehaviour
         if (pathPrefabs.Count < gameProgress.currentPath)
             throw new IndexOutOfRangeException(
                 $"Current path is {gameProgress.currentPath} but stage manager only has {pathPrefabs.Count} paths");
+    }
+
+    private bool AtFirstPath()
+    {
+        return gameProgress.currentPath == 0;
     }
 
     public void NextStage()
@@ -57,9 +63,13 @@ public class StageManager : MonoBehaviour
             }
         }
 
+        LoadScene();
+    }
+
+    private void StageCleared()
+    {
         if (gameProgress.currentPath == gameProgress.maxPath && gameProgress.currentStage > gameProgress.maxStage)
             gameProgress.maxStage = gameProgress.currentStage;
-        LoadStage();
     }
 
     public void PreviousStage()
@@ -70,30 +80,32 @@ public class StageManager : MonoBehaviour
             gameProgress.currentPath--;
             gameProgress.currentStage = _paths[gameProgress.currentPath].Info.length - 1;
         }
-        LoadStage();
+        LoadScene();
     }
 
-    private bool StageCleared()
+    private bool IsStageCleared()
     {
         return gameProgress.maxPath > gameProgress.currentPath ||
-                (gameProgress.maxPath == gameProgress.currentPath && gameProgress.maxStage > gameProgress.currentStage);
+                (gameProgress.maxPath == gameProgress.currentPath && gameProgress.maxStage >= gameProgress.currentStage);
     }
 
     private void LoadCombatStage()
     {
         var path = _paths[gameProgress.currentPath];
-        Camera.main!.GetComponentInChildren<Image>().sprite = path.Info.background;
-        path.EnemySpawner.Spawn(StageCleared() ? -1 : gameProgress.currentStage);
+        Camera.main!.GetComponentInChildren<Image>().sprite = path.Info.combatBackground;
+        path.EnemySpawner.Spawn(IsStageCleared() ? -1 : gameProgress.currentStage);
     }
 
-    private void LoadStage()
+    private void LoadTownStage()
     {
-        if (gameProgress.currentStage != -1)
-            SceneManager.LoadScene("BattleScene");
-        else
-        {
-            // load town scene
-        }
+        var townInfo = _paths[gameProgress.currentPath].Info.townInfo;
+        var prevTownSignpost = AtFirstPath() ? "" : _paths[gameProgress.currentPath - 1].Info.townInfo.signpost;
+        TownUIManager.DisplayTown(townInfo, prevTownSignpost);
+    }
+
+    private void LoadScene()
+    {
+        SceneManager.LoadScene(gameProgress.currentStage != -1 ? "BattleScene" : "TownScene");
     }
 
     private void OnDestroy()
