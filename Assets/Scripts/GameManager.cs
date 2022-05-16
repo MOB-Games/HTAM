@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CombatManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static CombatManager Instance { get; private set; }
+    public static GameManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -18,13 +18,12 @@ public class CombatManager : MonoBehaviour
     {
         CombatEvents.OnCombatantAdded += AddCombatant;
         Invoke(nameof(LoadScene), 0.5f);
-        Invoke(nameof(PartyEnter), 1);
-        Invoke(nameof(StartCombat), 2);
+        Invoke(nameof(OpenLoadingScreen), 1);
     }
     
     private void LoadScene()
     {
-        CombatEvents.LoadScene();
+        GameEvents.LoadStage();
     }
 
     private static void AddCombatant(GameObject combatant)
@@ -34,14 +33,9 @@ public class CombatManager : MonoBehaviour
         CombatantInfo.AddCombatant(id, stats);
     }
 
-    private void PartyEnter()
+    private void OpenLoadingScreen()
     {
-        CombatEvents.PartyEnter();
-    }
-
-    private void StartCombat()
-    {
-        CombatEvents.StartCombat();
+        GameEvents.OpenLoadingScreen();
     }
 
     private void EndCombat()

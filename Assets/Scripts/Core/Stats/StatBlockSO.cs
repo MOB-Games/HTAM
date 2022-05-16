@@ -1,5 +1,3 @@
-using System;
-using Core.Enums;
 using UnityEngine;
 
 namespace Core.Stats

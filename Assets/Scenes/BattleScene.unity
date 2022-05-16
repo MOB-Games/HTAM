@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 440182884}
   - component: {fileID: 440182883}
   m_Layer: 0
-  m_Name: CombatManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5285,6 +5285,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5062087563337457534, guid: 41a007bd40db07b4185216efe3c3a628, type: 3}
+      propertyPath: p
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b2be5a291a2dbd429a757f3e884c1f6, type: 2}
+    - target: {fileID: 5062087563337457534, guid: 41a007bd40db07b4185216efe3c3a628, type: 3}
+      propertyPath: pathList
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b2be5a291a2dbd429a757f3e884c1f6, type: 2}
     - target: {fileID: 5062087563337457534, guid: 41a007bd40db07b4185216efe3c3a628, type: 3}
       propertyPath: pathPrefabs.Array.size
       value: 1

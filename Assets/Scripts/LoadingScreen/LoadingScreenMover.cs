@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +8,7 @@ public class LoadingScreenMover : MonoBehaviour
     private void Start()
     {
         _slider = GetComponentInChildren<Slider>();
-        CombatEvents.OnPartyEnter += Open;
+        GameEvents.OnOpenLoadingScreen += Open;
     }
 
     private IEnumerator OpenGradually()
@@ -34,6 +33,6 @@ public class LoadingScreenMover : MonoBehaviour
 
     private void OnDestroy()
     {
-        CombatEvents.OnPartyEnter -= Open;
+        GameEvents.OnOpenLoadingScreen -= Open;
     }
 }

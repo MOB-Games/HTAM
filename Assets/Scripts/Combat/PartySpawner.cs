@@ -11,7 +11,7 @@ public class PartySpawner : MonoBehaviour
 
     private void Start()
     {
-        CombatEvents.OnLoadScene += Spawn;
+        CombatEvents.OnSpawnParty += Spawn;
     }
 
     private void OnValidate()
@@ -45,6 +45,6 @@ public class PartySpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        CombatEvents.OnLoadScene -= Spawn;
+        CombatEvents.OnSpawnParty -= Spawn;
     }
 }

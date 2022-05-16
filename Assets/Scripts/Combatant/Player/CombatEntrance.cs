@@ -7,7 +7,7 @@ public class CombatEntrance : MonoBehaviour
     private void Start()
     {
         _combatantEvents = GetComponent<CombatantEvents>();
-        CombatEvents.OnPartyEnter += Enter;
+        GameEvents.OnOpenLoadingScreen += Enter;
     }
 
     private void Enter()
@@ -17,6 +17,6 @@ public class CombatEntrance : MonoBehaviour
 
     private void OnDestroy()
     {
-        CombatEvents.OnPartyEnter -= Enter;
+        GameEvents.OnOpenLoadingScreen -= Enter;
     }
 }

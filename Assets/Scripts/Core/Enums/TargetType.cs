@@ -1,6 +1,3 @@
-using Unity.VisualScripting;
-using UnityEngine;
-
 namespace Core.Enums
 {
     public enum TargetType

@@ -24,8 +24,8 @@ public class ActiveSkills : MonoBehaviour
     private void StartTurn(CombatantId turnId)
     {
         if (_id != turnId) return;
-        RegisterToClick();
         SetSkillLevels();
+        RegisterToClick();
     }
 
     private void RegisterToClick()

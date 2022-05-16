@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 
 public static class CombatEvents
 {
-    public static event Action OnLoadScene;
+    public static event Action OnSpawnParty;
     public static event Action<GameObject> OnCombatantAdded;
-    public static event Action OnPartyEnter;
     public static event Action OnStartCombat;
     public static event Action<CombatantId> OnStartTurn;
     public static event Action OnEndTurn;
@@ -22,21 +21,16 @@ public static class CombatEvents
     public static event Action OnWin;
     public static event Action OnLose;
 
-    public static void LoadScene()
+    public static void SpawnParty()
     {
-        OnLoadScene?.Invoke();
+        OnSpawnParty?.Invoke();
     }
     
     public static void CombatantAdded(GameObject combatant)
     {
         OnCombatantAdded?.Invoke(combatant);
     }
-    
-    public static void PartyEnter()
-    {
-        OnPartyEnter?.Invoke();
-    }
-    
+
     public static void StartCombat()
     {
         OnStartCombat?.Invoke();
