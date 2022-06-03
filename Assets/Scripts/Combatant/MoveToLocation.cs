@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CombatEntrance : MonoBehaviour
+public class MoveToLocation : MonoBehaviour
 {
     private CombatantEvents _combatantEvents;
     

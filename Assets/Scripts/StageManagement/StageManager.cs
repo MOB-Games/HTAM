@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,23 +6,28 @@ public class StageManager : MonoBehaviour
 {
     public GameProgress gameProgress;
     public PathList pathList;
-    
+
+
+    private Path _currentPath;
     private void Start()
     {
         GameEvents.OnLoadStage += LoadStage;
         CombatEvents.OnWin += StageCleared;
-        pathList.Init();
+        var currentPathGo = pathList.pathPrefabs[gameProgress.currentPath];
+        _currentPath = new Path(currentPathGo.GetComponent<PathInfo>(), currentPathGo.GetComponent<EnemySpawner>());
     }
 
-    private bool AtFirstPath()
+    public void RecordPreviousGameProgress()
     {
-        return gameProgress.currentPath == 0;
+        gameProgress.previousPath = gameProgress.currentPath;
+        gameProgress.previousStage = gameProgress.currentStage;
     }
 
     public void NextStage()
     {
+        RecordPreviousGameProgress();
         gameProgress.currentStage++;
-        if (gameProgress.currentStage >= pathList.paths[gameProgress.currentPath].Info.length)
+        if (gameProgress.currentStage >= _currentPath.Info.length)
         {
             gameProgress.currentPath++;
             gameProgress.currentStage = -1; // -1 will mean a town
@@ -37,21 +41,22 @@ public class StageManager : MonoBehaviour
         LoadScene();
     }
 
-    private void StageCleared()
-    {
-        if (gameProgress.currentPath == gameProgress.maxPath && gameProgress.currentStage > gameProgress.maxStage)
-            gameProgress.maxStage = gameProgress.currentStage;
-    }
-
     public void PreviousStage()
     {
+        RecordPreviousGameProgress();
         gameProgress.currentStage--;
         if (gameProgress.currentStage < -1)
         {
             gameProgress.currentPath--;
-            gameProgress.currentStage = pathList.paths[gameProgress.currentPath].Info.length - 1;
+            gameProgress.currentStage = _currentPath.Info.length - 1;
         }
         LoadScene();
+    }
+
+    private void StageCleared()
+    {
+        if (gameProgress.currentPath == gameProgress.maxPath && gameProgress.currentStage > gameProgress.maxStage)
+            gameProgress.maxStage = gameProgress.currentStage;
     }
 
     private bool IsStageCleared()
@@ -60,29 +65,37 @@ public class StageManager : MonoBehaviour
                 (gameProgress.maxPath == gameProgress.currentPath && gameProgress.maxStage >= gameProgress.currentStage);
     }
 
-    private void LoadCombatStage()
-    {
-        CombatEvents.SpawnParty();
-        var path = pathList.paths[gameProgress.currentPath];
-        Camera.main!.GetComponentInChildren<Image>().sprite = path.Info.combatBackground;
-        path.EnemySpawner.Spawn(IsStageCleared() ? -1 : gameProgress.currentStage);
-        Invoke(nameof(StartCombat), 1);
-    }
-
     public void StartCombat()
     {
         CombatEvents.StartCombat();
     }
 
+    private void LoadCombatStage()
+    {
+        CombatEvents.SpawnParty();
+        Camera.main!.GetComponentInChildren<Image>().sprite = _currentPath.Info.combatBackground;
+        _currentPath.EnemySpawner.Spawn(IsStageCleared() ? -1 : gameProgress.currentStage);
+        Invoke(nameof(StartCombat), 2);
+    }
+
+    private bool AtFirstPath()
+    {
+        return gameProgress.currentPath == 0;
+    }
+
     private void LoadTownStage()
     {
-        var townInfo = pathList.paths[gameProgress.currentPath].Info.townInfo;
-        var prevTownSignpost = AtFirstPath() ? "" : pathList.paths[gameProgress.currentPath - 1].Info.townInfo.signpost;
-        TownEvents.PublishTownInfo(townInfo, prevTownSignpost);
+        var prevTownSignpost = AtFirstPath() ? 
+            "" : 
+            pathList.pathPrefabs[gameProgress.currentPath - 1].GetComponent<PathInfo>().townInfo.signpost;
+        TownEvents.PublishTownInfo(_currentPath.Info.townInfo, prevTownSignpost);
     }
 
     private void LoadStage()
     {
+        CombatantInfo.Mirror = gameProgress.previousPath > gameProgress.currentPath ||
+                               gameProgress.previousPath == gameProgress.currentPath &&
+                               gameProgress.previousStage > gameProgress.currentStage;
         if (gameProgress.currentStage == -1)
             LoadTownStage();
         else

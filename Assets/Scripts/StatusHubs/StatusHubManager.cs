@@ -2,21 +2,21 @@ using System.Collections.Generic;
 using Core.Enums;
 using UnityEngine;
 
-public class BarsManager : MonoBehaviour
+public class StatusHubManager : MonoBehaviour
 {
     private readonly List<GameObject> _activeCombatants = new List<GameObject>();
-    private readonly Dictionary<CombatantId, GameObject> _barsConnectors = new Dictionary<CombatantId, GameObject>(6);
+    private readonly Dictionary<CombatantId, GameObject> _statusHubConnectors = new Dictionary<CombatantId, GameObject>(6);
     
     private void Start()
     {
         foreach (Transform child in transform)
         {
             var childGo = child.gameObject;
-            _barsConnectors.Add(childGo.GetComponent<BarsConnector>().id, childGo);
+            _statusHubConnectors.Add(childGo.GetComponent<StatusHub>().id, childGo);
         }
 
         CombatEvents.OnCombatantAdded += CombatantActivated;
-        CombatEvents.OnStartCombat += ActivateBars;
+        CombatEvents.OnStartCombat += ActivateStatusHubs;
     }
 
     private void CombatantActivated(GameObject combatant)
@@ -24,25 +24,25 @@ public class BarsManager : MonoBehaviour
         _activeCombatants.Add(combatant);
     }
 
-    private void ConnectBars(GameObject combatant)
+    private void ConnectStatusHubs(GameObject combatant)
     {
         var id = combatant.GetComponent<ID>().id;
-        var barConnectorGo = _barsConnectors[id];
-        barConnectorGo.GetComponent<BarsConnector>().Connect(combatant);
+        var barConnectorGo = _statusHubConnectors[id];
+        barConnectorGo.GetComponent<StatusHub>().Connect(combatant);
         barConnectorGo.SetActive(true);
     }
 
-    private void ActivateBars()
+    private void ActivateStatusHubs()
     {
         foreach (var combatant in _activeCombatants)
         {   
-            ConnectBars(combatant);
+            ConnectStatusHubs(combatant);
         }   
     }
 
     private void OnDestroy()
     {
-        CombatEvents.OnCombatantAdded -= ConnectBars;
-        CombatEvents.OnStartCombat -= ActivateBars;
+        CombatEvents.OnCombatantAdded -= ConnectStatusHubs;
+        CombatEvents.OnStartCombat -= ActivateStatusHubs;
     }
 }

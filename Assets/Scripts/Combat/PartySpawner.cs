@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Core.Enums;
 using JetBrains.Annotations;
 using UnityEngine;
@@ -9,8 +10,15 @@ public class PartySpawner : MonoBehaviour
     [CanBeNull] public GameObject partyMemberTopPrefab;
     [CanBeNull] public GameObject partyMemberBottomPrefab;
 
+    private readonly Dictionary<CombatantId, GameObject> _partyMemberPrefabs = new Dictionary<CombatantId, GameObject>(3);
+
     private void Start()
     {
+        _partyMemberPrefabs.Add(CombatantId.Player, playerPrefab);
+        if (partyMemberTopPrefab != null)
+            _partyMemberPrefabs.Add(CombatantId.PartyMemberTop, partyMemberTopPrefab);
+        if (partyMemberBottomPrefab != null)
+            _partyMemberPrefabs.Add(CombatantId.PartyMemberBottom, partyMemberBottomPrefab);
         CombatEvents.OnSpawnParty += Spawn;
     }
 
@@ -22,23 +30,14 @@ public class PartySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        var inst = Instantiate(playerPrefab, CombatantInfo.GetLocation(CombatantId.Player) + 10 * Vector3.left,
-            Quaternion.identity);
-        inst.GetComponent<ID>().id = CombatantId.Player;
-        CombatEvents.CombatantAdded(inst);
-        
-        if (partyMemberTopPrefab != null)
+        var dir = CombatantInfo.Mirror ? Vector3.right : Vector3.left;
+        foreach (var partyMemberPrefab in _partyMemberPrefabs)
         {
-            inst = Instantiate(partyMemberTopPrefab, CombatantInfo.GetLocation(CombatantId.PartyMemberTop) + 10 * Vector3.left,
+            var inst = Instantiate(partyMemberPrefab.Value, CombatantInfo.GetLocation(partyMemberPrefab.Key) + 5 * dir,
                 Quaternion.identity);
-            inst.GetComponent<ID>().id = CombatantId.PartyMemberTop;
-            CombatEvents.CombatantAdded(inst);
-        }
-        if (partyMemberBottomPrefab != null)
-        {
-            inst = Instantiate(partyMemberBottomPrefab, CombatantInfo.GetLocation(CombatantId.PartyMemberBottom) + 10 * Vector3.left,
-                Quaternion.identity);
-            inst.GetComponent<ID>().id = CombatantId.PartyMemberBottom;
+            inst.GetComponent<ID>().id = partyMemberPrefab.Key;
+            if (CombatantInfo.Mirror)
+                inst.transform.localScale = Vector3.Scale(inst.transform.localScale, new Vector3(-1, 1, 1));
             CombatEvents.CombatantAdded(inst);
         }
     }

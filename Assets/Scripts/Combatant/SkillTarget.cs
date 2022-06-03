@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Core.Enums;
 using UnityEngine;
 
@@ -17,21 +18,20 @@ public class SkillTarget : MonoBehaviour
     private void SkillUsed(CombatantId targetId, SkillResult result)
     {
         if (targetId != _id) return;
-        switch (result.Effect)
+        if (result.AnimateAttacked)
+            _combatantEvents.Hurt();
+        if (result.VisualEffect != null)
         {
-            case SkillEffect.Hurt:
-                _combatantEvents.Hurt();
-                break;
-            case SkillEffect.Help:
-                _combatantEvents.Helped();
-                break;
-            case SkillEffect.Miss:
-                _combatantEvents.Dodged();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            StartCoroutine(PlayVisualEffect(result.VisualEffect));
         }
         _combatantEvents.StatChange(result.AffectedStat, result.Delta);
+    }
+
+    private IEnumerator PlayVisualEffect(GameObject visualEffect)
+    {
+        var inst = Instantiate(visualEffect, transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(1f);
+        Destroy(inst);
     }
 
     private void OnDestroy()

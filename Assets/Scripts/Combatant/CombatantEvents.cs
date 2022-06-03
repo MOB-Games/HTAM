@@ -5,15 +5,11 @@ using UnityEngine;
 public class CombatantEvents : MonoBehaviour
 {
     public event Action<StatType, int> OnStatChange;
-    public event Action OnHpChange;
-    public event Action OnEnergyChange;
-    public event Action<Vector3> OnMoveToTarget;
+    public event Action<CombatantId> OnMoveToTarget;
     public event Action OnReturn;
     public event Action OnFinishedMoving;
-    public event Action OnAttack;
+    public event Action<SkillAnimation> OnAnimateSkill;
     public event Action OnHurt;
-    public event Action OnHelped;
-    public event Action OnDodged;
     public event Action OnDied;
 
     private CombatantId _id;
@@ -27,20 +23,10 @@ public class CombatantEvents : MonoBehaviour
     {
         OnStatChange?.Invoke(affectedStat, delta);
     }
-
-    public void HpChange()
+ 
+    public void MoveToTarget(CombatantId targetId)
     {
-        OnHpChange?.Invoke();
-    }
-    
-    public void EnergyChange()
-    {
-        OnEnergyChange?.Invoke();
-    }
-
-    public void MoveToTarget(Vector3 target)
-    {
-        OnMoveToTarget?.Invoke(target);
+        OnMoveToTarget?.Invoke(targetId);
     }
 
     public void Return()
@@ -53,26 +39,16 @@ public class CombatantEvents : MonoBehaviour
         OnFinishedMoving?.Invoke();
     }
 
-    public void Attack()
+    public void AnimateSkill(SkillAnimation animation)
     {
-        OnAttack?.Invoke();
+        OnAnimateSkill?.Invoke(animation);
     }
-
+    
     public void Hurt()
     {
         OnHurt?.Invoke();
     }
 
-    public void Helped()
-    {
-        OnHelped?.Invoke();
-    }
-    
-    public void Dodged()
-    {
-        OnDodged?.Invoke();
-    }
-    
     public void Died() 
     {
         OnDied?.Invoke();

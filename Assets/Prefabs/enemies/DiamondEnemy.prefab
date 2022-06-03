@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 2447912989255569191}
   - component: {fileID: 7726764361994183940}
   - component: {fileID: 6580720188609057905}
+  - component: {fileID: 143544944754756025}
   m_Layer: 0
   m_Name: DiamondEnemy
   m_TagString: Untagged
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da7198531386541a43d544b23003a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementSpeed: 8
 --- !u!114 &3047790426424481988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,3 +290,15 @@ MonoBehaviour:
     level: 0
   skillProbabilities: 
   probabilityToTargetPlayer: 100
+--- !u!114 &143544944754756025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee123870d7ed5b43be402eacaf138fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -27,7 +27,6 @@ public class StatModifier : MonoBehaviour
                 }
                 else if (stats.hp.value > stats.hp.baseValue)
                     stats.hp.value = stats.hp.baseValue;
-                _combatantEvents.HpChange();
                 break;
             case StatType.Energy:
                 stats.energy.value += delta;
@@ -35,7 +34,6 @@ public class StatModifier : MonoBehaviour
                     stats.energy.value = 0;
                 else if (stats.energy.value > stats.energy.baseValue)
                     stats.energy.value = stats.energy.baseValue;
-                _combatantEvents.EnergyChange();
                 break;
             case StatType.Damage:
                 stats.damage.value += delta;

@@ -90,26 +90,19 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn(int stage)
     {
-        if (stage < 0) // stage was cleared, generating random encounter
+        var randomEncounter = stage < 0;
+        var numEnemies = randomEncounter ? GetNumberOfEnemiesToCreate() : enemiesForStages.NumberEnemiesForStage(stage);
+        for (var i = 0; i < numEnemies; i++)
         {
-            for (var i = 0; i < GetNumberOfEnemiesToCreate(); i++)
-            {
-                var id = _enemyIds[i];
-                var inst = Instantiate(GetEnemyPrefabToCreate(), CombatantInfo.GetLocation(id), Quaternion.identity);
-                inst.GetComponent<ID>().id = id;
-                CombatEvents.CombatantAdded(inst);
-            }
-        }
-        else
-        {
-            for (var i = 0; i < enemiesForStages.NumberEnemiesForStage(stage); i++)
-            {
-                var id = _enemyIds[i];
-                var enemyIndex = enemiesForStages.EnemyPrefabIndex(stage, i);
-                var inst = Instantiate(enemyPrefabs[enemyIndex], CombatantInfo.GetLocation(id), Quaternion.identity);
-                inst.GetComponent<ID>().id = id;
-                CombatEvents.CombatantAdded(inst);
-            }
+            var id = _enemyIds[i];
+            var enemyPrefab = randomEncounter
+                ? GetEnemyPrefabToCreate()
+                : enemyPrefabs[enemiesForStages.EnemyPrefabIndex(stage, i)];
+            var inst = Instantiate(enemyPrefab, CombatantInfo.GetLocation(id), Quaternion.identity);
+            inst.GetComponent<ID>().id = id;
+            if (!CombatantInfo.Mirror)
+                inst.transform.localScale = Vector3.Scale(inst.transform.localScale, new Vector3(-1, 1, 1));
+            CombatEvents.CombatantAdded(inst);
         }
     }
 }

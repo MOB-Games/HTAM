@@ -28,6 +28,7 @@ public class LoadingScreenMover : MonoBehaviour
     
     private void Open()
     {
+        _slider.direction = CombatantInfo.Mirror ? Slider.Direction.LeftToRight : Slider.Direction.RightToLeft;
         StartCoroutine(OpenGradually());
     }
 

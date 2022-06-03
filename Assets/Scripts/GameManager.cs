@@ -28,9 +28,7 @@ public class GameManager : MonoBehaviour
 
     private static void AddCombatant(GameObject combatant)
     {
-        var id = combatant.GetComponent<ID>().id;
-        var stats = combatant.GetComponent<StatModifier>().stats;
-        CombatantInfo.AddCombatant(id, stats);
+        CombatantInfo.AddCombatant(combatant);
     }
 
     private void OpenLoadingScreen()

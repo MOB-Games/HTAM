@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1, y: 1}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1613161850524436607
 CanvasRenderer:
@@ -139,11 +139,13 @@ MonoBehaviour:
   description: Basic Attack - you attack the opponent with yor damage against his
     defense
   melee: 1
+  offensive: 1
+  animateAttacked: 1
   energyCost: 0
   hpCost: 0
   level: 0
   targetType: 0
-  effect: 0
+  skillAnimation: 0
   statsForSkill:
     attackStat: 2
     defenseStat: 3
@@ -155,3 +157,4 @@ MonoBehaviour:
     baseEffectValue: 0
     attackMultiplier: 1
     defenseMultiplier: 1
+  visualEffect: {fileID: 0}

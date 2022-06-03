@@ -9,8 +9,22 @@ using UnityEngine.UI;
 public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameObject skillMenu;
-    public GameObject TooltipBox;
+    public GameObject tooltipBox;
 
+    private readonly List<GameObject> _buttons = new List<GameObject>();
+
+    private readonly List<Vector3> _buttonOffsets = new List<Vector3>()
+    {
+        new Vector3(0.5f,0,0),
+        new Vector3(0.5f,0.75f,0),
+        new Vector3(0.5f,-0.75f,0),
+        new Vector3(0.5f,1.5f,0),
+        new Vector3(0.5f,-1.5f,0),
+        new Vector3(-0.25f,1.5f,0),
+        new Vector3(-0.25f,-1.5f,0),
+        new Vector3(-1f,1.5f,0),
+        new Vector3(-1f,-1.5f,0)
+    };
     private void Start()
     {
         CombatEvents.OnOpenMenu += SetupMenu;
@@ -19,19 +33,27 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void SetupMenu(CombatantId userId, CombatantId targetId, List<GameObject> skillPrefabs)
     {
+        var targetDimensions = CombatantInfo.GetDimensions(targetId);
+        var targetLocation = CombatantInfo.GetLocation(targetId);
+        var offsetDirectionVector = new Vector3(targetLocation.x > 0 ? -1 : 1, 1 , 0);
+        targetLocation += new Vector3(offsetDirectionVector.x * targetDimensions.Width,
+            targetDimensions.Height / 2f, 0);
+        skillMenu.transform.position = targetLocation;
+        foreach (var button in _buttons)
+            Destroy(button);
         var currentEnergy = CombatantInfo.GetStatBlock(userId).energy.value;
         var currentHp = CombatantInfo.GetStatBlock(userId).hp.value;
-        float buttonHeight = 3;
-        foreach (var inst in skillPrefabs.Select(skillPrefab => Instantiate(skillPrefab,
-                     new Vector3(0, buttonHeight, 0), Quaternion.identity, skillMenu.transform)))
+        foreach (var inst in skillPrefabs.Select((skillPrefab, i) => Instantiate(skillPrefab,
+                     targetLocation + Vector3.Scale(_buttonOffsets[i], offsetDirectionVector), 
+                     Quaternion.identity, skillMenu.transform)))
         {
-            buttonHeight -= 1.5f;
             var skill = inst.GetComponent<Skill>();
             var button = inst.GetComponent<Button>();
             button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill));
-            button.interactable = skill.energyCost < currentEnergy && skill.hpCost < currentHp;
+            button.interactable = skill.energyCost <= currentEnergy && skill.hpCost <= currentHp;
             if (!button.interactable)
                 inst.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
+            _buttons.Add(inst);
         }
         skillMenu.SetActive(true);
     }
@@ -42,24 +64,24 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         {
             if (hoveredGo.TryGetComponent<Skill>(out var skill))
             {
-                var currentPos = TooltipBox.transform.position;
+                var currentPos = tooltipBox.transform.position;
                 var newPos = new Vector3(currentPos.x, hoveredGo.transform.position.y, currentPos.z);
-                TooltipBox.transform.position = newPos;
-                var tooltip = TooltipBox.GetComponentInChildren<TextMeshProUGUI>();
+                tooltipBox.transform.position = newPos;
+                var tooltip = tooltipBox.GetComponentInChildren<TextMeshProUGUI>();
                 var message = skill.GetDescription();
                 if (!hoveredGo.GetComponent<Button>().interactable)
                 {
                     message += "\n\n<color=red>*Insufficient energy or hp</color>";
                 }
                 tooltip.text = message;
-                TooltipBox.SetActive(true);
+                tooltipBox.SetActive(true);
             }
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        TooltipBox.SetActive(false);
+        tooltipBox.SetActive(false);
     }
 
     private void CloseMenu(CombatantId targetId, Skill skill)

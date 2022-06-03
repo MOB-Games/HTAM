@@ -7,7 +7,6 @@ public class DataInitializer : MonoBehaviour
 
     public void InitializeData()
     {
-        pathList.Init();
         gameProgress.Init();
     }
 }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 5217080582421210112, guid: 00d208a15256be445a3e932886e81f82, type: 3}
+  - {fileID: 5217080582421210112, guid: cb723807f500edc43ad59ddd79e2c788, type: 3}
   - {fileID: 5217080582421210112, guid: 1cca8c75974a6e4419569f63017ea0fb, type: 3}
   enemiesForStages:
     stages:

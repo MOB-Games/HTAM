@@ -1,11 +1,11 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Core.Enums;
 using UnityEngine;
 
 public class SkillExecutor : MonoBehaviour
 {
+    private bool _moving;
     private CombatantId _id;
     private CombatantEvents _combatantEvents;
 
@@ -13,8 +13,14 @@ public class SkillExecutor : MonoBehaviour
     {
         _id = GetComponent<ID>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
+        _combatantEvents.OnFinishedMoving += FinishedMoving;
         CombatEvents.OnStartTurn += RegisterToSkill;
         CombatEvents.OnSkillChosen += UnregisterToSkill;
+    }
+
+    private void FinishedMoving()
+    {
+        _moving = false;
     }
 
     private void RegisterToSkill(CombatantId turnId)
@@ -49,33 +55,42 @@ public class SkillExecutor : MonoBehaviour
         }
     }
     
-    private async Task Execute(CombatantId targetId, bool isMelee, SkillResult result)
+    private IEnumerator Execute(CombatantId targetId, Skill skill)
     {
-        if (isMelee)
+        if (skill.melee)
         {
-            _combatantEvents.MoveToTarget(CombatantInfo.GetLocation(targetId));
-            await Task.Delay(TimeSpan.FromSeconds(1.2));
+            _moving = true;
+            _combatantEvents.MoveToTarget(targetId);
+            yield return new WaitUntil(() => !_moving);
+            yield return new WaitForSeconds(0.2f);
         }
-        _combatantEvents.Attack(); // this should change to be according to result.effect in the future
-        await Task.Delay(TimeSpan.FromSeconds(0.15));
-        CombatEvents.SkillUsed(targetId, result);
-        await Task.Delay(TimeSpan.FromSeconds(0.4));
-        if (isMelee)
+        
+        _combatantEvents.AnimateSkill(skill.skillAnimation);
+        yield return new WaitForSeconds(0.15f);
+        foreach (var id in GetAllTargets(targetId, skill.targetType))
         {
+            if (!CombatantInfo.CombatantIsActive(id)) continue;
+            var result = skill.GetResult(_id, id);
+            if (result.Hit)
+                CombatEvents.SkillUsed(targetId, result);
+        }
+        yield return new WaitForSeconds(0.4f);
+        if (skill.melee)
+        {
+            var localScale = transform.localScale;
+            transform.localScale = Vector3.Scale(localScale, new Vector3(-1, 1, 1));
+            _moving = true;
             _combatantEvents.Return();
-            await Task.Delay(TimeSpan.FromSeconds(1.2));
+            yield return new WaitUntil(() => !_moving);
+            transform.localScale = localScale;
+            yield return new WaitForSeconds(0.2f);
         }
         CombatEvents.EndTurn();
     }
 
     private void ExecuteSkill(CombatantId targetId, Skill skill)
     {
-        foreach (var id in GetAllTargets(targetId, skill.targetType))
-        {
-            if (!CombatantInfo.CombatantIsActive(id)) continue;
-            var result = skill.GetResult(_id, id);
-            Execute(id, skill.melee, result).GetAwaiter();
-        }
+        StartCoroutine(Execute(targetId, skill));
         _combatantEvents.StatChange(StatType.Hp, -skill.hpCost);
         _combatantEvents.StatChange(StatType.Energy, -skill.energyCost);
     }
