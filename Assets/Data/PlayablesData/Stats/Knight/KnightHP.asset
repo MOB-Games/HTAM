@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70388f7361d1586449b20f87dd153bb2, type: 3}
-  m_Name: GameProgress
+  m_Script: {fileID: 11500000, guid: f0f0f652536de1a43b1e9c1e64b0a992, type: 3}
+  m_Name: KnightHP
   m_EditorClassIdentifier: 
-  currentPath: 0
-  currentStage: 3
-  previousPath: 0
-  previousStage: 0
-  maxPath: 0
-  maxStage: 0
+  baseValue: 100
+  value: 100

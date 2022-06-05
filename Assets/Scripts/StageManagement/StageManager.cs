@@ -1,3 +1,4 @@
+using Core.DataTypes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class StageManager : MonoBehaviour
         _currentPath = new Path(currentPathGo.GetComponent<PathInfo>(), currentPathGo.GetComponent<EnemySpawner>());
     }
 
-    public void RecordPreviousGameProgress()
+    private void RecordPreviousGameProgress()
     {
         gameProgress.previousPath = gameProgress.currentPath;
         gameProgress.previousStage = gameProgress.currentStage;

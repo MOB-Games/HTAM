@@ -47,14 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 5217080582421210112, guid: cb723807f500edc43ad59ddd79e2c788, type: 3}
-  - {fileID: 5217080582421210112, guid: 1cca8c75974a6e4419569f63017ea0fb, type: 3}
+  - {fileID: 5217080582421210112, guid: 0e97a2e8dcf8fa045a26a7d9036b0ca5, type: 3}
+  - {fileID: 5217080582421210112, guid: 20b494c7758e6e64aa9608c964e842b8, type: 3}
   enemiesForStages:
     stages:
     - enemyPrefabIndices: 00000000
     - enemyPrefabIndices: 0000000000000000
     - enemyPrefabIndices: 01000000
     - enemyPrefabIndices: 010000000000000000000000
-  enemyProbabilities: 4b000000
+    - enemyPrefabIndices: 020000000100000000000000
+  enemyProbabilities: 4b00000019000000
   probabilityFor1Enemy: 35
   probabilityFor2Enemy: 50
 --- !u!114 &1512379111522927260

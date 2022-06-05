@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Core.DataTypes;
 
 public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -31,7 +32,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         CombatEvents.OnSkillChosen += CloseMenu;
     }
 
-    private void SetupMenu(CombatantId userId, CombatantId targetId, List<GameObject> skillPrefabs)
+    private void SetupMenu(CombatantId userId, CombatantId targetId, List<SkillWithLevel> skillsWithLevels)
     {
         var targetDimensions = CombatantInfo.GetDimensions(targetId);
         var targetLocation = CombatantInfo.GetLocation(targetId);
@@ -43,13 +44,14 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
             Destroy(button);
         var currentEnergy = CombatantInfo.GetStatBlock(userId).energy.value;
         var currentHp = CombatantInfo.GetStatBlock(userId).hp.value;
-        foreach (var inst in skillPrefabs.Select((skillPrefab, i) => Instantiate(skillPrefab,
-                     targetLocation + Vector3.Scale(_buttonOffsets[i], offsetDirectionVector), 
-                     Quaternion.identity, skillMenu.transform)))
+        foreach (var (skillWithLevel, index) in skillsWithLevels.Select((skillWithLevel, i) => (skillWithLevel, i)))
         {
+            var inst = Instantiate(skillWithLevel.skillGo,
+                targetLocation + Vector3.Scale(_buttonOffsets[index], offsetDirectionVector),
+                Quaternion.identity, skillMenu.transform);
             var skill = inst.GetComponent<Skill>();
             var button = inst.GetComponent<Button>();
-            button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill));
+            button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill, skillWithLevel.level));
             button.interactable = skill.energyCost <= currentEnergy && skill.hpCost <= currentHp;
             if (!button.interactable)
                 inst.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
@@ -84,7 +86,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         tooltipBox.SetActive(false);
     }
 
-    private void CloseMenu(CombatantId targetId, Skill skill)
+    private void CloseMenu(CombatantId targetId, Skill skill, int level)
     {
         skillMenu.SetActive(false);
     }

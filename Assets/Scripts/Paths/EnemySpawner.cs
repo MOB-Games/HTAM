@@ -65,6 +65,9 @@ public class EnemySpawner : MonoBehaviour
             throw new ConstraintException("Number of probabilities for enemies must be number of enemies minus 1");
         if(enemyProbabilities.Sum() > 100 || probabilityFor1Enemy + probabilityFor2Enemy > 100)
             throw new ConstraintException("Sum of probabilities exceeds 100");
+        for (var i = 0; i < enemiesForStages.NumberOfStages(); i++)
+            if (enemiesForStages.NumberEnemiesForStage(i) > 3)
+                throw new ConstraintException($"Stage {i} has more than 3 enemies, this is not allowed");
     }
     
     private int GetNumberOfEnemiesToCreate()

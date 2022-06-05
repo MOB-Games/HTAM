@@ -1,3 +1,4 @@
+using Core.DataTypes;
 using UnityEngine;
 
 public class DataInitializer : MonoBehaviour

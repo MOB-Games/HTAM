@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.DataTypes;
 using Core.Enums;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,8 +13,8 @@ public static class CombatEvents
     public static event Action<CombatantId> OnStartTurn;
     public static event Action OnEndTurn;
     public static event Action<PointerEventData> OnClick;
-    public static event Action<CombatantId, CombatantId, List<GameObject>> OnOpenMenu;
-    public static event Action<CombatantId, Skill> OnSkillChosen;
+    public static event Action<CombatantId, CombatantId, List<SkillWithLevel>> OnOpenMenu;
+    public static event Action<CombatantId, Skill, int> OnSkillChosen;
     public static event Action<CombatantId, SkillResult> OnSkillUsed; 
     public static event Action<CombatantId> OnCombatantDied;
     public static event Action<Drop> OnDrop;
@@ -51,14 +52,14 @@ public static class CombatEvents
         OnClick?.Invoke(eventData);
     }
     
-    public static void OpenMenu(CombatantId userId, CombatantId targetId, List<GameObject> skillPrefabs)
+    public static void OpenMenu(CombatantId userId, CombatantId targetId, List<SkillWithLevel> skillsWithLevels)
     {
-        OnOpenMenu?.Invoke(userId, targetId, skillPrefabs);
+        OnOpenMenu?.Invoke(userId, targetId, skillsWithLevels);
     }
     
-    public static void SkillChosen(CombatantId targetId, Skill skill)
+    public static void SkillChosen(CombatantId targetId, Skill skill, int level)
     {
-        OnSkillChosen?.Invoke(targetId,skill);
+        OnSkillChosen?.Invoke(targetId,skill, level);
     }
     
     public static void SkillUsed(CombatantId targetId, SkillResult result)
