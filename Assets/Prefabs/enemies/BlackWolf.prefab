@@ -18,11 +18,12 @@ GameObject:
   - component: {fileID: 643554073149291336}
   - component: {fileID: 1752633463144944712}
   - component: {fileID: 3047790426424481988}
+  - component: {fileID: 293588599278952146}
   - component: {fileID: 4095699319752990290}
-  - component: {fileID: 2447912989255569191}
-  - component: {fileID: 7726764361994183940}
-  - component: {fileID: 6580720188609057905}
   - component: {fileID: 143544944754756025}
+  - component: {fileID: 7726764361994183940}
+  - component: {fileID: 2447912989255569191}
+  - component: {fileID: 6580720188609057905}
   m_Layer: 0
   m_Name: BlackWolf
   m_TagString: Untagged
@@ -130,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000044703484, y: 0.0025683641}
+  m_Offset: {x: -0.0024969876, y: -0.04799448}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -141,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.63529027, y: 0.31681144}
+  m_Size: {x: 0.6402841, y: 0.3205568}
   m_EdgeRadius: 0
 --- !u!114 &3593545304457460682
 MonoBehaviour:
@@ -216,6 +217,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0965b719667d8f647820b9f061442d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &293588599278952146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e3f9d3a201f3548b9602cfcfb2a5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions: []
 --- !u!114 &4095699319752990290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +242,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b30441c472d52544bdfe21d0cc77f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &143544944754756025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee123870d7ed5b43be402eacaf138fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7726764361994183940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90ef5011a58e8c4889d97f47bf4bd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minExpDrop: 10
+  maxExpDrop: 15
+  minGoldDrop: 5
+  maxGoldDrop: 15
 --- !u!114 &2447912989255569191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,22 +298,6 @@ MonoBehaviour:
     speed:
       baseValue: 20
       value: 20
---- !u!114 &7726764361994183940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217080582421210112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90ef5011a58e8c4889d97f47bf4bd20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minExpDrop: 10
-  maxExpDrop: 15
-  minGoldDrop: 5
-  maxGoldDrop: 15
 --- !u!114 &6580720188609057905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,17 +313,7 @@ MonoBehaviour:
   skillsWithLevels:
   - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f, type: 3}
     level: 0
-  skillProbabilities: 
-  probabilityToTargetPlayer: 100
---- !u!114 &143544944754756025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217080582421210112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee123870d7ed5b43be402eacaf138fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  - skillGo: {fileID: 4003426218498401328, guid: e6cf44555f2a8c44c8feac1d26a94862, type: 3}
+    level: 0
+  skillProbabilities: 00000000
+  probabilityToTargetPlayer: 80

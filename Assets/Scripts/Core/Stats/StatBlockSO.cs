@@ -12,6 +12,15 @@ namespace Core.Stats
         public StatSO defense;
         public StatSO speed;
 
+        public void Reset()
+        {
+            hp.value = hp.baseValue;
+            energy.value = energy.baseValue;
+            damage.value = damage.baseValue;
+            defense.value = defense.baseValue;
+            speed.value = speed.baseValue;
+        }
+
         public void SaveStats(StatBlock stats)
         {
             hp.baseValue = stats.hp.baseValue;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Enums;
 using UnityEngine;
 
@@ -67,12 +68,12 @@ public class SkillExecutor : MonoBehaviour
         
         _combatantEvents.AnimateSkill(skill.skillAnimation);
         yield return new WaitForSeconds(0.15f);
-        foreach (var id in GetAllTargets(targetId, skill.targetType))
+        foreach (var  id in GetAllTargets(targetId, skill.targetType))
         {
             if (!CombatantInfo.CombatantIsActive(id)) continue;
             var result = skill.GetResult(_id, id, level);
             if (result.Hit)
-                CombatEvents.SkillUsed(targetId, result);
+                CombatEvents.SkillUsed(id, result);
         }
         yield return new WaitForSeconds(0.4f);
         if (skill.melee)
@@ -85,14 +86,14 @@ public class SkillExecutor : MonoBehaviour
             transform.localScale = localScale;
             yield return new WaitForSeconds(0.2f);
         }
-        CombatEvents.EndTurn();
+        _combatantEvents.EndTurn();
     }
 
     private void ExecuteSkill(CombatantId targetId, Skill skill, int level)
     {
         StartCoroutine(Execute(targetId, skill, level));
-        _combatantEvents.StatChange(StatType.Hp, -skill.hpCost);
-        _combatantEvents.StatChange(StatType.Energy, -skill.energyCost);
+        _combatantEvents.StatChange(StatType.Hp, -skill.hpCost, skill.costIsPercentBased);
+        _combatantEvents.StatChange(StatType.Energy, -skill.energyCost, skill.costIsPercentBased);
     }
 
     private void OnDestroy()

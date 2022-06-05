@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class CombatantEvents : MonoBehaviour
 {
-    public event Action<StatType, int> OnStatChange;
+    public event Action<StatType, int, bool> OnStatChange;
     public event Action<CombatantId> OnMoveToTarget;
     public event Action OnReturn;
     public event Action OnFinishedMoving;
     public event Action<SkillAnimation> OnAnimateSkill;
     public event Action OnHurt;
+    public event Action<GameObject, ConditionId> OnConditionAdded;
+    public event Action<ConditionId> OnConditionRemoved;
+    public event Action OnEndTurn;
     public event Action OnDied;
 
     private CombatantId _id;
@@ -19,9 +22,9 @@ public class CombatantEvents : MonoBehaviour
         _id = GetComponent<ID>().id;
     }
 
-    public void StatChange(StatType affectedStat, int delta)
+    public void StatChange(StatType affectedStat, int delta, bool percentage)
     {
-        OnStatChange?.Invoke(affectedStat, delta);
+        OnStatChange?.Invoke(affectedStat, delta, percentage);
     }
  
     public void MoveToTarget(CombatantId targetId)
@@ -39,14 +42,29 @@ public class CombatantEvents : MonoBehaviour
         OnFinishedMoving?.Invoke();
     }
 
-    public void AnimateSkill(SkillAnimation animation)
+    public void AnimateSkill(SkillAnimation skillAnimation)
     {
-        OnAnimateSkill?.Invoke(animation);
+        OnAnimateSkill?.Invoke(skillAnimation);
     }
     
     public void Hurt()
     {
         OnHurt?.Invoke();
+    }
+
+    public void AddCondition(GameObject condition, ConditionId conditionId)
+    {
+        OnConditionAdded?.Invoke(condition, conditionId);
+    }
+    
+    public void RemoveCondition(ConditionId conditionId)
+    {
+        OnConditionRemoved?.Invoke(conditionId);
+    }
+    
+    public void EndTurn()
+    {
+        OnEndTurn?.Invoke();
     }
 
     public void Died() 

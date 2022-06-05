@@ -62,7 +62,7 @@ public class EnemyBehavior : MonoBehaviour
         for (var i = 0; i < skillsWithLevels.Count - 1; i++)
         {
             chance += skillProbabilities[i];
-            if (chance < random)
+            if (random < chance)
                 return skillsWithLevels[i];
         }
         return skillsWithLevels.Last();

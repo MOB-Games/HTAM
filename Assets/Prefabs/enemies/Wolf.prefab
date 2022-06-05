@@ -18,11 +18,12 @@ GameObject:
   - component: {fileID: 5589537534325686220}
   - component: {fileID: 296080921092905696}
   - component: {fileID: 3745549976611232759}
+  - component: {fileID: -6294470440861806935}
   - component: {fileID: 4576326412941814250}
+  - component: {fileID: 5934729483843726030}
   - component: {fileID: 3374165069257435726}
   - component: {fileID: 8229508485637790920}
   - component: {fileID: 2264432829541233808}
-  - component: {fileID: 5934729483843726030}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -58,18 +59,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0028588474, y: 0.002858758}
+  m_Offset: {x: 0.00022368133, y: -0.039304286}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.63, y: 0.31}
-    newSize: {x: 0.63, y: 0.31}
+    oldSize: {x: 0.64, y: 0.31}
+    newSize: {x: 0.64, y: 0.31}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.645511, y: 0.31960988}
+  m_Size: {x: 0.6613221, y: 0.3406914}
   m_EdgeRadius: 0
 --- !u!212 &-7587503399132701461
 SpriteRenderer:
@@ -112,12 +113,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2045747691, guid: 6311d87632e72db4292fb7d09848da58, type: 3}
+  m_Sprite: {fileID: -1599873002, guid: 4f293e39fe4c85649ab36faf862656ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.63, y: 0.31}
+  m_Size: {x: 0.64, y: 0.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -216,6 +217,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0965b719667d8f647820b9f061442d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6294470440861806935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e3f9d3a201f3548b9602cfcfb2a5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conditions: []
 --- !u!114 &4576326412941814250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +240,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b30441c472d52544bdfe21d0cc77f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5934729483843726030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee123870d7ed5b43be402eacaf138fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3374165069257435726
@@ -289,15 +315,3 @@ MonoBehaviour:
     level: 0
   skillProbabilities: 
   probabilityToTargetPlayer: 100
---- !u!114 &5934729483843726030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217080582421210112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fee123870d7ed5b43be402eacaf138fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

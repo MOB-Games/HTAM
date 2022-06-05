@@ -26,60 +26,42 @@ public class SkillParameters
     public int baseEffectValue;
     public double attackMultiplier;
     public double defenseMultiplier;
-}
-
-public class SkillResult
-{
-    public readonly bool Hit;
-    public readonly bool AnimateAttacked;
-    public readonly StatType AffectedStat;
-    public readonly int Delta;
-    [CanBeNull] public readonly GameObject VisualEffect;
-
-    public SkillResult()
-    {
-        Hit = false;
-        AnimateAttacked = false;
-        AffectedStat = StatType.Hp;
-        Delta = 0;
-    }
-
-    public SkillResult(bool animateAttacked,  StatType affectedStat, int delta, [CanBeNull] GameObject visualEffect = null)
-    {
-        Hit = true;
-        AnimateAttacked = animateAttacked;
-        AffectedStat = affectedStat;
-        Delta = delta;
-        VisualEffect = visualEffect;
-    }
+    
+    [Range(0,100)]
+    public int chanceToInflict;
 }
 
 public class Skill : MonoBehaviour
 {
     public SkillId id;
-    public string skillName;
     public string description;
     public bool melee;
     public bool offensive;
     public bool animateAttacked;
+    public bool isPercentBased;
+    public bool costIsPercentBased;
     public int energyCost;
     public int hpCost;
-    [HideInInspector]
     public TargetType targetType;
     public SkillAnimation skillAnimation;
     public StatsForSkill statsForSkill;
     public List<SkillParameters> parametersPerLevel;
     [CanBeNull] public GameObject visualEffect;
+    [CanBeNull] public GameObject condition;
 
     private void OnValidate()
     {
         if (targetType != TargetType.Single && melee)
             throw new ConstraintException("A skill cannot be melee if it targets more than 1 target");
+        if (parametersPerLevel.Count == 0)
+            throw new ConstraintException("A skill must have at least 1 level");
+        if (parametersPerLevel.Exists(p => p.chanceToInflict > 0) && condition == null)
+            throw new ConstraintException("Skill can't have a chance to inflict but not have a condition to inflict");
     }
 
     public string GetDescription()
     {
-        return $"{skillName}\n" +
+        return $"{id}\n" +
                $"{description}\n\n" +
                $"Energy Cost: {energyCost}\n" +
                $"Hp Cost: {hpCost}";
@@ -112,7 +94,16 @@ public class Skill : MonoBehaviour
             if (delta < 0)
                 delta = 0; // should never hurt
         }
-        
-        return new SkillResult(animateAttacked, statsForSkill.affectedStat, (int)delta, visualEffect);
+
+        return new SkillResult(animateAttacked, isPercentBased, statsForSkill.affectedStat, (int)delta, 
+            visualEffect, level, InflictedCondition(level));
+    }
+
+    private GameObject InflictedCondition(int level)
+    {
+        if (level >= parametersPerLevel.Count)
+            throw new ArgumentOutOfRangeException(
+                $"Tried to use skill {id} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
+        return Random.Range(0, 100) <= parametersPerLevel[level].chanceToInflict ? condition : null;
     }
 }

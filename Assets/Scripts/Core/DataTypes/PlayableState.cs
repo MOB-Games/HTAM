@@ -20,6 +20,8 @@ namespace Core.DataTypes
         public int gold;
         // inventory
         public StatBlockSO stats;
+
+        public List<ConditionWithLevel> conditions;
         // for now we edit the skills from the inspector, in the future once there is a skill tree, changes made in the
         // character editing window will change the skills and their levels
         public List<SkillWithLevel> activeOffensiveSkills;

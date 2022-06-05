@@ -24,12 +24,12 @@ public class SkillTarget : MonoBehaviour
         {
             StartCoroutine(PlayVisualEffect(result.VisualEffect));
         }
-        _combatantEvents.StatChange(result.AffectedStat, result.Delta);
+        _combatantEvents.StatChange(result.AffectedStat, result.Delta, result.IsPercentBased);
     }
 
     private IEnumerator PlayVisualEffect(GameObject visualEffect)
     {
-        var inst = Instantiate(visualEffect, transform.position, Quaternion.identity);
+        var inst = Instantiate(visualEffect, GetComponent<Renderer>().bounds.center, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         Destroy(inst);
     }

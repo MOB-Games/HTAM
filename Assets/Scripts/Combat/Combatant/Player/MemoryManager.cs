@@ -14,6 +14,7 @@ public class MemoryManager : MonoBehaviour
         var activeSkills = GetComponent<ActiveSkills>();
         activeSkills.offensiveSkills = state.activeOffensiveSkills;
         activeSkills.defensiveSkills = state.activeDefensiveSkills;
+        GetComponent<ConditionManager>().conditions = state.conditions;
         CombatEvents.OnFinalDrop += LootDrop;
     }
 
