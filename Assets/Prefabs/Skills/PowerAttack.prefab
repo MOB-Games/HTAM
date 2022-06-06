@@ -158,4 +158,4 @@ MonoBehaviour:
     defenseMultiplier: 1
     chanceToInflict: 0
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 0}
+  conditionGo: {fileID: 4909307490870935864, guid: 432aa904747f5de47b2924d56c16340b, type: 3}

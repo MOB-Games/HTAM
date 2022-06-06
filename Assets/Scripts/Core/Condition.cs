@@ -31,7 +31,7 @@ public class  Condition : MonoBehaviour
 
     public string GetDescription()
     {
-        var desc = $"<u>{id}</u>:\n";
+        var desc = $"<u>{id}</u>: ";
         desc +=isBuff ? 
             $"Targets {affectedStat} is {(parametersPerLevel[0].delta > 0 ? "increased" : "decreased")}" : 
             $"Target {(parametersPerLevel[0].delta > 0 ? "gains" : "loses")} {affectedStat} every turn";

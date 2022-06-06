@@ -34,6 +34,7 @@ public class SkillParameters
 public class Skill : MonoBehaviour
 {
     public SkillId id;
+    [Multiline]
     public string description;
     public bool melee;
     public bool offensive;
@@ -71,11 +72,9 @@ public class Skill : MonoBehaviour
 
     public string GetDescription()
     {
-        var desc = $"<u>{id}</u>:\n" +
-                   $"{description}\n";
+        var desc = $"<u>{id}</u>: {description}\n";
         if (_condition != null)
-            desc += $"Has a chance to inflict " +
-                    $"{_condition.GetDescription()}\n"; 
+            desc += $"Has a chance to inflict {_condition.GetDescription()}\n"; 
         if (energyCost > 0)
             desc += $"\nEnergy Cost: {energyCost}\n";
         if (hpCost > 0)
