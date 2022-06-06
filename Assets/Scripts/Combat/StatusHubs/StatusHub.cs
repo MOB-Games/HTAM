@@ -105,7 +105,6 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (hoveredGo.TryGetComponent<Condition>(out var condition))
             {
-                Debug.Log("in if");
                 tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = condition.GetDescription();
                 tooltipBox.SetActive(true);
                 break;

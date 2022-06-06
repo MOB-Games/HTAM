@@ -16,7 +16,7 @@ public class StatusHubManager : MonoBehaviour
         }
 
         CombatEvents.OnCombatantAdded += CombatantActivated;
-        CombatEvents.OnStartCombat += ActivateStatusHubs;
+        CombatEvents.OnActivateStatusHubs += ActivateStatusHubs;
     }
 
     private void CombatantActivated(GameObject combatant)
@@ -43,6 +43,6 @@ public class StatusHubManager : MonoBehaviour
     private void OnDestroy()
     {
         CombatEvents.OnCombatantAdded -= ConnectStatusHubs;
-        CombatEvents.OnStartCombat -= ActivateStatusHubs;
+        CombatEvents.OnActivateStatusHubs -= ActivateStatusHubs;
     }
 }

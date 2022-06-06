@@ -71,7 +71,7 @@ public class Skill : MonoBehaviour
 
     public string GetDescription()
     {
-        var desc = $"{id}\n" +
+        var desc = $"<u>{id}</u>:\n" +
                    $"{description}\n";
         if (_condition != null)
             desc += $"Has a chance to inflict " +

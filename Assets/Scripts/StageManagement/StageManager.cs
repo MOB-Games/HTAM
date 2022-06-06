@@ -66,7 +66,7 @@ public class StageManager : MonoBehaviour
                 (gameProgress.maxPath == gameProgress.currentPath && gameProgress.maxStage >= gameProgress.currentStage);
     }
 
-    public static void ActivateStatusHubs()
+    public void ActivateStatusHubs()
     {
         CombatEvents.ActivateStatusHubs();
     }
