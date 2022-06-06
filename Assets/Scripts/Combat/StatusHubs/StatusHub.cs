@@ -4,6 +4,7 @@ using Core.Enums;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ConditionIcon
 {
@@ -17,12 +18,13 @@ public class ConditionIcon
     }
 }
 
-public class StatusHub : MonoBehaviour
+public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public CombatantId id;
     public HpBarModifier hpBarModifier;
     public EnergyBarModifier energyBarModifier;
     public TextMeshProUGUI nameText;
+    public GameObject tooltipBox;
 
     private const int NumberOfIconsInFirstRow = 8;
     [CanBeNull] private CombatantEvents _combatantEvents;
@@ -81,8 +83,8 @@ public class StatusHub : MonoBehaviour
 
     private void AddConditionIcon(GameObject conditionGo, ConditionId conditionId)
     {
-        var inst = Instantiate(conditionGo, GetConditionIconLocation(_conditions.Count), 
-            Quaternion.identity, transform);
+        var inst = Instantiate(conditionGo, Vector3.zero, Quaternion.identity, transform);
+        inst.transform.localPosition = GetConditionIconLocation(_conditions.Count);
         _conditions.Add(new ConditionIcon(inst, conditionId));
     }
 
@@ -95,6 +97,25 @@ public class StatusHub : MonoBehaviour
         {
             condition.ConditionGo.transform.position = GetConditionIconLocation(index);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        foreach (var hoveredGo in eventData.hovered)
+        {
+            if (hoveredGo.TryGetComponent<Condition>(out var condition))
+            {
+                Debug.Log("in if");
+                tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = condition.GetDescription();
+                tooltipBox.SetActive(true);
+                break;
+            }
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        tooltipBox.SetActive(false);
     }
 
     private void OnDestroy()

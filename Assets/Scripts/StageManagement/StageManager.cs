@@ -66,6 +66,11 @@ public class StageManager : MonoBehaviour
                 (gameProgress.maxPath == gameProgress.currentPath && gameProgress.maxStage >= gameProgress.currentStage);
     }
 
+    public static void ActivateStatusHubs()
+    {
+        CombatEvents.ActivateStatusHubs();
+    }
+
     public void StartCombat()
     {
         CombatEvents.StartCombat();
@@ -76,7 +81,8 @@ public class StageManager : MonoBehaviour
         CombatEvents.SpawnParty();
         Camera.main!.GetComponentInChildren<Image>().sprite = _currentPath.Info.combatBackground;
         _currentPath.EnemySpawner.Spawn(IsStageCleared() ? -1 : gameProgress.currentStage);
-        Invoke(nameof(StartCombat), 2);
+        Invoke(nameof(ActivateStatusHubs), 2);
+        Invoke(nameof(StartCombat), 3);
     }
 
     private bool AtFirstPath()

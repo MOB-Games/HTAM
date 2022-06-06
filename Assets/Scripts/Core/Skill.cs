@@ -47,7 +47,9 @@ public class Skill : MonoBehaviour
     public StatsForSkill statsForSkill;
     public List<SkillParameters> parametersPerLevel;
     [CanBeNull] public GameObject visualEffect;
-    [CanBeNull] public GameObject condition;
+    [CanBeNull] public GameObject conditionGo;
+
+    [CanBeNull] private Condition _condition = null;
 
     private void OnValidate()
     {
@@ -55,16 +57,30 @@ public class Skill : MonoBehaviour
             throw new ConstraintException("A skill cannot be melee if it targets more than 1 target");
         if (parametersPerLevel.Count == 0)
             throw new ConstraintException("A skill must have at least 1 level");
-        if (parametersPerLevel.Exists(p => p.chanceToInflict > 0) && condition == null)
+        if (parametersPerLevel.Exists(p => p.chanceToInflict > 0) && conditionGo == null)
             throw new ConstraintException("Skill can't have a chance to inflict but not have a condition to inflict");
+        if (energyCost > 0 && hpCost > 0)
+            throw new ConstraintException("Skill can't cost both energy and hp");
+    }
+
+    private void Start()
+    {
+        if (conditionGo != null)
+            _condition = conditionGo.GetComponent<Condition>();
     }
 
     public string GetDescription()
     {
-        return $"{id}\n" +
-               $"{description}\n\n" +
-               $"Energy Cost: {energyCost}\n" +
-               $"Hp Cost: {hpCost}";
+        var desc = $"{id}\n" +
+                   $"{description}\n";
+        if (_condition != null)
+            desc += $"Has a chance to inflict " +
+                    $"{_condition.GetDescription()}\n"; 
+        if (energyCost > 0)
+            desc += $"\nEnergy Cost: {energyCost}\n";
+        if (hpCost > 0)
+            desc += $"\nHP Cost: {hpCost}\n";
+        return desc;
     }
 
     public SkillResult GetResult(CombatantId attackerId, CombatantId defenderId, int level)
@@ -80,12 +96,11 @@ public class Skill : MonoBehaviour
             return new SkillResult();
 
         var delta = parametersPerLevel[level].baseEffectValue +
-                    parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(statsForSkill.attackStat) -
+                    parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(statsForSkill.attackStat) +
                     parametersPerLevel[level].defenseMultiplier * defenderStats.GetStatValue(statsForSkill.defenseStat);
 
         if (offensive)
         {
-            delta = -delta; // should reduce stat
             if (delta > 0)
                 delta = 0; // should never help
         }
@@ -101,9 +116,6 @@ public class Skill : MonoBehaviour
 
     private GameObject InflictedCondition(int level)
     {
-        if (level >= parametersPerLevel.Count)
-            throw new ArgumentOutOfRangeException(
-                $"Tried to use skill {id} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
-        return Random.Range(0, 100) <= parametersPerLevel[level].chanceToInflict ? condition : null;
+        return Random.Range(0, 100) <= parametersPerLevel[level].chanceToInflict ? conditionGo : null;
     }
 }

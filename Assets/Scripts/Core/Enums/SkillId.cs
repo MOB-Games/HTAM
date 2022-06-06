@@ -6,5 +6,6 @@ namespace Core.Enums
         PowerAttack,
         Heal,
         Weaken,
+        Shield,
     }
 }

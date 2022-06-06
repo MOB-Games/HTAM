@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 2089516688676052306}
   - component: {fileID: 2089516688676052307}
   - component: {fileID: 154902959}
+  - component: {fileID: 303593798715091184}
   m_Layer: 5
   m_Name: StatusHub
   m_TagString: Untagged
@@ -627,6 +628,24 @@ MonoBehaviour:
   hpBarModifier: {fileID: 433975719}
   energyBarModifier: {fileID: 1409876408}
   nameText: {fileID: 225180241}
+  tooltipBox: {fileID: 0}
+--- !u!114 &303593798715091184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2089516688676052309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &2089516688934374750
 GameObject:
   m_ObjectHideFlags: 0

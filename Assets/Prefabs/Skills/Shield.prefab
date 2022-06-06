@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: PowerAttack
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d473e35d9c998d443a00d04000f893e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c46d83f2b73aaa141bd5015819342d81, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,28 +134,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
-  description: Basic Power Attack - you attack the opponent with double damage
-  melee: 1
-  offensive: 1
-  animateAttacked: 1
+  id: 4
+  description: 
+  melee: 0
+  offensive: 0
+  animateAttacked: 0
   isPercentBased: 0
   costIsPercentBased: 0
-  energyCost: 10
+  energyCost: 5
   hpCost: 0
   targetType: 0
-  skillAnimation: 1
+  skillAnimation: 2
   statsForSkill:
     attackStat: 2
     defenseStat: 3
     affectedStat: 0
   parametersPerLevel:
   - baseHitChance: 100
-    hitMultiplier: 1
-    missMultiplier: 1
+    hitMultiplier: 0
+    missMultiplier: 0
     baseEffectValue: 0
-    attackMultiplier: -2
-    defenseMultiplier: 1
-    chanceToInflict: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 90
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 0}
+  conditionGo: {fileID: 4909307490870935864, guid: 4bd073b32e670cd4ca4250551968610b, type: 3}

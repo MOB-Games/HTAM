@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8335700882252621066}
   - component: {fileID: 3733113094694834685}
   m_Layer: 5
-  m_Name: WeakenCondition
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2bbebcc9ca74c2c47bc5238486432710, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c46d83f2b73aaa141bd5015819342d81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61bd1f2f4f06b343b458b082e5deaa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 1
   isBuff: 1
   isPercentBased: 0
-  affectedStat: 2
+  affectedStat: 3
   visualEffect: {fileID: 0}
   parametersPerLevel:
   - duration: 3

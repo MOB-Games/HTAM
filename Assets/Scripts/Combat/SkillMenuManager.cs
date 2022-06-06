@@ -66,17 +66,14 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         {
             if (hoveredGo.TryGetComponent<Skill>(out var skill))
             {
-                var currentPos = tooltipBox.transform.position;
-                var newPos = new Vector3(currentPos.x, hoveredGo.transform.position.y, currentPos.z);
-                tooltipBox.transform.position = newPos;
-                var tooltip = tooltipBox.GetComponentInChildren<TextMeshProUGUI>();
                 var message = skill.GetDescription();
                 if (!hoveredGo.GetComponent<Button>().interactable)
                 {
-                    message += "\n\n<color=red>*Insufficient energy or hp</color>";
+                    message += $"\n\n<color=red>*Insufficient {(skill.energyCost > 0 ? "energy" : "HP")}</color>";
                 }
-                tooltip.text = message;
+                tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = message;
                 tooltipBox.SetActive(true);
+                break;
             }
         }
     }

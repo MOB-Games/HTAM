@@ -29,6 +29,15 @@ public class  Condition : MonoBehaviour
             throw new ConstraintException("A condition duration must be positive for all levels");
     }
 
+    public string GetDescription()
+    {
+        var desc = $"{id}\n";
+        desc +=isBuff ? 
+            $"Targets {affectedStat} is {(parametersPerLevel[0].delta > 0 ? "increased" : "decreased")}" : 
+            $"Target {(parametersPerLevel[0].delta > 0 ? "gains" : "loses")} {affectedStat} every turn";
+        return desc;
+    }
+
     public SkillResult GetBuff(int level)
     {
         return isBuff

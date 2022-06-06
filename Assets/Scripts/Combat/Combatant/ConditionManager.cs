@@ -32,6 +32,7 @@ public class ConditionManager : MonoBehaviour
     {
         _id = GetComponent<ID>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
+        CombatEvents.OnSkillUsed += ConditionInflicted;
         _combatantEvents.OnEndTurn += Tick;
     }
     
@@ -55,17 +56,18 @@ public class ConditionManager : MonoBehaviour
     {
         if (targetId != _id || result.Condition == null) return;
         var condition = result.Condition.GetComponent<Condition>();
-        _combatantEvents.AddCondition(result.Condition, condition.id);
         var conditionWithLevel = conditions.Find(c => c.condition.id == condition.id);
         if (conditionWithLevel == null)
         {
+            _combatantEvents.AddCondition(result.Condition, condition.id);
             conditions.Add(new ConditionWithLevel(result.Condition, condition, result.Level));
+            ConditionEvoked(condition.GetBuff(result.Level));
         }
         else
         {
             conditionWithLevel.ticks = 0;
+            StartCoroutine(PlayVisualEffect(condition.GetBuff(result.Level).VisualEffect));
         }
-        ConditionEvoked(condition.GetBuff(result.Level));
     }
 
     private void Tick()
