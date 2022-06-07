@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Core.SkillsAndConditions;
 using Core.DataTypes;
 
 public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler

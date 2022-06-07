@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.Enums;
+using Core.SkillsAndConditions;
 using UnityEngine;
 
 [Serializable]
@@ -43,13 +44,13 @@ public class ConditionManager : MonoBehaviour
         Destroy(inst);
     }
     
-    private void ConditionEvoked(SkillResult result)
+    private void ConditionEvoked(ConditionEffect effect)
     {
-        if (result.VisualEffect != null)
+        if (effect.VisualEffect != null)
         {
-            StartCoroutine(PlayVisualEffect(result.VisualEffect));
+            StartCoroutine(PlayVisualEffect(effect.VisualEffect));
         }
-        _combatantEvents.StatChange(result.AffectedStat, result.Delta, result.IsPercentBased);
+        _combatantEvents.StatChange(effect.AffectedStat, effect.Delta, effect.IsPercentBased);
     }
 
     private void ConditionInflicted(CombatantId targetId, SkillResult result)
@@ -61,12 +62,12 @@ public class ConditionManager : MonoBehaviour
         {
             _combatantEvents.AddCondition(result.Condition, condition.id);
             conditions.Add(new ConditionWithLevel(result.Condition, condition, result.Level));
-            ConditionEvoked(condition.GetBuff(result.Level));
+            ConditionEvoked(condition.GetInitialEffect(result.Level));
         }
         else
         {
             conditionWithLevel.ticks = 0;
-            StartCoroutine(PlayVisualEffect(condition.GetBuff(result.Level).VisualEffect));
+            StartCoroutine(PlayVisualEffect(condition.GetInitialEffect(result.Level).VisualEffect));
         }
     }
 
@@ -76,13 +77,13 @@ public class ConditionManager : MonoBehaviour
         {
             var conditionWithLevel = conditions[i];
             var condition = conditionWithLevel.condition;
-            ConditionEvoked(condition.GetBuff(conditionWithLevel.level));
+            ConditionEvoked(condition.GetRecurringEffect(conditionWithLevel.level));
             conditionWithLevel.ticks++;
             if (condition.Expired(conditionWithLevel.ticks, conditionWithLevel.level))
             {
                 conditions.RemoveAt(i);
                 _combatantEvents.RemoveCondition(conditionWithLevel.condition.id);
-                ConditionEvoked(condition.GetRevertBuff(conditionWithLevel.level));
+                ConditionEvoked(condition.GetRevertEffect(conditionWithLevel.level));
             }
         }
         CombatEvents.EndTurn();

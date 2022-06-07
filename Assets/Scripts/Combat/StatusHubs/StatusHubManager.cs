@@ -16,7 +16,7 @@ public class StatusHubManager : MonoBehaviour
         }
 
         CombatEvents.OnCombatantAdded += CombatantActivated;
-        CombatEvents.OnActivateStatusHubs += ActivateStatusHubs;
+        CombatEvents.OnActivateStatusHubs += ConnectStatusHubs;
     }
 
     private void CombatantActivated(GameObject combatant)
@@ -24,25 +24,20 @@ public class StatusHubManager : MonoBehaviour
         _activeCombatants.Add(combatant);
     }
 
-    private void ConnectStatusHubs(GameObject combatant)
-    {
-        var id = combatant.GetComponent<ID>().id;
-        var barConnectorGo = _statusHubConnectors[id];
-        barConnectorGo.GetComponent<StatusHub>().Connect(combatant);
-        barConnectorGo.SetActive(true);
-    }
-
-    private void ActivateStatusHubs()
+    private void ConnectStatusHubs()
     {
         foreach (var combatant in _activeCombatants)
         {   
-            ConnectStatusHubs(combatant);
+            var id = combatant.GetComponent<ID>().id;
+            var barConnectorGo = _statusHubConnectors[id];
+            barConnectorGo.GetComponent<StatusHub>().Connect(combatant);
+            barConnectorGo.SetActive(true);
         }   
     }
 
     private void OnDestroy()
     {
-        CombatEvents.OnCombatantAdded -= ConnectStatusHubs;
-        CombatEvents.OnActivateStatusHubs -= ActivateStatusHubs;
+        CombatEvents.OnCombatantAdded -= CombatantActivated;
+        CombatEvents.OnActivateStatusHubs -= ConnectStatusHubs;
     }
 }

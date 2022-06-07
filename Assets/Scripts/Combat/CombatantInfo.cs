@@ -68,5 +68,6 @@ public static class CombatantInfo
     public static void Reset()
     {
         CombatantsStats.Clear();
+        CombatantsDimensions.Clear();
     }
 }

@@ -4,6 +4,7 @@ using Core.Enums;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using Core.SkillsAndConditions;
 using UnityEngine.EventSystems;
 
 public class ConditionIcon
@@ -25,6 +26,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public EnergyBarModifier energyBarModifier;
     public TextMeshProUGUI nameText;
     public GameObject tooltipBox;
+    public GameObject glow;
 
     private const int NumberOfIconsInFirstRow = 8;
     [CanBeNull] private CombatantEvents _combatantEvents;
@@ -46,6 +48,8 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             _combatantEvents.OnStatChange += ModifyBars;
             _combatantEvents.OnConditionAdded += AddConditionIcon;
             _combatantEvents.OnConditionRemoved += RemoveConditionIcon;
+            _combatantEvents.OnEndTurn += StopGlow;
+            CombatEvents.OnStartTurn += StartGlow;
         }
         if (CombatantInfo.Mirror)
             transform.position = Vector3.Scale(transform.position,new Vector3(-1,1,1));
@@ -81,6 +85,17 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
+    private void StartGlow(CombatantId targetId)
+    {
+        if (targetId != id) return;
+        glow.SetActive(true);
+    }
+
+    private void StopGlow()
+    {
+        glow.SetActive(false);
+    }
+
     private void AddConditionIcon(GameObject conditionGo, ConditionId conditionId)
     {
         var inst = Instantiate(conditionGo, Vector3.zero, Quaternion.identity, transform);
@@ -95,7 +110,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         Destroy(conditionIcon.ConditionGo);
         foreach (var (condition, index) in _conditions.Select((c,i)=> (c,i)))
         {
-            condition.ConditionGo.transform.position = GetConditionIconLocation(index);
+            condition.ConditionGo.transform.localPosition = GetConditionIconLocation(index);
         }
     }
 
@@ -124,6 +139,8 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             _combatantEvents.OnStatChange -= ModifyBars;
             _combatantEvents.OnConditionAdded -= AddConditionIcon;
             _combatantEvents.OnConditionRemoved -= RemoveConditionIcon;
+            _combatantEvents.OnEndTurn -= StopGlow;
+            CombatEvents.OnStartTurn -= StartGlow;
         }
     }
 }

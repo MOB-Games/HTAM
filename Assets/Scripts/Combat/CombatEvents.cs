@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Core.DataTypes;
 using Core.Enums;
 using UnityEngine;
+using Core.SkillsAndConditions;
 using UnityEngine.EventSystems;
 
 public static class CombatEvents

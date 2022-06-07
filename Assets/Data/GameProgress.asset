@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameProgress
   m_EditorClassIdentifier: 
   currentPath: 0
-  currentStage: 2
+  currentStage: 0
   previousPath: 0
-  previousStage: 0
+  previousStage: -1
   maxPath: 0
-  maxStage: 0
+  maxStage: -1

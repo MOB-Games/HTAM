@@ -1,9 +1,11 @@
+using System.Collections;
 using Core.DataTypes;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Core.Enums;
 using UnityEngine;
+using Core.SkillsAndConditions;
 using Random = UnityEngine.Random;
 
 public class EnemyBehavior : MonoBehaviour
@@ -73,7 +75,13 @@ public class EnemyBehavior : MonoBehaviour
         if (turnId != _id) return;
         var chosenSkill = ChooseSkill();
         var skill = chosenSkill.skillGo.GetComponent<Skill>();
-        CombatEvents.SkillChosen(ChooseTarget(), skill, chosenSkill.level);
+        StartCoroutine(DelayedSkillChosen(ChooseTarget(), skill, chosenSkill.level));
+    }
+
+    private IEnumerator DelayedSkillChosen(CombatantId targetId, Skill skill, int level)
+    {
+        yield return new WaitForSeconds(1);
+        CombatEvents.SkillChosen(targetId, skill, level);
     }
 
     private void OnDestroy()

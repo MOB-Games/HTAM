@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Core.Enums;
+using Core.SkillsAndConditions;using Core.Enums;
 using UnityEngine;
 
 public class SkillExecutor : MonoBehaviour
