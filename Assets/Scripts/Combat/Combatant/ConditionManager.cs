@@ -31,7 +31,7 @@ public class ConditionManager : MonoBehaviour
 
     private void Start()
     {
-        _id = GetComponent<ID>().id;
+        _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
         CombatEvents.OnSkillUsed += ConditionInflicted;
         _combatantEvents.OnEndTurn += Tick;

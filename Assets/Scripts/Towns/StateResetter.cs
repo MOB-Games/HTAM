@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class StateResetter : MonoBehaviour
 {
-    public List<PlayableState> playableStates;
+    public List<CharacterState> characterStates;
 
     private void Start()
     {
-        foreach (var playableState in playableStates)
+        foreach (var characterState in characterStates)
         {
-            playableState.stats.Reset();
-            playableState.conditions.Clear();
+            characterState.stats.Reset();
+            characterState.conditions.Clear();
         }
     }
 }

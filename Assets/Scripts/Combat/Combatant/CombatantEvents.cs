@@ -19,7 +19,7 @@ public class CombatantEvents : MonoBehaviour
 
     private void Start()
     {
-        _id = GetComponent<ID>().id;
+        _id = GetComponent<CombatId>().id;
     }
 
     public void StatChange(StatType affectedStat, int delta, bool percentage)

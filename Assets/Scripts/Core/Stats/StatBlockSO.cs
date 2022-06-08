@@ -7,7 +7,7 @@ namespace Core.Stats
     {
         public StatSO hp;
         public StatSO energy;
-        public StatSO energyPenalty;
+        public StatSO energyEfficiency;
 
         public StatSO damage;
         public StatSO defense;
@@ -16,7 +16,7 @@ namespace Core.Stats
         public void Reset()
         {
             hp.value = hp.baseValue;
-            energyPenalty.value = energyPenalty.baseValue;
+            energyEfficiency.value = energyEfficiency.baseValue;
             energy.value = energy.baseValue;
             damage.value = damage.baseValue;
             defense.value = defense.baseValue;
@@ -27,14 +27,14 @@ namespace Core.Stats
         {
             hp.baseValue = stats.hp.baseValue;
             energy.baseValue = stats.energy.baseValue;
-            energyPenalty.baseValue = stats.energyPenalty.baseValue;
+            energyEfficiency.baseValue = stats.energyEfficiency.baseValue;
             damage.baseValue = stats.damage.baseValue;
             defense.baseValue = stats.defense.baseValue;
             speed.baseValue = stats.speed.baseValue;
             
             hp.value = stats.hp.value;
             energy.value = stats.energy.value;
-            energyPenalty.value = stats.energyPenalty.value;
+            energyEfficiency.value = stats.energyEfficiency.value;
             damage.value = stats.damage.value;
             defense.value = stats.defense.value;
             speed.value = stats.speed.value;
@@ -44,14 +44,14 @@ namespace Core.Stats
         {
             stats.hp.baseValue = hp.baseValue;
             stats.energy.baseValue = energy.baseValue;
-            stats.energyPenalty.baseValue = energyPenalty.baseValue;
+            stats.energyEfficiency.baseValue = energyEfficiency.baseValue;
             stats.damage.baseValue = damage.baseValue;
             stats.defense.baseValue = defense.baseValue;
             stats.speed.baseValue = speed.baseValue;
             
             stats.hp.value = hp.value;
             stats.energy.value = energy.value;
-            stats.energyPenalty.value = energyPenalty.value;
+            stats.energyEfficiency.value = energyEfficiency.value;
             stats.damage.value = damage.value;
             stats.defense.value = defense.value;
             stats.speed.value = speed.value;

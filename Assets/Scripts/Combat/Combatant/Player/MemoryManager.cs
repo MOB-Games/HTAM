@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MemoryManager : MonoBehaviour
 {
-    public PlayableState state;
+    public CharacterState state;
     private StatBlock _stats;
 
     private void Start()
@@ -20,8 +20,8 @@ public class MemoryManager : MonoBehaviour
 
     private void LootDrop(Drop drop)
     {
-        state.exp += drop.Exp;
-        state.gold += drop.Gold;
+        state.exp.value += drop.Exp;
+        state.gold.value += drop.Gold;
     }
 
     private void OnDestroy()

@@ -11,7 +11,7 @@ public class SkillExecutor : MonoBehaviour
 
     private void Start()
     {
-        _id = GetComponent<ID>().id;
+        _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
         _combatantEvents.OnFinishedMoving += FinishedMoving;
         CombatEvents.OnStartTurn += RegisterToSkill;

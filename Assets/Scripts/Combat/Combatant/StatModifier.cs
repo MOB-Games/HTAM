@@ -30,20 +30,20 @@ public class StatModifier : MonoBehaviour
                     stats.hp.value = stats.hp.baseValue;
                 break;
             case StatType.Energy:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.energy.baseValue, stats.energyPenalty.value);
+                delta = ChangeCalculator.Calculate(delta, percentage, stats.energy.baseValue, stats.energyEfficiency.value);
                 stats.energy.value += delta;
                 if (stats.energy.value <= 0)
                     stats.energy.value = 0;
                 else if (stats.energy.value > stats.energy.baseValue)
                     stats.energy.value = stats.energy.baseValue;
                 break;
-            case StatType.EnergyPenalty:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.energyPenalty.baseValue);
-                stats.energyPenalty.value += delta;
-                if (stats.energyPenalty.value <= 0)
-                    stats.energyPenalty.value = 0;
-                else if (stats.energyPenalty.value > stats.energyPenalty.baseValue)
-                    stats.energyPenalty.value = stats.energyPenalty.baseValue;
+            case StatType.EnergyEfficiency:
+                delta = ChangeCalculator.Calculate(delta, percentage, stats.energyEfficiency.baseValue);
+                stats.energyEfficiency.value += delta;
+                if (stats.energyEfficiency.value <= 0)
+                    stats.energyEfficiency.value = 0;
+                else if (stats.energyEfficiency.value > stats.energyEfficiency.baseValue)
+                    stats.energyEfficiency.value = stats.energyEfficiency.baseValue;
                 break;
             case StatType.Damage:
                 delta = ChangeCalculator.Calculate(delta, percentage, stats.damage.baseValue);

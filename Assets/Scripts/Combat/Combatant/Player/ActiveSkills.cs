@@ -16,7 +16,7 @@ public class ActiveSkills : MonoBehaviour
     
     private void Start()
     {
-        _id = GetComponent<ID>().id;
+        _id = GetComponent<CombatId>().id;
         CombatEvents.OnStartTurn += StartTurn;
         CombatEvents.OnSkillChosen += UnregisterToClick;
     }
@@ -39,7 +39,7 @@ public class ActiveSkills : MonoBehaviour
 
     private void TargetClicked(PointerEventData eventData)
     {
-        var targetId = eventData.pointerPress.GetComponent<ID>().id;
+        var targetId = eventData.pointerPress.GetComponent<CombatId>().id;
         CombatEvents.OpenMenu(_id, targetId,
             eventData.pointerPress.TryGetComponent(out EnemyBehavior _) ? offensiveSkills : defensiveSkills);
     }

@@ -28,7 +28,7 @@ public class StatusHubManager : MonoBehaviour
     {
         foreach (var combatant in _activeCombatants)
         {   
-            var id = combatant.GetComponent<ID>().id;
+            var id = combatant.GetComponent<CombatId>().id;
             var barConnectorGo = _statusHubConnectors[id];
             barConnectorGo.GetComponent<StatusHub>().Connect(combatant);
             barConnectorGo.SetActive(true);

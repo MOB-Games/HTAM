@@ -9,7 +9,7 @@ namespace Core.Stats
     {
         public Stat hp;
         public Stat energy;
-        public Stat energyPenalty;
+        public Stat energyEfficiency;
         public Stat damage;
         public Stat defense;
         public Stat speed;
@@ -20,7 +20,7 @@ namespace Core.Stats
             {
                 StatType.Hp => hp.value,
                 StatType.Energy => energy.value,
-                StatType.EnergyPenalty => energyPenalty.value,
+                StatType.EnergyEfficiency => energyEfficiency.value,
                 StatType.Damage => damage.value,
                 StatType.Defense => defense.value,
                 StatType.Speed => speed.value,

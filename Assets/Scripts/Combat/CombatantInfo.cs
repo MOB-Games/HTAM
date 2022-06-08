@@ -37,7 +37,7 @@ public static class CombatantInfo
 
     public static void AddCombatant(GameObject combatant)
     {
-        var id = combatant.GetComponent<ID>().id;
+        var id = combatant.GetComponent<CombatId>().id;
         var stats = combatant.GetComponent<StatModifier>().stats;
         var size = combatant.GetComponent<Renderer>().bounds.size;
         CombatantsStats.Add(id, stats);

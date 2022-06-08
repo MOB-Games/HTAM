@@ -102,7 +102,7 @@ public class EnemySpawner : MonoBehaviour
                 ? GetEnemyPrefabToCreate()
                 : enemyPrefabs[enemiesForStages.EnemyPrefabIndex(stage, i)];
             var inst = Instantiate(enemyPrefab, CombatantInfo.GetLocation(id), Quaternion.identity);
-            inst.GetComponent<ID>().id = id;
+            inst.GetComponent<CombatId>().id = id;
             if (!CombatantInfo.Mirror)
                 inst.transform.localScale = Vector3.Scale(inst.transform.localScale, new Vector3(-1, 1, 1));
             CombatEvents.CombatantAdded(inst);

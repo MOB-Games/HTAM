@@ -23,7 +23,7 @@ public class EnemyBehavior : MonoBehaviour
     private CombatantEvents _combatantEvents;
     private void Start()
     {
-        _id = GetComponent<ID>().id;
+        _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
         CombatEvents.OnStartTurn += PlayTurn;
     }

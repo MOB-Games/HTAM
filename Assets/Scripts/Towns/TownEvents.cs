@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public static class TownEvents
 {
     public static event Action<TownInfo, string> OnPublishTownInfo;
+    public static event Action<List<CharacterTownInfo>> OnLoadedCharacters;
     public static event Action OnOpenSignpost;
     public static event Action OnCloseSignpost;
     public static event Action OnOpenInn;
@@ -11,10 +14,16 @@ public static class TownEvents
     public static event Action OnCloseShop;
     public static event Action OnOpenBlacksmith;
     public static event Action OnCloseBlacksmith;
+    public static event Action<CharacterTownInfo> OnCharacterSelected;
    
     public static void PublishTownInfo(TownInfo townInfo, string previousPathSignpost)
     {
         OnPublishTownInfo?.Invoke(townInfo, previousPathSignpost);
+    }
+    
+    public static void LoadedCharacters(List<CharacterTownInfo> characterTownInfos)
+    {
+        OnLoadedCharacters?.Invoke(characterTownInfos);
     }
     
     public static void OpenSignpost()
@@ -55,5 +64,10 @@ public static class TownEvents
     public static void CloseBlacksmith()
     {
         OnCloseBlacksmith?.Invoke();
+    }
+    
+    public static void CharacterSelected(CharacterTownInfo characterTownInfo)
+    {
+        OnCharacterSelected?.Invoke(characterTownInfo);
     }
 }

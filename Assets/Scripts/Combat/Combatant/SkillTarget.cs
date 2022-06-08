@@ -9,7 +9,7 @@ public class SkillTarget : MonoBehaviour
     
     private void Start()
     {
-        _id = GetComponent<ID>().id;
+        _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
         CombatEvents.OnSkillUsed += SkillUsed;
     }
