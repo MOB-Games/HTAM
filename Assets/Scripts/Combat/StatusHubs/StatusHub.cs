@@ -74,12 +74,6 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             case StatType.Energy:
                 energyBarModifier.Change(delta, percentage);
                 break;
-            case StatType.Damage:
-                break;
-            case StatType.Defense:
-                break;
-            case StatType.Speed:
-                break;
             default:
                 return;
         }

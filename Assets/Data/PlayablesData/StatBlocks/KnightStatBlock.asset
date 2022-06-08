@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: {fileID: 11400000, guid: d63ee9627e9973a4a83b8b8aedc410ab, type: 2}
   energy: {fileID: 11400000, guid: 65fef6fc22a782a4c8c62d70f35992ce, type: 2}
+  energyPenalty: {fileID: 11400000, guid: 31ff3315329f5e64e912ffbc58ae0c11, type: 2}
   damage: {fileID: 11400000, guid: 791ea7c3093b0a940b9b9a61e27f2c93, type: 2}
   defense: {fileID: 11400000, guid: 71598268b25ef5f47a3c61189ace3e88, type: 2}
   speed: {fileID: 11400000, guid: 0df67c34a9076014c8f55ab8f7427064, type: 2}

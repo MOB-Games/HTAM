@@ -43,8 +43,10 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         skillMenu.transform.position = targetLocation;
         foreach (var button in _buttons)
             Destroy(button);
-        var currentEnergy = CombatantInfo.GetStatBlock(userId).energy.value;
-        var currentHp = CombatantInfo.GetStatBlock(userId).hp.value;
+        var statBlock = CombatantInfo.GetStatBlock(userId);
+        var currentEnergy = statBlock.energy.value;
+        var energyPenalty = statBlock.energyPenalty.value;
+        var currentHp = statBlock.hp.value;
         foreach (var (skillWithLevel, index) in skillsWithLevels.Select((skillWithLevel, i) => (skillWithLevel, i)))
         {
             var inst = Instantiate(skillWithLevel.skillGo,
@@ -53,7 +55,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
             var skill = inst.GetComponent<Skill>();
             var button = inst.GetComponent<Button>();
             button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill, skillWithLevel.level));
-            button.interactable = skill.energyCost <= currentEnergy && skill.hpCost <= currentHp;
+            button.interactable = skill.energyCost + energyPenalty <= currentEnergy && skill.hpCost <= currentHp;
             if (!button.interactable)
                 inst.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
             _buttons.Add(inst);
