@@ -147,8 +147,8 @@ MonoBehaviour:
   targetType: 0
   skillAnimation: 0
   statsForSkill:
-    attackStat: 2
-    defenseStat: 3
+    attackStat: 3
+    defenseStat: 4
     affectedStat: 0
   parametersPerLevel:
   - baseHitChance: 90

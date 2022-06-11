@@ -99,7 +99,6 @@ namespace Core.SkillsAndConditions
             var delta = parametersPerLevel[level].baseEffectValue +
                         parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(statsForSkill.attackStat) +
                         parametersPerLevel[level].defenseMultiplier * defenderStats.GetStatValue(statsForSkill.defenseStat);
-
             if (offensive)
             {
                 if (delta >= 0)
@@ -110,7 +109,6 @@ namespace Core.SkillsAndConditions
                 if (delta <= 0)
                     delta = 1; // should always help
             }
-
             return new SkillResult(animateAttacked, isPercentBased, statsForSkill.affectedStat, (int)delta, 
                 visualEffect, level, InflictedCondition(level));
         }

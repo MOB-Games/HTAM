@@ -146,8 +146,8 @@ MonoBehaviour:
   targetType: 1
   skillAnimation: 2
   statsForSkill:
-    attackStat: 2
-    defenseStat: 3
+    attackStat: 0
+    defenseStat: 0
     affectedStat: 0
   parametersPerLevel:
   - baseHitChance: 100
@@ -158,4 +158,5 @@ MonoBehaviour:
     defenseMultiplier: 0
     chanceToInflict: 90
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: 432aa904747f5de47b2924d56c16340b, type: 3}
+  conditionGo: {fileID: 4909307490870935864, guid: 432aa904747f5de47b2924d56c16340b,
+    type: 3}
