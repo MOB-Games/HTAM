@@ -6,6 +6,7 @@ using System.Linq;
 using Core.Enums;
 using UnityEngine;
 using Core.SkillsAndConditions;
+using Core.Stats;
 using Random = UnityEngine.Random;
 
 public class EnemyBehavior : MonoBehaviour
@@ -20,10 +21,12 @@ public class EnemyBehavior : MonoBehaviour
     
     
     private CombatantId _id;
+    private StatBlock _stats;
     private CombatantEvents _combatantEvents;
     private void Start()
     {
         _id = GetComponent<CombatId>().id;
+        _stats = GetComponent<StatModifier>().stats;
         _combatantEvents = GetComponent<CombatantEvents>();
         CombatEvents.OnStartTurn += PlayTurn;
     }
@@ -31,11 +34,14 @@ public class EnemyBehavior : MonoBehaviour
     private void OnValidate()
     {
         if (skillsWithLevels.Count == 0)
-            throw new ConstraintException("Enemy has no skills");
+            throw new ConstraintException($"{name}: Enemy has no skills");
         if (skillProbabilities.Count != skillsWithLevels.Count - 1)
-            throw new ConstraintException("Number of probabilities for skills must be number of skills minus 1");
+            throw new ConstraintException($"{name}: Number of probabilities for skills must be number of skills minus 1");
         if (skillProbabilities.Sum() > 100)
-            throw new ConstraintException("Sum of probabilities exceeds 100");
+            throw new ConstraintException($"{name}: Sum of probabilities exceeds 100");
+        var firstSkill = skillsWithLevels.First().skillGo.GetComponent<Skill>();
+        if (firstSkill.energyCost != 0 || firstSkill.hpCost != 0)
+            throw new ConstraintException( $"{name}: First skill of enemy must be without cost");
     }
 
     private CombatantId ChooseTarget()
@@ -75,6 +81,13 @@ public class EnemyBehavior : MonoBehaviour
         if (turnId != _id) return;
         var chosenSkill = ChooseSkill();
         var skill = chosenSkill.skillGo.GetComponent<Skill>();
+        if (_stats.energy.value < ChangeCalculator.Calculate(skill.energyCost, skill.costIsPercentBased,
+                _stats.energy.baseValue, _stats.energyEfficiency.value) ||
+            _stats.hp.value < ChangeCalculator.Calculate(skill.hpCost, skill.costIsPercentBased,
+                _stats.hp.baseValue))
+        {
+            skill = skillsWithLevels.First().skillGo.GetComponent<Skill>();
+        }
         StartCoroutine(DelayedSkillChosen(ChooseTarget(), skill, chosenSkill.level));
     }
 

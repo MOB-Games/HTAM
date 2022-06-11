@@ -626,6 +626,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7405261accf37644bce98a6a80ee72f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStatBlocks:
+  - {fileID: 11400000, guid: 0af51371b220e824bab4bca3e1313ead, type: 2}
+  - {fileID: 11400000, guid: 95ab26624512029468e4ab460287e3fc, type: 2}
   pathList: {fileID: 11400000, guid: 6b2be5a291a2dbd429a757f3e884c1f6, type: 2}
   gameProgress: {fileID: 11400000, guid: 2a17cb0ab18c24c4fac94a8cb8dad114, type: 2}
 --- !u!4 &1955100084

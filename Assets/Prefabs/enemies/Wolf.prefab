@@ -268,20 +268,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     hp:
-      baseValue: 20
-      value: 20
+      baseValue: 7
+      value: 7
     energy:
+      baseValue: 1
+      value: 1
+    energyEfficiency:
       baseValue: 0
       value: 0
     damage:
       baseValue: 7
       value: 7
     defense:
-      baseValue: 5
-      value: 5
+      baseValue: 3
+      value: 3
     speed:
-      baseValue: 5
-      value: 5
+      baseValue: 3
+      value: 3
 --- !u!114 &8229508485637790920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,10 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90ef5011a58e8c4889d97f47bf4bd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minExpDrop: 7
-  maxExpDrop: 2
+  minExpDrop: 2
+  maxExpDrop: 5
   minGoldDrop: 1
-  maxGoldDrop: 5
+  maxGoldDrop: 3
 --- !u!114 &2264432829541233808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillsWithLevels:
-  - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f, type: 3}
+  - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
+      type: 3}
     level: 0
   skillProbabilities: 
   probabilityToTargetPlayer: 100

@@ -102,13 +102,13 @@ namespace Core.SkillsAndConditions
 
             if (offensive)
             {
-                if (delta > 0)
-                    delta = 0; // should never help
+                if (delta >= 0)
+                    delta = -1; // should always hurt
             }
             else
             {
-                if (delta < 0)
-                    delta = 0; // should never hurt
+                if (delta <= 0)
+                    delta = 1; // should always help
             }
 
             return new SkillResult(animateAttacked, isPercentBased, statsForSkill.affectedStat, (int)delta, 

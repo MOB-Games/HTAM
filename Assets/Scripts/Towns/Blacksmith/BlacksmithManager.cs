@@ -23,7 +23,7 @@ public class BlacksmithManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
         foreach (var characterTownInfo in characterTownInfos)
         {
             var inst = Instantiate(characterButton, blacksmithScreen.transform);
-            inst.transform.localPosition = new Vector3(430, height, 0);
+            inst.transform.localPosition = new Vector3(-380, height, 0);
             height -= 60;
             inst.GetComponent<Button>().onClick.AddListener((() => SelectCharacter(characterTownInfo)));
             inst.GetComponentInChildren<TextMeshProUGUI>().text = characterTownInfo.Name;

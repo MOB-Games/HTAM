@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Core.SkillsAndConditions;
 using Core.DataTypes;
+using Core.Stats;
 
 public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -44,9 +45,9 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         foreach (var button in _buttons)
             Destroy(button);
         var statBlock = CombatantInfo.GetStatBlock(userId);
-        var currentEnergy = statBlock.energy.value;
+        var energy = statBlock.energy;
         var energyEfficiency = statBlock.energyEfficiency.value;
-        var currentHp = statBlock.hp.value;
+        var hp = statBlock.hp;
         foreach (var (skillWithLevel, index) in skillsWithLevels.Select((skillWithLevel, i) => (skillWithLevel, i)))
         {
             var inst = Instantiate(skillWithLevel.skillGo,
@@ -55,7 +56,10 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
             var skill = inst.GetComponent<Skill>();
             var button = inst.GetComponent<Button>();
             button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill, skillWithLevel.level));
-            button.interactable = skill.energyCost - energyEfficiency <= currentEnergy && skill.hpCost <= currentHp;
+            var energyCost = ChangeCalculator.Calculate(skill.energyCost, skill.costIsPercentBased, 
+                energy.baseValue, energyEfficiency);
+            var hpCost = ChangeCalculator.Calculate(skill.hpCost, skill.costIsPercentBased, hp.baseValue);
+            button.interactable = energyCost <= energy.value && hpCost <= hp.value;
             if (!button.interactable)
                 inst.GetComponent<Image>().color = new Color(1, 1, 1, 0.5f);
             _buttons.Add(inst);

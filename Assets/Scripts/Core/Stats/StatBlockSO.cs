@@ -12,6 +12,26 @@ namespace Core.Stats
         public StatSO damage;
         public StatSO defense;
         public StatSO speed;
+        
+        public int initialHp;
+        public int initialEnergy;
+        public int initialEnergyEfficiency;
+
+        public int initialDamage;
+        public int initialDefense;
+        public int initialSpeed;
+
+        public void Init()
+        {
+            hp.baseValue = initialHp;
+            energy.baseValue = initialEnergy;
+            energyEfficiency.baseValue = initialEnergyEfficiency;
+            damage.baseValue = initialDamage;
+            defense.baseValue = initialDefense;
+            speed.baseValue = initialSpeed;
+            
+            Reset();
+        }
 
         public void Reset()
         {

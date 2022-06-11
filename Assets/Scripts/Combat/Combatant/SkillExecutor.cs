@@ -85,14 +85,14 @@ public class SkillExecutor : MonoBehaviour
             transform.localScale = localScale;
             yield return new WaitForSeconds(0.2f);
         }
+        _combatantEvents.StatChange(StatType.Hp, -skill.hpCost, skill.costIsPercentBased);
+        _combatantEvents.StatChange(StatType.Energy, -skill.energyCost, skill.costIsPercentBased);
         _combatantEvents.EndTurn();
     }
 
     private void ExecuteSkill(CombatantId targetId, Skill skill, int level)
     {
         StartCoroutine(Execute(targetId, skill, level));
-        _combatantEvents.StatChange(StatType.Hp, -skill.hpCost, skill.costIsPercentBased);
-        _combatantEvents.StatChange(StatType.Energy, -skill.energyCost, skill.costIsPercentBased);
     }
 
     private void OnDestroy()

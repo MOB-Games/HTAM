@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 2821279785301995791}
   - component: {fileID: 8457177750202765845}
   m_Layer: 0
-  m_Name: Knight
+  m_Name: Warren the Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c83cb683bc04248b64e992bb489515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 11400000, guid: ae6e560087c32fc48b97a322910ab3e9, type: 2}
+  state: {fileID: 11400000, guid: 6039359d89458ca458cd1a5dad2f65e4, type: 2}
 --- !u!114 &8457177750202765845
 MonoBehaviour:
   m_ObjectHideFlags: 0

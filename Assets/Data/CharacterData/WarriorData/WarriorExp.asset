@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0f0f652536de1a43b1e9c1e64b0a992, type: 3}
-  m_Name: KnightHP
+  m_Script: {fileID: 11500000, guid: 3890dca07f43d974fbbc05934949e312, type: 3}
+  m_Name: WarriorExp
   m_EditorClassIdentifier: 
-  baseValue: 25
-  value: 25
+  value: 0

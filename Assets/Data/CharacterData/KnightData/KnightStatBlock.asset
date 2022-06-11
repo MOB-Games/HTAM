@@ -18,3 +18,9 @@ MonoBehaviour:
   damage: {fileID: 11400000, guid: 791ea7c3093b0a940b9b9a61e27f2c93, type: 2}
   defense: {fileID: 11400000, guid: 71598268b25ef5f47a3c61189ace3e88, type: 2}
   speed: {fileID: 11400000, guid: 0df67c34a9076014c8f55ab8f7427064, type: 2}
+  initialHp: 35
+  initialEnergy: 25
+  initialEnergyEfficiency: 0
+  initialDamage: 7
+  initialDefense: 9
+  initialSpeed: 5
