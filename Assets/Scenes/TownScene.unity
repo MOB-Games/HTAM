@@ -4115,8 +4115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60477304d6772e0409968ff1ec2f2af8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterStates:
-  - {fileID: 11400000, guid: ae6e560087c32fc48b97a322910ab3e9, type: 2}
+  characterDB: {fileID: 11400000, guid: a5d4a2915f33b1e46b79f2141bf6e26c, type: 2}
 --- !u!4 &1390543142
 Transform:
   m_ObjectHideFlags: 0

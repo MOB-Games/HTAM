@@ -72,4 +72,18 @@ public class CombatantEvents : MonoBehaviour
         OnDied?.Invoke();
         CombatEvents.CombatantDied(_id);
     }
+
+    private void OnDestroy()
+    {
+        OnStatChange = null;
+        OnHurt = null;
+        OnReturn = null;
+        OnAnimateSkill = null;
+        OnConditionAdded = null;
+        OnConditionRemoved = null;
+        OnEndTurn = null;
+        OnFinishedMoving = null;
+        OnMoveToTarget = null;
+        OnDied = null;
+    }
 }

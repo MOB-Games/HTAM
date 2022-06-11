@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Enums;
@@ -43,14 +44,13 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         nameText.text = combatant.name.Split("(")[0];
         var stats = combatant.GetComponent<StatModifier>().stats;
         _combatantEvents = combatant.GetComponent<CombatantEvents>();
-        if (_combatantEvents != null)
-        {
-            _combatantEvents.OnStatChange += ModifyBars;
-            _combatantEvents.OnConditionAdded += AddConditionIcon;
-            _combatantEvents.OnConditionRemoved += RemoveConditionIcon;
-            _combatantEvents.OnEndTurn += StopGlow;
-            CombatEvents.OnStartTurn += StartGlow;
-        }
+        if (_combatantEvents == null)
+            throw new NullReferenceException("Status Hub found no combatant events component");
+        _combatantEvents.OnStatChange += ModifyBars;
+        _combatantEvents.OnConditionAdded += AddConditionIcon;
+        _combatantEvents.OnConditionRemoved += RemoveConditionIcon;
+        _combatantEvents.OnEndTurn += StopGlow;
+        CombatEvents.OnStartTurn += StartGlow;
         if (CombatantInfo.Mirror)
             transform.position = Vector3.Scale(transform.position,new Vector3(-1,1,1));
         hpBarModifier.Init(stats.hp);
@@ -134,7 +134,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             _combatantEvents.OnConditionAdded -= AddConditionIcon;
             _combatantEvents.OnConditionRemoved -= RemoveConditionIcon;
             _combatantEvents.OnEndTurn -= StopGlow;
-            CombatEvents.OnStartTurn -= StartGlow;
         }
+        CombatEvents.OnStartTurn -= StartGlow;
     }
 }

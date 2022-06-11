@@ -13,7 +13,7 @@ public class TownCharacterLoader : MonoBehaviour
 
     private void LoadCharacters()
     {
-        TownEvents.LoadedCharacters( characters.characters
+        TownEvents.LoadedCharacters( characters.characterGameInfos
             .Where(c => c.available)
             .Select(c => new CharacterTownInfo(c.prefab))
             .ToList());

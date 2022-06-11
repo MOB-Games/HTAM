@@ -16,6 +16,7 @@ public class StageManager : MonoBehaviour
         CombatEvents.OnWin += StageCleared;
         var currentPathGo = pathList.pathPrefabs[gameProgress.currentPath];
         _currentPath = new Path(currentPathGo.GetComponent<PathInfo>(), currentPathGo.GetComponent<EnemySpawner>());
+        Debug.Log(_currentPath.Info.Length());
     }
 
     private void RecordPreviousGameProgress()
@@ -28,7 +29,7 @@ public class StageManager : MonoBehaviour
     {
         RecordPreviousGameProgress();
         gameProgress.currentStage++;
-        if (gameProgress.currentStage >= _currentPath.Info.length)
+        if (gameProgress.currentStage >= _currentPath.Info.Length())
         {
             gameProgress.currentPath++;
             gameProgress.currentStage = -1; // -1 will mean a town
@@ -49,7 +50,7 @@ public class StageManager : MonoBehaviour
         if (gameProgress.currentStage < -1)
         {
             gameProgress.currentPath--;
-            gameProgress.currentStage = _currentPath.Info.length - 1;
+            gameProgress.currentStage = _currentPath.Info.Length() - 1;
         }
         LoadScene();
     }

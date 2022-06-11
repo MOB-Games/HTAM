@@ -1,22 +1,21 @@
-using System.Collections.Generic;
 using Core.DataTypes;
-using Core.Stats;
 using UnityEngine;
 
 
 
 public class DataInitializer : MonoBehaviour
 {
-    public List<StatBlockSO> characterStatBlocks;
+    public CharacterDB characterDB;
     public PathList pathList;
     public GameProgress gameProgress;
 
     public void InitializeData()
     {
         gameProgress.Init();
-        foreach (var characterStatBlock in characterStatBlocks)
+        foreach (var characterState in characterDB.characterStates)
         {
-            characterStatBlock.Init();
+            characterState.stats.Init();
+            characterState.conditions.Clear();
         }
     }
 }

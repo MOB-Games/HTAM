@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class PathInfo : MonoBehaviour
 {
-    [HideInInspector]
-    public int length;
     public Sprite combatBackground;
     public TownInfo townInfo;
     
 
-    private void Start()
+    public int Length()
     {
-        length = GetComponent<EnemySpawner>().enemiesForStages.NumberOfStages();
+        return GetComponent<EnemySpawner>().enemiesForStages.NumberOfStages();
     }
 }

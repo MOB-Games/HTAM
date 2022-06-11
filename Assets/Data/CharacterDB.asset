@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76549754de5ae264eb963338e1ba698c, type: 3}
   m_Name: CharacterDB
   m_EditorClassIdentifier: 
-  characters:
+  characterGameInfos:
   - prefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
       type: 3}
     available: 1
+  characterStates:
+  - {fileID: 11400000, guid: 6039359d89458ca458cd1a5dad2f65e4, type: 2}
+  - {fileID: 11400000, guid: ae6e560087c32fc48b97a322910ab3e9, type: 2}
   playerPrefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
     type: 3}
   partyMemberTopPrefab: {fileID: 0}

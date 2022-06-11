@@ -101,8 +101,9 @@ MonoBehaviour:
   id: 0
   isBuff: 1
   isPercentBased: 0
-  affectedStat: 2
-  visualEffect: {fileID: 2135462378506688423, guid: 212133418cad53946b56e0a1ac53bdb3, type: 3}
+  affectedStat: 3
+  visualEffect: {fileID: 2135462378506688423, guid: 212133418cad53946b56e0a1ac53bdb3,
+    type: 3}
   parametersPerLevel:
   - duration: 3
     delta: -1

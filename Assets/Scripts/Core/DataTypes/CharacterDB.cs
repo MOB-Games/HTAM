@@ -15,7 +15,8 @@ namespace Core.DataTypes
     [CreateAssetMenu]
     public class CharacterDB : ScriptableObject
     {
-        public List<CharacterGameInfo> characters;
+        public List<CharacterGameInfo> characterGameInfos;
+        public List<CharacterState> characterStates;
 
         public GameObject playerPrefab;
         [CanBeNull] public GameObject partyMemberTopPrefab;
