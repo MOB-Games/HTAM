@@ -10,6 +10,7 @@ public static class CombatEvents
 {
     public static event Action OnSpawnParty;
     public static event Action<GameObject> OnCombatantAdded;
+    public static event Action<int, int> OnPublishStageNumber;
     public static event Action OnActivateStatusHubs;
     public static event Action OnStartCombat;
     public static event Action<CombatantId> OnStartTurn;
@@ -32,6 +33,11 @@ public static class CombatEvents
     public static void CombatantAdded(GameObject combatant)
     {
         OnCombatantAdded?.Invoke(combatant);
+    }
+    
+    public static void PublishStageNumber(int stageNumber, int pathLength)
+    {
+        OnPublishStageNumber?.Invoke(stageNumber, pathLength);
     }
 
     public static void ActivateStatusHubs()

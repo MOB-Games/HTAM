@@ -44,6 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b525714d864fc69438e38034ed56438b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathPrefabs:
-  - {fileID: 1512379111522927263, guid: 28a0e316f0a6807468a31783a58d4ef6, type: 3}
   gameProgress: {fileID: 11400000, guid: 2a17cb0ab18c24c4fac94a8cb8dad114, type: 2}
+  pathList: {fileID: 11400000, guid: 6b2be5a291a2dbd429a757f3e884c1f6, type: 2}

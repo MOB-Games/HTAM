@@ -5,7 +5,6 @@ public class CombatResultPresenter : MonoBehaviour
 {
     public GameObject winWindow;
     public GameObject loseWindow;
-    public GameObject navigationArrows;
     public TextMeshProUGUI expText;
     public TextMeshProUGUI goldText;
 
@@ -30,7 +29,6 @@ public class CombatResultPresenter : MonoBehaviour
     private void DisplayWin()
     {
         winWindow.SetActive(true);
-        navigationArrows.SetActive(true);
     }
     
     private void Lose()

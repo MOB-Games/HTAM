@@ -27,7 +27,7 @@ public class StageManager : MonoBehaviour
         else
         {
             gameProgress.currentStage++;
-            if (gameProgress.currentStage >= _currentPath.Info.Length())
+            if (gameProgress.currentStage >= _currentPath.Info.length)
             {
                 if (gameProgress.currentPath > gameProgress.maxClearedPath)
                     gameProgress.maxClearedPath++;
@@ -52,7 +52,7 @@ public class StageManager : MonoBehaviour
             if (gameProgress.currentStage < -1)
             {
                 gameProgress.currentPath--;
-                gameProgress.currentStage = _currentPath.Info.Length() - 1;
+                gameProgress.currentStage = _currentPath.Info.length - 1;
             }
         }
         LoadScene();
@@ -78,6 +78,7 @@ public class StageManager : MonoBehaviour
         CombatEvents.SpawnParty();
         Camera.main!.GetComponentInChildren<Image>().sprite = _currentPath.Info.combatBackground;
         _currentPath.EnemySpawner.Spawn(IsPathCleared() ? -1 : gameProgress.currentStage);
+        CombatEvents.PublishStageNumber(gameProgress.currentStage + 1, _currentPath.Info.length);
         Invoke(nameof(ActivateStatusHubs), 2);
         Invoke(nameof(StartCombat), 3);
     }

@@ -29,10 +29,17 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public GameObject tooltipBox;
     public GameObject glow;
 
+    private bool _inCombat = true; 
     private const int NumberOfIconsInFirstRow = 8;
     [CanBeNull] private CombatantEvents _combatantEvents;
     private readonly List<ConditionIcon> _conditions = new List<ConditionIcon>();
-    
+
+    private void Start()
+    {
+        CombatEvents.OnWin += CombatEnded;
+        CombatEvents.OnLose += CombatEnded;
+    }
+
     private static Vector3 GetConditionIconLocation(int index)
     {
         return index < NumberOfIconsInFirstRow ? new Vector3(-0.9f + 0.3f * index, 0f, 0) : 
@@ -62,6 +69,11 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             inst.transform.localPosition = GetConditionIconLocation(_conditions.Count);
             _conditions.Add(new ConditionIcon(inst, conditionId));
         }
+    }
+
+    private void CombatEnded()
+    {
+        _inCombat = false;
     }
 
     private void ModifyBars(StatType stat, int delta, bool percentage)
@@ -110,6 +122,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!_inCombat) return;
         foreach (var hoveredGo in eventData.hovered)
         {
             if (hoveredGo.TryGetComponent<Condition>(out var condition))
@@ -136,5 +149,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             _combatantEvents.OnEndTurn -= StopGlow;
         }
         CombatEvents.OnStartTurn -= StartGlow;
+        CombatEvents.OnWin -= CombatEnded;
+        CombatEvents.OnLose -= CombatEnded;
     }
 }
