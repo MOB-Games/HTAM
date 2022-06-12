@@ -71,6 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db2448baae2546438177bbab44b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  length: 5
   combatBackground: {fileID: 21300000, guid: 20531cc0fe95290428d93890239a33f4, type: 3}
   townInfo:
     signpost: 'This path is the territory of the Golden Wolf Pack.
@@ -87,8 +88,8 @@ MonoBehaviour:
       statIncrement: 2
       statDecrement: 1
       price: 10
-      maxDamage: 0
-      minEnergyEfficiency: 0
-      maxEnergyEfficiency: 0
-      maxDefence: 0
-      maxSpeed: 0
+      maxDamage: 15
+      minEnergyEfficiency: -6
+      maxEnergyEfficiency: 6
+      maxDefence: 15
+      maxSpeed: 15

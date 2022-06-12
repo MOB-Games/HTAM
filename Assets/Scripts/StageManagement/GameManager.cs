@@ -1,7 +1,9 @@
+using Core.DataTypes;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public IntegerVariable gold;
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -17,10 +19,11 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CombatEvents.OnCombatantAdded += AddCombatant;
+        TownEvents.OnGoldSpent += GoldSpent;
         Invoke(nameof(LoadScene), 0.5f);
         Invoke(nameof(OpenLoadingScreen), 1);
     }
-    
+
     private void LoadScene()
     {
         GameEvents.LoadStage();
@@ -41,9 +44,15 @@ public class GameManager : MonoBehaviour
         CombatantInfo.Reset();
     }
 
+    private void GoldSpent(int amount)
+    {
+        gold.value -= amount;
+    }
+
     private void OnDestroy()
     {
         CombatEvents.OnCombatantAdded -= AddCombatant;
+        TownEvents.OnGoldSpent -= GoldSpent;
         EndCombat();
     }
 }

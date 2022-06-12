@@ -9,7 +9,6 @@ public class CharacterTownInfo
     public readonly Sprite Sprite;
     public readonly IntegerVariable Level;
     public readonly IntegerVariable Exp;
-    public readonly IntegerVariable Gold;
 
     public CharacterTownInfo(GameObject characterPrefab)
     {
@@ -18,7 +17,6 @@ public class CharacterTownInfo
         Stats = state.stats;
         Level = state.level;
         Exp = state.exp;
-        Gold = state.gold;
         Sprite = characterPrefab.GetComponent<SpriteRenderer>().sprite;
     }
 }

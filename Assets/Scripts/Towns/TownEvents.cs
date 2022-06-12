@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 public static class TownEvents
 {
@@ -15,6 +14,7 @@ public static class TownEvents
     public static event Action OnOpenBlacksmith;
     public static event Action OnCloseBlacksmith;
     public static event Action<CharacterTownInfo> OnCharacterSelected;
+    public static event Action<int> OnGoldSpent;
    
     public static void PublishTownInfo(TownInfo townInfo, bool pathCleared, string previousPathSignpost)
     {
@@ -69,5 +69,10 @@ public static class TownEvents
     public static void CharacterSelected(CharacterTownInfo characterTownInfo)
     {
         OnCharacterSelected?.Invoke(characterTownInfo);
+    }
+    
+    public static void GoldSpent(int amount)
+    {
+        OnGoldSpent?.Invoke(amount);
     }
 }

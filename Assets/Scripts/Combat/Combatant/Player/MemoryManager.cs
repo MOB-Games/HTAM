@@ -21,7 +21,7 @@ public class MemoryManager : MonoBehaviour
     private void LootDrop(Drop drop)
     {
         state.exp.value += drop.Exp;
-        state.gold.value += drop.Gold;
+        GameManager.Instance.gold.value += drop.Gold;
     }
 
     private void OnDestroy()

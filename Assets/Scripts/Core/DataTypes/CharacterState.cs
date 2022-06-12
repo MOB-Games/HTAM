@@ -17,7 +17,6 @@ namespace Core.DataTypes
     {
         public IntegerVariable level;
         public IntegerVariable exp;
-        public IntegerVariable gold;
         // inventory
         public StatBlockSO stats;
 
@@ -34,7 +33,6 @@ namespace Core.DataTypes
             stats.Init();
             conditions.Clear();
             level.value = 0;
-            gold.value = 0;
             exp.value = 0;
         }
     }

@@ -9,12 +9,19 @@ public class BlacksmithManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public GameObject blacksmithScreen;
     public GameObject toolTip;
     public GameObject characterButton;
+    public TextMeshProUGUI priceText;
 
     private bool _open = false;
     
     private void Start()
     {
         TownEvents.OnLoadedCharacters += SetUpSelectButtons;
+        TownEvents.OnPublishTownInfo += DisplayPrice;
+    }
+
+    private void DisplayPrice(TownInfo townInfo, bool _, string __)
+    {
+        priceText.text = $"Price: {townInfo.blacksmithInfo.price.ToString()}";
     }
 
     private void SetUpSelectButtons(List<CharacterTownInfo> characterTownInfos)
@@ -63,5 +70,6 @@ public class BlacksmithManager : MonoBehaviour, IPointerEnterHandler, IPointerEx
     private void OnDestroy()
     {
         TownEvents.OnLoadedCharacters -= SetUpSelectButtons;
+        TownEvents.OnPublishTownInfo -= DisplayPrice;
     }
 }

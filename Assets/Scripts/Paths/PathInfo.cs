@@ -1,5 +1,3 @@
-using System;
-using System.Data;
 using UnityEngine;
 
 public class PathInfo : MonoBehaviour

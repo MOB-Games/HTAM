@@ -12,6 +12,7 @@ public class DataInitializer : MonoBehaviour
     public void InitializeData()
     {
         gameProgress.Init();
+        GameManager.Instance.gold.value = 0;
         foreach (var characterState in characterDB.characterStates)
         {
             characterState.Init();

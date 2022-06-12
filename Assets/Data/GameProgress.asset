@@ -15,4 +15,4 @@ MonoBehaviour:
   currentPath: 0
   currentStage: -1
   lastTown: 0
-  maxClearedPath: 1
+  maxClearedPath: 0
