@@ -13,7 +13,7 @@ public class TownPresenter : MonoBehaviour
         TownEvents.OnPublishTownInfo += DisplayTown;
     }
 
-    private void DisplayTown(TownInfo info, string signpostLeft)
+    private void DisplayTown(TownInfo info, bool _, string signpostLeft)
     {
         Camera.main!.GetComponentInChildren<Image>().sprite = info.townBackground;
         inn.GetComponent<Image>().sprite = info.innSprite;

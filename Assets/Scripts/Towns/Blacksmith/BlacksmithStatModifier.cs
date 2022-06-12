@@ -19,7 +19,7 @@ public class BlacksmithStatModifier : MonoBehaviour
         TownEvents.OnCloseBlacksmith += UnregisterForSelectedCharacter;
     }
 
-    private void RegisterBlacksmithInfo(TownInfo townInfo, string _)
+    private void RegisterBlacksmithInfo(TownInfo townInfo, bool _, string __)
     {
         _blacksmithInfo = townInfo.blacksmithInfo;
     }

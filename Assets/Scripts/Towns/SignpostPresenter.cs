@@ -15,7 +15,7 @@ public class SignpostPresenter : MonoBehaviour
         TownEvents.OnPublishTownInfo += Setup;
     }
 
-    private void Setup(TownInfo townInfo, string previousPathSignpost)
+    private void Setup(TownInfo townInfo, bool pathCleared, string previousPathSignpost)
     {
         if (string.IsNullOrEmpty(previousPathSignpost))
             signpostLeft.SetActive(false);
@@ -24,7 +24,7 @@ public class SignpostPresenter : MonoBehaviour
             _signpostLeftText = previousPathSignpost;
             signpostLeft.GetComponent<Button>().onClick.AddListener((() => DisplaySignpost(_signpostLeftText)));
         }
-        _signpostRightText = townInfo.signpost;
+        _signpostRightText = pathCleared ? townInfo.signpostCleared : townInfo.signpost;
         signpostRight.GetComponent<Button>().onClick.AddListener((() => DisplaySignpost(_signpostRightText)));
         signpostBackground.GetComponentInChildren<Button>().onClick.AddListener((CloseSignpost));
     }

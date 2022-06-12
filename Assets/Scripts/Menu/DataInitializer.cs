@@ -14,8 +14,7 @@ public class DataInitializer : MonoBehaviour
         gameProgress.Init();
         foreach (var characterState in characterDB.characterStates)
         {
-            characterState.stats.Init();
-            characterState.conditions.Clear();
+            characterState.Init();
         }
     }
 }

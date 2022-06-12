@@ -7,16 +7,13 @@ namespace Core.DataTypes
     {
         public int currentPath;
         public int currentStage;
-        public int previousPath;
-        public int previousStage;
-
-        public int maxPath;
-        public int maxStage;
+        public int lastTown;
+        public int maxClearedPath;
 
         public void Init()
         {
-            maxPath = currentPath = previousPath = 0;
-            maxStage = currentStage = previousStage =-1;
+            maxClearedPath = currentPath = lastTown = 0;
+            currentStage =-1;
         }
     }
 }

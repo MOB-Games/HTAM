@@ -13,30 +13,26 @@ public class StageManager : MonoBehaviour
     private void Start()
     {
         GameEvents.OnLoadStage += LoadStage;
-        CombatEvents.OnWin += StageCleared;
         var currentPathGo = pathList.pathPrefabs[gameProgress.currentPath];
         _currentPath = new Path(currentPathGo.GetComponent<PathInfo>(), currentPathGo.GetComponent<EnemySpawner>());
-        Debug.Log(_currentPath.Info.Length());
-    }
-
-    private void RecordPreviousGameProgress()
-    {
-        gameProgress.previousPath = gameProgress.currentPath;
-        gameProgress.previousStage = gameProgress.currentStage;
     }
 
     public void NextStage()
     {
-        RecordPreviousGameProgress();
-        gameProgress.currentStage++;
-        if (gameProgress.currentStage >= _currentPath.Info.Length())
+        if (gameProgress.currentPath < gameProgress.lastTown) // return to last town
         {
             gameProgress.currentPath++;
-            gameProgress.currentStage = -1; // -1 will mean a town
-            if (gameProgress.currentPath > gameProgress.maxPath)
+            gameProgress.currentStage = -1;
+        }
+        else
+        {
+            gameProgress.currentStage++;
+            if (gameProgress.currentStage >= _currentPath.Info.Length())
             {
-                gameProgress.maxPath = gameProgress.currentPath;
-                gameProgress.maxStage = -1;
+                if (gameProgress.currentPath > gameProgress.maxClearedPath)
+                    gameProgress.maxClearedPath++;
+                gameProgress.currentPath++;
+                gameProgress.currentStage = -1; // -1 will mean a town
             }
         }
 
@@ -45,26 +41,26 @@ public class StageManager : MonoBehaviour
 
     public void PreviousStage()
     {
-        RecordPreviousGameProgress();
-        gameProgress.currentStage--;
-        if (gameProgress.currentStage < -1)
+        if (gameProgress.currentPath == gameProgress.lastTown) // return to last town
         {
-            gameProgress.currentPath--;
-            gameProgress.currentStage = _currentPath.Info.Length() - 1;
+            gameProgress.currentStage = -1;
+            gameProgress.lastTown++; // so that mirror will be true
+        }
+        else
+        {
+            gameProgress.currentStage--;
+            if (gameProgress.currentStage < -1)
+            {
+                gameProgress.currentPath--;
+                gameProgress.currentStage = _currentPath.Info.Length() - 1;
+            }
         }
         LoadScene();
     }
 
-    private void StageCleared()
+    private bool IsPathCleared()
     {
-        if (gameProgress.currentPath == gameProgress.maxPath && gameProgress.currentStage > gameProgress.maxStage)
-            gameProgress.maxStage = gameProgress.currentStage;
-    }
-
-    private bool IsStageCleared()
-    {
-        return gameProgress.maxPath > gameProgress.currentPath ||
-                (gameProgress.maxPath == gameProgress.currentPath && gameProgress.maxStage >= gameProgress.currentStage);
+        return gameProgress.maxClearedPath > gameProgress.currentPath;
     }
 
     public void ActivateStatusHubs()
@@ -81,7 +77,7 @@ public class StageManager : MonoBehaviour
     {
         CombatEvents.SpawnParty();
         Camera.main!.GetComponentInChildren<Image>().sprite = _currentPath.Info.combatBackground;
-        _currentPath.EnemySpawner.Spawn(IsStageCleared() ? -1 : gameProgress.currentStage);
+        _currentPath.EnemySpawner.Spawn(IsPathCleared() ? -1 : gameProgress.currentStage);
         Invoke(nameof(ActivateStatusHubs), 2);
         Invoke(nameof(StartCombat), 3);
     }
@@ -93,17 +89,16 @@ public class StageManager : MonoBehaviour
 
     private void LoadTownStage()
     {
+        gameProgress.lastTown = gameProgress.currentPath;
         var prevTownSignpost = AtFirstPath() ? 
             "" : 
-            pathList.pathPrefabs[gameProgress.currentPath - 1].GetComponent<PathInfo>().townInfo.signpost;
-        TownEvents.PublishTownInfo(_currentPath.Info.townInfo, prevTownSignpost);
+            pathList.pathPrefabs[gameProgress.currentPath - 1].GetComponent<PathInfo>().townInfo.signpostCleared;
+        TownEvents.PublishTownInfo(_currentPath.Info.townInfo, IsPathCleared(), prevTownSignpost);
     }
 
     private void LoadStage()
     {
-        CombatantInfo.Mirror = gameProgress.previousPath > gameProgress.currentPath ||
-                               gameProgress.previousPath == gameProgress.currentPath &&
-                               gameProgress.previousStage > gameProgress.currentStage;
+        CombatantInfo.Mirror = gameProgress.currentPath < gameProgress.lastTown;
         if (gameProgress.currentStage == -1)
             LoadTownStage();
         else
@@ -118,6 +113,5 @@ public class StageManager : MonoBehaviour
     private void OnDestroy()
     {
         GameEvents.OnLoadStage -= LoadStage;
-        CombatEvents.OnWin -= StageCleared;
     }
 }

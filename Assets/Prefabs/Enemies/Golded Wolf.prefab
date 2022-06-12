@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 7726764361994183940}
   - component: {fileID: 6580720188609057905}
   m_Layer: 0
-  m_Name: GoldedWolf
+  m_Name: Golded Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

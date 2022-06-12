@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class TownEvents
 {
-    public static event Action<TownInfo, string> OnPublishTownInfo;
+    public static event Action<TownInfo, bool, string> OnPublishTownInfo;
     public static event Action<List<CharacterTownInfo>> OnLoadedCharacters;
     public static event Action OnOpenSignpost;
     public static event Action OnCloseSignpost;
@@ -16,9 +16,9 @@ public static class TownEvents
     public static event Action OnCloseBlacksmith;
     public static event Action<CharacterTownInfo> OnCharacterSelected;
    
-    public static void PublishTownInfo(TownInfo townInfo, string previousPathSignpost)
+    public static void PublishTownInfo(TownInfo townInfo, bool pathCleared, string previousPathSignpost)
     {
-        OnPublishTownInfo?.Invoke(townInfo, previousPathSignpost);
+        OnPublishTownInfo?.Invoke(townInfo, pathCleared, previousPathSignpost);
     }
     
     public static void LoadedCharacters(List<CharacterTownInfo> characterTownInfos)

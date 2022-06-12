@@ -28,5 +28,14 @@ namespace Core.DataTypes
         public List<SkillWithLevel> activeDefensiveSkills;
         
         // skill tree - should have all skills and their level, level -1 will signify locked skills. 
+
+        public void Init()
+        {
+            stats.Init();
+            conditions.Clear();
+            level.value = 0;
+            gold.value = 0;
+            exp.value = 0;
+        }
     }
 }

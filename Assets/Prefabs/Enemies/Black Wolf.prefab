@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 2447912989255569191}
   - component: {fileID: 6580720188609057905}
   m_Layer: 0
-  m_Name: BlackWolf
+  m_Name: Black Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

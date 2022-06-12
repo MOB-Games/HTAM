@@ -14,7 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPath: 0
   currentStage: -1
-  previousPath: 0
-  previousStage: -1
-  maxPath: 0
-  maxStage: -1
+  lastTown: 0
+  maxClearedPath: 1
