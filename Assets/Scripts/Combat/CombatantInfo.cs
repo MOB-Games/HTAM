@@ -39,7 +39,7 @@ public static class CombatantInfo
     {
         var id = combatant.GetComponent<CombatId>().id;
         var stats = combatant.GetComponent<StatModifier>().stats;
-        var size = combatant.GetComponent<Renderer>().bounds.size;
+        var size = combatant.GetComponent<BoxCollider2D>().bounds.size;
         CombatantsStats.Add(id, stats);
         CombatantsDimensions.Add(id, new Dimensions(size));
     }

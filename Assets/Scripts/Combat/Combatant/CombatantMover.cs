@@ -12,7 +12,7 @@ public class CombatantMover : MonoBehaviour
     private void Start()
     {
         _id = GetComponent<CombatId>().id;
-        var bounds = GetComponent<SpriteRenderer>().bounds;
+        var bounds = GetComponent<BoxCollider2D>().bounds;
         var referencePoint = CombatantInfo.GetLocation(_id).x < 0 ? bounds.min : new Vector3(bounds.max.x, bounds.min.y, 0);
         _deviation = transform.position - referencePoint; 
         _combatantEvents = GetComponent<CombatantEvents>();
