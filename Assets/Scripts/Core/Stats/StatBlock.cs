@@ -11,7 +11,7 @@ namespace Core.Stats
         public Stat energy;
         public Stat energyEfficiency;
         public Stat damage;
-        public Stat defense;
+        public Stat defence;
         public Stat speed;
         
         public int GetStatValue(StatType stat)
@@ -22,8 +22,9 @@ namespace Core.Stats
                 StatType.Energy => energy.value,
                 StatType.EnergyEfficiency => energyEfficiency.value,
                 StatType.Damage => damage.value,
-                StatType.Defense => defense.value,
+                StatType.Defence => defence.value,
                 StatType.Speed => speed.value,
+                StatType.None => 0,
                 _ => throw new ArgumentOutOfRangeException(nameof(stat), stat, null)
             };
         }

@@ -12,7 +12,7 @@ namespace Core.SkillsAndConditions
     public class StatsForSkill
     {
         public StatType attackStat;
-        public StatType defenseStat;
+        public StatType defenceStat;
         public StatType affectedStat;
     }
 
@@ -27,7 +27,7 @@ namespace Core.SkillsAndConditions
         // variables for calculating effect of skill
         public int baseEffectValue;
         public double attackMultiplier;
-        public double defenseMultiplier;
+        public double defenceMultiplier;
         
         [Range(0,100)]
         public int chanceToInflict;
@@ -57,13 +57,13 @@ namespace Core.SkillsAndConditions
         private void OnValidate()
         {
             if (targetType != TargetType.Single && melee)
-                throw new ConstraintException("A skill cannot be melee if it targets more than 1 target");
+                throw new ConstraintException($"{name}: Skill cannot be melee if it targets more than 1 target");
             if (parametersPerLevel.Count == 0)
-                throw new ConstraintException("A skill must have at least 1 level");
+                throw new ConstraintException($"{name}: Skill must have at least 1 level");
             if (parametersPerLevel.Exists(p => p.chanceToInflict > 0) && conditionGo == null)
-                throw new ConstraintException("Skill can't have a chance to inflict but not have a condition to inflict");
+                throw new ConstraintException($"{name}: Skill can't have a chance to inflict but not have a condition to inflict");
             if (energyCost > 0 && hpCost > 0)
-                throw new ConstraintException("Skill can't cost both energy and hp");
+                throw new ConstraintException($"{name}: Skill can't cost both energy and hp");
         }
 
         private void Start()
@@ -98,7 +98,7 @@ namespace Core.SkillsAndConditions
 
             var delta = parametersPerLevel[level].baseEffectValue +
                         parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(statsForSkill.attackStat) +
-                        parametersPerLevel[level].defenseMultiplier * defenderStats.GetStatValue(statsForSkill.defenseStat);
+                        parametersPerLevel[level].defenceMultiplier * defenderStats.GetStatValue(statsForSkill.defenceStat);
             if (offensive)
             {
                 if (delta >= 0)

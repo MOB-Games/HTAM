@@ -48,6 +48,11 @@ public class GameManager : MonoBehaviour
     {
         gold.value -= amount;
     }
+    
+    public static int CalculateStatDelta(int baseDelta, bool percentageBased, int statBaseValue, int efficiency = 0)
+    {
+        return percentageBased ? (baseDelta / 100) * statBaseValue : baseDelta - efficiency;
+    }
 
     private void OnDestroy()
     {

@@ -1,4 +1,5 @@
 using Core.DataTypes;
+using Core.Enums;
 using Core.Stats;
 using TMPro;
 using UnityEngine;
@@ -42,6 +43,17 @@ public class BlacksmithStatModifier : MonoBehaviour
         TownEvents.OnCharacterSelected += CharacterSelected;
     }
 
+    private void CharacterSelected(CharacterTownInfo characterTownInfo)
+    {
+        _selectedCharacterTownInfo = characterTownInfo;
+        UpdateActiveButtons();
+    }
+    
+    private void UnregisterForSelectedCharacter()
+    {
+        TownEvents.OnCharacterSelected -= CharacterSelected;
+    }
+
     private bool UpdateActiveButtonsByPrice()
     {
         if (_gold.value < _blacksmithInfo.price)
@@ -71,54 +83,52 @@ public class BlacksmithStatModifier : MonoBehaviour
             armorStripDownButton.interactable = false;
             return;
         }
+
+        var stats = _selectedCharacterTownInfo.Stats;
+        var dec = _blacksmithInfo.GetDecrement();
+        var inc = _blacksmithInfo.GetIncrement(StatType.Damage, stats.advantage, stats.disadvantage);
         weaponBulkUpButton.interactable =
-            _selectedCharacterTownInfo.Stats.damage.value + _blacksmithInfo.statIncrement <=
-            _blacksmithInfo.maxDamage &&
-            _selectedCharacterTownInfo.Stats.energyEfficiency.value - _blacksmithInfo.statDecrement >=
-            _blacksmithInfo.minEnergyEfficiency;
+            stats.damage.value + inc <= _blacksmithInfo.maxDamage &&
+            stats.energyEfficiency.value - dec >= _blacksmithInfo.minEnergyEfficiency;
         _weaponBulkUpText.text = weaponBulkUpButton.interactable ? "BULK-UP" : "Maxed";
+        
+        inc = _blacksmithInfo.GetIncrement(StatType.EnergyEfficiency, stats.advantage, stats.disadvantage);
         weaponStripDownButton.interactable = 
-            _selectedCharacterTownInfo.Stats.energyEfficiency.value + _blacksmithInfo.statIncrement <=
-            _blacksmithInfo.maxEnergyEfficiency
-            && _selectedCharacterTownInfo.Stats.damage.value - _blacksmithInfo.statDecrement >= 0;
+            stats.energyEfficiency.value + inc <= _blacksmithInfo.maxEnergyEfficiency && stats.damage.value - dec >= 0;
         _weaponStripDownText.text = weaponStripDownButton.interactable ? "strip-down" : "Maxed";
+        
+        
+        inc = _blacksmithInfo.GetIncrement(StatType.Defence, stats.advantage, stats.disadvantage);
         armorBulkUpButton.interactable =
-            _selectedCharacterTownInfo.Stats.defense.value + _blacksmithInfo.statIncrement <= _blacksmithInfo.maxDefence
-            && _selectedCharacterTownInfo.Stats.speed.value - _blacksmithInfo.statDecrement >= 0;
+            stats.defence.value + inc <= _blacksmithInfo.maxDefence && stats.speed.value - dec >= 0;
         _armorBulkUpText.text = armorBulkUpButton.interactable ? "BULK-UP" : "Maxed";
+        
+        
+        inc = _blacksmithInfo.GetIncrement(StatType.Speed, stats.advantage, stats.disadvantage);
         armorStripDownButton.interactable =
-            _selectedCharacterTownInfo.Stats.speed.value + _blacksmithInfo.statIncrement <= _blacksmithInfo.maxSpeed
-            && _selectedCharacterTownInfo.Stats.defense.value - _blacksmithInfo.statDecrement >= 0;
+            stats.speed.value + inc <= _blacksmithInfo.maxSpeed && stats.defence.value - dec >= 0;
         _armorStripDownText.text = armorStripDownButton.interactable ? "strip-down" : "Maxed";
     }
 
-    private void CharacterSelected(CharacterTownInfo characterTownInfo)
+    private void IncStat(StatType statType, StatSO stat)
     {
-        _selectedCharacterTownInfo = characterTownInfo;
-        UpdateActiveButtons();
-    }
-    
-    private void UnregisterForSelectedCharacter()
-    {
-        TownEvents.OnCharacterSelected -= CharacterSelected;
-    }
-
-    private void IncStat(StatSO stat)
-    {
-        stat.value += _blacksmithInfo.statIncrement;
-        stat.baseValue += _blacksmithInfo.statIncrement;
+        var stats = _selectedCharacterTownInfo.Stats;
+        var inc = _blacksmithInfo.GetIncrement(statType, stats.advantage, stats.disadvantage);
+        stat.value += inc;
+        stat.baseValue += inc;
     }
     
     private void DecStat(StatSO stat)
     {
-        stat.value -= _blacksmithInfo.statDecrement;
-        stat.baseValue -= _blacksmithInfo.statDecrement;
+        var dec = _blacksmithInfo.GetDecrement();
+        stat.value -= dec;
+        stat.baseValue -= dec;
     }
 
-    private void ModifyStats(StatSO statToInc, StatSO statToDec)
+    private void ModifyStats(StatType statToIncType, StatSO statToInc, StatSO statToDec)
     {
         TownEvents.GoldSpent(_blacksmithInfo.price);
-        IncStat(statToInc);
+        IncStat(statToIncType, statToInc);
         DecStat(statToDec);
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }
@@ -126,25 +136,25 @@ public class BlacksmithStatModifier : MonoBehaviour
     public void BulkUpWeapon()
     {
         var stats = _selectedCharacterTownInfo.Stats;
-        ModifyStats(stats.damage, stats.energyEfficiency);
+        ModifyStats(StatType.Damage,stats.damage, stats.energyEfficiency);
     }
 
     public void StripDownWeapon()
     {
         var stats = _selectedCharacterTownInfo.Stats;
-        ModifyStats(stats.energyEfficiency, stats.damage);
+        ModifyStats(StatType.EnergyEfficiency,stats.energyEfficiency, stats.damage);
     }
     
     public void BulkUpArmor()
     {
         var stats = _selectedCharacterTownInfo.Stats;
-        ModifyStats(stats.defense, stats.speed);
+        ModifyStats(StatType.Defence,stats.defence, stats.speed);
     }
 
     public void StripDownArmor()
     {
         var stats = _selectedCharacterTownInfo.Stats;
-        ModifyStats(stats.speed, stats.defense);
+        ModifyStats(StatType.Speed,stats.speed, stats.defence);
     }
 
     private void OnDestroy()

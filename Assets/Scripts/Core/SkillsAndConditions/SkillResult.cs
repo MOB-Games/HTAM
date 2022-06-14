@@ -21,7 +21,7 @@ namespace Core.SkillsAndConditions
             Hit = false;
             AnimateAttacked = false;
             IsPercentBased = false;
-            AffectedStat = StatType.Hp;
+            AffectedStat = StatType.None;
             Delta = 0;
             Level = 0;
         }

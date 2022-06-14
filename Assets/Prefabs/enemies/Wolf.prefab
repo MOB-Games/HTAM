@@ -268,8 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     hp:
-      baseValue: 7
-      value: 7
+      baseValue: 10
+      value: 10
     energy:
       baseValue: 1
       value: 1

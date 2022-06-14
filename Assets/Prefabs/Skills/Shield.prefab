@@ -146,7 +146,7 @@ MonoBehaviour:
   targetType: 0
   skillAnimation: 2
   statsForSkill:
-    attackStat: 0
+    attackStat: 6
     defenseStat: 0
     affectedStat: 0
   parametersPerLevel:

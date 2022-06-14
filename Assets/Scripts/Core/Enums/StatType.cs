@@ -6,7 +6,8 @@ namespace Core.Enums
         Energy = 1,
         EnergyEfficiency = 2,
         Damage = 3,
-        Defense = 4,
-        Speed = 5
+        Defence = 4,
+        Speed = 5,
+        None = 6,
     }    
 }

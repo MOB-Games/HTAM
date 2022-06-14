@@ -19,7 +19,7 @@ public class StatModifier : MonoBehaviour
         switch (affectedStat)
         {
             case StatType.Hp:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.hp.baseValue);
+                delta = GameManager.CalculateStatDelta(delta, percentage, stats.hp.baseValue);
                 stats.hp.value += delta;
                 if (stats.hp.value <= 0)
                 {
@@ -30,7 +30,7 @@ public class StatModifier : MonoBehaviour
                     stats.hp.value = stats.hp.baseValue;
                 break;
             case StatType.Energy:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.energy.baseValue, stats.energyEfficiency.value);
+                delta = GameManager.CalculateStatDelta(delta, percentage, stats.energy.baseValue, stats.energyEfficiency.value);
                 stats.energy.value += delta;
                 if (stats.energy.value <= 0)
                     stats.energy.value = 0;
@@ -38,7 +38,7 @@ public class StatModifier : MonoBehaviour
                     stats.energy.value = stats.energy.baseValue;
                 break;
             case StatType.EnergyEfficiency:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.energyEfficiency.baseValue);
+                delta = GameManager.CalculateStatDelta(delta, percentage, stats.energyEfficiency.baseValue);
                 stats.energyEfficiency.value += delta;
                 if (stats.energyEfficiency.value <= 0)
                     stats.energyEfficiency.value = 0;
@@ -46,23 +46,25 @@ public class StatModifier : MonoBehaviour
                     stats.energyEfficiency.value = stats.energyEfficiency.baseValue;
                 break;
             case StatType.Damage:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.damage.baseValue);
+                delta = GameManager.CalculateStatDelta(delta, percentage, stats.damage.baseValue);
                 stats.damage.value += delta;
                 if (stats.damage.value <= 0)
                     stats.damage.value = 0;
                 break;
-            case StatType.Defense:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.defense.baseValue);
-                stats.defense.value += delta;
-                if (stats.defense.value <= 0)
-                    stats.defense.value = 0;
+            case StatType.Defence:
+                delta = GameManager.CalculateStatDelta(delta, percentage, stats.defence.baseValue);
+                stats.defence.value += delta;
+                if (stats.defence.value <= 0)
+                    stats.defence.value = 0;
                 break;
             case StatType.Speed:
-                delta = ChangeCalculator.Calculate(delta, percentage, stats.speed.baseValue);
+                delta = GameManager.CalculateStatDelta(delta, percentage, stats.speed.baseValue);
                 stats.speed.value += delta;
                 if (stats.speed.value <= 0)
                     stats.speed.value = 0;
                 break;
+            case StatType.None:
+                return;
             default:
                 throw new ArgumentOutOfRangeException(nameof(affectedStat), affectedStat, null);
         }
