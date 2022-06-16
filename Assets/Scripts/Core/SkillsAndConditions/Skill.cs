@@ -91,14 +91,15 @@ namespace Core.SkillsAndConditions
                     $"Tried to use skill {id} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
             var attackerStats = CombatantInfo.GetStatBlock(attackerId);
             var defenderStats = CombatantInfo.GetStatBlock(defenderId);
-            var chanceToHit = parametersPerLevel[level].baseHitChance + parametersPerLevel[level].hitMultiplier * attackerStats.speed.value -
+            var chanceToHit = parametersPerLevel[level].baseHitChance + parametersPerLevel[level].hitMultiplier * attackerStats.speed.value +
                               parametersPerLevel[level].missMultiplier * defenderStats.speed.value;
             if (Random.Range(0, 100) > chanceToHit)
                 return new SkillResult();
-
+            
             var delta = parametersPerLevel[level].baseEffectValue +
                         parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(statsForSkill.attackStat) +
                         parametersPerLevel[level].defenceMultiplier * defenderStats.GetStatValue(statsForSkill.defenceStat);
+            
             if (offensive)
             {
                 if (delta >= 0)

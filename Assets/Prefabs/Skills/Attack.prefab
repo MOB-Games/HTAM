@@ -148,15 +148,15 @@ MonoBehaviour:
   skillAnimation: 0
   statsForSkill:
     attackStat: 3
-    defenseStat: 4
+    defenceStat: 4
     affectedStat: 0
   parametersPerLevel:
   - baseHitChance: 90
     hitMultiplier: 1
-    missMultiplier: 1
+    missMultiplier: -1
     baseEffectValue: 0
     attackMultiplier: -1
-    defenseMultiplier: 1
+    defenceMultiplier: 1
     chanceToInflict: 0
   visualEffect: {fileID: 0}
   conditionGo: {fileID: 0}
