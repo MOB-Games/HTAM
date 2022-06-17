@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         CombatEvents.OnCombatantAdded += AddCombatant;
         TownEvents.OnGoldSpent += GoldSpent;
+        CombatEvents.OnFinalDrop += LootGold;
         Invoke(nameof(LoadScene), 0.5f);
         Invoke(nameof(OpenLoadingScreen), 1);
     }
@@ -49,6 +50,11 @@ public class GameManager : MonoBehaviour
     {
         gold.value -= amount;
     }
+
+    private void LootGold(Drop drop)
+    {
+        gold.value += drop.Gold;
+    }
     
     public static int CalculateStatDelta(int baseDelta, bool percentageBased, int statBaseValue, int efficiency = 0)
     {
@@ -66,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         CombatEvents.OnCombatantAdded -= AddCombatant;
         TownEvents.OnGoldSpent -= GoldSpent;
+        CombatEvents.OnFinalDrop -= LootGold;
         EndCombat();
     }
 }

@@ -23,9 +23,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         new Vector3(0.5f,1.5f,0),
         new Vector3(0.5f,-1.5f,0),
         new Vector3(-0.25f,1.5f,0),
-        new Vector3(-0.25f,-1.5f,0),
-        new Vector3(-1f,1.5f,0),
-        new Vector3(-1f,-1.5f,0)
+        new Vector3(-0.25f,-1.5f,0)
     };
     private void Start()
     {
@@ -49,6 +47,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         var hp = statBlock.hp;
         foreach (var (skillWithLevel, index) in skillsWithLevels.Select((skillWithLevel, i) => (skillWithLevel, i)))
         {
+            if (skillWithLevel.skillGo == null) continue;
             var inst = Instantiate(skillWithLevel.skillGo,
                 targetLocation + Vector3.Scale(_buttonOffsets[index], offsetDirectionVector),
                 Quaternion.identity, skillMenu.transform);

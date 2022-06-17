@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2689c99e47bbe43b39460e27166c65, type: 3}
   m_Name: FighterState
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: 95bf0d1b5d43f1a44910e148156f8806, type: 2}
-  exp: {fileID: 11400000, guid: f6ba2fb08a2fee245b44f03c05ca7231, type: 2}
+  level: 0
+  exp: 0
   stats: {fileID: 11400000, guid: cf22ff9e89b2b1f428b52e92a3fc27be, type: 2}
   conditions: []
+  initialNumOffensiveSkillsSlots: 4
+  numOffensiveSkillsSlots: 4
   activeOffensiveSkills:
   - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
       type: 3}
@@ -23,4 +25,6 @@ MonoBehaviour:
   - skillGo: {fileID: 4003426218498401328, guid: ee4e86305d6d43c449ebf2f9ec6fa8a6,
       type: 3}
     level: 0
+  initialNumDefensiveSkillsSlots: 2
+  numDefensiveSkillsSlots: 2
   activeDefensiveSkills: []
