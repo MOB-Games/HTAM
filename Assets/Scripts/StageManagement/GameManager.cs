@@ -1,3 +1,4 @@
+using System.Collections;
 using Core.DataTypes;
 using UnityEngine;
 
@@ -52,6 +53,13 @@ public class GameManager : MonoBehaviour
     public static int CalculateStatDelta(int baseDelta, bool percentageBased, int statBaseValue, int efficiency = 0)
     {
         return percentageBased ? (baseDelta / 100) * statBaseValue : baseDelta - efficiency;
+    }
+    
+    public static IEnumerator PlayVisualEffect(GameObject visualEffect, Vector3 location)
+    {
+        var inst = Instantiate(visualEffect, location, Quaternion.identity);
+        yield return new WaitForSeconds(1f);
+        Destroy(inst);
     }
 
     private void OnDestroy()

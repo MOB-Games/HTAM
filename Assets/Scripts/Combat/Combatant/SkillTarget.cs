@@ -6,12 +6,19 @@ public class SkillTarget : MonoBehaviour
 {
     private CombatantId _id;
     private CombatantEvents _combatantEvents;
-    
+    private Vector3 _center;
+
     private void Start()
     {
         _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
         CombatEvents.OnSkillUsed += SkillUsed;
+        CombatEvents.OnStartCombat += RegisterCenter;
+    }
+
+    private void RegisterCenter()
+    {
+        _center = GetComponent<BoxCollider2D>().bounds.center;
     }
     
     private void SkillUsed(CombatantId targetId, SkillResult result)
@@ -21,20 +28,14 @@ public class SkillTarget : MonoBehaviour
             _combatantEvents.Hurt();
         if (result.VisualEffect != null)
         {
-            StartCoroutine(PlayVisualEffect(result.VisualEffect));
+            StartCoroutine(GameManager.PlayVisualEffect(result.VisualEffect, _center));
         }
         _combatantEvents.StatChange(result.AffectedStat, result.Delta, result.IsPercentBased);
-    }
-
-    private IEnumerator PlayVisualEffect(GameObject visualEffect)
-    {
-        var inst = Instantiate(visualEffect, GetComponent<Renderer>().bounds.center, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
-        Destroy(inst);
     }
 
     private void OnDestroy()
     {
         CombatEvents.OnSkillUsed -= SkillUsed;
+        CombatEvents.OnStartCombat -= RegisterCenter;
     }
 }

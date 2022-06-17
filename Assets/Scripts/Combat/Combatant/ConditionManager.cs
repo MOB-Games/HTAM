@@ -28,6 +28,7 @@ public class ConditionManager : MonoBehaviour
     
     private CombatantId _id;
     private CombatantEvents _combatantEvents;
+    private Vector3 _center;
 
     private void Start()
     {
@@ -35,19 +36,17 @@ public class ConditionManager : MonoBehaviour
         _combatantEvents = GetComponent<CombatantEvents>();
         CombatEvents.OnSkillUsed += ConditionsChanged;
         _combatantEvents.OnEndTurn += Tick;
+        CombatEvents.OnStartCombat += RegisterCenter;
     }
     
-    private IEnumerator PlayVisualEffect(GameObject visualEffect)
+    private void RegisterCenter()
     {
-        if (visualEffect == null) yield break;
-        var inst = Instantiate(visualEffect, GetComponent<Renderer>().bounds.center, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
-        Destroy(inst);
+        _center = GetComponent<BoxCollider2D>().bounds.center;
     }
-    
+
     private void ConditionEvoked(ConditionEffect effect)
     {
-        StartCoroutine(PlayVisualEffect(effect.VisualEffect));
+        StartCoroutine(GameManager.PlayVisualEffect(effect.VisualEffect, _center));
         _combatantEvents.StatChange(effect.AffectedStat, effect.Delta, effect.IsPercentBased);
     }
 
@@ -62,7 +61,7 @@ public class ConditionManager : MonoBehaviour
     {
         if (result.ConditionRemover != null)
         {
-            StartCoroutine(PlayVisualEffect(result.ConditionRemover.visualEffect));
+            StartCoroutine(GameManager.PlayVisualEffect(result.ConditionRemover.visualEffect, _center));
             for (var i = conditions.Count - 1; i >= 0; i--)
             {
                 if (result.ConditionRemover.Removes(conditions[i]))
@@ -81,7 +80,8 @@ public class ConditionManager : MonoBehaviour
         else
         {
             conditionWithLevel.ticks = 0;
-            StartCoroutine(PlayVisualEffect(condition.GetInitialEffect(result.Level).VisualEffect));
+            StartCoroutine(GameManager.PlayVisualEffect(condition.GetInitialEffect(result.Level).VisualEffect,
+                _center));
         }
     }
 
@@ -104,5 +104,6 @@ public class ConditionManager : MonoBehaviour
     {
         CombatEvents.OnSkillUsed -= ConditionsChanged;
         _combatantEvents.OnEndTurn -= Tick;
+        CombatEvents.OnStartCombat -= RegisterCenter;
     }
 }
