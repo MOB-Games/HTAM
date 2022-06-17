@@ -51,6 +51,7 @@ namespace Core.SkillsAndConditions
         public List<SkillParameters> parametersPerLevel;
         [CanBeNull] public GameObject visualEffect;
         [CanBeNull] public GameObject conditionGo;
+        [CanBeNull] public ConditionRemover conditionRemover;
 
         [CanBeNull] private Condition _condition = null;
 
@@ -111,7 +112,7 @@ namespace Core.SkillsAndConditions
                     delta = 1; // should always help
             }
             return new SkillResult(animateAttacked, isPercentBased, statsForSkill.affectedStat, (int)delta, 
-                visualEffect, level, InflictedCondition(level));
+                visualEffect, level, InflictedCondition(level), conditionRemover);
         }
 
         private GameObject InflictedCondition(int level)

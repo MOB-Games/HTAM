@@ -33,12 +33,13 @@ public class ConditionManager : MonoBehaviour
     {
         _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
-        CombatEvents.OnSkillUsed += ConditionInflicted;
+        CombatEvents.OnSkillUsed += ConditionsChanged;
         _combatantEvents.OnEndTurn += Tick;
     }
     
     private IEnumerator PlayVisualEffect(GameObject visualEffect)
     {
+        if (visualEffect == null) yield break;
         var inst = Instantiate(visualEffect, GetComponent<Renderer>().bounds.center, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         Destroy(inst);
@@ -46,15 +47,28 @@ public class ConditionManager : MonoBehaviour
     
     private void ConditionEvoked(ConditionEffect effect)
     {
-        if (effect.VisualEffect != null)
-        {
-            StartCoroutine(PlayVisualEffect(effect.VisualEffect));
-        }
+        StartCoroutine(PlayVisualEffect(effect.VisualEffect));
         _combatantEvents.StatChange(effect.AffectedStat, effect.Delta, effect.IsPercentBased);
     }
 
-    private void ConditionInflicted(CombatantId targetId, SkillResult result)
+    private void ConditionRemoved(int index, ConditionWithLevel conditionWithLevel)
     {
+        conditions.RemoveAt(index);
+        _combatantEvents.RemoveCondition(conditionWithLevel.condition.id);
+        ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level));
+    }
+
+    private void ConditionsChanged(CombatantId targetId, SkillResult result)
+    {
+        if (result.ConditionRemover != null)
+        {
+            StartCoroutine(PlayVisualEffect(result.ConditionRemover.visualEffect));
+            for (var i = conditions.Count - 1; i >= 0; i--)
+            {
+                if (result.ConditionRemover.Removes(conditions[i]))
+                    ConditionRemoved(i, conditions[i]);
+            }
+        }
         if (targetId != _id || result.Condition == null) return;
         var condition = result.Condition.GetComponent<Condition>();
         var conditionWithLevel = conditions.Find(c => c.condition.id == condition.id);
@@ -76,14 +90,11 @@ public class ConditionManager : MonoBehaviour
         for (var i = conditions.Count - 1; i >= 0; i--)
         {
             var conditionWithLevel = conditions[i];
-            var condition = conditionWithLevel.condition;
-            ConditionEvoked(condition.GetRecurringEffect(conditionWithLevel.level));
+            ConditionEvoked(conditionWithLevel.condition.GetRecurringEffect(conditionWithLevel.level));
             conditionWithLevel.ticks++;
-            if (condition.Expired(conditionWithLevel.ticks, conditionWithLevel.level))
+            if (conditionWithLevel.condition.Expired(conditionWithLevel.ticks, conditionWithLevel.level))
             {
-                conditions.RemoveAt(i);
-                _combatantEvents.RemoveCondition(conditionWithLevel.condition.id);
-                ConditionEvoked(condition.GetRevertEffect(conditionWithLevel.level));
+                ConditionRemoved(i, conditionWithLevel);
             }
         }
         CombatEvents.EndTurn();
@@ -91,7 +102,7 @@ public class ConditionManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        CombatEvents.OnSkillUsed -= ConditionInflicted;
+        CombatEvents.OnSkillUsed -= ConditionsChanged;
         _combatantEvents.OnEndTurn -= Tick;
     }
 }

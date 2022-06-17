@@ -1,0 +1,29 @@
+using System.Collections.Generic;
+using Core.Enums;
+using JetBrains.Annotations;
+using UnityEngine;
+
+namespace Core.SkillsAndConditions
+{
+    public class ConditionRemover : ScriptableObject
+    {
+        public bool removeAllBuffs;
+        public bool removeAllDebuffs;
+        public List<ConditionId> specificConditionsToRemove;
+        [CanBeNull] public GameObject visualEffect;
+
+        public bool Removes(ConditionWithLevel conditionWithLevel)
+        {
+            if (removeAllBuffs && removeAllDebuffs)
+                return true;
+            if (removeAllBuffs && conditionWithLevel.condition.isBuff)
+                return true;
+            if (removeAllDebuffs && !conditionWithLevel.condition.isBuff)
+                return true;
+            if (specificConditionsToRemove.Contains(conditionWithLevel.condition.id))
+                return true;
+            return false;
+        }
+    }
+}
+

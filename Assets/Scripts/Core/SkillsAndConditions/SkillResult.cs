@@ -15,6 +15,7 @@ namespace Core.SkillsAndConditions
         public readonly int Level;
         [CanBeNull] public readonly GameObject VisualEffect;
         [CanBeNull] public readonly GameObject Condition;
+        [CanBeNull] public readonly ConditionRemover ConditionRemover;
 
         public SkillResult()
         {
@@ -27,7 +28,8 @@ namespace Core.SkillsAndConditions
         }
 
         public SkillResult(bool animateAttacked, bool isPercentBased,  StatType affectedStat, int delta, 
-            [CanBeNull] GameObject visualEffect = null, int level = 0, [CanBeNull] GameObject condition = null)
+            [CanBeNull] GameObject visualEffect = null, int level = 0, [CanBeNull] GameObject condition = null,
+            [CanBeNull] ConditionRemover conditionRemover = null)
         {
             Hit = true;
             AnimateAttacked = animateAttacked;
@@ -37,6 +39,7 @@ namespace Core.SkillsAndConditions
             Level = level;
             VisualEffect = visualEffect;
             Condition = condition;
+            ConditionRemover = conditionRemover;
         }
     }
 }
