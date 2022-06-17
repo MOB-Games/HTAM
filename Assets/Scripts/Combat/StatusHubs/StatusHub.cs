@@ -94,11 +94,13 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private void StartGlow(CombatantId targetId)
     {
         if (targetId != id) return;
+        nameText.color = Color.white;
         glow.SetActive(true);
     }
 
     private void StopGlow()
     {
+        nameText.color = Color.black;
         glow.SetActive(false);
     }
 
