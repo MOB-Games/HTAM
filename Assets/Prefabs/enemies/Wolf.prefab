@@ -283,8 +283,8 @@ MonoBehaviour:
       baseValue: 0
       value: 0
     speed:
-      baseValue: 7
-      value: 7
+      baseValue: 3
+      value: 3
 --- !u!114 &8229508485637790920
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,10 +28,10 @@ public class PartySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        var dir = CombatantInfo.Mirror ? Vector3.right : Vector3.left;
         foreach (var partyMemberPrefab in _partyMemberPrefabs)
         {
-            var inst = Instantiate(partyMemberPrefab.Value, CombatantInfo.GetLocation(partyMemberPrefab.Key) + 5 * dir,
+            var startingY = CombatantInfo.GetLocation(partyMemberPrefab.Key).y + 1.5f;
+            var inst = Instantiate(partyMemberPrefab.Value,new Vector3(-10, startingY, 0),
                 Quaternion.identity);
             inst.GetComponent<CombatId>().id = partyMemberPrefab.Key;
             if (CombatantInfo.Mirror)

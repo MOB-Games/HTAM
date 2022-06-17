@@ -84,7 +84,7 @@ public class BlacksmithStatModifier : MonoBehaviour
             return;
         }
 
-        var stats = _selectedCharacterTownInfo.Stats;
+        var stats = _selectedCharacterTownInfo.State.stats;
         var dec = _blacksmithInfo.GetDecrement();
         var inc = _blacksmithInfo.GetIncrement(StatType.Damage, stats.advantage, stats.disadvantage);
         weaponBulkUpButton.interactable =
@@ -112,7 +112,7 @@ public class BlacksmithStatModifier : MonoBehaviour
 
     private void IncStat(StatType statType, StatSO stat)
     {
-        var stats = _selectedCharacterTownInfo.Stats;
+        var stats = _selectedCharacterTownInfo.State.stats;
         var inc = _blacksmithInfo.GetIncrement(statType, stats.advantage, stats.disadvantage);
         stat.value += inc;
         stat.baseValue += inc;
@@ -135,25 +135,25 @@ public class BlacksmithStatModifier : MonoBehaviour
 
     public void BulkUpWeapon()
     {
-        var stats = _selectedCharacterTownInfo.Stats;
+        var stats = _selectedCharacterTownInfo.State.stats;
         ModifyStats(StatType.Damage,stats.damage, stats.energyEfficiency);
     }
 
     public void StripDownWeapon()
     {
-        var stats = _selectedCharacterTownInfo.Stats;
+        var stats = _selectedCharacterTownInfo.State.stats;
         ModifyStats(StatType.EnergyEfficiency,stats.energyEfficiency, stats.damage);
     }
     
     public void BulkUpArmor()
     {
-        var stats = _selectedCharacterTownInfo.Stats;
+        var stats = _selectedCharacterTownInfo.State.stats;
         ModifyStats(StatType.Defence,stats.defence, stats.speed);
     }
 
     public void StripDownArmor()
     {
-        var stats = _selectedCharacterTownInfo.Stats;
+        var stats = _selectedCharacterTownInfo.State.stats;
         ModifyStats(StatType.Speed,stats.speed, stats.defence);
     }
 

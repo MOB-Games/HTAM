@@ -54,6 +54,8 @@ public class CombatantAnimator : MonoBehaviour
             case SkillAnimation.Spell:
                 _animator.SetTrigger(TriggerSpell);
                 break;
+            case SkillAnimation.None:
+                return;
             default:
                 throw new ArgumentOutOfRangeException(nameof(skillAnimation), skillAnimation, null);
         }

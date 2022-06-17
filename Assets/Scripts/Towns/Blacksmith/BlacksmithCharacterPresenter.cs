@@ -35,10 +35,11 @@ public class BlacksmithCharacterPresenter : MonoBehaviour
         _characterImage.color = Color.white;
         var characterSize = character.Sprite.bounds.size;
         characterImageGo.transform.localScale = new Vector3(characterSize.x / characterSize.y, 1,1);
-        damageText.text = character.Stats.damage.value.ToString();
-        energyEfficiencyText.text = character.Stats.energyEfficiency.value.ToString();
-        defenceText.text = character.Stats.defence.value.ToString();
-        speedText.text = character.Stats.speed.value.ToString();
+        var stats = character.State.stats;
+        damageText.text = stats.damage.value.ToString();
+        energyEfficiencyText.text = stats.energyEfficiency.value.ToString();
+        defenceText.text = stats.defence.value.ToString();
+        speedText.text = stats.speed.value.ToString();
     }
 
 

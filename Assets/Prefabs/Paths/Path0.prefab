@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   length: 5
-  combatBackground: {fileID: 21300000, guid: 20531cc0fe95290428d93890239a33f4, type: 3}
+  combatBackground: {fileID: 21300000, guid: f7833c66434249e4f81ed21bb1bc2a3d, type: 3}
   townInfo:
     signpost: 'This path is the territory of the Golden Wolf Pack.
 
@@ -80,13 +80,11 @@ MonoBehaviour:
       are known to make even experienced fighters think twice about attacking'
     signpostCleared: The Golden Wolf has been defeated but this path is still infested
       with wolves
-    townBackground: {fileID: 21300000, guid: 20531cc0fe95290428d93890239a33f4, type: 3}
+    townBackground: {fileID: 21300000, guid: f7833c66434249e4f81ed21bb1bc2a3d, type: 3}
     innSprite: {fileID: 21300000, guid: fb9152503bcf5be42b04fbcee201d4c9, type: 3}
     blacksmithSprite: {fileID: 21300000, guid: 11b3014dd1e13ad44a75d7356134fa3b, type: 3}
     shopSprite: {fileID: 21300000, guid: 87ed8e09a47f8b4408936f70549c9ffd, type: 3}
     blacksmithInfo:
-      statIncrement: 2
-      statDecrement: 1
       price: 10
       maxDamage: 15
       minEnergyEfficiency: -6

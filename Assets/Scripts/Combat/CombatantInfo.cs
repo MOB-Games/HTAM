@@ -23,11 +23,11 @@ public static class CombatantInfo
     private static readonly Dictionary<CombatantId, Vector3> CombatantLocations = new()
     {
         { CombatantId.Player, new Vector3(-5.5f, -1.5f, 0) },
-        { CombatantId.PartyMemberTop, new Vector3(-7.5f, 1f, 0) },
-        { CombatantId.PartyMemberBottom, new Vector3(-7.5f, -4f, 0) },
+        { CombatantId.PartyMemberTop, new Vector3(-6.5f, 1f, 0) },
+        { CombatantId.PartyMemberBottom, new Vector3(-6.5f, -4f, 0) },
         { CombatantId.EnemyCenter, new Vector3(5.5f, -1.5f, 0) },
-        { CombatantId.EnemyTop, new Vector3(7.5f, 1f, 0) },
-        { CombatantId.EnemyBottom, new Vector3(7.5f, -4f, 0) }
+        { CombatantId.EnemyTop, new Vector3(6.5f, 1f, 0) },
+        { CombatantId.EnemyBottom, new Vector3(6.5f, -4f, 0) }
     };
 
     public static bool CombatantIsActive(CombatantId id)
@@ -55,7 +55,7 @@ public static class CombatantInfo
     {
         if (CombatantsDimensions.ContainsKey(id))
             return CombatantsDimensions[id];
-        throw new KeyNotFoundException($"Tried to get width for {id} but no combatant had this id");
+        throw new KeyNotFoundException($"Tried to get dimensions for {id} but no combatant had this id");
     }
 
     public static Vector3 GetLocation(CombatantId id)

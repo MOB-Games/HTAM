@@ -5,5 +5,6 @@ namespace Core.Enums
         Attack,
         PowerAttack,
         Spell,
+        None,
     }
 }

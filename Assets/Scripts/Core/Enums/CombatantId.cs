@@ -8,5 +8,6 @@ namespace Core.Enums
         EnemyCenter = 3,
         EnemyTop = 4,
         EnemyBottom = 5,
+        None = 6,
     }
 }

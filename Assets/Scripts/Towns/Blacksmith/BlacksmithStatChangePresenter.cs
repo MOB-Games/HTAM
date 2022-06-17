@@ -40,7 +40,7 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     
     private void CharacterSelected(CharacterTownInfo characterTownInfo)
     {
-        var stats = characterTownInfo.Stats;
+        var stats = characterTownInfo.State.stats;
         _advantage = stats.advantage;
         _disadvantage = stats.disadvantage;
     }

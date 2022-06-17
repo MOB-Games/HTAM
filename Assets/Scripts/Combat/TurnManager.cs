@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Enums;
+using Core.SkillsAndConditions;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
+    public Skill skipTurn;
+    
     private bool _battleFinished = false;
     private int _numEnemies;
     private CombatantId _currentTurn;
@@ -60,6 +63,12 @@ public class TurnManager : MonoBehaviour
         _turnOrder.RemoveAt(0);
         _currentTurn = nextTurnId;
         CombatEvents.StartTurn(nextTurnId);
+    }
+
+    public void SkipTurn()
+    {
+        if (_currentTurn is CombatantId.Player or CombatantId.PartyMemberTop or CombatantId.PartyMemberBottom)
+            CombatEvents.SkillChosen(CombatantId.None, skipTurn, 0);
     }
 
     private static bool IsEnemy(CombatantId id)

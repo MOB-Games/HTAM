@@ -7,5 +7,10 @@ namespace Core.Enums
         Heal,
         Weaken,
         Shield,
+        
+        
+        
+        
+        SkipTurn
     }
 }
