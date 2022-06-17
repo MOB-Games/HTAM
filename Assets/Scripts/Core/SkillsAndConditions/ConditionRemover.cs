@@ -5,11 +5,12 @@ using UnityEngine;
 
 namespace Core.SkillsAndConditions
 {
+    [CreateAssetMenu]
     public class ConditionRemover : ScriptableObject
     {
         public bool removeAllBuffs;
         public bool removeAllDebuffs;
-        public List<ConditionId> specificConditionsToRemove;
+        public List<ConditionId> specificConditionsToRemove = new List<ConditionId>();
         [CanBeNull] public GameObject visualEffect;
 
         public bool Removes(ConditionWithLevel conditionWithLevel)

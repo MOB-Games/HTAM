@@ -35,7 +35,6 @@ namespace Core.SkillsAndConditions
 
     public class Skill : MonoBehaviour
     {
-        public SkillId id;
         [Multiline]
         public string description;
         public bool melee;
@@ -75,7 +74,7 @@ namespace Core.SkillsAndConditions
 
         public string GetDescription()
         {
-            var desc = $"<u>{id}</u>: {description}\n";
+            var desc = $"<u>{name}</u>: {description}\n";
             if (_condition != null)
                 desc += $"Has a chance to inflict {_condition.GetDescription()}\n"; 
             if (energyCost > 0)
@@ -89,7 +88,7 @@ namespace Core.SkillsAndConditions
         {
             if (level >= parametersPerLevel.Count)
                 throw new ArgumentOutOfRangeException(
-                    $"Tried to use skill {id} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
+                    $"Tried to use skill {name} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
             var attackerStats = CombatantInfo.GetStatBlock(attackerId);
             var defenderStats = CombatantInfo.GetStatBlock(defenderId);
             var chanceToHit = parametersPerLevel[level].baseHitChance + parametersPerLevel[level].hitMultiplier * attackerStats.speed.value +
