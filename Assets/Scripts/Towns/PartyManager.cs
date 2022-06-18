@@ -60,17 +60,14 @@ public class PartyManager : MonoBehaviour
 
     private void MarkParty()
     {
-        var availableCharacters = characterDB.characterGameInfos
-            .Where(c => c.available)
-            .Select(c => c.prefab)
-            .ToList();
-        var index = availableCharacters.FindIndex(c => c == characterDB.playerPrefab);
+        var characterPrefabs = characterDB.characterGameInfos.Select(c => c.prefab).ToList();
+        var index = characterPrefabs.FindIndex(c => c == characterDB.playerPrefab);
         playerMark.transform.localPosition = new Vector3(-380, 220 - 80 * index, 0);
         playerMark.SetActive(true);
 
         if (characterDB.partyMemberTopPrefab != null)
         {
-            index = availableCharacters.FindIndex(c => c == characterDB.partyMemberTopPrefab);
+            index = characterPrefabs.FindIndex(c => c == characterDB.partyMemberTopPrefab);
             topMark.transform.localPosition = new Vector3(-380, 220 - 80 * index, 0);
             topMark.SetActive(true);
         }
@@ -79,7 +76,7 @@ public class PartyManager : MonoBehaviour
 
         if (characterDB.partyMemberBottomPrefab != null)
         {
-            index = availableCharacters.FindIndex(c => c == characterDB.partyMemberBottomPrefab);
+            index = characterPrefabs.FindIndex(c => c == characterDB.partyMemberBottomPrefab);
             bottomMark.transform.localPosition = new Vector3(-380, 220 - 80 * index, 0);
             bottomMark.SetActive(true);
         }
