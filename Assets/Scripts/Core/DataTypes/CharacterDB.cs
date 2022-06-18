@@ -23,6 +23,21 @@ namespace Core.DataTypes
         [CanBeNull] public GameObject partyMemberTopPrefab;
         [HideInInspector]
         [CanBeNull] public GameObject partyMemberBottomPrefab;
+
+        public void Init(GameObject player)
+        {
+            foreach (var characterState in characterStates)
+                characterState.Init();
+            
+
+            foreach (var characterGameInfo in characterGameInfos) 
+                characterGameInfo.available = false;
+
+            characterGameInfos.Find(c => c.prefab == player).available = true;
+            playerPrefab = player;
+            partyMemberTopPrefab = null;
+            partyMemberBottomPrefab = null;
+        }
     }
 }
 
