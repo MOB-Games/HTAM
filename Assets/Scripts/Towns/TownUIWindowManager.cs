@@ -19,12 +19,12 @@ public class TownUIWindowManager : MonoBehaviour, IPointerEnterHandler, IPointer
     
     private void SetUpSelectButtons(List<CharacterTownInfo> characterTownInfos)
     {
-        var height = 172;
+        var height = 180;
         foreach (var characterTownInfo in characterTownInfos)
         {
             var inst = Instantiate(characterButton, parentScreen.transform);
             inst.transform.localPosition = new Vector3(-380, height, 0);
-            height -= 75;
+            height -= 80;
             inst.GetComponent<Button>().onClick.AddListener((() => SelectCharacter(characterTownInfo)));
             inst.GetComponentInChildren<TextMeshProUGUI>().text = characterTownInfo.Name;
         }

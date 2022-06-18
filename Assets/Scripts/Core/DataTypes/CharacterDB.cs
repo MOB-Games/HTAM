@@ -19,7 +19,9 @@ namespace Core.DataTypes
         public List<CharacterState> characterStates;
 
         public GameObject playerPrefab;
+        [HideInInspector]
         [CanBeNull] public GameObject partyMemberTopPrefab;
+        [HideInInspector]
         [CanBeNull] public GameObject partyMemberBottomPrefab;
     }
 }
