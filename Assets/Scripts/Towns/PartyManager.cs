@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Core.DataTypes;
 using UnityEngine;
 
@@ -59,13 +60,17 @@ public class PartyManager : MonoBehaviour
 
     private void MarkParty()
     {
-        var index = characterDB.characterGameInfos.FindIndex(c => c.prefab == characterDB.playerPrefab);
+        var availableCharacters = characterDB.characterGameInfos
+            .Where(c => c.available)
+            .Select(c => c.prefab)
+            .ToList();
+        var index = availableCharacters.FindIndex(c => c == characterDB.playerPrefab);
         playerMark.transform.localPosition = new Vector3(-380, 220 - 80 * index, 0);
         playerMark.SetActive(true);
 
         if (characterDB.partyMemberTopPrefab != null)
         {
-            index = characterDB.characterGameInfos.FindIndex(c => c.prefab == characterDB.partyMemberTopPrefab);
+            index = availableCharacters.FindIndex(c => c == characterDB.partyMemberTopPrefab);
             topMark.transform.localPosition = new Vector3(-380, 220 - 80 * index, 0);
             topMark.SetActive(true);
         }
@@ -74,7 +79,7 @@ public class PartyManager : MonoBehaviour
 
         if (characterDB.partyMemberBottomPrefab != null)
         {
-            index = characterDB.characterGameInfos.FindIndex(c => c.prefab == characterDB.partyMemberBottomPrefab);
+            index = availableCharacters.FindIndex(c => c == characterDB.partyMemberBottomPrefab);
             bottomMark.transform.localPosition = new Vector3(-380, 220 - 80 * index, 0);
             bottomMark.SetActive(true);
         }
