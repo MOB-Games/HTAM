@@ -15,13 +15,8 @@ public class Drop
 
 public class EnemyDrop : MonoBehaviour
 {
-    // range of exp this enemy can give
-    public int minExpDrop;
-    public int maxExpDrop;
-    
-    // range of gold this enemy can give
-    public int minGoldDrop;
-    public int maxGoldDrop;
+    public int expDrop;
+    public int goldDrop;
 
     private CombatantEvents _combatantEvents;
 
@@ -33,12 +28,12 @@ public class EnemyDrop : MonoBehaviour
     
     private int ExpDrop()
     {
-        return Random.Range(minExpDrop, maxExpDrop);
+        return expDrop;
     }
     
     private int GoldDrop()
     {
-        return Random.Range(minGoldDrop, maxGoldDrop);
+        return goldDrop;
     }
 
     private void Drop()

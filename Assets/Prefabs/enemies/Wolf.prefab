@@ -297,10 +297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90ef5011a58e8c4889d97f47bf4bd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minExpDrop: 2
-  maxExpDrop: 5
-  minGoldDrop: 1
-  maxGoldDrop: 3
+  expDrop: 3
+  goldDrop: 0
 --- !u!114 &2264432829541233808
 MonoBehaviour:
   m_ObjectHideFlags: 0
