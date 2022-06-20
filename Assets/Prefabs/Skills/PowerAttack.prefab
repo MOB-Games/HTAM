@@ -134,7 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
   description: Basic Power Attack - you attack the opponent with double damage
   melee: 1
   offensive: 1
@@ -146,7 +145,7 @@ MonoBehaviour:
   targetType: 0
   skillAnimation: 1
   statsForSkill:
-    attackStat: 3
+    attackStat: 2
     defenceStat: 4
     affectedStat: 0
   parametersPerLevel:
@@ -159,3 +158,4 @@ MonoBehaviour:
     chanceToInflict: 0
   visualEffect: {fileID: 0}
   conditionGo: {fileID: 0}
+  conditionRemover: {fileID: 0}

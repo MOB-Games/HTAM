@@ -1,11 +1,16 @@
 using System.Collections;
 using Core.DataTypes;
+using Core.Enums;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public IntegerVariable gold;
     public static GameManager Instance { get; private set; }
+
+    private const int StatIncrement = 3;
+    private const int StatDecrement = 1;
+    private const int IncrementChange = 1;
 
     private void Awake()
     {
@@ -72,6 +77,18 @@ public class GameManager : MonoBehaviour
         var inst = Instantiate(visualEffect, location, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         Destroy(inst);
+    }
+    
+    public static int GetStatIncrement(StatType statToInc, StatType advantage, StatType disadvantage)
+    {
+        if (statToInc == advantage) return StatIncrement + IncrementChange;
+        if (statToInc == disadvantage) return StatIncrement - IncrementChange;
+        return StatIncrement;
+    }
+    
+    public static int GetStatDecrement()
+    {
+        return StatDecrement;
     }
 
     private void OnDestroy()

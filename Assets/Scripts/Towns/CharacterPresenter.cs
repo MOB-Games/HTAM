@@ -1,3 +1,5 @@
+using System;
+using Core.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +19,7 @@ public class CharacterPresenter : MonoBehaviour
     {
         _characterImage = characterImageGo.GetComponent<Image>();
         TownEvents.OnCharacterSelected += PresentCharacter;
+        TownEvents.OnStatChange += ChangeStat;
     }
 
     private void PresentCharacter(CharacterTownInfo character)
@@ -27,14 +30,36 @@ public class CharacterPresenter : MonoBehaviour
         characterImageGo.transform.localScale = new Vector3(characterSize.x / characterSize.y, 1,1);
         var stats = character.State.stats;
         damageText.text = stats.damage.value.ToString();
+        damageText.color = Color.black;
         energyEfficiencyText.text = stats.energyEfficiency.value.ToString();
+        energyEfficiencyText.color = Color.black;
         defenceText.text = stats.defence.value.ToString();
+        defenceText.color = Color.black;
         speedText.text = stats.speed.value.ToString();
+        speedText.color = Color.black;
+    }
+    
+    private void ChangeStat(StatType stat, int change)
+    {
+        var text = stat switch
+        {
+            StatType.Damage => damageText,
+            StatType.EnergyEfficiency => energyEfficiencyText,
+            StatType.Defence => defenceText,
+            StatType.Speed => speedText,
+            _ => null
+        };
+        if (text != null)
+        {
+            text.text = (int.Parse(text.text) + change).ToString();
+            text.color = Color.green;
+        }
     }
 
 
     private void OnDestroy()
     {
         TownEvents.OnCharacterSelected -= PresentCharacter;
+        TownEvents.OnStatChange -= ChangeStat;
     }
 }

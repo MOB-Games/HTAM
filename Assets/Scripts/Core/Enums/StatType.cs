@@ -4,8 +4,8 @@ namespace Core.Enums
     {
         Hp = 0,
         Energy = 1,
-        EnergyEfficiency = 2,
-        Damage = 3,
+        Damage = 2,
+        EnergyEfficiency = 3,
         Defence = 4,
         Speed = 5,
         None = 6,

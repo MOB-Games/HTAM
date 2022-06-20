@@ -61,29 +61,29 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     public void BulkUpWeapon()
     {
         if(!weaponBulkUpButton.interactable) return;
-        damageChangeText.text = $"+{_blacksmithInfo.GetIncrement(StatType.Damage, _advantage, _disadvantage)}";
-        energyEfficiencyChangeText.text = $"-{_blacksmithInfo.GetDecrement()}";
+        damageChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Damage, _advantage, _disadvantage)}";
+        energyEfficiencyChangeText.text = $"-{GameManager.GetStatDecrement()}";
     }
 
     public void StripDownWeapon()
     {
         if(!weaponStripDownButton.interactable) return;
-        energyEfficiencyChangeText.text = $"+{_blacksmithInfo.GetIncrement(StatType.EnergyEfficiency, _advantage, _disadvantage)}";
-        damageChangeText.text = $"-{_blacksmithInfo.GetDecrement()}";
+        energyEfficiencyChangeText.text = $"+{GameManager.GetStatIncrement(StatType.EnergyEfficiency, _advantage, _disadvantage)}";
+        damageChangeText.text = $"-{GameManager.GetStatDecrement()}";
     }
     
     public void BulkUpArmor()
     {
         if(!armorBulkUpButton.interactable) return;
-        defenceChangeText.text = $"+{_blacksmithInfo.GetIncrement(StatType.Defence, _advantage, _disadvantage)}";
-        speedChangeText.text = $"-{_blacksmithInfo.GetDecrement()}";
+        defenceChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Defence, _advantage, _disadvantage)}";
+        speedChangeText.text = $"-{GameManager.GetStatDecrement()}";
     }
 
     public void StripDownArmor()
     {
         if(!armorStripDownButton.interactable) return;
-        speedChangeText.text = $"+{_blacksmithInfo.GetIncrement(StatType.Speed, _advantage, _disadvantage)}";
-        defenceChangeText.text = $"-{_blacksmithInfo.GetDecrement()}";
+        speedChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Speed, _advantage, _disadvantage)}";
+        defenceChangeText.text = $"-{GameManager.GetStatDecrement()}";
     }
 
     private void OnDestroy()

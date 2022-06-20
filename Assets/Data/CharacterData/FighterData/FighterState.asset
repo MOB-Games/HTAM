@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FighterState
   m_EditorClassIdentifier: 
   level: 0
-  exp: 0
+  exp: 50
   stats: {fileID: 11400000, guid: cf22ff9e89b2b1f428b52e92a3fc27be, type: 2}
   conditions: []
   initialNumOffensiveSkillsSlots: 4
