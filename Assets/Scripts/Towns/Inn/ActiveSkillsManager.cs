@@ -18,6 +18,7 @@ public class ActiveSkillsManager : MonoBehaviour
     {
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
+        TownEvents.OnSlotUnlcoked += ShowActiveSkills;
     }
     
     private void RegisterForSelectedCharacter()
@@ -38,23 +39,21 @@ public class ActiveSkillsManager : MonoBehaviour
         for (var i = 0; i < 7; i++)
         {
             // offence
-            if (i < _selectedCharacterTownInfo.State.numOffensiveSkillsSlots)
+            if (i < offensiveSkills.Count)
             {
-                if (i < offensiveSkills.Count && offensiveSkills[i].skillGo != null)
-                    offensiveSkillSprites[i].sprite = offensiveSkills[i].skillGo.GetComponent<Image>().sprite;
-                else
-                    offensiveSkillSprites[i].sprite = emptySkillHolder;
+                offensiveSkillSprites[i].sprite = offensiveSkills[i].skillGo != null
+                    ? offensiveSkills[i].skillGo.GetComponent<Image>().sprite
+                    : emptySkillHolder;
             }
             else
                 offensiveSkillSprites[i].sprite = lockedSkillHolder;
             
             // defence
-            if (i < _selectedCharacterTownInfo.State.numDefensiveSkillsSlots)
+            if (i < defensiveSkills.Count)
             {
-                if (i < defensiveSkills.Count && defensiveSkills[i].skillGo != null)
-                    defensiveSkillSprites[i].sprite = defensiveSkills[i].skillGo.GetComponent<Image>().sprite;
-                else
-                    defensiveSkillSprites[i].sprite = emptySkillHolder;
+                defensiveSkillSprites[i].sprite = defensiveSkills[i].skillGo != null
+                    ? defensiveSkills[i].skillGo.GetComponent<Image>().sprite
+                    : emptySkillHolder;
             }
             else
                 defensiveSkillSprites[i].sprite = lockedSkillHolder;
@@ -70,5 +69,6 @@ public class ActiveSkillsManager : MonoBehaviour
     {
         TownEvents.OnOpenInn -= RegisterForSelectedCharacter;
         TownEvents.OnCloseInn -= UnregisterForSelectedCharacter;
+        TownEvents.OnSlotUnlcoked -= ShowActiveSkills;
     }
 }

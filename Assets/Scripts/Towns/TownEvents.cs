@@ -17,6 +17,7 @@ public static class TownEvents
     public static event Action<CharacterTownInfo> OnCharacterSelected;
     public static event Action<int> OnGoldSpent;
     public static event Action<StatType, int> OnStatChange;
+    public static event Action OnSlotUnlcoked;
    
     public static void PublishTownInfo(TownInfo townInfo, bool pathCleared, string previousPathSignpost)
     {
@@ -81,5 +82,10 @@ public static class TownEvents
     public static void StatChange(StatType stat, int change)
     {
         OnStatChange?.Invoke(stat, change);
+    }
+    
+    public static void SlotUnlocked()
+    {
+        OnSlotUnlcoked?.Invoke();
     }
 }

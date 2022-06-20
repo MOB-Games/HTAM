@@ -10,6 +10,12 @@ namespace Core.DataTypes
     {
         public GameObject skillGo;
         public int level;
+
+        public SkillWithLevel(GameObject gameObject = null)
+        {
+            skillGo = gameObject;
+            level = 0;
+        }
     }
 
     [CreateAssetMenu]
@@ -24,10 +30,8 @@ namespace Core.DataTypes
         // for now we edit the skills from the inspector, in the future once there is a skill tree, changes made in the
         // character editing window will change the skills and their levels
         public int initialNumOffensiveSkillsSlots;
-        public int numOffensiveSkillsSlots;
         public List<SkillWithLevel> activeOffensiveSkills;
         public int initialNumDefensiveSkillsSlots;
-        public int numDefensiveSkillsSlots;
         public List<SkillWithLevel> activeDefensiveSkills;
         
         // skill tree - should have all skills and their level, level -1 will signify locked skills. 
@@ -38,8 +42,6 @@ namespace Core.DataTypes
             conditions.Clear();
             level = 0;
             exp = 0;
-            numOffensiveSkillsSlots = initialNumOffensiveSkillsSlots;
-            numDefensiveSkillsSlots = initialNumDefensiveSkillsSlots;
         }
     }
 }

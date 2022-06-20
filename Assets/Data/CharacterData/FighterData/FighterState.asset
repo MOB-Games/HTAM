@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: FighterState
   m_EditorClassIdentifier: 
   level: 0
-  exp: 50
+  exp: 0
   stats: {fileID: 11400000, guid: cf22ff9e89b2b1f428b52e92a3fc27be, type: 2}
   conditions: []
-  initialNumOffensiveSkillsSlots: 4
-  numOffensiveSkillsSlots: 4
+  initialNumOffensiveSkillsSlots: 3
+  numOffensiveSkillsSlots: 3
   activeOffensiveSkills:
   - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
       type: 3}
@@ -25,6 +25,6 @@ MonoBehaviour:
   - skillGo: {fileID: 4003426218498401328, guid: ee4e86305d6d43c449ebf2f9ec6fa8a6,
       type: 3}
     level: 0
-  initialNumDefensiveSkillsSlots: 2
-  numDefensiveSkillsSlots: 2
+  initialNumDefensiveSkillsSlots: 0
+  numDefensiveSkillsSlots: 0
   activeDefensiveSkills: []

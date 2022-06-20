@@ -16,16 +16,16 @@ MonoBehaviour:
   - prefab: {fileID: 2259149878155014034, guid: c15c298f7edcf6a4e9bc13f2475ee618,
       type: 3}
     available: 1
-  - prefab: {fileID: 2259149878155014034, guid: cc2c3ea27ea37474891eac766eba5969,
+  - prefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
       type: 3}
     available: 1
   - prefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
       type: 3}
     available: 1
-  - prefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
+  - prefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
       type: 3}
     available: 1
-  - prefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
+  - prefab: {fileID: 2259149878155014034, guid: cc2c3ea27ea37474891eac766eba5969,
       type: 3}
     available: 1
   characterStates:
@@ -36,7 +36,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d19dd2cff441581409810763491a7d92, type: 2}
   playerPrefab: {fileID: 2259149878155014034, guid: c15c298f7edcf6a4e9bc13f2475ee618,
     type: 3}
-  partyMemberTopPrefab: {fileID: 2259149878155014034, guid: cc2c3ea27ea37474891eac766eba5969,
-    type: 3}
-  partyMemberBottomPrefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
-    type: 3}
+  partyMemberTopPrefab: {fileID: 0}
+  partyMemberBottomPrefab: {fileID: 0}
