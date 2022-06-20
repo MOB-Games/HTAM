@@ -4,5 +4,6 @@ namespace Core.Enums
     {
         Weaken,
         Shield,
+        ShieldBreak,
     }
 }
