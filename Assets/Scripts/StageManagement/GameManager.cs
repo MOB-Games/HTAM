@@ -58,7 +58,13 @@ public class GameManager : MonoBehaviour
     
     public static int CalculateStatDelta(int baseDelta, bool percentageBased, int statBaseValue, int efficiency = 0)
     {
-        return percentageBased ? (baseDelta / 100) * statBaseValue : baseDelta - efficiency;
+        var newDelta = percentageBased ? (baseDelta / 100) * statBaseValue : baseDelta - efficiency;
+        return baseDelta switch
+        {
+            < 0 when newDelta >= 0 => -1,
+            > 0 when newDelta <= 0 => 1,
+            _ => newDelta
+        };
     }
     
     public static IEnumerator PlayVisualEffect(GameObject visualEffect, Vector3 location)
