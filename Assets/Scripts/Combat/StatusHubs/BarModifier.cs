@@ -37,9 +37,8 @@ public class BarModifier : MonoBehaviour
         _text.text = ((int)endValue).ToString();
     }
 
-    public void Change(int delta, bool percentage)
+    public void Change(int delta)
     {
-        delta = GameManager.CalculateStatDelta(delta, percentage, (int)_slider.maxValue);
         var newValue = _slider.value + delta;
         if (newValue < 0)
             newValue = 0;

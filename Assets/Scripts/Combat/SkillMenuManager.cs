@@ -53,10 +53,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 Quaternion.identity, skillMenu.transform);
             var skill = inst.GetComponent<Skill>();
             var button = inst.GetComponent<Button>();
-            var energyCost = GameManager.CalculateStatDelta(skill.energyCost, skill.costIsPercentBased, 
-                energy.baseValue, energyEfficiency);
-            var hpCost = GameManager.CalculateStatDelta(skill.hpCost, skill.costIsPercentBased, hp.baseValue);
-            button.interactable = energyCost <= energy.value && hpCost <= hp.value;
+            button.interactable = skill.energyCost <= energy.value && skill.hpCost <= hp.value;
             if (button.interactable)
                 button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill, skillWithLevel.level));
             else

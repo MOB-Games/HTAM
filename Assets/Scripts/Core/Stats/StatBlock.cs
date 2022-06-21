@@ -38,5 +38,20 @@ namespace Core.Stats
                 _ => throw new ArgumentOutOfRangeException(nameof(stat), stat, null)
             };
         }
+        
+        public int GetStatBaseValue(StatType stat)
+        {
+            return stat switch
+            {
+                StatType.Hp => hp.baseValue,
+                StatType.Energy => energy.baseValue,
+                StatType.Damage => damage.baseValue,
+                StatType.EnergyEfficiency => energyEfficiency.baseValue,
+                StatType.Defence => defence.baseValue,
+                StatType.Speed => speed.baseValue,
+                StatType.None => 0,
+                _ => throw new ArgumentOutOfRangeException(nameof(stat), stat, null)
+            };
+        }
     }
 }

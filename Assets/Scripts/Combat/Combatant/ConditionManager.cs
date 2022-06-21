@@ -1,8 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Core.Enums;
 using Core.SkillsAndConditions;
+using Core.Stats;
 using UnityEngine;
 
 [Serializable]
@@ -27,12 +27,14 @@ public class ConditionManager : MonoBehaviour
     [HideInInspector] public List<ConditionWithLevel> conditions = new List<ConditionWithLevel>();
     
     private CombatantId _id;
+    private StatBlock _statBlock;
     private CombatantEvents _combatantEvents;
     private Vector3 _center;
 
     private void Start()
     {
         _id = GetComponent<CombatId>().id;
+        _statBlock = GetComponent<StatModifier>().stats;
         _combatantEvents = GetComponent<CombatantEvents>();
         CombatEvents.OnSkillUsed += ConditionsChanged;
         _combatantEvents.OnEndTurn += Tick;
@@ -47,14 +49,14 @@ public class ConditionManager : MonoBehaviour
     private void ConditionEvoked(ConditionEffect effect)
     {
         StartCoroutine(GameManager.PlayVisualEffect(effect.VisualEffect, _center));
-        _combatantEvents.StatChange(effect.AffectedStat, effect.Delta, effect.IsPercentBased);
+        _combatantEvents.StatChange(effect.AffectedStat, effect.TotalDelta);
     }
 
     private void ConditionRemoved(int index, ConditionWithLevel conditionWithLevel)
     {
         conditions.RemoveAt(index);
         _combatantEvents.RemoveCondition(conditionWithLevel.condition.id);
-        ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level));
+        ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock));
     }
 
     private void ConditionsChanged(CombatantId targetId, SkillResult result)
@@ -75,12 +77,12 @@ public class ConditionManager : MonoBehaviour
         {
             _combatantEvents.AddCondition(result.Condition, condition.id);
             conditions.Add(new ConditionWithLevel(result.Condition, condition, result.Level));
-            ConditionEvoked(condition.GetInitialEffect(result.Level));
+            ConditionEvoked(condition.GetInitialEffect(result.Level, _statBlock));
         }
         else
         {
             conditionWithLevel.ticks = 0;
-            StartCoroutine(GameManager.PlayVisualEffect(condition.GetInitialEffect(result.Level).VisualEffect,
+            StartCoroutine(GameManager.PlayVisualEffect(condition.GetInitialEffect(result.Level, _statBlock).VisualEffect,
                 _center));
         }
     }
@@ -90,7 +92,7 @@ public class ConditionManager : MonoBehaviour
         for (var i = conditions.Count - 1; i >= 0; i--)
         {
             var conditionWithLevel = conditions[i];
-            ConditionEvoked(conditionWithLevel.condition.GetRecurringEffect(conditionWithLevel.level));
+            ConditionEvoked(conditionWithLevel.condition.GetRecurringEffect(conditionWithLevel.level, _statBlock));
             conditionWithLevel.ticks++;
             if (conditionWithLevel.condition.Expired(conditionWithLevel.ticks, conditionWithLevel.level))
             {

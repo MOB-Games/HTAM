@@ -61,15 +61,20 @@ public class GameManager : MonoBehaviour
         gold.value += drop.Gold;
     }
     
-    public static int CalculateStatDelta(int baseDelta, bool percentageBased, int statBaseValue, int efficiency = 0)
+    private static int CalculatePercentageBasedDelta(int baseDelta, int statBaseValue)
     {
-        var newDelta = percentageBased ? (baseDelta / 100) * statBaseValue : baseDelta - efficiency;
+        var newDelta = (int)((baseDelta / 100f) * statBaseValue);
         return baseDelta switch
         {
             < 0 when newDelta >= 0 => -1,
             > 0 when newDelta <= 0 => 1,
             _ => newDelta
         };
+    }
+
+    public static int CalculateTotalDelta(int fixedDelta, int percentDelta, int baseValue)
+    {
+        return fixedDelta + CalculatePercentageBasedDelta(percentDelta, baseValue);
     }
     
     public static IEnumerator PlayVisualEffect(GameObject visualEffect, Vector3 location)

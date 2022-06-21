@@ -40,8 +40,6 @@ namespace Core.SkillsAndConditions
         public bool melee;
         public bool offensive;
         public bool animateAttacked;
-        public bool isPercentBased;
-        public bool costIsPercentBased;
         public int energyCost;
         public int hpCost;
         public TargetType targetType;
@@ -110,7 +108,7 @@ namespace Core.SkillsAndConditions
                 if (delta <= 0)
                     delta = 1; // should always help
             }
-            return new SkillResult(animateAttacked, isPercentBased, statsForSkill.affectedStat, (int)delta, 
+            return new SkillResult(animateAttacked, statsForSkill.affectedStat, (int)delta, 
                 visualEffect, level, InflictedCondition(level), conditionRemover);
         }
 

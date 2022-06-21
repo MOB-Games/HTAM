@@ -81,10 +81,7 @@ public class EnemyBehavior : MonoBehaviour
         if (turnId != _id) return;
         var chosenSkill = ChooseSkill();
         var skill = chosenSkill.skillGo.GetComponent<Skill>();
-        if (_stats.energy.value < GameManager.CalculateStatDelta(skill.energyCost, skill.costIsPercentBased,
-                _stats.energy.baseValue, _stats.energyEfficiency.value) ||
-            _stats.hp.value < GameManager.CalculateStatDelta(skill.hpCost, skill.costIsPercentBased,
-                _stats.hp.baseValue))
+        if (_stats.energy.value < skill.energyCost || _stats.hp.value < skill.hpCost)
         {
             skill = skillsWithLevels.First().skillGo.GetComponent<Skill>();
         }

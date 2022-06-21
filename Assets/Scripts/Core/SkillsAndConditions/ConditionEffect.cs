@@ -6,24 +6,21 @@ namespace Core.SkillsAndConditions
 {
     public class ConditionEffect
     {
-        public readonly bool IsPercentBased;
         public readonly StatType AffectedStat;
-        public readonly int Delta;
+        public readonly int TotalDelta;
         [CanBeNull] public readonly GameObject VisualEffect;
 
-        public ConditionEffect(bool isPercentBased, StatType affectedStat, int delta, GameObject visualEffect = null)
+        public ConditionEffect(StatType affectedStat, int totalDelta, GameObject visualEffect = null)
         {
-            IsPercentBased = isPercentBased;
             AffectedStat = affectedStat;
-            Delta = delta;
+            TotalDelta = totalDelta;
             VisualEffect = visualEffect;
         }
 
         public ConditionEffect(GameObject visualEffect = null)
         {
-            IsPercentBased = false;
             AffectedStat = StatType.Hp;
-            Delta = 0;
+            TotalDelta = 0;
             VisualEffect = visualEffect;
         }
     }

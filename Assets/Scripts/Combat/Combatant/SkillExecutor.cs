@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using Core.SkillsAndConditions;using Core.Enums;
+using Core.Stats;
 using UnityEngine;
 
 public class SkillExecutor : MonoBehaviour
 {
     private bool _moving;
     private CombatantId _id;
+    private Stat _energyEfficiency;
     private CombatantEvents _combatantEvents;
 
     private void Start()
     {
         _id = GetComponent<CombatId>().id;
+        _energyEfficiency = GetComponent<StatModifier>().stats.energyEfficiency;
         _combatantEvents = GetComponent<CombatantEvents>();
         _combatantEvents.OnFinishedMoving += FinishedMoving;
         CombatEvents.OnStartTurn += RegisterToSkill;
@@ -85,8 +88,8 @@ public class SkillExecutor : MonoBehaviour
             transform.localScale = localScale;
             yield return new WaitForSeconds(0.2f);
         }
-        _combatantEvents.StatChange(StatType.Hp, -skill.hpCost, skill.costIsPercentBased);
-        _combatantEvents.StatChange(StatType.Energy, -skill.energyCost, skill.costIsPercentBased);
+        _combatantEvents.StatChange(StatType.Hp, -skill.hpCost);
+        _combatantEvents.StatChange(StatType.Energy, -(skill.energyCost - _energyEfficiency.value));
         _combatantEvents.EndTurn();
     }
 

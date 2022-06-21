@@ -76,15 +76,15 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _inCombat = false;
     }
 
-    private void ModifyBars(StatType stat, int delta, bool percentage)
+    private void ModifyBars(StatType stat, int delta)
     {
         switch (stat)
         {
             case StatType.Hp:
-                hpBarModifier.Change(delta, percentage);
+                hpBarModifier.Change(delta);
                 break;
             case StatType.Energy:
-                energyBarModifier.Change(delta, percentage);
+                energyBarModifier.Change(delta);
                 break;
             default:
                 return;

@@ -30,7 +30,7 @@ public class SkillTarget : MonoBehaviour
         {
             StartCoroutine(GameManager.PlayVisualEffect(result.VisualEffect, _center));
         }
-        _combatantEvents.StatChange(result.AffectedStat, result.Delta, result.IsPercentBased);
+        _combatantEvents.StatChange(result.AffectedStat, result.Delta);
     }
 
     private void OnDestroy()

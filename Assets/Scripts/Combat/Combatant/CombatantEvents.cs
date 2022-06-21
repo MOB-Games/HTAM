@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombatantEvents : MonoBehaviour
 {
-    public event Action<StatType, int, bool> OnStatChange;
+    public event Action<StatType, int> OnStatChange;
     public event Action<CombatantId> OnMoveToTarget;
     public event Action OnReturn;
     public event Action OnFinishedMoving;
@@ -22,9 +22,9 @@ public class CombatantEvents : MonoBehaviour
         _id = GetComponent<CombatId>().id;
     }
 
-    public void StatChange(StatType affectedStat, int delta, bool percentage)
+    public void StatChange(StatType affectedStat, int delta)
     {
-        OnStatChange?.Invoke(affectedStat, delta, percentage);
+        OnStatChange?.Invoke(affectedStat, delta);
     }
  
     public void MoveToTarget(CombatantId targetId)
