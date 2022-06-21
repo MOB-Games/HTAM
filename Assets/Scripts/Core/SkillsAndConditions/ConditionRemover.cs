@@ -19,7 +19,7 @@ namespace Core.SkillsAndConditions
                 return true;
             if (removeAllBuffs && conditionWithLevel.condition.isBuff)
                 return true;
-            if (removeAllDebuffs && !conditionWithLevel.condition.isBuff)
+            if (removeAllDebuffs && !conditionWithLevel.condition.isDebuff)
                 return true;
             if (specificConditionsToRemove.Contains(conditionWithLevel.condition.id))
                 return true;

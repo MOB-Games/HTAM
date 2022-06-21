@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Heal
+  m_Name: Brush Off
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c3aab7237df394c4890e647a4ae580ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b066c869b51f9384fa8ac9cce36b4648, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Heal the target
+  description: 'Brush off any physical ailments '
   melee: 0
   offensive: 0
   animateAttacked: 0
@@ -145,30 +145,15 @@ MonoBehaviour:
   statsForSkill:
     attackStat: 6
     defenceStat: 6
-    affectedStat: 0
+    affectedStat: 6
   parametersPerLevel:
   - baseHitChance: 100
     hitMultiplier: 0
     missMultiplier: 0
-    baseEffectValue: 10
+    baseEffectValue: 0
     attackMultiplier: 0
     defenceMultiplier: 0
     chanceToInflict: 0
-  - baseHitChance: 100
-    hitMultiplier: 0
-    missMultiplier: 0
-    baseEffectValue: 20
-    attackMultiplier: 0
-    defenceMultiplier: 0
-    chanceToInflict: 0
-  - baseHitChance: 100
-    hitMultiplier: 0
-    missMultiplier: 0
-    baseEffectValue: 35
-    attackMultiplier: 0
-    defenceMultiplier: 0
-    chanceToInflict: 0
-  visualEffect: {fileID: 2135462378506688423, guid: c4091fca83658da49a098e786d812896,
-    type: 3}
+  visualEffect: {fileID: 0}
   conditionGo: {fileID: 0}
-  conditionRemover: {fileID: 0}
+  conditionRemover: {fileID: 11400000, guid: 49fd9cae0b1ec4b4f954c56c9c037c81, type: 2}

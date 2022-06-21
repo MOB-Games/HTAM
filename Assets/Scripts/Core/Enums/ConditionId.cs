@@ -5,5 +5,7 @@ namespace Core.Enums
         Weaken,
         Shield,
         ShieldBreak,
+        LightFeet,
+        Steadfast,
     }
 }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5049795257290006475}
   - component: {fileID: 8335700882252621066}
   - component: {fileID: 3733113094694834685}
-  - component: {fileID: -4175312710524176848}
+  - component: {fileID: 4578075450960214653}
   m_Layer: 5
-  m_Name: Weaken
+  m_Name: Steadfast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 2bbebcc9ca74c2c47bc5238486432710, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1458237dbb3c6d54f8fe9d39c0175d00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,17 +98,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61bd1f2f4f06b343b458b082e5deaa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  isBuff: 0
-  isDebuff: 1
-  affectedStat: 2
-  visualEffect: {fileID: 2135462378506688423, guid: 212133418cad53946b56e0a1ac53bdb3,
+  id: 4
+  isBuff: 1
+  isDebuff: 0
+  affectedStat: 4
+  visualEffect: {fileID: 8248039152672512555, guid: 2a71c2a463c6f0447bbd149798afc5b8,
     type: 3}
   parametersPerLevel:
-  - duration: 3
-    delta: -1
-    percentDelta: -10
---- !u!61 &-4175312710524176848
+  - duration: 2
+    delta: 0
+    percentDelta: 100
+  - duration: 2
+    delta: 0
+    percentDelta: 400
+  - duration: 2
+    delta: 0
+    percentDelta: 900
+--- !u!61 &4578075450960214653
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

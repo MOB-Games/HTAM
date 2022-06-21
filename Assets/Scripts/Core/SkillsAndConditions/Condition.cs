@@ -13,7 +13,6 @@ namespace Core.SkillsAndConditions
     {
         public int duration;
         public int delta;
-        [Range(0,100)]
         public int percentDelta;
     }
 
@@ -21,6 +20,7 @@ namespace Core.SkillsAndConditions
     {
         public ConditionId id;
         public bool isBuff;
+        public bool isDebuff;
         public StatType affectedStat;
         [CanBeNull] public GameObject visualEffect;
         public List<ConditionParameters> parametersPerLevel;
@@ -36,7 +36,7 @@ namespace Core.SkillsAndConditions
         public string GetDescription()
         {
             var desc = $"<u>{id}</u>: ";
-            desc +=isBuff ? 
+            desc += isBuff || isDebuff ? 
                 $"Targets {affectedStat} is {(parametersPerLevel[0].delta > 0 ? "increased" : "decreased")}" : 
                 $"Target {(parametersPerLevel[0].delta > 0 ? "gains" : "loses")} {affectedStat} every turn";
             return desc;
@@ -44,7 +44,7 @@ namespace Core.SkillsAndConditions
 
         public ConditionEffect GetInitialEffect(int level, StatBlock statBlock)
         {
-            return isBuff
+            return isBuff || isDebuff
                 ? new ConditionEffect(affectedStat, 
                     GameManager.CalculateTotalDelta(parametersPerLevel[level].delta,
                         parametersPerLevel[level].percentDelta, statBlock.GetStatBaseValue(affectedStat)),
@@ -54,7 +54,7 @@ namespace Core.SkillsAndConditions
 
         public ConditionEffect GetRecurringEffect(int level, StatBlock statBlock)
         {
-            return isBuff ? new ConditionEffect() : 
+            return isBuff || isDebuff ? new ConditionEffect() : 
                 new ConditionEffect(affectedStat, 
                     GameManager.CalculateTotalDelta(parametersPerLevel[level].delta,
                     parametersPerLevel[level].percentDelta, statBlock.GetStatBaseValue(affectedStat)));
@@ -67,7 +67,7 @@ namespace Core.SkillsAndConditions
 
         public ConditionEffect GetRevertEffect(int level, StatBlock statBlock)
         {
-            return isBuff ? new ConditionEffect(affectedStat, 
+            return isBuff || isDebuff ? new ConditionEffect(affectedStat, 
                     GameManager.CalculateTotalDelta(parametersPerLevel[level].delta,
                     parametersPerLevel[level].percentDelta, statBlock.GetStatBaseValue(affectedStat)))
                 : new ConditionEffect();

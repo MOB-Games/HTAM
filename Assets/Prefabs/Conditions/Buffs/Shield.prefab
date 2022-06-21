@@ -100,13 +100,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   isBuff: 1
-  isPercentBased: 0
+  isDebuff: 0
   affectedStat: 4
   visualEffect: {fileID: 8248039152672512555, guid: 3e52bf63a3d3be543bcd600588c3513d,
     type: 3}
   parametersPerLevel:
   - duration: 3
-    delta: 1
+    delta: 2
+    percentDelta: 15
+  - duration: 3
+    delta: 5
+    percentDelta: 25
+  - duration: 3
+    delta: 7
+    percentDelta: 50
 --- !u!61 &4578075450960214653
 BoxCollider2D:
   m_ObjectHideFlags: 0
