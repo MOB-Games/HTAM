@@ -16,15 +16,6 @@ MonoBehaviour:
   exp: 150
   stats: {fileID: 11400000, guid: 730be9b823c1d0b43b39fc79fbbf5cd9, type: 2}
   conditions: []
-  initialNumOffensiveSkillsSlots: 2
-  numOffensiveSkillsSlots: 2
-  activeOffensiveSkills:
-  - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
-      type: 3}
-    level: 0
-  initialNumDefensiveSkillsSlots: 1
-  numDefensiveSkillsSlots: 1
-  activeDefensiveSkills:
-  - skillGo: {fileID: 4003426218498401328, guid: 7617113144d786d488a661506091f9dc,
-      type: 3}
-    level: 0
+  activeOffensiveSkills: []
+  activeDefensiveSkills: []
+  initialState: {fileID: 11400000, guid: 5276a2bc65f2be74db830c6e45609eaa, type: 2}

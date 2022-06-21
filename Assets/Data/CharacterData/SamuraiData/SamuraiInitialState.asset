@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d24a02b2f4b8e08499a6bac4718052db, type: 3}
+  m_Name: SamuraiInitialState
+  m_EditorClassIdentifier: 
+  initialHp: 35
+  initialEnergy: 35
+  initialDamage: 9
+  initialEnergyEfficiency: 0
+  initialDefence: 5
+  initialSpeed: 13
+  initialOffensiveSkills:
+  - {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f, type: 3}
+  - {fileID: 4003426218498401328, guid: ae24e759da4e2284ab49382534ccb569, type: 3}
+  initialDefensiveSkills:
+  - {fileID: 4003426218498401328, guid: d0cef8365ca443241b68e34d8de39bdc, type: 3}

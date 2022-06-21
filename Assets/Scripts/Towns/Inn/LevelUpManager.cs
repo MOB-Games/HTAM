@@ -88,9 +88,7 @@ public class LevelUpManager : MonoBehaviour
     {
         var numSlots = _selectedCharacterState.activeOffensiveSkills.Count +
                        _selectedCharacterState.activeDefensiveSkills.Count;
-        var initSlots = _selectedCharacterState.initialNumOffensiveSkillsSlots +
-                        _selectedCharacterState.initialNumDefensiveSkillsSlots;
-        var cost = ((numSlots - initSlots) / 3) + 1;
+        var cost = ((numSlots - 3) / 3) + 1;
         return cost <= 3 ? cost : -1;
     }
     
