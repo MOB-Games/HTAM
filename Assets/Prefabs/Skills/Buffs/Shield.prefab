@@ -154,6 +154,20 @@ MonoBehaviour:
     attackMultiplier: 0
     defenceMultiplier: 0
     chanceToInflict: 90
+  - baseHitChance: 100
+    hitMultiplier: 0
+    missMultiplier: 0
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenceMultiplier: 0
+    chanceToInflict: 90
+  - baseHitChance: 100
+    hitMultiplier: 0
+    missMultiplier: 0
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenceMultiplier: 0
+    chanceToInflict: 90
   visualEffect: {fileID: 0}
   conditionGo: {fileID: 4909307490870935864, guid: 4bd073b32e670cd4ca4250551968610b,
     type: 3}

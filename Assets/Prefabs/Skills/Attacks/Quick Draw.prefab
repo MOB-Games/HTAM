@@ -138,7 +138,7 @@ MonoBehaviour:
   melee: 1
   offensive: 1
   animateAttacked: 1
-  energyCost: 10
+  energyCost: 5
   hpCost: 0
   targetType: 0
   skillAnimation: 0

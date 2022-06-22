@@ -169,11 +169,11 @@ MonoBehaviour:
     attackMultiplier: -1.75
     defenceMultiplier: 1
     chanceToInflict: 0
-  - baseHitChance: 85
+  - baseHitChance: 70
     hitMultiplier: 1
     missMultiplier: -1
     baseEffectValue: 0
-    attackMultiplier: -1.25
+    attackMultiplier: -2
     defenceMultiplier: 1
     chanceToInflict: 0
   visualEffect: {fileID: 0}
