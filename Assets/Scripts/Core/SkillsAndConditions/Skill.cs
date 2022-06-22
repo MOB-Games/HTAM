@@ -75,7 +75,7 @@ namespace Core.SkillsAndConditions
 
         public string GetDescription()
         {
-            var desc = $"<u>{name}</u>: {description}\n";
+            var desc = $"<u>{name.Split('(')[0]}</u>: {description}\n";
             if (_condition != null)
                 desc += $"Has a chance to inflict {_condition.GetDescription()}\n"; 
             if (energyCost > 0)

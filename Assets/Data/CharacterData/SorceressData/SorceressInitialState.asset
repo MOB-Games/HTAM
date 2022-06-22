@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHp: 25
   initialEnergy: 45
-  initialDamage: 7
-  initialEnergyEfficiency: 6
-  initialDefence: 5
+  initialDamage: 15
+  initialDefence: 3
   initialSpeed: 9
   initialOffensiveSkills:
   - {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f, type: 3}

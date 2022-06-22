@@ -17,15 +17,15 @@ GameObject:
   - component: {fileID: 2221025857880258747}
   - component: {fileID: 643554073149291336}
   - component: {fileID: 1752633463144944712}
+  - component: {fileID: -5729395821671783669}
   - component: {fileID: 3047790426424481988}
-  - component: {fileID: 293588599278952146}
-  - component: {fileID: 4095699319752990290}
   - component: {fileID: 143544944754756025}
-  - component: {fileID: 7726764361994183940}
+  - component: {fileID: 4095699319752990290}
   - component: {fileID: 2447912989255569191}
+  - component: {fileID: 7726764361994183940}
   - component: {fileID: 6580720188609057905}
   m_Layer: 0
-  m_Name: Black Wolf
+  m_Name: Golded Wolf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   m_GameObject: {fileID: 5217080582421210112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2073479556, guid: c9e5d9b088d53fa4e92486338707f345, type: 3}
+  m_Sprite: {fileID: -1277801202, guid: 64857ed92eead2c4e83571430d1045cd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,7 +108,7 @@ Animator:
   m_GameObject: {fileID: 5217080582421210112}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 90dadc18840af40449d3fec46433bc6c, type: 2}
+  m_Controller: {fileID: 9100000, guid: c0a3a1e238c5e0043a72619ddfd2cfad, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -131,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0024969876, y: -0.04799448}
+  m_Offset: {x: -0.000000044703484, y: 0.0025683641}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -142,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6402841, y: 0.3205568}
+  m_Size: {x: 0.63529027, y: 0.31681144}
   m_EdgeRadius: 0
 --- !u!114 &3593545304457460682
 MonoBehaviour:
@@ -205,19 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da7198531386541a43d544b23003a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3047790426424481988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217080582421210112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0965b719667d8f647820b9f061442d4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &293588599278952146
+--- !u!114 &-5729395821671783669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -230,7 +218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditions: []
---- !u!114 &4095699319752990290
+--- !u!114 &3047790426424481988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,7 +227,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5217080582421210112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b30441c472d52544bdfe21d0cc77f11, type: 3}
+  m_Script: {fileID: 11500000, guid: 0965b719667d8f647820b9f061442d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &143544944754756025
@@ -254,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee123870d7ed5b43be402eacaf138fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7726764361994183940
+--- !u!114 &4095699319752990290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -263,11 +251,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5217080582421210112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d90ef5011a58e8c4889d97f47bf4bd20, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b30441c472d52544bdfe21d0cc77f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expDrop: 5
-  goldDrop: 0
 --- !u!114 &2447912989255569191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,23 +268,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     hp:
+      baseValue: 40
+      value: 40
+    energy:
+      baseValue: 30
+      value: 30
+    damage:
       baseValue: 15
       value: 15
-    energy:
+    defence:
+      baseValue: 5
+      value: 5
+    speed:
       baseValue: 10
       value: 10
-    energyEfficiency:
-      baseValue: 0
-      value: 0
-    damage:
-      baseValue: 11
-      value: 11
-    defence:
-      baseValue: 0
-      value: 0
-    speed:
-      baseValue: 12
-      value: 12
+--- !u!114 &7726764361994183940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90ef5011a58e8c4889d97f47bf4bd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expDrop: 10
+  goldDrop: 0
 --- !u!114 &6580720188609057905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,8 +312,5 @@ MonoBehaviour:
   - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
       type: 3}
     level: 0
-  - skillGo: {fileID: 4003426218498401328, guid: e6cf44555f2a8c44c8feac1d26a94862,
-      type: 3}
-    level: 0
-  skillProbabilities: 43000000
-  probabilityToTargetPlayer: 80
+  skillProbabilities: 
+  probabilityToTargetPlayer: 100
