@@ -1,13 +1,23 @@
+using System;
 using System.Collections.Generic;
+using Core.SkillsAndConditions;
 using UnityEngine;
 using UnityEngine.UI;
+
+[Serializable]
+public class SkillAppearance
+{
+    public Image image;
+    [HideInInspector]
+    public string desc;
+}
 
 public class ActiveSkillsManager : MonoBehaviour
 {
     public Sprite lockedSkillHolder;
     public Sprite emptySkillHolder;
-    public List<Image> offensiveSkillSprites;
-    public List<Image> defensiveSkillSprites;
+    public List<SkillAppearance> offensiveSkillAppearances;
+    public List<SkillAppearance> defensiveSkillAppearances;
 
     private CharacterTownInfo _selectedCharacterTownInfo;
 
@@ -39,22 +49,38 @@ public class ActiveSkillsManager : MonoBehaviour
             // offence
             if (i < offensiveSkills.Count)
             {
-                offensiveSkillSprites[i].sprite = offensiveSkills[i].skillGo != null
-                    ? offensiveSkills[i].skillGo.GetComponent<Image>().sprite
-                    : emptySkillHolder;
+                if (offensiveSkills[i].skillGo != null)
+                {
+                    offensiveSkillAppearances[i].image.sprite = offensiveSkills[i].skillGo.GetComponent<Image>().sprite;
+                    offensiveSkillAppearances[i].desc =
+                        offensiveSkills[i].skillGo.GetComponent<Skill>().GetDescription();
+                }
+                else
+                {
+                    offensiveSkillAppearances[i].image.sprite = emptySkillHolder;
+                    offensiveSkillAppearances[i].desc = "";
+                }
             }
             else
-                offensiveSkillSprites[i].sprite = lockedSkillHolder;
+                offensiveSkillAppearances[i].image.sprite = lockedSkillHolder;
             
             // defence
             if (i < defensiveSkills.Count)
             {
-                defensiveSkillSprites[i].sprite = defensiveSkills[i].skillGo != null
-                    ? defensiveSkills[i].skillGo.GetComponent<Image>().sprite
-                    : emptySkillHolder;
+                if (defensiveSkills[i].skillGo != null)
+                {
+                    defensiveSkillAppearances[i].image.sprite = defensiveSkills[i].skillGo.GetComponent<Image>().sprite;
+                    defensiveSkillAppearances[i].desc =
+                        defensiveSkills[i].skillGo.GetComponent<Skill>().GetDescription();
+                }
+                else
+                {
+                    defensiveSkillAppearances[i].image.sprite = emptySkillHolder;
+                    defensiveSkillAppearances[i].desc = "";
+                }
             }
             else
-                defensiveSkillSprites[i].sprite = lockedSkillHolder;
+                defensiveSkillAppearances[i].image.sprite = lockedSkillHolder;
         }
     }
     

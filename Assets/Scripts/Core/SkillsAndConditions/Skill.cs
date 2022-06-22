@@ -85,6 +85,23 @@ namespace Core.SkillsAndConditions
             return desc;
         }
 
+        public string GetLevelupDescription(int level)
+        {
+            var desc = GetDescription();
+            var levelMaxed = level == parametersPerLevel.Count;
+            desc += "\n\n";
+            
+            
+            
+            if (levelMaxed)
+                desc += "<b>Level Maxed<b>";
+
+
+
+
+            return desc;
+        }
+
         public SkillResult GetResult(CombatantId attackerId, CombatantId defenderId, int level)
         {
             if (level >= parametersPerLevel.Count)

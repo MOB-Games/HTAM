@@ -571,14 +571,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
     type: 3}
-  description: 'The Samurai is a speed demon.
-
-    He uses his speed to suprise and
-    cripple his opponents before they have a chance to react and to evade any incoming
-    damage,
-
-    this however leaves him wide open if the enemy does succeed in hitting
-    him'
+  description: "The Samurai is a speed demon.\nUsing it's speed to suprise and cripple
+    his opponents \nbefore they have a chance to react, as well as \nevading most
+    incoming attacks,\nthis however leaves a hole in it's defences if the \nenemy
+    does succeed in hitting him"
   textBox: {fileID: 79032031}
   characterImageGo: {fileID: 1828300342}
 --- !u!1 &201909596
@@ -1754,8 +1750,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterPrefab: {fileID: 2259149878155014034, guid: c15c298f7edcf6a4e9bc13f2475ee618,
     type: 3}
-  description: "The Fighter is slow but powerful.\nHe can cause a lot of damage on
-    the battlefield, \nbut only when he's fast enough to attack and connect"
+  description: "The Fighter is slow but powerful.\nCan cause a lot of damage on the
+    battlefield, \nbut only when fast enough for the attack to connect"
   textBox: {fileID: 79032031}
   characterImageGo: {fileID: 1828300342}
 --- !u!1 &931295091
@@ -2116,11 +2112,11 @@ MonoBehaviour:
     type: 3}
   description: 'The Sorcerer is a spell casting master.
 
-    His mastery of spells
-    allows him to deal devastating damage,
+    The mastery of spells
+    means dealing devastating damage, as well as supporting your team with spells
 
-    but his focus on the magical arts
-    leave him weak physically to attacks'
+    but
+    the focus on the magical arts has caused a weakness in it''s defences'
   textBox: {fileID: 79032031}
   characterImageGo: {fileID: 1828300342}
 --- !u!1 &1231473377
@@ -2351,8 +2347,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 94.06, y: -32.82}
-  m_SizeDelta: {x: 379.95, y: 281.16}
+  m_AnchoredPosition: {x: 200, y: -32.82}
+  m_SizeDelta: {x: 640, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1525137257
 MonoBehaviour:
@@ -2666,11 +2662,11 @@ MonoBehaviour:
     type: 3}
   description: 'The Knight is a Tank.
 
-    He can take a lot of damage before going
+    Can take a lot of damage before going
     down,
 
-    but he is mostly too slow to evade any attacks and can only inflict
-    average damage'
+    but is mostly too slow to evade any attacks and can only inflict average
+    damage'
   textBox: {fileID: 79032031}
   characterImageGo: {fileID: 1828300342}
 --- !u!1001 &1709761734

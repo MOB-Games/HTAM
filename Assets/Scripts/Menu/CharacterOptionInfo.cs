@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CharacterOptionInfo : MonoBehaviour
 {
     public GameObject characterPrefab;
-    [Multiline]
+    [Multiline(6)]
     public string description;
 
     public TextMeshProUGUI textBox;
