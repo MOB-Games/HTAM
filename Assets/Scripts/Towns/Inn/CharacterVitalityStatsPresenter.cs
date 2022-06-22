@@ -1,4 +1,3 @@
-using System;
 using Core.Enums;
 using TMPro;
 using UnityEngine;

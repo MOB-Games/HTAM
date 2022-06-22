@@ -139,15 +139,13 @@ MonoBehaviour:
   melee: 1
   offensive: 1
   animateAttacked: 1
-  isPercentBased: 0
-  costIsPercentBased: 0
   energyCost: 0
   hpCost: 0
   targetType: 0
   skillAnimation: 0
   statsForSkill:
     attackStat: 2
-    defenceStat: 4
+    defenceStat: 3
     affectedStat: 0
   parametersPerLevel:
   - baseHitChance: 90

@@ -43,7 +43,6 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
             Destroy(button);
         var statBlock = CombatantInfo.GetStatBlock(userId);
         var energy = statBlock.energy;
-        var energyEfficiency = statBlock.energyEfficiency.value;
         var hp = statBlock.hp;
         foreach (var (skillWithLevel, index) in skillsWithLevels.Select((skillWithLevel, i) => (skillWithLevel, i)))
         {

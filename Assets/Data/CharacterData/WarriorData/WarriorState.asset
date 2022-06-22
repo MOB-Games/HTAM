@@ -17,8 +17,5 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: 95ab26624512029468e4ab460287e3fc, type: 2}
   conditions: []
   activeOffensiveSkills: []
-  activeDefensiveSkills:
-  - skillGo: {fileID: 4003426218498401328, guid: 7617113144d786d488a661506091f9dc,
-      type: 3}
-    level: 0
+  activeDefensiveSkills: []
   initialState: {fileID: 11400000, guid: a50e819c88f07ab44b522ffc9a55ac3c, type: 2}

@@ -35,13 +35,6 @@ public class StatModifier : MonoBehaviour
                 else if (stats.energy.value > stats.energy.baseValue)
                     stats.energy.value = stats.energy.baseValue;
                 break;
-            case StatType.EnergyEfficiency:
-                stats.energyEfficiency.value += delta;
-                if (stats.energyEfficiency.value <= 0)
-                    stats.energyEfficiency.value = 0;
-                else if (stats.energyEfficiency.value > stats.energyEfficiency.baseValue)
-                    stats.energyEfficiency.value = stats.energyEfficiency.baseValue;
-                break;
             case StatType.Damage:
                 stats.damage.value += delta;
                 if (stats.damage.value <= 0)

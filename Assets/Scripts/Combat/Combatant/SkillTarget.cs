@@ -1,4 +1,4 @@
-using Core.SkillsAndConditions;using System.Collections;
+using Core.SkillsAndConditions;
 using Core.Enums;
 using UnityEngine;
 

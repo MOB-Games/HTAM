@@ -87,27 +87,25 @@ public class BlacksmithStatModifier : MonoBehaviour
         var stats = _selectedCharacterTownInfo.State.stats;
         var dec = GameManager.GetStatDecrement();
         var inc = GameManager.GetStatIncrement(StatType.Damage, stats.advantage, stats.disadvantage);
-        weaponBulkUpButton.interactable =
-            stats.damage.value + inc <= _blacksmithInfo.maxDamage &&
-            stats.energyEfficiency.value - dec >= _blacksmithInfo.minEnergyEfficiency;
-        _weaponBulkUpText.text = weaponBulkUpButton.interactable ? "BULK-UP" : "Maxed";
-        
-        inc = GameManager.GetStatIncrement(StatType.EnergyEfficiency, stats.advantage, stats.disadvantage);
-        weaponStripDownButton.interactable = 
-            stats.energyEfficiency.value + inc <= _blacksmithInfo.maxEnergyEfficiency && stats.damage.value - dec >= 0;
-        _weaponStripDownText.text = weaponStripDownButton.interactable ? "strip-down" : "Maxed";
+        var maxed = stats.damage.value + inc > _blacksmithInfo.maxDamage;
+        weaponBulkUpButton.interactable = !maxed && stats.speed.value - dec >= 0;
+        _weaponBulkUpText.text = weaponBulkUpButton.interactable ? "BULK-UP" : maxed ? "Maxed" : "Blocked";
         
         
         inc = GameManager.GetStatIncrement(StatType.Defence, stats.advantage, stats.disadvantage);
-        armorBulkUpButton.interactable =
-            stats.defence.value + inc <= _blacksmithInfo.maxDefence && stats.speed.value - dec >= 0;
-        _armorBulkUpText.text = armorBulkUpButton.interactable ? "BULK-UP" : "Maxed";
+        maxed = stats.defence.value + inc > _blacksmithInfo.maxDefence;
+        armorBulkUpButton.interactable = !maxed && stats.speed.value - dec >= 0;
+        _armorBulkUpText.text = armorBulkUpButton.interactable ? "BULK-UP" : maxed ? "Maxed" : "Blocked";
         
         
         inc = GameManager.GetStatIncrement(StatType.Speed, stats.advantage, stats.disadvantage);
-        armorStripDownButton.interactable =
-            stats.speed.value + inc <= _blacksmithInfo.maxSpeed && stats.defence.value - dec >= 0;
-        _armorStripDownText.text = armorStripDownButton.interactable ? "strip-down" : "Maxed";
+        maxed = stats.speed.value + inc > _blacksmithInfo.maxSpeed;
+        weaponStripDownButton.interactable = !maxed && stats.damage.value - dec >= 0;
+        _weaponStripDownText.text = weaponStripDownButton.interactable ? "strip-down" : maxed ? "Maxed" : "Blocked";
+        
+        
+        armorStripDownButton.interactable = !maxed && stats.defence.value - dec >= 0;
+        _weaponStripDownText.text = weaponStripDownButton.interactable ? "strip-down" : maxed ? "Maxed" : "Blocked";
     }
 
     private void IncStat(StatType statType, StatSO stat)
@@ -136,13 +134,13 @@ public class BlacksmithStatModifier : MonoBehaviour
     public void BulkUpWeapon()
     {
         var stats = _selectedCharacterTownInfo.State.stats;
-        ModifyStats(StatType.Damage,stats.damage, stats.energyEfficiency);
+        ModifyStats(StatType.Damage,stats.damage, stats.speed);
     }
 
     public void StripDownWeapon()
     {
         var stats = _selectedCharacterTownInfo.State.stats;
-        ModifyStats(StatType.EnergyEfficiency,stats.energyEfficiency, stats.damage);
+        ModifyStats(StatType.Speed,stats.speed, stats.damage);
     }
     
     public void BulkUpArmor()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: KnightState
   m_EditorClassIdentifier: 
   level: 0
-  exp: 50
+  exp: 0
   stats: {fileID: 11400000, guid: 0af51371b220e824bab4bca3e1313ead, type: 2}
   conditions: []
   activeOffensiveSkills: []

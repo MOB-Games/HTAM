@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SamuraiState
   m_EditorClassIdentifier: 
   level: 0
-  exp: 150
+  exp: 0
   stats: {fileID: 11400000, guid: 730be9b823c1d0b43b39fc79fbbf5cd9, type: 2}
   conditions: []
   activeOffensiveSkills: []

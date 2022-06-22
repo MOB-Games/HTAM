@@ -134,21 +134,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 3
   description: 
   melee: 0
   offensive: 1
   animateAttacked: 0
-  isPercentBased: 0
-  costIsPercentBased: 0
   energyCost: 5
   hpCost: 0
   targetType: 1
   skillAnimation: 2
   statsForSkill:
-    attackStat: 6
-    defenceStat: 6
-    affectedStat: 6
+    attackStat: 5
+    defenceStat: 5
+    affectedStat: 5
   parametersPerLevel:
   - baseHitChance: 100
     hitMultiplier: 0
@@ -160,3 +157,4 @@ MonoBehaviour:
   visualEffect: {fileID: 0}
   conditionGo: {fileID: 4909307490870935864, guid: 432aa904747f5de47b2924d56c16340b,
     type: 3}
+  conditionRemover: {fileID: 0}

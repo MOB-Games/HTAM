@@ -15,7 +15,6 @@ public class LevelUpManager : MonoBehaviour
     public GameObject hpUpButton;
     public GameObject energyUpButton;
     public GameObject damageUpButton;
-    public GameObject energyEfficiencyUpButton;
     public GameObject defenceUpButton;
     public GameObject speedUpButton;
 
@@ -25,7 +24,6 @@ public class LevelUpManager : MonoBehaviour
     public TextMeshProUGUI unlockText;
     
     private TextMeshProUGUI _damageChangeText;
-    private TextMeshProUGUI _energyEfficiencyChangeText;
     private TextMeshProUGUI _defenceChangeText;
     private TextMeshProUGUI _speedChangeText;
 
@@ -40,7 +38,6 @@ public class LevelUpManager : MonoBehaviour
     private int _skillPts;
     
     private int _damageChange;
-    private int _energyEfficiencyChange;
     private int _defenceChange;
     private int _speedChange;
 
@@ -56,7 +53,6 @@ public class LevelUpManager : MonoBehaviour
     private void Start()
     {
         _damageChangeText = damageUpButton.GetComponentInChildren<TextMeshProUGUI>();
-        _energyEfficiencyChangeText = energyEfficiencyUpButton.GetComponentInChildren<TextMeshProUGUI>();
         _defenceChangeText = defenceUpButton.GetComponentInChildren<TextMeshProUGUI>();
         _speedChangeText = speedUpButton.GetComponentInChildren<TextMeshProUGUI>();
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
@@ -125,7 +121,6 @@ public class LevelUpManager : MonoBehaviour
     {
         var active = _statPts > 0;
         damageUpButton.SetActive(active);
-        energyEfficiencyUpButton.SetActive(active);
         defenceUpButton.SetActive(active);
         speedUpButton.SetActive(active);
     }
@@ -147,11 +142,9 @@ public class LevelUpManager : MonoBehaviour
         var advantage = _selectedCharacterState.stats.advantage;
         var disadvantage = _selectedCharacterState.stats.disadvantage;
         _damageChange = GameManager.GetStatIncrement(StatType.Damage, advantage, disadvantage);
-        _energyEfficiencyChange = GameManager.GetStatIncrement(StatType.EnergyEfficiency, advantage, disadvantage);
         _defenceChange = GameManager.GetStatIncrement(StatType.Defence, advantage, disadvantage);
         _speedChange = GameManager.GetStatIncrement(StatType.Speed, advantage, disadvantage);
         _damageChangeText.text = $"+{_damageChange}";
-        _energyEfficiencyChangeText.text = $"+{_energyEfficiencyChange}";
         _defenceChangeText.text = $"+{_defenceChange}";
         _speedChangeText.text = $"+{_speedChange}";
         _selectedCharacterState.stats.LoadStats(_stats);
@@ -188,12 +181,6 @@ public class LevelUpManager : MonoBehaviour
             case StatType.Damage:
                 change = _damageChange;
                 _stats.damage.baseValue += _damageChange;
-                _statPts--;
-                SetStatButtons();
-                break;
-            case StatType.EnergyEfficiency:
-                change = _energyEfficiencyChange;
-                _stats.energyEfficiency.baseValue += _energyEfficiencyChange;
                 _statPts--;
                 SetStatButtons();
                 break;

@@ -14,15 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: {fileID: 11400000, guid: 424261f4d950d164498b13b71a0050bc, type: 2}
   energy: {fileID: 11400000, guid: 21144ecf7672c4648903d9044eed7c22, type: 2}
-  energyEfficiency: {fileID: 11400000, guid: ae236459d1d7bb345905a1b360af6538, type: 2}
   damage: {fileID: 11400000, guid: 6760944b7c6e8a945afc4d0811b54992, type: 2}
   defence: {fileID: 11400000, guid: ca8200115004f444db5ae03021999309, type: 2}
   speed: {fileID: 11400000, guid: 1bdfb4828f8459042b2552196a4cc0ac, type: 2}
-  initialHp: 25
-  initialEnergy: 45
-  initialEnergyEfficiency: 6
-  initialDamage: 7
-  initialDefence: 5
-  initialSpeed: 9
-  advantage: 3
-  disadvantage: 4
+  advantage: 2
+  disadvantage: 3

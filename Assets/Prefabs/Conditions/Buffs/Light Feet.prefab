@@ -101,7 +101,7 @@ MonoBehaviour:
   id: 3
   isBuff: 1
   isDebuff: 0
-  affectedStat: 5
+  affectedStat: 4
   visualEffect: {fileID: 2135462378506688423, guid: a4e2f2bdacdd8ea4387788f56f5d4baa,
     type: 3}
   parametersPerLevel:

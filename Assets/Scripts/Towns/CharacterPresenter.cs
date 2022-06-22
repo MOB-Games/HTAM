@@ -1,4 +1,3 @@
-using System;
 using Core.Enums;
 using TMPro;
 using UnityEngine;
@@ -8,7 +7,6 @@ public class CharacterPresenter : MonoBehaviour
 {
     public GameObject characterImageGo;
     public TextMeshProUGUI damageText;
-    public TextMeshProUGUI energyEfficiencyText;
     public TextMeshProUGUI defenceText;
     public TextMeshProUGUI speedText;
 
@@ -31,8 +29,6 @@ public class CharacterPresenter : MonoBehaviour
         var stats = character.State.stats;
         damageText.text = stats.damage.value.ToString();
         damageText.color = Color.black;
-        energyEfficiencyText.text = stats.energyEfficiency.value.ToString();
-        energyEfficiencyText.color = Color.black;
         defenceText.text = stats.defence.value.ToString();
         defenceText.color = Color.black;
         speedText.text = stats.speed.value.ToString();
@@ -44,7 +40,6 @@ public class CharacterPresenter : MonoBehaviour
         var text = stat switch
         {
             StatType.Damage => damageText,
-            StatType.EnergyEfficiency => energyEfficiencyText,
             StatType.Defence => defenceText,
             StatType.Speed => speedText,
             _ => null

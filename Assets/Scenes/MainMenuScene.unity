@@ -2117,10 +2117,10 @@ MonoBehaviour:
   description: 'The Sorcerer is a spell casting master.
 
     His mastery of spells
-    allows him to use many spells before tiring,
+    allows him to deal devastating damage,
 
-    but his pysical abilities aren''t
-    as impressive, especially his defence'
+    but his focus on the magical arts
+    leave him weak physically to attacks'
   textBox: {fileID: 79032031}
   characterImageGo: {fileID: 1828300342}
 --- !u!1 &1231473377

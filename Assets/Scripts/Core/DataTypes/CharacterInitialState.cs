@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using Core.Stats;
 using UnityEngine;
 
 namespace Core.DataTypes
@@ -12,7 +10,6 @@ namespace Core.DataTypes
         public int initialEnergy;
 
         public int initialDamage;
-        public int initialEnergyEfficiency;
         public int initialDefence;
         public int initialSpeed;
         
