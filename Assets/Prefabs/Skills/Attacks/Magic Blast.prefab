@@ -138,32 +138,26 @@ MonoBehaviour:
   melee: 0
   offensive: 1
   animateAttacked: 1
+  speedBasedEvasion: 0
   energyCost: 10
   hpCost: 0
   targetType: 0
   skillAnimation: 2
-  statsForSkill:
-    attackStat: 5
-    defenceStat: 5
-    affectedStat: 0
+  attackStat: 5
+  defenceStat: 5
+  affectedStat: 0
   parametersPerLevel:
   - baseHitChance: 90
-    hitMultiplier: 0
-    missMultiplier: 0
     baseEffectValue: 10
     attackMultiplier: 0
     defenceMultiplier: 0
     chanceToInflict: 0
   - baseHitChance: 90
-    hitMultiplier: 0
-    missMultiplier: 0
     baseEffectValue: 20
     attackMultiplier: 0
     defenceMultiplier: 0
     chanceToInflict: 0
   - baseHitChance: 90
-    hitMultiplier: 0
-    missMultiplier: 0
     baseEffectValue: 25
     attackMultiplier: 0
     defenceMultiplier: 0

@@ -9,20 +9,10 @@ using Random = UnityEngine.Random;
 namespace Core.SkillsAndConditions
 {
     [Serializable]
-    public class StatsForSkill
-    {
-        public StatType attackStat;
-        public StatType defenceStat;
-        public StatType affectedStat;
-    }
-
-    [Serializable]
     public class SkillParameters
     {
         // variables for calculating if skill hits or misses
         public int baseHitChance;
-        public double hitMultiplier;
-        public double missMultiplier;
         
         // variables for calculating effect of skill
         public int baseEffectValue;
@@ -40,11 +30,18 @@ namespace Core.SkillsAndConditions
         public bool melee;
         public bool offensive;
         public bool animateAttacked;
+        public bool speedBasedEvasion;
         public int energyCost;
         public int hpCost;
         public TargetType targetType;
         public SkillAnimation skillAnimation;
-        public StatsForSkill statsForSkill;
+        [Header("Stats For Skill")]
+        [EnumOrder("2,3,4,5")]
+        public StatType attackStat;
+        [EnumOrder("2,3,4,5")]
+        public StatType defenceStat;
+        [EnumOrder("0,1,5")]
+        public StatType affectedStat;
         public List<SkillParameters> parametersPerLevel;
         [CanBeNull] public GameObject visualEffect;
         [CanBeNull] public GameObject conditionGo;
@@ -85,23 +82,6 @@ namespace Core.SkillsAndConditions
             return desc;
         }
 
-        public string GetLevelupDescription(int level)
-        {
-            var desc = GetDescription();
-            var levelMaxed = level == parametersPerLevel.Count;
-            desc += "\n\n";
-            
-            
-            
-            if (levelMaxed)
-                desc += "<b>Level Maxed<b>";
-
-
-
-
-            return desc;
-        }
-
         public SkillResult GetResult(CombatantId attackerId, CombatantId defenderId, int level)
         {
             if (level >= parametersPerLevel.Count)
@@ -109,14 +89,14 @@ namespace Core.SkillsAndConditions
                     $"Tried to use skill {name} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
             var attackerStats = CombatantInfo.GetStatBlock(attackerId);
             var defenderStats = CombatantInfo.GetStatBlock(defenderId);
-            var chanceToHit = parametersPerLevel[level].baseHitChance + parametersPerLevel[level].hitMultiplier * attackerStats.speed.value +
-                              parametersPerLevel[level].missMultiplier * defenderStats.speed.value;
+            var chanceToHit = parametersPerLevel[level].baseHitChance + 
+                              (speedBasedEvasion ? attackerStats.speed.value - defenderStats.speed.value : 0);
             if (Random.Range(0, 100) > chanceToHit)
                 return new SkillResult();
             
             var delta = parametersPerLevel[level].baseEffectValue +
-                        parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(statsForSkill.attackStat) +
-                        parametersPerLevel[level].defenceMultiplier * defenderStats.GetStatValue(statsForSkill.defenceStat);
+                        parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(attackStat) +
+                        parametersPerLevel[level].defenceMultiplier * defenderStats.GetStatValue(defenceStat);
             
             if (offensive)
             {
@@ -128,7 +108,7 @@ namespace Core.SkillsAndConditions
                 if (delta <= 0)
                     delta = 1; // should always help
             }
-            return new SkillResult(animateAttacked, statsForSkill.affectedStat, (int)delta, 
+            return new SkillResult(animateAttacked, affectedStat, (int)delta, 
                 visualEffect, level, InflictedCondition(level), conditionRemover);
         }
 
