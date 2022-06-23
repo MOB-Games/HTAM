@@ -12,11 +12,13 @@ public class ConditionIcon
 {
     public readonly ConditionId Id;
     public readonly GameObject ConditionGo;
+    public int Ticks;
 
     public ConditionIcon(GameObject conditionGo, ConditionId id)
     {
         Id = id;
         ConditionGo = conditionGo;
+        Ticks = 0;
     }
 }
 
@@ -58,7 +60,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _combatantEvents.OnStatChange += ModifyBars;
         _combatantEvents.OnConditionAdded += AddConditionIcon;
         _combatantEvents.OnConditionRemoved += RemoveConditionIcon;
-        _combatantEvents.OnEndTurn += StopGlow;
+        _combatantEvents.OnEndTurn += Tick;
         CombatEvents.OnStartTurn += StartGlow;
         if (CombatantInfo.Mirror)
             transform.position = Vector3.Scale(transform.position,new Vector3(-1,1,1));
@@ -109,6 +111,12 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void AddConditionIcon(GameObject conditionGo, ConditionId conditionId, int level)
     {
+        var conditionIcon = _conditions.Find(c => c.Id == conditionId);
+        if (conditionIcon != null)
+        {
+            conditionIcon.Ticks = 0;
+            return;
+        }
         var inst = Instantiate(conditionGo, Vector3.zero, Quaternion.identity, transform);
         inst.transform.localPosition = GetConditionIconLocation(_conditions.Count);
         _conditions.Add(new ConditionIcon(inst, conditionId));
@@ -128,6 +136,13 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         }
     }
 
+    private void Tick()
+    {
+        foreach (var condition in _conditions)
+            condition.Ticks++;
+        StopGlow();
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!_inCombat) return;
@@ -136,7 +151,10 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (hoveredGo.TryGetComponent<Condition>(out var condition))
             {
                 var conditionIndex = _conditions.FindIndex(c => c.ConditionGo == condition.gameObject);
-                tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = condition.GetDescription(_levels[conditionIndex]);
+                var desc = condition.GetDescription(_levels[conditionIndex]);
+                desc +=
+                    $"\n\nExpires in {condition.TurnsLeft(_conditions[conditionIndex].Ticks, _levels[conditionIndex])} Turns";
+                tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = desc;
                 tooltipBox.SetActive(true);
                 break;
             }
@@ -155,7 +173,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             _combatantEvents.OnStatChange -= ModifyBars;
             _combatantEvents.OnConditionAdded -= AddConditionIcon;
             _combatantEvents.OnConditionRemoved -= RemoveConditionIcon;
-            _combatantEvents.OnEndTurn -= StopGlow;
+            _combatantEvents.OnEndTurn -= Tick;
         }
         CombatEvents.OnStartTurn -= StartGlow;
         CombatEvents.OnWin -= CombatEnded;

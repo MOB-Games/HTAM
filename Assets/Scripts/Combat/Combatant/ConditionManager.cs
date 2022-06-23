@@ -73,9 +73,9 @@ public class ConditionManager : MonoBehaviour
         if (targetId != _id || result.Condition == null) return;
         var condition = result.Condition.GetComponent<Condition>();
         var conditionWithLevel = conditions.Find(c => c.condition.id == condition.id);
+        _combatantEvents.AddCondition(result.Condition, condition.id, result.Level);
         if (conditionWithLevel == null)
         {
-            _combatantEvents.AddCondition(result.Condition, condition.id, result.Level);
             conditions.Add(new ConditionWithLevel(result.Condition, condition, result.Level));
             ConditionEvoked(condition.GetInitialEffect(result.Level, _statBlock));
         }

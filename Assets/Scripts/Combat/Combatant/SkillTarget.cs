@@ -26,10 +26,7 @@ public class SkillTarget : MonoBehaviour
         if (targetId != _id) return;
         if (result.AnimateAttacked)
             _combatantEvents.Hurt();
-        if (result.VisualEffect != null)
-        {
-            StartCoroutine(GameManager.PlayVisualEffect(result.VisualEffect, _center));
-        }
+        StartCoroutine(GameManager.PlayVisualEffect(result.VisualEffect, _center));
         _combatantEvents.StatChange(result.AffectedStat, result.Delta);
     }
 

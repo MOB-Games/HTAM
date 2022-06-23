@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     
     public static IEnumerator PlayVisualEffect(GameObject visualEffect, Vector3 location)
     {
+        if (visualEffect == null) yield break;
         var inst = Instantiate(visualEffect, location, Quaternion.identity);
         yield return new WaitForSeconds(2f);
         Destroy(inst);

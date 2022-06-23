@@ -108,6 +108,11 @@ namespace Core.SkillsAndConditions
             return ticks >= parametersPerLevel[level].duration;
         }
 
+        public int TurnsLeft(int ticks, int level)
+        {
+            return parametersPerLevel[level].duration - ticks;
+        }
+
         public ConditionEffect GetRevertEffect(int level, StatBlock statBlock)
         {
             return recurring ? new ConditionEffect()
