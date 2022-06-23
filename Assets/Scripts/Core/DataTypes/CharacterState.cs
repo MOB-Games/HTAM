@@ -39,7 +39,7 @@ namespace Core.DataTypes
         public void Init()
         {
             stats.Init(initialState.initialHp, initialState.initialEnergy, initialState.initialDamage,
-                 initialState.initialDefence, initialState.initialSpeed);
+                 initialState.initialDefense, initialState.initialSpeed);
             conditions.Clear();
             level = 0;
             exp = 0;

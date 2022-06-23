@@ -17,9 +17,9 @@ namespace Core.SkillsAndConditions
         {
             if (removeAllBuffs && removeAllDebuffs)
                 return true;
-            if (removeAllBuffs && conditionWithLevel.condition.isBuff)
+            if (removeAllBuffs && !conditionWithLevel.condition.offensive && !conditionWithLevel.condition.recurring)
                 return true;
-            if (removeAllDebuffs && !conditionWithLevel.condition.isDebuff)
+            if (removeAllDebuffs && conditionWithLevel.condition.offensive && !conditionWithLevel.condition.recurring)
                 return true;
             if (specificConditionsToRemove.Contains(conditionWithLevel.condition.id))
                 return true;

@@ -25,6 +25,10 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         new Vector3(-0.25f,1.5f,0),
         new Vector3(-0.25f,-1.5f,0)
     };
+
+    private readonly Dictionary<Vector3, int> _locationToLevel = new Dictionary<Vector3, int>();
+
+
     private void Start()
     {
         CombatEvents.OnOpenMenu += SetupMenu;
@@ -41,6 +45,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         skillMenu.transform.position = targetLocation;
         foreach (var button in _buttons)
             Destroy(button);
+        _locationToLevel.Clear();
         var statBlock = CombatantInfo.GetStatBlock(userId);
         var energy = statBlock.energy;
         var hp = statBlock.hp;
@@ -50,6 +55,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
             var inst = Instantiate(skillWithLevel.skillGo,
                 targetLocation + Vector3.Scale(_buttonOffsets[index], offsetDirectionVector),
                 Quaternion.identity, skillMenu.transform);
+            _locationToLevel.Add(inst.transform.position, skillWithLevel.level);
             var skill = inst.GetComponent<Skill>();
             var button = inst.GetComponent<Button>();
             button.interactable = skill.energyCost <= energy.value && skill.hpCost <= hp.value;
@@ -68,10 +74,10 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         {
             if (hoveredGo.TryGetComponent<Skill>(out var skill))
             {
-                var message = skill.GetDescription();
+                var message = skill.GetDescription(_locationToLevel[skill.gameObject.transform.position]);
                 if (!hoveredGo.GetComponent<Button>().interactable)
                 {
-                    message += $"\n\n<color=red>*Insufficient {(skill.energyCost > 0 ? "energy" : "HP")}</color>";
+                    message += $"\n\n<color=red>*Insufficient {(skill.energyCost > 0 ? "energy" : "Hp")}</color>";
                 }
                 tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = message;
                 tooltipBox.SetActive(true);

@@ -34,6 +34,8 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [CanBeNull] private CombatantEvents _combatantEvents;
     private readonly List<ConditionIcon> _conditions = new List<ConditionIcon>();
 
+    private readonly List<int> _levels = new List<int>();
+
     private void Start()
     {
         CombatEvents.OnWin += CombatEnded;
@@ -68,6 +70,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             var inst = Instantiate(condition.conditionGo, Vector3.zero, Quaternion.identity, transform);
             inst.transform.localPosition = GetConditionIconLocation(_conditions.Count);
             _conditions.Add(new ConditionIcon(inst, conditionId));
+            _levels.Add(condition.level);
         }
     }
 
@@ -104,16 +107,19 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         glow.SetActive(false);
     }
 
-    private void AddConditionIcon(GameObject conditionGo, ConditionId conditionId)
+    private void AddConditionIcon(GameObject conditionGo, ConditionId conditionId, int level)
     {
         var inst = Instantiate(conditionGo, Vector3.zero, Quaternion.identity, transform);
         inst.transform.localPosition = GetConditionIconLocation(_conditions.Count);
         _conditions.Add(new ConditionIcon(inst, conditionId));
+        _levels.Add(level);
     }
 
     private void RemoveConditionIcon(ConditionId conditionId)
     {
         var conditionIcon = _conditions.Find(c => c.Id == conditionId);
+        var conditionIndex = _conditions.FindIndex(c => c.Id == conditionId);
+        _levels.RemoveAt(conditionIndex);
         _conditions.Remove(conditionIcon);
         Destroy(conditionIcon.ConditionGo);
         foreach (var (condition, index) in _conditions.Select((c,i)=> (c,i)))
@@ -129,7 +135,8 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (hoveredGo.TryGetComponent<Condition>(out var condition))
             {
-                tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = condition.GetDescription();
+                var conditionIndex = _conditions.FindIndex(c => c.ConditionGo == condition.gameObject);
+                tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = condition.GetDescription(_levels[conditionIndex]);
                 tooltipBox.SetActive(true);
                 break;
             }

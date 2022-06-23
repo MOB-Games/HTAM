@@ -15,7 +15,7 @@ public class LevelUpManager : MonoBehaviour
     public GameObject hpUpButton;
     public GameObject energyUpButton;
     public GameObject damageUpButton;
-    public GameObject defenceUpButton;
+    public GameObject defenseUpButton;
     public GameObject speedUpButton;
 
     public GameObject unlockOffSlot;
@@ -24,7 +24,7 @@ public class LevelUpManager : MonoBehaviour
     public TextMeshProUGUI unlockText;
     
     private TextMeshProUGUI _damageChangeText;
-    private TextMeshProUGUI _defenceChangeText;
+    private TextMeshProUGUI _defenseChangeText;
     private TextMeshProUGUI _speedChangeText;
 
     private static readonly List<int> ExpForLevel = new() { 0, 40, 100 };
@@ -38,7 +38,7 @@ public class LevelUpManager : MonoBehaviour
     private int _skillPts;
     
     private int _damageChange;
-    private int _defenceChange;
+    private int _defenseChange;
     private int _speedChange;
 
     private int _offensiveSkillSlotsUnlocked;
@@ -53,7 +53,7 @@ public class LevelUpManager : MonoBehaviour
     private void Start()
     {
         _damageChangeText = damageUpButton.GetComponentInChildren<TextMeshProUGUI>();
-        _defenceChangeText = defenceUpButton.GetComponentInChildren<TextMeshProUGUI>();
+        _defenseChangeText = defenseUpButton.GetComponentInChildren<TextMeshProUGUI>();
         _speedChangeText = speedUpButton.GetComponentInChildren<TextMeshProUGUI>();
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
@@ -121,7 +121,7 @@ public class LevelUpManager : MonoBehaviour
     {
         var active = _statPts > 0;
         damageUpButton.SetActive(active);
-        defenceUpButton.SetActive(active);
+        defenseUpButton.SetActive(active);
         speedUpButton.SetActive(active);
     }
 
@@ -142,10 +142,10 @@ public class LevelUpManager : MonoBehaviour
         var advantage = _selectedCharacterState.stats.advantage;
         var disadvantage = _selectedCharacterState.stats.disadvantage;
         _damageChange = GameManager.GetStatIncrement(StatType.Damage, advantage, disadvantage);
-        _defenceChange = GameManager.GetStatIncrement(StatType.Defence, advantage, disadvantage);
+        _defenseChange = GameManager.GetStatIncrement(StatType.Defense, advantage, disadvantage);
         _speedChange = GameManager.GetStatIncrement(StatType.Speed, advantage, disadvantage);
         _damageChangeText.text = $"+{_damageChange}";
-        _defenceChangeText.text = $"+{_defenceChange}";
+        _defenseChangeText.text = $"+{_defenseChange}";
         _speedChangeText.text = $"+{_speedChange}";
         _selectedCharacterState.stats.LoadStats(_stats);
         
@@ -184,9 +184,9 @@ public class LevelUpManager : MonoBehaviour
                 _statPts--;
                 SetStatButtons();
                 break;
-            case StatType.Defence:
-                change = _defenceChange;
-                _stats.defence.baseValue += _defenceChange;
+            case StatType.Defense:
+                change = _defenseChange;
+                _stats.defense.baseValue += _defenseChange;
                 _statPts--;
                 SetStatButtons();
                 break;

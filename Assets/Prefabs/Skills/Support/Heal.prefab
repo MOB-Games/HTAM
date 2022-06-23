@@ -144,23 +144,23 @@ MonoBehaviour:
   targetType: 0
   skillAnimation: 2
   attackStat: 5
-  defenceStat: 5
+  defenseStat: 5
   affectedStat: 0
   parametersPerLevel:
-  - baseHitChance: 100
+  - accuracy: 100
     baseEffectValue: 10
     attackMultiplier: 0
-    defenceMultiplier: 0
+    defenseMultiplier: 0
     chanceToInflict: 0
-  - baseHitChance: 100
+  - accuracy: 100
     baseEffectValue: 20
     attackMultiplier: 0
-    defenceMultiplier: 0
+    defenseMultiplier: 0
     chanceToInflict: 0
-  - baseHitChance: 100
+  - accuracy: 100
     baseEffectValue: 35
     attackMultiplier: 0
-    defenceMultiplier: 0
+    defenseMultiplier: 0
     chanceToInflict: 0
   visualEffect: {fileID: 2135462378506688423, guid: c4091fca83658da49a098e786d812896,
     type: 3}

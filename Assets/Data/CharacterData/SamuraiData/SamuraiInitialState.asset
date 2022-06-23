@@ -15,7 +15,7 @@ MonoBehaviour:
   initialHp: 35
   initialEnergy: 35
   initialDamage: 9
-  initialDefence: 3
+  initialDefense: 3
   initialSpeed: 15
   initialOffensiveSkills:
   - {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f, type: 3}

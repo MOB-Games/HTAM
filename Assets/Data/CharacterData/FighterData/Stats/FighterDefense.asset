@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0f0f652536de1a43b1e9c1e64b0a992, type: 3}
-  m_Name: SamuraiDefence
+  m_Name: FighterDefense
   m_EditorClassIdentifier: 
-  baseValue: 5
-  value: 5
+  baseValue: 9
+  value: 9

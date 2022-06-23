@@ -11,7 +11,7 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     public Button armorBulkUpButton;
     public Button armorStripDownButton;
     public TextMeshProUGUI damageChangeText;
-    public TextMeshProUGUI defenceChangeText;
+    public TextMeshProUGUI defenseChangeText;
     public TextMeshProUGUI speedChangeText;
     
     private BlacksmithInfo _blacksmithInfo;
@@ -52,7 +52,7 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     public void Reset()
     {
         damageChangeText.text = "";
-        defenceChangeText.text = "";
+        defenseChangeText.text = "";
         speedChangeText.text = "";
     } 
 
@@ -73,7 +73,7 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     public void BulkUpArmor()
     {
         if(!armorBulkUpButton.interactable) return;
-        defenceChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Defence, _advantage, _disadvantage)}";
+        defenseChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Defense, _advantage, _disadvantage)}";
         speedChangeText.text = $"-{GameManager.GetStatDecrement()}";
     }
 
@@ -81,7 +81,7 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     {
         if(!armorStripDownButton.interactable) return;
         speedChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Speed, _advantage, _disadvantage)}";
-        defenceChangeText.text = $"-{GameManager.GetStatDecrement()}";
+        defenseChangeText.text = $"-{GameManager.GetStatDecrement()}";
     }
 
     private void OnDestroy()

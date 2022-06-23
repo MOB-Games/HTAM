@@ -14,6 +14,7 @@ public class DataInitializer : MonoBehaviour
 
     private void Start()
     {
+        gameProgress.Init();
         MenuEvents.OnCharacterOptionSelected += SavePlayer;
     }
 
@@ -24,7 +25,6 @@ public class DataInitializer : MonoBehaviour
 
     public void InitializeData()
     {
-        gameProgress.Init();
         GameManager.Instance.gold.value = 0;
         characterDB.Init(_player);
     }

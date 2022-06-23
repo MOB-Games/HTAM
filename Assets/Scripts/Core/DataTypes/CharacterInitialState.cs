@@ -10,7 +10,7 @@ namespace Core.DataTypes
         public int initialEnergy;
 
         public int initialDamage;
-        public int initialDefence;
+        public int initialDefense;
         public int initialSpeed;
         
         public List<GameObject> initialOffensiveSkills;

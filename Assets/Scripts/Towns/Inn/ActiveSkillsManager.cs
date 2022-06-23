@@ -46,14 +46,14 @@ public class ActiveSkillsManager : MonoBehaviour
         var defensiveSkills = _selectedCharacterTownInfo.State.activeDefensiveSkills;
         for (var i = 0; i < 7; i++)
         {
-            // offence
+            // offense
             if (i < offensiveSkills.Count)
             {
                 if (offensiveSkills[i].skillGo != null)
                 {
                     offensiveSkillAppearances[i].image.sprite = offensiveSkills[i].skillGo.GetComponent<Image>().sprite;
                     offensiveSkillAppearances[i].desc =
-                        offensiveSkills[i].skillGo.GetComponent<Skill>().GetDescription();
+                        offensiveSkills[i].skillGo.GetComponent<Skill>().GetLevelupDescription(offensiveSkills[i].level);
                 }
                 else
                 {
@@ -64,14 +64,14 @@ public class ActiveSkillsManager : MonoBehaviour
             else
                 offensiveSkillAppearances[i].image.sprite = lockedSkillHolder;
             
-            // defence
+            // defense
             if (i < defensiveSkills.Count)
             {
                 if (defensiveSkills[i].skillGo != null)
                 {
                     defensiveSkillAppearances[i].image.sprite = defensiveSkills[i].skillGo.GetComponent<Image>().sprite;
                     defensiveSkillAppearances[i].desc =
-                        defensiveSkills[i].skillGo.GetComponent<Skill>().GetDescription();
+                        defensiveSkills[i].skillGo.GetComponent<Skill>().GetLevelupDescription(defensiveSkills[i].level);
                 }
                 else
                 {

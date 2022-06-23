@@ -10,7 +10,7 @@ namespace Core.Stats
         public Stat hp;
         public Stat energy;
         public Stat damage;
-        public Stat defence;
+        public Stat defense;
         public Stat speed;
 
         public StatBlock()
@@ -18,7 +18,7 @@ namespace Core.Stats
             hp = new Stat();
             energy = new Stat();
             damage = new Stat();
-            defence = new Stat();
+            defense = new Stat();
             speed = new Stat();
         }
         
@@ -29,7 +29,7 @@ namespace Core.Stats
                 StatType.Hp => hp.value,
                 StatType.Energy => energy.value,
                 StatType.Damage => damage.value,
-                StatType.Defence => defence.value,
+                StatType.Defense => defense.value,
                 StatType.Speed => speed.value,
                 StatType.None => 0,
                 _ => throw new ArgumentOutOfRangeException(nameof(stat), stat, null)
@@ -43,7 +43,7 @@ namespace Core.Stats
                 StatType.Hp => hp.baseValue,
                 StatType.Energy => energy.baseValue,
                 StatType.Damage => damage.baseValue,
-                StatType.Defence => defence.baseValue,
+                StatType.Defense => defense.baseValue,
                 StatType.Speed => speed.baseValue,
                 StatType.None => 0,
                 _ => throw new ArgumentOutOfRangeException(nameof(stat), stat, null)

@@ -3,6 +3,6 @@ public class BlacksmithInfo
 {
     public int price;
     public int maxDamage;
-    public int maxDefence;
+    public int maxDefense;
     public int maxSpeed;
 }

@@ -144,13 +144,13 @@ MonoBehaviour:
   targetType: 0
   skillAnimation: 2
   attackStat: 5
-  defenceStat: 5
+  defenseStat: 5
   affectedStat: 5
   parametersPerLevel:
-  - baseHitChance: 100
+  - accuracy: 100
     baseEffectValue: 0
     attackMultiplier: 0
-    defenceMultiplier: 0
+    defenseMultiplier: 0
     chanceToInflict: 0
   visualEffect: {fileID: 0}
   conditionGo: {fileID: 0}

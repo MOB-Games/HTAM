@@ -7,7 +7,7 @@ public class CharacterPresenter : MonoBehaviour
 {
     public GameObject characterImageGo;
     public TextMeshProUGUI damageText;
-    public TextMeshProUGUI defenceText;
+    public TextMeshProUGUI defenseText;
     public TextMeshProUGUI speedText;
 
     private Image _characterImage;
@@ -29,8 +29,8 @@ public class CharacterPresenter : MonoBehaviour
         var stats = character.State.stats;
         damageText.text = stats.damage.value.ToString();
         damageText.color = Color.black;
-        defenceText.text = stats.defence.value.ToString();
-        defenceText.color = Color.black;
+        defenseText.text = stats.defense.value.ToString();
+        defenseText.color = Color.black;
         speedText.text = stats.speed.value.ToString();
         speedText.color = Color.black;
     }
@@ -40,7 +40,7 @@ public class CharacterPresenter : MonoBehaviour
         var text = stat switch
         {
             StatType.Damage => damageText,
-            StatType.Defence => defenceText,
+            StatType.Defense => defenseText,
             StatType.Speed => speedText,
             _ => null
         };

@@ -3024,7 +3024,7 @@ MonoBehaviour:
   hpUpButton: {fileID: 790371777}
   energyUpButton: {fileID: 2002264789}
   damageUpButton: {fileID: 1344336281}
-  defenceUpButton: {fileID: 836178574}
+  defenseUpButton: {fileID: 836178574}
   speedUpButton: {fileID: 1475640132}
   unlockOffSlot: {fileID: 2089820652}
   unlockDefSlot: {fileID: 169087550}
@@ -5331,7 +5331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageGo: {fileID: 1591012735}
   damageText: {fileID: 1677295186}
-  defenceText: {fileID: 1951784375}
+  defenseText: {fileID: 1951784375}
   speedText: {fileID: 398279546}
 --- !u!1 &781325842
 GameObject:
@@ -5479,7 +5479,7 @@ GameObject:
   - component: {fileID: 781499551}
   - component: {fileID: 781499550}
   m_Layer: 5
-  m_Name: Offence
+  m_Name: Offense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5525,7 +5525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Offence
+  m_text: 'Offense
 
 '
   m_isRightToLeft: 0
@@ -5751,7 +5751,7 @@ GameObject:
   - component: {fileID: 836178577}
   - component: {fileID: 836178576}
   m_Layer: 5
-  m_Name: DefenceUpButton
+  m_Name: DefenseUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6364,7 +6364,7 @@ GameObject:
   - component: {fileID: 924542030}
   - component: {fileID: 924542029}
   m_Layer: 5
-  m_Name: DefenceText
+  m_Name: DefenseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6410,7 +6410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Defence:'
+  m_text: 'Defense:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6926,7 +6926,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterImageGo: {fileID: 72982803}
   damageText: {fileID: 741208588}
-  defenceText: {fileID: 2143387459}
+  defenseText: {fileID: 2143387459}
   speedText: {fileID: 2072624948}
 --- !u!114 &993102436
 MonoBehaviour:
@@ -7514,7 +7514,7 @@ GameObject:
   - component: {fileID: 1132247080}
   - component: {fileID: 1132247079}
   m_Layer: 5
-  m_Name: Defence
+  m_Name: Defense
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7560,7 +7560,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defence
+  m_text: Defense
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8045,7 +8045,7 @@ MonoBehaviour:
   armorBulkUpButton: {fileID: 1747563142}
   armorStripDownButton: {fileID: 1012708743}
   damageChangeText: {fileID: 344324046}
-  defenceChangeText: {fileID: 2057312183}
+  defenseChangeText: {fileID: 2057312183}
   speedChangeText: {fileID: 1470919602}
 --- !u!114 &1200449352
 MonoBehaviour:
@@ -8303,7 +8303,7 @@ GameObject:
   - component: {fileID: 1225211815}
   - component: {fileID: 1225211814}
   m_Layer: 5
-  m_Name: DefenceText
+  m_Name: DefenseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8349,7 +8349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Defence:'
+  m_text: 'Defense:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13562,7 +13562,7 @@ GameObject:
   - component: {fileID: 1951784376}
   - component: {fileID: 1951784375}
   m_Layer: 5
-  m_Name: DefenceNumber
+  m_Name: DefenseNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14612,7 +14612,7 @@ GameObject:
   - component: {fileID: 2057312184}
   - component: {fileID: 2057312183}
   m_Layer: 5
-  m_Name: DefenceChange
+  m_Name: DefenseChange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15556,7 +15556,7 @@ GameObject:
   - component: {fileID: 2143387460}
   - component: {fileID: 2143387459}
   m_Layer: 5
-  m_Name: DefenceNumber
+  m_Name: DefenseNumber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

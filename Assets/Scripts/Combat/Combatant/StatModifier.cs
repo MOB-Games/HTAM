@@ -40,10 +40,10 @@ public class StatModifier : MonoBehaviour
                 if (stats.damage.value <= 0)
                     stats.damage.value = 0;
                 break;
-            case StatType.Defence:
-                stats.defence.value += delta;
-                if (stats.defence.value <= 0)
-                    stats.defence.value = 0;
+            case StatType.Defense:
+                stats.defense.value += delta;
+                if (stats.defense.value <= 0)
+                    stats.defense.value = 0;
                 break;
             case StatType.Speed:
                 stats.speed.value += delta;

@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  isBuff: 0
-  isDebuff: 1
+  recurring: 0
+  offensive: 1
   affectedStat: 2
   visualEffect: {fileID: 2135462378506688423, guid: 212133418cad53946b56e0a1ac53bdb3,
     type: 3}

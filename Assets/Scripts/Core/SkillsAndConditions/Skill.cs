@@ -11,13 +11,13 @@ namespace Core.SkillsAndConditions
     [Serializable]
     public class SkillParameters
     {
-        // variables for calculating if skill hits or misses
-        public int baseHitChance;
+        [Range(0,100)]
+        public int accuracy;
         
         // variables for calculating effect of skill
         public int baseEffectValue;
         public double attackMultiplier;
-        public double defenceMultiplier;
+        public double defenseMultiplier;
         
         [Range(0,100)]
         public int chanceToInflict;
@@ -39,7 +39,7 @@ namespace Core.SkillsAndConditions
         [EnumOrder("2,3,4,5")]
         public StatType attackStat;
         [EnumOrder("2,3,4,5")]
-        public StatType defenceStat;
+        public StatType defenseStat;
         [EnumOrder("0,1,5")]
         public StatType affectedStat;
         public List<SkillParameters> parametersPerLevel;
@@ -70,15 +70,70 @@ namespace Core.SkillsAndConditions
                 _condition = conditionGo.GetComponent<Condition>();
         }
 
-        public string GetDescription()
+        public string GetDescription(int level)
         {
             var desc = $"<u>{name.Split('(')[0]}</u>: {description}\n";
+            if (affectedStat != StatType.None)
+            {
+                desc += offensive ? "Attacks" : "Heals";
+                desc += " the target";
+                if (affectedStat == StatType.Energy)
+                    desc += "s Energy";
+                desc += offensive ? " With " : " by ";
+                var baseValue = Math.Abs(parametersPerLevel[level].baseEffectValue);
+                var attackerPercent = Math.Abs(parametersPerLevel[level].attackMultiplier) * 100;
+                var defensePercent = Math.Abs(parametersPerLevel[level].defenseMultiplier) * 100;
+                if (baseValue != 0)
+                    desc += $"{baseValue} ";
+                if (baseValue != 0 && attackerPercent != 0)
+                    desc += "+ ";
+                if (attackStat != StatType.None && attackerPercent != 0)
+                    desc += $"{attackerPercent}% of users {attackStat} ";
+                if (defenseStat != StatType.None && defensePercent != 0)
+                {
+                    if (parametersPerLevel[level].defenseMultiplier > 0)
+                        desc += "opposed";
+                    else
+                        desc += "in addition";
+                    desc += $" to {defensePercent}% of targets {defenseStat}\n";
+                }
+                else if (offensive)
+                    desc += "while ignoring the targets defenses";
+            }
             if (_condition != null)
-                desc += $"Has a chance to inflict {_condition.GetDescription()}\n"; 
+                desc += $"Has a chance to inflict {_condition.GetDescription(level)}\n"; 
             if (energyCost > 0)
                 desc += $"\nEnergy Cost: {energyCost}\n";
             if (hpCost > 0)
                 desc += $"\nHP Cost: {hpCost}\n";
+            return desc;
+        }
+
+        public string GetLevelupDescription(int level)
+        {
+            var desc = GetDescription(level);
+            if (level == parametersPerLevel.Count - 1)
+                return desc + "\n\n<b>Level Maxed</b>";
+            desc += "\n\n<u>Next Level</u>:\n";
+            var currentParams = parametersPerLevel[level];
+            var nextParams = parametersPerLevel[level + 1];
+            if (currentParams.accuracy != nextParams.accuracy)
+                desc += $"Accuracy: {currentParams.accuracy} --> {nextParams.accuracy}\n";
+            if (Math.Abs(currentParams.baseEffectValue - nextParams.baseEffectValue) > 0.0001)
+                desc += $"Fixed Change: {currentParams.baseEffectValue} --> {nextParams.baseEffectValue}\n";
+            if (Math.Abs(currentParams.attackMultiplier - nextParams.attackMultiplier) > 0.0001)
+                desc += $"User Percent: {currentParams.attackMultiplier} --> {nextParams.attackMultiplier}\n";
+            if (Math.Abs(currentParams.defenseMultiplier - nextParams.defenseMultiplier) > 0.0001)
+                desc += $"Target Percent: {currentParams.attackMultiplier} --> {nextParams.attackMultiplier}\n";
+            if (Math.Abs(currentParams.chanceToInflict - nextParams.chanceToInflict) > 0.0001)
+                desc += $"Chance to inflict condition: {currentParams.chanceToInflict} --> {nextParams.chanceToInflict}\n";
+
+            if (_condition != null)
+            {
+                desc += "\nCondition:\n";
+                desc += _condition.GetLevelupDescription(level);
+            }
+
             return desc;
         }
 
@@ -89,14 +144,14 @@ namespace Core.SkillsAndConditions
                     $"Tried to use skill {name} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
             var attackerStats = CombatantInfo.GetStatBlock(attackerId);
             var defenderStats = CombatantInfo.GetStatBlock(defenderId);
-            var chanceToHit = parametersPerLevel[level].baseHitChance + 
+            var chanceToHit = parametersPerLevel[level].accuracy + 
                               (speedBasedEvasion ? attackerStats.speed.value - defenderStats.speed.value : 0);
             if (Random.Range(0, 100) > chanceToHit)
                 return new SkillResult();
             
             var delta = parametersPerLevel[level].baseEffectValue +
                         parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(attackStat) +
-                        parametersPerLevel[level].defenceMultiplier * defenderStats.GetStatValue(defenceStat);
+                        parametersPerLevel[level].defenseMultiplier * defenderStats.GetStatValue(defenseStat);
             
             if (offensive)
             {
