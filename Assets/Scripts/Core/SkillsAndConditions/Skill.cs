@@ -64,7 +64,7 @@ namespace Core.SkillsAndConditions
                 throw new ConstraintException($"{name}: Mismatch between skill levels and condition levels");
         }
 
-        private void Start()
+        private void Awake()
         {
             if (conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
@@ -72,11 +72,26 @@ namespace Core.SkillsAndConditions
 
         public string GetDescription(int level)
         {
+            if (_condition == null && conditionGo != null)
+                _condition = conditionGo.GetComponent<Condition>();
             var desc = $"<u>{name.Split('(')[0]}</u>: {description}\n";
             if (affectedStat != StatType.None)
             {
-                desc += offensive ? "Attacks" : "Heals";
-                desc += " the target";
+                desc += offensive ? "Attacks " : "Heals ";
+                switch (targetType)
+                {
+                    case TargetType.Single:
+                        desc += "the target"; 
+                        break;
+                    case TargetType.Group:
+                        desc += "the group";
+                        break;
+                    case TargetType.All:
+                        desc += "everyone";
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
                 if (affectedStat == StatType.Energy)
                     desc += "s Energy";
                 desc += offensive ? " With " : " by ";
@@ -109,6 +124,11 @@ namespace Core.SkillsAndConditions
             return desc;
         }
 
+        private static int MultiplierToPercent(double multiplier)
+        {
+            return (int)(Math.Abs(multiplier) * 100);
+        }
+
         public string GetLevelupDescription(int level)
         {
             var desc = GetDescription(level);
@@ -118,15 +138,17 @@ namespace Core.SkillsAndConditions
             var currentParams = parametersPerLevel[level];
             var nextParams = parametersPerLevel[level + 1];
             if (currentParams.accuracy != nextParams.accuracy)
-                desc += $"Accuracy: {currentParams.accuracy} --> {nextParams.accuracy}\n";
+                desc += $"Accuracy: {currentParams.accuracy} -> {nextParams.accuracy}\n";
             if (Math.Abs(currentParams.baseEffectValue - nextParams.baseEffectValue) > 0.0001)
-                desc += $"Fixed Change: {currentParams.baseEffectValue} --> {nextParams.baseEffectValue}\n";
+                desc += $"Fixed Change: {currentParams.baseEffectValue} -> {nextParams.baseEffectValue}\n";
             if (Math.Abs(currentParams.attackMultiplier - nextParams.attackMultiplier) > 0.0001)
-                desc += $"User Percent: {currentParams.attackMultiplier} --> {nextParams.attackMultiplier}\n";
+                desc +=
+                    $"User Percent: {MultiplierToPercent(currentParams.attackMultiplier)}% -> {MultiplierToPercent(nextParams.attackMultiplier)}%\n";
             if (Math.Abs(currentParams.defenseMultiplier - nextParams.defenseMultiplier) > 0.0001)
-                desc += $"Target Percent: {currentParams.attackMultiplier} --> {nextParams.attackMultiplier}\n";
+                desc +=
+                    $"Target Percent: {MultiplierToPercent(currentParams.attackMultiplier)}% -> {MultiplierToPercent(nextParams.attackMultiplier)}%\n";
             if (Math.Abs(currentParams.chanceToInflict - nextParams.chanceToInflict) > 0.0001)
-                desc += $"Chance to inflict condition: {currentParams.chanceToInflict} --> {nextParams.chanceToInflict}\n";
+                desc += $"Chance to inflict condition: {currentParams.chanceToInflict}% -> {nextParams.chanceToInflict}%\n";
 
             if (_condition != null)
             {

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Core.SkillsAndConditions;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +10,7 @@ using UnityEngine.UI;
 public class SkillAppearance
 {
     public Image image;
-    [HideInInspector]
-    public string desc;
+    public SkillLevelupDescription description;
 }
 
 public class ActiveSkillsManager : MonoBehaviour
@@ -19,14 +20,20 @@ public class ActiveSkillsManager : MonoBehaviour
     public List<SkillAppearance> offensiveSkillAppearances;
     public List<SkillAppearance> defensiveSkillAppearances;
 
+    private static event Action<string> OnSkillDescChanged;
+    
+    public GameObject skillToolTip;
+    private TextMeshProUGUI _skillToolTipText;
+    
     private CharacterTownInfo _selectedCharacterTownInfo;
 
-    // Start is called before the first frame update
     private void Start()
     {
+        _skillToolTipText = skillToolTip.GetComponentInChildren<TextMeshProUGUI>();
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlcoked += ShowActiveSkills;
+        OnSkillDescChanged += ShowSkillDesc;
     }
     
     private void RegisterForSelectedCharacter()
@@ -52,17 +59,20 @@ public class ActiveSkillsManager : MonoBehaviour
                 if (offensiveSkills[i].skillGo != null)
                 {
                     offensiveSkillAppearances[i].image.sprite = offensiveSkills[i].skillGo.GetComponent<Image>().sprite;
-                    offensiveSkillAppearances[i].desc =
+                    offensiveSkillAppearances[i].description.desc =
                         offensiveSkills[i].skillGo.GetComponent<Skill>().GetLevelupDescription(offensiveSkills[i].level);
                 }
                 else
                 {
                     offensiveSkillAppearances[i].image.sprite = emptySkillHolder;
-                    offensiveSkillAppearances[i].desc = "";
+                    offensiveSkillAppearances[i].description.desc = "";
                 }
             }
             else
+            {
                 offensiveSkillAppearances[i].image.sprite = lockedSkillHolder;
+                offensiveSkillAppearances[i].description.desc = "";
+            }
             
             // defense
             if (i < defensiveSkills.Count)
@@ -70,17 +80,31 @@ public class ActiveSkillsManager : MonoBehaviour
                 if (defensiveSkills[i].skillGo != null)
                 {
                     defensiveSkillAppearances[i].image.sprite = defensiveSkills[i].skillGo.GetComponent<Image>().sprite;
-                    defensiveSkillAppearances[i].desc =
+                    defensiveSkillAppearances[i].description.desc =
                         defensiveSkills[i].skillGo.GetComponent<Skill>().GetLevelupDescription(defensiveSkills[i].level);
                 }
                 else
                 {
                     defensiveSkillAppearances[i].image.sprite = emptySkillHolder;
-                    defensiveSkillAppearances[i].desc = "";
+                    defensiveSkillAppearances[i].description.desc = "";
                 }
             }
             else
+            {
                 defensiveSkillAppearances[i].image.sprite = lockedSkillHolder;
+                defensiveSkillAppearances[i].description.desc = "";
+            }
+        }
+    }
+
+    private void ShowSkillDesc(string desc)
+    {
+        if (string.IsNullOrEmpty(desc))
+            skillToolTip.SetActive(false);
+        else
+        {
+            _skillToolTipText.text = desc;
+            skillToolTip.SetActive(true);
         }
     }
     
@@ -89,10 +113,16 @@ public class ActiveSkillsManager : MonoBehaviour
         TownEvents.OnCharacterSelected -= CharacterSelected;
     }
 
+    public static void SkillDescChanged(string desc)
+    {
+        OnSkillDescChanged?.Invoke(desc);
+    }
+
     private void OnDestroy()
     {
         TownEvents.OnOpenInn -= RegisterForSelectedCharacter;
         TownEvents.OnCloseInn -= UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlcoked -= ShowActiveSkills;
+        OnSkillDescChanged -= ShowSkillDesc;
     }
 }

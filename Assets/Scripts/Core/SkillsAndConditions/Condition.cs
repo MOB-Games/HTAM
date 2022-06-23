@@ -75,11 +75,12 @@ namespace Core.SkillsAndConditions
             var currentParams = parametersPerLevel[level];
             var nextParams = parametersPerLevel[level + 1];
             if (currentParams.duration != nextParams.duration)
-                desc += $"Duration: {currentParams.duration} --> {nextParams.duration}\n";
+                desc += $"Duration: {currentParams.duration} -> {nextParams.duration}\n";
             if (currentParams.delta != nextParams.delta)
-                desc += $"Fixed Change: {currentParams.delta} --> {nextParams.delta}\n";
+                desc += $"Fixed Change: {Math.Abs(currentParams.delta)} -> {Math.Abs(nextParams.delta)}\n";
             if (currentParams.percentDelta != nextParams.percentDelta)
-                desc += $"Percentage Change: {currentParams.percentDelta} --> {nextParams.percentDelta}\n";
+                desc +=
+                    $"Percentage Change: {Math.Abs(currentParams.percentDelta)}% -> {Math.Abs(nextParams.percentDelta)}%\n";
             if (desc == "")
                 desc += "No Change";
             return desc;
