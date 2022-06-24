@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Core.DataTypes;
 using Core.Enums;
+using Core.SkillsAndConditions.PassiveSkills;
 using Core.Stats;
 using TMPro;
 using UnityEngine;
@@ -44,18 +45,22 @@ public class LevelUpManager : MonoBehaviour
     private int _offensiveSkillSlotsUnlocked;
     private int _defensiveSkillSlotsUnlocked;
     private bool _unlockOffensive;
+    private Dictionary<SkillWithLevel, int> _leveledUpSkills = new(3);
 
     private readonly StatBlock _stats = new StatBlock();
+    private PassiveSkills _passiveSkills;
 
     private CharacterTownInfo _selectedCharacterTownInfo;
     private CharacterState _selectedCharacterState;
 
     private void Start()
     {
+        _statPts = _vitalityPts = _skillPts = 0;
         _damageChangeText = damageUpButton.GetComponentInChildren<TextMeshProUGUI>();
         _defenseChangeText = defenseUpButton.GetComponentInChildren<TextMeshProUGUI>();
         _speedChangeText = speedUpButton.GetComponentInChildren<TextMeshProUGUI>();
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
+        TownEvents.OnSkillLevelUp += LevelupSkill;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
     }
 
@@ -137,7 +142,7 @@ public class LevelUpManager : MonoBehaviour
         var levelUps = LevelsToProgress(_selectedCharacterState.level, _selectedCharacterState.exp);
         _statPts = StatPtsPerLevel * levelUps;
         _vitalityPts = VitalityPtsPerLevel * levelUps;
-        _skillPts = SkillPtsPerLevel * levelUps;
+        _skillPts = SkillPtsPerLevel * levelUps + 5;
         _offensiveSkillSlotsUnlocked = _defensiveSkillSlotsUnlocked = 0;
         var advantage = _selectedCharacterState.stats.advantage;
         var disadvantage = _selectedCharacterState.stats.disadvantage;
@@ -148,6 +153,7 @@ public class LevelUpManager : MonoBehaviour
         _defenseChangeText.text = $"+{_defenseChange}";
         _speedChangeText.text = $"+{_speedChange}";
         _selectedCharacterState.stats.LoadStats(_stats);
+        _passiveSkills = _selectedCharacterState.passiveSkills.Copy();
         
         levelUpButton.SetActive(false);
         cancelButton.SetActive(true);
@@ -265,9 +271,13 @@ public class LevelUpManager : MonoBehaviour
     public void CancelLevelUp()
     {
         UndoSkillSlotChanges();
+        _skillPts = _statPts = _vitalityPts = 0;
         levelUpButton.SetActive(true);
         cancelButton.SetActive(false);
         doneButton.SetActive(false);
+        foreach (var leveledUpSkill in _leveledUpSkills)
+            leveledUpSkill.Key.level -= leveledUpSkill.Value;
+        _leveledUpSkills.Clear();
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }
 
@@ -279,13 +289,69 @@ public class LevelUpManager : MonoBehaviour
         doneButton.SetActive(false);
         _selectedCharacterState.stats.SaveStats(_stats);
         _selectedCharacterState.stats.Reset();
+        _selectedCharacterState.passiveSkills = _passiveSkills;
         _offensiveSkillSlotsUnlocked = _defensiveSkillSlotsUnlocked = 0;
+        _leveledUpSkills.Clear();
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
+    }
+
+    private void LevelupSkill(SkillTreeNode skillTreeNode)
+    {
+        if (_skillPts == 0) return;
+        var level = ++skillTreeNode.skillWithLevel.level;
+        switch (skillTreeNode.type)
+        {
+            case SkillType.Normal:
+                break;
+            case SkillType.DamageAdder:
+                var damageAdder = (DamageAdder)skillTreeNode.content;
+                _passiveSkills.damageAdder.addChance = damageAdder.parametersPerLevel[level].addChance;
+                _passiveSkills.damageAdder.damageMultiplier = damageAdder.parametersPerLevel[level].damageMultiplier;
+                break;
+            case SkillType.ConditionAdder:
+                var conditionAdder = (ConditionAdder)skillTreeNode.content;
+                _passiveSkills.conditionAdder.addChance = conditionAdder.parametersPerLevel[level].addChance;
+                _passiveSkills.levelOfAddedCondition = level;
+                if (level == 0)
+                    _passiveSkills.conditionToAdd = conditionAdder.conditionGo; 
+                break;
+            case SkillType.DamageReducer:
+                var damageReducer = (DamageReducer)skillTreeNode.content;
+                _passiveSkills.damageReducer.reductionChance = damageReducer.parametersPerLevel[level].reductionChance;
+                _passiveSkills.damageReducer.reductionPercent = damageReducer.parametersPerLevel[level].reductionPercent;
+                break;
+            case SkillType.DamageReflector:
+                var damageReflector = (DamageReflector)skillTreeNode.content;
+                _passiveSkills.damageReflector.reflectChance = damageReflector.parametersPerLevel[level].reflectChance;
+                _passiveSkills.damageReflector.percentOfIncomingDamage =
+                    damageReflector.parametersPerLevel[level].percentOfIncomingDamage;
+                _passiveSkills.damageReflector.damageMultiplier =
+                    damageReflector.parametersPerLevel[level].damageMultiplier;
+                break;
+            case SkillType.ConditionReflector:
+                var conditionReflector = (ConditionReflector)skillTreeNode.content;
+                _passiveSkills.conditionReflector.reflectChance = 
+                    conditionReflector.parametersPerLevel[level].reflectChance;
+                _passiveSkills.levelOfReflectedCondition = level;
+                if (level == 0)
+                    _passiveSkills.conditionToReflect = conditionReflector.conditionGo;  
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+
+        if (_leveledUpSkills.ContainsKey(skillTreeNode.skillWithLevel))
+            _leveledUpSkills[skillTreeNode.skillWithLevel]++;
+        else
+            _leveledUpSkills.Add(skillTreeNode.skillWithLevel, 1);
+        
+        TownEvents.RefreshSkillTree();
     }
 
     private void OnDestroy()
     {
         TownEvents.OnOpenInn -= RegisterForSelectedCharacter;
+        TownEvents.OnSkillLevelUp -= LevelupSkill;
         TownEvents.OnCloseInn -= UnregisterForSelectedCharacter;
     }
 }

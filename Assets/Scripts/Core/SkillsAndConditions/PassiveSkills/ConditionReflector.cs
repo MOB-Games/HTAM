@@ -10,14 +10,14 @@ namespace Core.SkillsAndConditions.PassiveSkills
         [Range(0,100)]
         public int reflectChance;
     }
-    public class ConditionReflector : MonoBehaviour
+    public class ConditionReflector : SkillBase
     {
         public GameObject conditionGo;
         public List<ConditionReflectorParameters> parametersPerLevel;
         
         private Condition _condition;
         
-        public string GetDescription(int level)
+        public override string GetDescription(int level)
         {
             if (_condition == null && conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
@@ -26,7 +26,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
                    $" {_condition.GetDescription(level)}";
         }
 
-        public string GetLevelupDescription(int level)
+        public override string GetLevelupDescription(int level)
         {
             var desc = GetDescription(level);
             if (level == parametersPerLevel.Count - 1)

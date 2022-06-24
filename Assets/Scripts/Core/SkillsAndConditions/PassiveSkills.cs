@@ -65,5 +65,39 @@ namespace Core.SkillsAndConditions.PassiveSkills
                 outgoingSkill.ConditionLevel = levelOfAddedCondition;
             }
         }
+
+        public PassiveSkills Copy()
+        {
+            return new PassiveSkills
+            {
+                damageAdder = new DamageAdderParameters()
+                {
+                    addChance = damageAdder.addChance, damageMultiplier = damageAdder.damageMultiplier
+                },
+                conditionAdder = new ConditionAdderParameters()
+                {
+                    addChance = conditionAdder.addChance
+                },
+                conditionToAdd = null, 
+                levelOfAddedCondition = -1,
+                damageReducer = new DamageReducerParameters()
+                {
+                    reductionChance = damageReducer.reductionChance,
+                    reductionPercent = damageReducer.reductionPercent
+                },
+                damageReflector = new DamageReflectorParameters()
+                {
+                    reflectChance = damageReflector.reflectChance,
+                    percentOfIncomingDamage = damageReflector.percentOfIncomingDamage,
+                    damageMultiplier = damageReflector.damageMultiplier
+                },
+                conditionReflector = new ConditionReflectorParameters()
+                {
+                    reflectChance = conditionReflector.reflectChance
+                },
+                conditionToReflect = null,
+                levelOfReflectedCondition = -1
+            };
+        }
     }
 }

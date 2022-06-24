@@ -10,14 +10,14 @@ namespace Core.SkillsAndConditions.PassiveSkills
         [Range(0,100)]
         public int addChance;
     }
-    public class ConditionAdder : MonoBehaviour
+    public class ConditionAdder : SkillBase
     {
         public GameObject conditionGo;
         public List<ConditionAdderParameters> parametersPerLevel;
         
         private Condition _condition;
 
-        public string GetDescription(int level)
+        public override string GetDescription(int level)
         {
             if (_condition == null && conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
@@ -25,7 +25,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
                        $"{parametersPerLevel[level].addChance}% chance to inflict the target with {_condition.GetDescription(level)}";
         }
 
-        public string GetLevelupDescription(int level)
+        public override string GetLevelupDescription(int level)
         {
             var desc = GetDescription(level);
             if (level == parametersPerLevel.Count - 1)

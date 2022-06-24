@@ -15,7 +15,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
         public int percentOfIncomingDamage;
         public int damageMultiplier;
     }
-    public class DamageReflector : MonoBehaviour
+    public class DamageReflector : SkillBase
     {
         public List<DamageReflectorParameters> parametersPerLevel;
 
@@ -26,7 +26,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
                 throw new ConstraintException($"{name}: Cannot reflect and counter");
         }
 
-        public string GetDescription(int level)
+        public override string GetDescription(int level)
         {
             var desc = $"<u>{name.Split('(')[0]}</u>: Every time an enemy attacks with a melee attack there is a " +
                        $"{parametersPerLevel[level].reflectChance}% chance to ";
@@ -38,7 +38,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
             return desc;
         }
 
-        public string GetLevelupDescription(int level)
+        public override string GetLevelupDescription(int level)
         {
             var desc = GetDescription(level);
             if (level == parametersPerLevel.Count - 1)

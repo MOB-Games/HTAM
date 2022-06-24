@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Core.Enums;
+using Core.Stats;
 
 public static class TownEvents
 {
@@ -17,7 +18,9 @@ public static class TownEvents
     public static event Action<CharacterTownInfo> OnCharacterSelected;
     public static event Action<int> OnGoldSpent;
     public static event Action<StatType, int> OnStatChange;
-    public static event Action OnSlotUnlcoked;
+    public static event Action OnSlotUnlocked;
+    public static event Action<SkillTreeNode> OnSkillLevelUp;
+    public static event Action OnSkillTreeRefresh;
    
     public static void PublishTownInfo(TownInfo townInfo, bool pathCleared, string previousPathSignpost)
     {
@@ -86,6 +89,16 @@ public static class TownEvents
     
     public static void SlotUnlocked()
     {
-        OnSlotUnlcoked?.Invoke();
+        OnSlotUnlocked?.Invoke();
+    }
+
+    public static void LevelupSkill(SkillTreeNode skillTreeNode)
+    {
+        OnSkillLevelUp?.Invoke(skillTreeNode);
+    }
+    
+    public static void RefreshSkillTree()
+    {
+        OnSkillTreeRefresh?.Invoke();
     }
 }

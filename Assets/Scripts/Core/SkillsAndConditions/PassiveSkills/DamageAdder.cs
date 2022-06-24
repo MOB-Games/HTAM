@@ -12,17 +12,17 @@ namespace Core.SkillsAndConditions.PassiveSkills
         [Range(0,100)]
         public int damageMultiplier;
     }
-    public class DamageAdder : MonoBehaviour
+    public class DamageAdder : SkillBase
     {
         public List<DamageAdderParameters> parametersPerLevel;
         
-        public string GetDescription(int level)
+        public override string GetDescription(int level)
         {
             return $"<u>{name.Split('(')[0]}</u>: Every attack there is a {parametersPerLevel[level].addChance}% " +
                    $"chance to multiply the damage by {parametersPerLevel[level].damageMultiplier}";
         }
 
-        public string GetLevelupDescription(int level)
+        public override string GetLevelupDescription(int level)
         {
             var desc = GetDescription(level);
             if (level == parametersPerLevel.Count - 1)

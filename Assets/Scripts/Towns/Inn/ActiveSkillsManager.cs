@@ -32,7 +32,7 @@ public class ActiveSkillsManager : MonoBehaviour
         _skillToolTipText = skillToolTip.GetComponentInChildren<TextMeshProUGUI>();
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
-        TownEvents.OnSlotUnlcoked += ShowActiveSkills;
+        TownEvents.OnSlotUnlocked += ShowActiveSkills;
         OnSkillDescChanged += ShowSkillDesc;
     }
     
@@ -122,7 +122,7 @@ public class ActiveSkillsManager : MonoBehaviour
     {
         TownEvents.OnOpenInn -= RegisterForSelectedCharacter;
         TownEvents.OnCloseInn -= UnregisterForSelectedCharacter;
-        TownEvents.OnSlotUnlcoked -= ShowActiveSkills;
+        TownEvents.OnSlotUnlocked -= ShowActiveSkills;
         OnSkillDescChanged -= ShowSkillDesc;
     }
 }

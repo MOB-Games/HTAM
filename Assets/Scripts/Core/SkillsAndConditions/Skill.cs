@@ -23,7 +23,7 @@ namespace Core.SkillsAndConditions
         public int chanceToInflict;
     }
 
-    public class Skill : MonoBehaviour
+    public class Skill : SkillBase
     {
         [Multiline]
         public string description;
@@ -70,7 +70,7 @@ namespace Core.SkillsAndConditions
                 _condition = conditionGo.GetComponent<Condition>();
         }
 
-        public string GetDescription(int level)
+        public override string GetDescription(int level)
         {
             if (_condition == null && conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
@@ -129,7 +129,7 @@ namespace Core.SkillsAndConditions
             return (int)(Math.Abs(multiplier) * 100);
         }
 
-        public string GetLevelupDescription(int level)
+        public override string GetLevelupDescription(int level)
         {
             var desc = GetDescription(level);
             if (level == parametersPerLevel.Count - 1)
