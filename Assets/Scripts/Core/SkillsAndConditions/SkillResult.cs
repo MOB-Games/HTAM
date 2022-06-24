@@ -9,23 +9,26 @@ namespace Core.SkillsAndConditions
     {
         public readonly bool Hit;
         public readonly bool AnimateAttacked;
+        public readonly bool Melee;
         public readonly StatType AffectedStat;
-        public readonly int Delta;
+        public int Delta;
+        public int ConditionLevel;
         public readonly int Level;
         [CanBeNull] public readonly GameObject VisualEffect;
-        [CanBeNull] public readonly GameObject Condition;
+        [CanBeNull] public GameObject Condition;
         [CanBeNull] public readonly ConditionRemover ConditionRemover;
 
         public SkillResult()
         {
             Hit = false;
             AnimateAttacked = false;
+            Melee = false;
             AffectedStat = StatType.None;
             Delta = 0;
-            Level = 0;
+            Level = ConditionLevel = 0;
         }
 
-        public SkillResult(bool animateAttacked, StatType affectedStat, int delta, 
+        public SkillResult(bool animateAttacked, StatType affectedStat, int delta, bool melee,
             [CanBeNull] GameObject visualEffect = null, int level = 0, [CanBeNull] GameObject condition = null,
             [CanBeNull] ConditionRemover conditionRemover = null)
         {
@@ -33,7 +36,8 @@ namespace Core.SkillsAndConditions
             AnimateAttacked = animateAttacked;
             AffectedStat = affectedStat;
             Delta = delta;
-            Level = level;
+            Melee = melee;
+            Level = ConditionLevel = level;
             VisualEffect = visualEffect;
             Condition = condition;
             ConditionRemover = conditionRemover;

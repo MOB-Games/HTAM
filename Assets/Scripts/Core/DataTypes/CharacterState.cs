@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.SkillsAndConditions.PassiveSkills;
 using Core.Stats;
 using UnityEngine;
 
@@ -31,6 +32,7 @@ namespace Core.DataTypes
         // character editing window will change the skills and their levels
         public List<SkillWithLevel> activeOffensiveSkills;
         public List<SkillWithLevel> activeDefensiveSkills;
+        public PassiveSkills passiveSkills;
 
         public CharacterInitialState initialState;
         

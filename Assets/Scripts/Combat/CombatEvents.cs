@@ -18,7 +18,8 @@ public static class CombatEvents
     public static event Action<PointerEventData> OnClick;
     public static event Action<CombatantId, CombatantId, List<SkillWithLevel>> OnOpenMenu;
     public static event Action<CombatantId, Skill, int> OnSkillChosen;
-    public static event Action<CombatantId, SkillResult> OnSkillUsed; 
+    public static event Action<CombatantId, SkillResult> OnSkillUsed;
+    public static event Action<int, GameObject, int> OnReflection;
     public static event Action<CombatantId> OnCombatantDied;
     public static event Action<Drop> OnDrop;
     public static event Action<Drop> OnFinalDrop;
@@ -78,6 +79,11 @@ public static class CombatEvents
     public static void SkillUsed(CombatantId targetId, SkillResult result)
     {
         OnSkillUsed?.Invoke(targetId, result);
+    }
+    
+    public static void Reflected(int damage, GameObject condition, int level)
+    {
+        OnReflection?.Invoke(damage, condition, level);
     }
     
     public static void CombatantDied(CombatantId id)

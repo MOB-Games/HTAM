@@ -11,6 +11,7 @@ public class CombatantAnimator : MonoBehaviour
     private static readonly int TriggerPowerAttack = Animator.StringToHash("TriggerPowerAttack");
     private static readonly int TriggerSpell = Animator.StringToHash("TriggerSpell");
     private static readonly int TriggerAttacked = Animator.StringToHash("TriggerAttacked");
+    private static readonly int TriggerDefend = Animator.StringToHash("TriggerDefend");
     private static readonly int TriggerDie = Animator.StringToHash("TriggerDie");
     private static readonly int Moving = Animator.StringToHash("Moving");
 
@@ -23,6 +24,7 @@ public class CombatantAnimator : MonoBehaviour
         _combatantEvents.OnFinishedMoving += StopMovementAnimation;
         _combatantEvents.OnAnimateSkill += TriggerSkillAnimation;
         _combatantEvents.OnHurt += TriggerHurtAnimation;
+        _combatantEvents.OnDamageReduced += TriggerDefendAnimation;
         _combatantEvents.OnDied += TriggerDieAnimation;
     }
     
@@ -66,6 +68,11 @@ public class CombatantAnimator : MonoBehaviour
         _animator.SetTrigger(TriggerAttacked);
     }
 
+    private void TriggerDefendAnimation()
+    {
+        _animator.SetTrigger(TriggerDefend);
+    }
+
     private void TriggerDieAnimation()
     {
         _animator.SetTrigger(TriggerDie);
@@ -78,6 +85,7 @@ public class CombatantAnimator : MonoBehaviour
         _combatantEvents.OnFinishedMoving -= StopMovementAnimation;
         _combatantEvents.OnAnimateSkill -= TriggerSkillAnimation;
         _combatantEvents.OnHurt -= TriggerHurtAnimation;
+        _combatantEvents.OnDamageReduced -= TriggerDefendAnimation;
         _combatantEvents.OnDied -= TriggerDieAnimation;
     }
 }

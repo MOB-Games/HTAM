@@ -36,7 +36,8 @@ public class ConditionManager : MonoBehaviour
         _id = GetComponent<CombatId>().id;
         _statBlock = GetComponent<StatModifier>().stats;
         _combatantEvents = GetComponent<CombatantEvents>();
-        CombatEvents.OnSkillUsed += ConditionsChanged;
+        CombatEvents.OnSkillUsed += SkillUsed;
+        _combatantEvents.OnConditionReflected += Reflection;
         _combatantEvents.OnEndTurn += Tick;
         CombatEvents.OnStartCombat += RegisterCenter;
     }
@@ -59,8 +60,28 @@ public class ConditionManager : MonoBehaviour
         ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock));
     }
 
-    private void ConditionsChanged(CombatantId targetId, SkillResult result)
+    private void ConditionsChanged(GameObject conditionGo, int level)
     {
+        if (conditionGo == null) return;
+        var condition = conditionGo.GetComponent<Condition>();
+        var conditionWithLevel = conditions.Find(c => c.condition.id == condition.id);
+        _combatantEvents.AddCondition(conditionGo, condition.id, level);
+        if (conditionWithLevel == null)
+        {
+            conditions.Add(new ConditionWithLevel(conditionGo, condition, level));
+            ConditionEvoked(condition.GetInitialEffect(level, _statBlock));
+        }
+        else
+        {
+            conditionWithLevel.ticks = 0;
+            StartCoroutine(GameManager.PlayVisualEffect(condition.GetInitialEffect(level, _statBlock).VisualEffect,
+                _center));
+        }
+    }
+
+    private void SkillUsed(CombatantId targetId, SkillResult result)
+    {
+        if (targetId != _id) return;
         if (result.ConditionRemover != null)
         {
             StartCoroutine(GameManager.PlayVisualEffect(result.ConditionRemover.visualEffect, _center));
@@ -70,21 +91,13 @@ public class ConditionManager : MonoBehaviour
                     ConditionRemoved(i, conditions[i]);
             }
         }
-        if (targetId != _id || result.Condition == null) return;
-        var condition = result.Condition.GetComponent<Condition>();
-        var conditionWithLevel = conditions.Find(c => c.condition.id == condition.id);
-        _combatantEvents.AddCondition(result.Condition, condition.id, result.Level);
-        if (conditionWithLevel == null)
-        {
-            conditions.Add(new ConditionWithLevel(result.Condition, condition, result.Level));
-            ConditionEvoked(condition.GetInitialEffect(result.Level, _statBlock));
-        }
-        else
-        {
-            conditionWithLevel.ticks = 0;
-            StartCoroutine(GameManager.PlayVisualEffect(condition.GetInitialEffect(result.Level, _statBlock).VisualEffect,
-                _center));
-        }
+        if (result.Condition == null) return;
+        ConditionsChanged(result.Condition, result.ConditionLevel);
+    }
+
+    private void Reflection(GameObject condition, int level)
+    {
+        ConditionsChanged(condition, level);
     }
 
     private void Tick()
@@ -104,7 +117,8 @@ public class ConditionManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        CombatEvents.OnSkillUsed -= ConditionsChanged;
+        CombatEvents.OnSkillUsed -= SkillUsed;
+        _combatantEvents.OnConditionReflected -= Reflection;
         _combatantEvents.OnEndTurn -= Tick;
         CombatEvents.OnStartCombat -= RegisterCenter;
     }

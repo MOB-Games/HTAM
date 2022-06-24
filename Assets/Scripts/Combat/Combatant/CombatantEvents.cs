@@ -10,8 +10,10 @@ public class CombatantEvents : MonoBehaviour
     public event Action OnFinishedMoving;
     public event Action<SkillAnimation> OnAnimateSkill;
     public event Action OnHurt;
+    public event Action OnDamageReduced;
     public event Action<GameObject, ConditionId, int> OnConditionAdded;
     public event Action<ConditionId> OnConditionRemoved;
+    public event Action<GameObject,int> OnConditionReflected;
     public event Action OnEndTurn;
     public event Action OnDied;
 
@@ -51,6 +53,11 @@ public class CombatantEvents : MonoBehaviour
     {
         OnHurt?.Invoke();
     }
+    
+    public void DamageReduced()
+    {
+        OnDamageReduced?.Invoke();
+    }
 
     public void AddCondition(GameObject condition, ConditionId conditionId, int level)
     {
@@ -60,6 +67,11 @@ public class CombatantEvents : MonoBehaviour
     public void RemoveCondition(ConditionId conditionId)
     {
         OnConditionRemoved?.Invoke(conditionId);
+    }
+
+    public void ConditionReflected(GameObject condition, int level)
+    {
+        OnConditionReflected?.Invoke(condition, level);
     }
     
     public void EndTurn()

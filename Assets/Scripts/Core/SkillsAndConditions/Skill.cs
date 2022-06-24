@@ -185,7 +185,7 @@ namespace Core.SkillsAndConditions
                 if (delta <= 0)
                     delta = 1; // should always help
             }
-            return new SkillResult(animateAttacked, affectedStat, (int)delta, 
+            return new SkillResult(animateAttacked, affectedStat, (int)delta, melee,
                 visualEffect, level, InflictedCondition(level), conditionRemover);
         }
 

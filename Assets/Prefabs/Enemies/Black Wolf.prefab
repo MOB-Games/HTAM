@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3047790426424481988}
   - component: {fileID: 293588599278952146}
   - component: {fileID: 4095699319752990290}
+  - component: {fileID: 3634444469442743382}
   - component: {fileID: 143544944754756025}
   - component: {fileID: 7726764361994183940}
   - component: {fileID: 2447912989255569191}
@@ -242,6 +243,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b30441c472d52544bdfe21d0cc77f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3634444469442743382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7366c3495be66644ca1fada78adad313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &143544944754756025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,9 +303,9 @@ MonoBehaviour:
     damage:
       baseValue: 11
       value: 11
-    defence:
-      baseValue: 3
-      value: 3
+    defense:
+      baseValue: 0
+      value: 0
     speed:
       baseValue: 12
       value: 12

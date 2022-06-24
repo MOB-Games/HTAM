@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Core.SkillsAndConditions;using Core.Enums;
+using Core.SkillsAndConditions.PassiveSkills;
+using Core.Stats;
 using UnityEngine;
 
 public class SkillExecutor : MonoBehaviour
@@ -8,11 +10,13 @@ public class SkillExecutor : MonoBehaviour
     private bool _moving;
     private CombatantId _id;
     private CombatantEvents _combatantEvents;
+    private PassiveSkills _passiveSkills;
 
     private void Start()
     {
         _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
+        _passiveSkills = GetComponent<MemoryManager>().state.passiveSkills;
         _combatantEvents.OnFinishedMoving += FinishedMoving;
         CombatEvents.OnStartTurn += RegisterToSkill;
         CombatEvents.OnSkillChosen += UnregisterToSkill;
@@ -72,7 +76,10 @@ public class SkillExecutor : MonoBehaviour
             if (!CombatantInfo.CombatantIsActive(id)) continue;
             var result = skill.GetResult(_id, id, level);
             if (result.Hit)
+            {
+                _passiveSkills.ActivateOffensivePassiveSkills(result);
                 CombatEvents.SkillUsed(id, result);
+            }
         }
         yield return new WaitForSeconds(0.4f);
         if (skill.melee)
