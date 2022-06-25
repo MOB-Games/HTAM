@@ -91,6 +91,7 @@ public class ActiveSkillsManager : MonoBehaviour
 
     private void AddSkillToActive(SkillTreeNode skillTreeNode, int index, bool offensive)
     {
+        Debug.Log("add");
         var skillIsOffensive = ((Skill)(skillTreeNode.content)).offensive;
         if (offensive != skillIsOffensive) return;
         if (offensive)

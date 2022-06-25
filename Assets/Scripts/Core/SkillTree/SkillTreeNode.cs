@@ -35,7 +35,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         _levelupDescription = GetComponent<SkillLevelupDescription>();
         _levelupDescription.desc = content.GetLevelupDescription(skillWithLevel.level);
         _maxLevel = content.GetMaxLevel();
-        _isPassive = content is Skill;
+        _isPassive = content is not Skill;
         Refresh();
 
         TownEvents.OnSkillTreeRefresh += Refresh;
