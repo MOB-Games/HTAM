@@ -19,6 +19,7 @@ public static class TownEvents
     public static event Action<int> OnGoldSpent;
     public static event Action<StatType, int> OnStatChange;
     public static event Action OnSlotUnlocked;
+    public static event Action<SkillTreeNode, int, bool> OnAddSkillToActive;
     public static event Action<SkillTreeNode> OnSkillLevelUp;
     public static event Action OnSkillTreeRefresh;
    
@@ -90,6 +91,11 @@ public static class TownEvents
     public static void SlotUnlocked()
     {
         OnSlotUnlocked?.Invoke();
+    }
+
+    public static void AddSkillToActive(SkillTreeNode skillTreeNode, int index, bool offensive)
+    {
+        OnAddSkillToActive?.Invoke(skillTreeNode, index, offensive);
     }
 
     public static void LevelupSkill(SkillTreeNode skillTreeNode)

@@ -273,30 +273,6 @@ public class LevelUpManager : MonoBehaviour
         unlockTextGo.SetActive(false);
     }
 
-    public void CancelLevelUp()
-    {
-        UndoChanges();
-        _skillPts = _statPts = _vitalityPts = 0;
-        levelUpButton.SetActive(true);
-        cancelButton.SetActive(false);
-        doneButton.SetActive(false);
-        TownEvents.CharacterSelected(_selectedCharacterTownInfo);
-    }
-
-    public void SubmitLevelUp()
-    {
-        _selectedCharacterState.level = ConvertExpToLevel(_selectedCharacterState.exp);
-        levelUpButton.SetActive(false);
-        cancelButton.SetActive(false);
-        doneButton.SetActive(false);
-        _selectedCharacterState.stats.SaveStats(_stats);
-        _selectedCharacterState.stats.Reset();
-        _selectedCharacterState.passiveSkills = _passiveSkills;
-        _offensiveSkillSlotsUnlocked = _defensiveSkillSlotsUnlocked = 0;
-        _leveledUpSkills.Clear();
-        TownEvents.CharacterSelected(_selectedCharacterTownInfo);
-    }
-
     private void LevelupSkill(SkillTreeNode skillTreeNode)
     {
         if (_skillPts == 0) return;
@@ -339,6 +315,30 @@ public class LevelUpManager : MonoBehaviour
             _leveledUpSkills.Add(skillTreeNode.skillWithLevel, 1);
         
         TownEvents.RefreshSkillTree();
+    }
+
+    public void CancelLevelUp()
+    {
+        UndoChanges();
+        _skillPts = _statPts = _vitalityPts = 0;
+        levelUpButton.SetActive(true);
+        cancelButton.SetActive(false);
+        doneButton.SetActive(false);
+        TownEvents.CharacterSelected(_selectedCharacterTownInfo);
+    }
+
+    public void SubmitLevelUp()
+    {
+        _selectedCharacterState.level = ConvertExpToLevel(_selectedCharacterState.exp);
+        levelUpButton.SetActive(false);
+        cancelButton.SetActive(false);
+        doneButton.SetActive(false);
+        _selectedCharacterState.stats.SaveStats(_stats);
+        _selectedCharacterState.stats.Reset();
+        _selectedCharacterState.passiveSkills = _passiveSkills;
+        _offensiveSkillSlotsUnlocked = _defensiveSkillSlotsUnlocked = 0;
+        _leveledUpSkills.Clear();
+        TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }
 
     private void OnDestroy()

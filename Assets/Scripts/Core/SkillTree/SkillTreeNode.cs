@@ -1,33 +1,40 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Core.DataTypes;
 using Core.SkillsAndConditions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
 
-public class SkillTreeNode : MonoBehaviour
+public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    public GameObject dragImage;
     public List<SkillTreeNode> parents;
     public SkillWithLevel skillWithLevel;
     public SkillBase content;
 
+    private bool _clickable = false;
+    private bool _isClick = false;
     private int _maxLevel;
-    private Button _button;
-    private Image _image;
+    private Vector3 _dragOffset;
     private SkillLevelupDescription _levelupDescription;
+    private Image _image;
+    private Camera _mainCamera;
+    private GameObject _dragImageInstance;
     
     
     private void Start()
     {
-        _button = GetComponent<Button>();
         _image = GetComponent<Image>();
-        _button.onClick.AddListener(() => TownEvents.LevelupSkill(this));
+        _mainCamera = Camera.main;
 
         _levelupDescription = GetComponent<SkillLevelupDescription>();
         _levelupDescription.desc = content.GetLevelupDescription(skillWithLevel.level);
         _maxLevel = content.GetMaxLevel();
+        Refresh();
 
         TownEvents.OnSkillTreeRefresh += Refresh;
     }
@@ -41,12 +48,12 @@ public class SkillTreeNode : MonoBehaviour
     {
         if (parents.Any(stn => stn.skillWithLevel.level < 0))
         {
-            _button.interactable = false;
+            _clickable = false;
             _image.color = new Color(1, 1, 1, 0.5f);
             return;
         }
 
-        _button.interactable = skillWithLevel.level != _maxLevel;
+        _clickable = skillWithLevel.level != _maxLevel;
         _image.color = Color.white;
     }
 
@@ -56,9 +63,52 @@ public class SkillTreeNode : MonoBehaviour
         SetActivity();
     }
 
+    private Vector3 GetMousePosition()
+    {
+        var pos = _mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = 0;
+        return pos;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (_clickable && _isClick) TownEvents.LevelupSkill(this);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        _isClick = true;
+        _dragOffset = transform.position - GetMousePosition();
+        _dragImageInstance = Instantiate(dragImage, transform.position, Quaternion.identity, transform);
+        _dragImageInstance.GetComponent<Image>().sprite = _image.sprite;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        Destroy(_dragImageInstance);
+        foreach (var hoveredGo in eventData.hovered)
+        {
+            if (hoveredGo.TryGetComponent<OffensiveSlotIndex>(out var offensiveSlotIndex))
+            {
+                TownEvents.AddSkillToActive(this, offensiveSlotIndex.index, true);
+                break;
+            }
+            if (hoveredGo.TryGetComponent<DefensiveSlotIndex>(out var defensiveSlotIndex))
+            {
+                TownEvents.AddSkillToActive(this, defensiveSlotIndex.index, false);
+                break;
+            }
+        }
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        _isClick = false;
+        _dragImageInstance.transform.position = GetMousePosition() + _dragOffset;
+    }
+
     private void OnDestroy()
     {
-        _button.onClick.RemoveAllListeners();
         TownEvents.OnSkillTreeRefresh -= Refresh;
     }
 }

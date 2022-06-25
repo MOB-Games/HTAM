@@ -33,6 +33,7 @@ public class ActiveSkillsManager : MonoBehaviour
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlocked += ShowActiveSkills;
+        TownEvents.OnAddSkillToActive += AddSkillToActive;
         OnSkillDescChanged += ShowSkillDesc;
     }
     
@@ -53,6 +54,8 @@ public class ActiveSkillsManager : MonoBehaviour
         var defensiveSkills = _selectedCharacterTownInfo.State.activeDefensiveSkills;
         for (var i = 0; i < 7; i++)
         {
+            offensiveSkillAppearances[i].description.desc = "";
+            defensiveSkillAppearances[i].description.desc = "";
             // offense
             if (i < offensiveSkills.Count)
             {
@@ -63,17 +66,11 @@ public class ActiveSkillsManager : MonoBehaviour
                         offensiveSkills[i].skillGo.GetComponent<Skill>().GetLevelupDescription(offensiveSkills[i].level);
                 }
                 else
-                {
                     offensiveSkillAppearances[i].image.sprite = emptySkillHolder;
-                    offensiveSkillAppearances[i].description.desc = "";
-                }
             }
             else
-            {
                 offensiveSkillAppearances[i].image.sprite = lockedSkillHolder;
-                offensiveSkillAppearances[i].description.desc = "";
-            }
-            
+
             // defense
             if (i < defensiveSkills.Count)
             {
@@ -84,17 +81,29 @@ public class ActiveSkillsManager : MonoBehaviour
                         defensiveSkills[i].skillGo.GetComponent<Skill>().GetLevelupDescription(defensiveSkills[i].level);
                 }
                 else
-                {
                     defensiveSkillAppearances[i].image.sprite = emptySkillHolder;
-                    defensiveSkillAppearances[i].description.desc = "";
-                }
             }
             else
-            {
                 defensiveSkillAppearances[i].image.sprite = lockedSkillHolder;
-                defensiveSkillAppearances[i].description.desc = "";
-            }
         }
+    }
+
+    private void AddSkillToActive(SkillTreeNode skillTreeNode, int index, bool offensive)
+    {
+        if (offensive)
+        {
+            var offensiveSkills = _selectedCharacterTownInfo.State.activeOffensiveSkills;
+            if (index >= offensiveSkills.Count) return;
+            offensiveSkills[index] = skillTreeNode.skillWithLevel;
+        }
+        else
+        {
+            var defensiveSkills = _selectedCharacterTownInfo.State.activeDefensiveSkills;
+            if (index >= defensiveSkills.Count) return;
+            defensiveSkills[index] = skillTreeNode.skillWithLevel;
+        }
+        
+        ShowActiveSkills();
     }
 
     private void ShowSkillDesc(string desc)
@@ -123,6 +132,7 @@ public class ActiveSkillsManager : MonoBehaviour
         TownEvents.OnOpenInn -= RegisterForSelectedCharacter;
         TownEvents.OnCloseInn -= UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlocked -= ShowActiveSkills;
+        TownEvents.OnAddSkillToActive -= AddSkillToActive;
         OnSkillDescChanged -= ShowSkillDesc;
     }
 }
