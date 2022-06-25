@@ -59,6 +59,11 @@ namespace Core.SkillsAndConditions.PassiveSkills
             
             return desc;
         }
+
+        public override int GetMaxLevel()
+        {
+            return parametersPerLevel.Count - 1;
+        }
     }
 }
 

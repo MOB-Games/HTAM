@@ -30,10 +30,13 @@ public class SkillTarget : MonoBehaviour
     private void SkillUsed(CombatantId targetId, SkillResult result)
     {
         if (targetId != _id) return;
-        if (_passiveSkills.ActivateDefensivePassiveSkills(result, _damage.value))
+        var defensivePassiveResult = _passiveSkills.ActivateDefensivePassiveSkills(result, _damage.value);
+        if (defensivePassiveResult.Reduce)
             _combatantEvents.DamageReduced();
         else if (result.AnimateAttacked)
             _combatantEvents.Hurt();
+        if (defensivePassiveResult.Counter)
+            _combatantEvents.AnimateSkill(SkillAnimation.Attack);
         StartCoroutine(GameManager.PlayVisualEffect(result.VisualEffect, _center));
         _combatantEvents.StatChange(result.AffectedStat, result.Delta);
     }

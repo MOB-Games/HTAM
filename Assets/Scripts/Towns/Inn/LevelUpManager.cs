@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Core.DataTypes;
 using Core.Enums;
+using Core.SkillsAndConditions;
 using Core.SkillsAndConditions.PassiveSkills;
 using Core.Stats;
 using TMPro;
@@ -96,7 +97,7 @@ public class LevelUpManager : MonoBehaviour
     private void CharacterSelected(CharacterTownInfo characterTownInfo)
     {
         if (_selectedCharacterState != null)
-            UndoSkillSlotChanges();
+            UndoChanges();
         cancelButton.SetActive(false);
         doneButton.SetActive(false);
         _statPts = 0;
@@ -216,7 +217,7 @@ public class LevelUpManager : MonoBehaviour
         IncStat((StatType)statNumber);
     }
 
-    private void UndoSkillSlotChanges()
+    private void UndoChanges()
     {
         if (_offensiveSkillSlotsUnlocked > 0)
         {
@@ -233,6 +234,10 @@ public class LevelUpManager : MonoBehaviour
                 _defensiveSkillSlotsUnlocked);
             _defensiveSkillSlotsUnlocked = 0;
         }
+        
+        foreach (var leveledUpSkill in _leveledUpSkills)
+            leveledUpSkill.Key.level -= leveledUpSkill.Value;
+        _leveledUpSkills.Clear();
     }
 
     public void AskUnlock(bool offensive)
@@ -270,14 +275,11 @@ public class LevelUpManager : MonoBehaviour
 
     public void CancelLevelUp()
     {
-        UndoSkillSlotChanges();
+        UndoChanges();
         _skillPts = _statPts = _vitalityPts = 0;
         levelUpButton.SetActive(true);
         cancelButton.SetActive(false);
         doneButton.SetActive(false);
-        foreach (var leveledUpSkill in _leveledUpSkills)
-            leveledUpSkill.Key.level -= leveledUpSkill.Value;
-        _leveledUpSkills.Clear();
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }
 
@@ -299,45 +301,36 @@ public class LevelUpManager : MonoBehaviour
     {
         if (_skillPts == 0) return;
         var level = ++skillTreeNode.skillWithLevel.level;
-        switch (skillTreeNode.type)
+        switch (skillTreeNode.content)
         {
-            case SkillType.Normal:
-                break;
-            case SkillType.DamageAdder:
-                var damageAdder = (DamageAdder)skillTreeNode.content;
+            case DamageAdder damageAdder:
                 _passiveSkills.damageAdder.addChance = damageAdder.parametersPerLevel[level].addChance;
                 _passiveSkills.damageAdder.damageMultiplier = damageAdder.parametersPerLevel[level].damageMultiplier;
                 break;
-            case SkillType.ConditionAdder:
-                var conditionAdder = (ConditionAdder)skillTreeNode.content;
+            case ConditionAdder conditionAdder:
                 _passiveSkills.conditionAdder.addChance = conditionAdder.parametersPerLevel[level].addChance;
                 _passiveSkills.levelOfAddedCondition = level;
                 if (level == 0)
                     _passiveSkills.conditionToAdd = conditionAdder.conditionGo; 
                 break;
-            case SkillType.DamageReducer:
-                var damageReducer = (DamageReducer)skillTreeNode.content;
+            case DamageReducer damageReducer:
                 _passiveSkills.damageReducer.reductionChance = damageReducer.parametersPerLevel[level].reductionChance;
                 _passiveSkills.damageReducer.reductionPercent = damageReducer.parametersPerLevel[level].reductionPercent;
                 break;
-            case SkillType.DamageReflector:
-                var damageReflector = (DamageReflector)skillTreeNode.content;
+            case DamageReflector damageReflector:
                 _passiveSkills.damageReflector.reflectChance = damageReflector.parametersPerLevel[level].reflectChance;
                 _passiveSkills.damageReflector.percentOfIncomingDamage =
                     damageReflector.parametersPerLevel[level].percentOfIncomingDamage;
                 _passiveSkills.damageReflector.damageMultiplier =
                     damageReflector.parametersPerLevel[level].damageMultiplier;
                 break;
-            case SkillType.ConditionReflector:
-                var conditionReflector = (ConditionReflector)skillTreeNode.content;
+            case ConditionReflector conditionReflector:
                 _passiveSkills.conditionReflector.reflectChance = 
                     conditionReflector.parametersPerLevel[level].reflectChance;
                 _passiveSkills.levelOfReflectedCondition = level;
                 if (level == 0)
                     _passiveSkills.conditionToReflect = conditionReflector.conditionGo;  
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
 
         if (_leveledUpSkills.ContainsKey(skillTreeNode.skillWithLevel))

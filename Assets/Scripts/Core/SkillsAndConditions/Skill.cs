@@ -158,6 +158,11 @@ namespace Core.SkillsAndConditions
 
             return desc;
         }
+        
+        public override int GetMaxLevel()
+        {
+            return parametersPerLevel.Count - 1;
+        }
 
         public SkillResult GetResult(CombatantId attackerId, CombatantId defenderId, int level)
         {

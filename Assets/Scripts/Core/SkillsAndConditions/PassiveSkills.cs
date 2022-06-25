@@ -5,6 +5,18 @@ using Random = UnityEngine.Random;
 
 namespace Core.SkillsAndConditions.PassiveSkills
 {
+    public class DefensivePassiveSkillsResult
+    {
+        public bool Reduce;
+        public bool Counter;
+
+        public DefensivePassiveSkillsResult()
+        {
+            Reduce = false;
+            Counter = false;
+        }
+    }
+    
     [Serializable]
     public class PassiveSkills
     {
@@ -18,10 +30,11 @@ namespace Core.SkillsAndConditions.PassiveSkills
         public GameObject conditionToReflect;
         public int levelOfReflectedCondition;
         
-        public bool ActivateDefensivePassiveSkills(SkillResult incomingSkill, int damage)
+        public DefensivePassiveSkillsResult ActivateDefensivePassiveSkills(SkillResult incomingSkill, int damage)
         {
+            var result = new DefensivePassiveSkillsResult();
             if (incomingSkill.AffectedStat != StatType.Hp || incomingSkill.Delta >= 0)
-                return false;
+                return result;
             // can only reflect melee attacks that target hp
             if (incomingSkill.Melee)
             {
@@ -35,19 +48,24 @@ namespace Core.SkillsAndConditions.PassiveSkills
                     else
                         reflectedDamage = damageReflector.damageMultiplier / 100 * damage;
                 }
+
                 if (Random.Range(0, 100) < conditionReflector.reflectChance)
                     reflectedCondition = conditionToReflect;
+
                 if (reflectedDamage != 0 || reflectedCondition != null)
+                {
                     CombatEvents.Reflected(reflectedDamage, reflectedCondition, levelOfReflectedCondition);
+                    result.Counter = true;
+                }
             }
 
             if (Random.Range(0, 100) < damageReducer.reductionChance)
             {
                 incomingSkill.Delta *= damageReducer.reductionPercent / 100;
-                return true;
+                result.Reduce = true;
             }
 
-            return false;
+            return result;
         }
 
         public void ActivateOffensivePassiveSkills(SkillResult outgoingSkill)
