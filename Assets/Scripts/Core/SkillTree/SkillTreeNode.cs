@@ -18,6 +18,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     private bool _clickable = false;
     private bool _isClick = false;
+    private bool _isPassive;
     private int _maxLevel;
     private Vector3 _dragOffset;
     private SkillLevelupDescription _levelupDescription;
@@ -34,6 +35,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         _levelupDescription = GetComponent<SkillLevelupDescription>();
         _levelupDescription.desc = content.GetLevelupDescription(skillWithLevel.level);
         _maxLevel = content.GetMaxLevel();
+        _isPassive = content is Skill;
         Refresh();
 
         TownEvents.OnSkillTreeRefresh += Refresh;
@@ -78,6 +80,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public void OnPointerDown(PointerEventData eventData)
     {
         _isClick = true;
+        if (_isPassive) return;
         _dragOffset = transform.position - GetMousePosition();
         _dragImageInstance = Instantiate(dragImage, transform.position, Quaternion.identity, transform);
         _dragImageInstance.GetComponent<Image>().sprite = _image.sprite;
@@ -85,6 +88,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (_isPassive) return;
         Destroy(_dragImageInstance);
         foreach (var hoveredGo in eventData.hovered)
         {
@@ -104,6 +108,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public void OnDrag(PointerEventData eventData)
     {
         _isClick = false;
+        if (_isPassive) return;
         _dragImageInstance.transform.position = GetMousePosition() + _dragOffset;
     }
 

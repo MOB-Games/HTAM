@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.SkillsAndConditions;
 using TMPro;
 using Unity.VisualScripting;
@@ -90,15 +91,19 @@ public class ActiveSkillsManager : MonoBehaviour
 
     private void AddSkillToActive(SkillTreeNode skillTreeNode, int index, bool offensive)
     {
+        var skillIsOffensive = ((Skill)(skillTreeNode.content)).offensive;
+        if (offensive != skillIsOffensive) return;
         if (offensive)
         {
             var offensiveSkills = _selectedCharacterTownInfo.State.activeOffensiveSkills;
+            if (offensiveSkills.Contains(skillTreeNode.skillWithLevel)) return;
             if (index >= offensiveSkills.Count) return;
             offensiveSkills[index] = skillTreeNode.skillWithLevel;
         }
         else
         {
             var defensiveSkills = _selectedCharacterTownInfo.State.activeDefensiveSkills;
+            if (defensiveSkills.Contains(skillTreeNode.skillWithLevel)) return;
             if (index >= defensiveSkills.Count) return;
             defensiveSkills[index] = skillTreeNode.skillWithLevel;
         }
