@@ -18,8 +18,8 @@ public class EnemyBehavior : MonoBehaviour
 
     [Range(0,100)]
     public int probabilityToTargetPlayer;
-    
-    
+
+    private int _mobilization;
     private CombatantId _id;
     private StatBlock _stats;
     private CombatantEvents _combatantEvents;
@@ -28,6 +28,7 @@ public class EnemyBehavior : MonoBehaviour
         _id = GetComponent<CombatId>().id;
         _stats = GetComponent<StatModifier>().stats;
         _combatantEvents = GetComponent<CombatantEvents>();
+        _combatantEvents.OnMobilizationChanged += MobilizationChanged;
         CombatEvents.OnStartTurn += PlayTurn;
     }
 
@@ -44,10 +45,15 @@ public class EnemyBehavior : MonoBehaviour
             throw new ConstraintException( $"{name}: First skill of enemy must be without cost");
     }
 
+    private void MobilizationChanged(bool immobilized)
+    {
+        _mobilization += immobilized ? -1 : 1;
+    }
+
     private CombatantId ChooseTarget()
     {
         var probabilityToTargetParty = 100 - probabilityToTargetPlayer;
-        List<CombatantId> partyMembers = new List<CombatantId>();
+        var partyMembers = new List<CombatantId>();
         if (CombatantInfo.CombatantIsActive(CombatantId.PartyMemberTop))
             partyMembers.Add(CombatantId.PartyMemberTop);
         if (CombatantInfo.CombatantIsActive(CombatantId.PartyMemberBottom))
@@ -75,10 +81,27 @@ public class EnemyBehavior : MonoBehaviour
         }
         return skillsWithLevels.Last();
     }
+    
+    private IEnumerator DelayedSkipTurn()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CombatEvents.SkillChosen(CombatantId.None, GameManager.Instance.GetSkipTurnSkill(), 0);
+    }
+    
+    private IEnumerator DelayedSkillChosen(CombatantId targetId, Skill skill, int level)
+    {
+        yield return new WaitForSeconds(1);
+        CombatEvents.SkillChosen(targetId, skill, level);
+    }
 
     private void PlayTurn(CombatantId turnId)
     {
         if (turnId != _id) return;
+        if (_mobilization < 0)
+        {
+            StartCoroutine(DelayedSkipTurn());
+            return;
+        }
         var chosenSkill = ChooseSkill();
         var skill = chosenSkill.skillGo.GetComponent<Skill>();
         if (_stats.energy.value < skill.energyCost || _stats.hp.value < skill.hpCost)
@@ -88,14 +111,9 @@ public class EnemyBehavior : MonoBehaviour
         StartCoroutine(DelayedSkillChosen(ChooseTarget(), skill, chosenSkill.level));
     }
 
-    private IEnumerator DelayedSkillChosen(CombatantId targetId, Skill skill, int level)
-    {
-        yield return new WaitForSeconds(1);
-        CombatEvents.SkillChosen(targetId, skill, level);
-    }
-
     private void OnDestroy()
     {
+        _combatantEvents.OnMobilizationChanged -= MobilizationChanged;
         CombatEvents.OnStartTurn -= PlayTurn;
     }
 }

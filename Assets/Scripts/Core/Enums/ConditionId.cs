@@ -7,5 +7,6 @@ namespace Core.Enums
         ShieldBreak,
         LightFeet,
         Steadfast,
+        TurnSkip,
     }
 }

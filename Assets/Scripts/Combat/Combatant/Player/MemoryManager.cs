@@ -7,7 +7,7 @@ public class MemoryManager : MonoBehaviour
     public CharacterState state;
     private StatBlock _stats;
 
-    private void Start()
+    private void Awake()
     {
         _stats = GetComponent<StatModifier>().stats;
         state.stats.LoadStats(_stats);

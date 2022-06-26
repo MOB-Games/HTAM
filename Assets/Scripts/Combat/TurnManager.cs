@@ -2,17 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Core.Enums;
 using Core.SkillsAndConditions;
+using Core.Stats;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    public Skill skipTurn;
-    
-    private bool _battleFinished = false;
+    private bool _battleFinished;
     private int _numEnemies;
     private CombatantId _currentTurn;
-    private List<CombatantId> _turnOrder = new List<CombatantId>(6);
-    private readonly Dictionary<CombatantId, int> _combatantsSpeed = new Dictionary<CombatantId, int>(6);
+    private List<CombatantId> _turnOrder = new(6);
+    private readonly Dictionary<CombatantId, Stat> _combatantsSpeed = new(6);
 
     private void Start()
     {
@@ -28,7 +27,7 @@ public class TurnManager : MonoBehaviour
                  { CombatantId.Player, CombatantId.PartyMemberTop, CombatantId.PartyMemberBottom })
         {
             try
-            { _combatantsSpeed.Add(id, CombatantInfo.GetStatBlock(id).speed.value); }
+            { _combatantsSpeed.Add(id, CombatantInfo.GetStatBlock(id).speed); }
             catch (KeyNotFoundException)
             { /*ignored*/ }
         }
@@ -38,7 +37,7 @@ public class TurnManager : MonoBehaviour
         {
             try
             {
-                _combatantsSpeed.Add(id, CombatantInfo.GetStatBlock(id).speed.value);
+                _combatantsSpeed.Add(id, CombatantInfo.GetStatBlock(id).speed);
                 _numEnemies++;
             }
             catch (KeyNotFoundException)
@@ -49,26 +48,25 @@ public class TurnManager : MonoBehaviour
 
     private void SetTurnOrderForRound()
     {
-        _turnOrder = _combatantsSpeed.OrderByDescending(c => c.Value)
+        _turnOrder = _combatantsSpeed.OrderByDescending(c => c.Value.value)
             .Select(c => c.Key).ToList();
     }
 
-    private void NextTurn() 
+    private void NextTurn()
     {
-        if(_battleFinished)
+        if (_battleFinished) 
             return;
         if (_turnOrder.Count == 0) 
             SetTurnOrderForRound();
-        var nextTurnId = _turnOrder[0];
+        _currentTurn = _turnOrder[0];
         _turnOrder.RemoveAt(0);
-        _currentTurn = nextTurnId;
-        CombatEvents.StartTurn(nextTurnId);
+        CombatEvents.StartTurn(_currentTurn);
     }
 
-    public void SkipTurn()
+    public void SkipTurnFromButton()
     {
         if (_currentTurn is CombatantId.Player or CombatantId.PartyMemberTop or CombatantId.PartyMemberBottom)
-            CombatEvents.SkillChosen(CombatantId.None, skipTurn, 0);
+            CombatEvents.SkillChosen(CombatantId.None, GameManager.Instance.GetSkipTurnSkill(), 0);
     }
 
     private static bool IsEnemy(CombatantId id)

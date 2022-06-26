@@ -16,7 +16,8 @@ public class SkillTarget : MonoBehaviour
     {
         _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
-        _passiveSkills = GetComponent<MemoryManager>().state.passiveSkills;
+        _passiveSkills = TryGetComponent<MemoryManager>(out var memoryManager) ? 
+            memoryManager.state.passiveSkills : GetComponent<EnemyPassiveSkills>().passiveSkills;
         _damage = GetComponent<StatModifier>().stats.damage;
         CombatEvents.OnSkillUsed += SkillUsed;
         CombatEvents.OnStartCombat += RegisterCenter;

@@ -151,7 +151,11 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             if (hoveredGo.TryGetComponent<Condition>(out var condition))
             {
                 var conditionIndex = _conditions.FindIndex(c => c.ConditionGo == condition.gameObject);
-                var desc = condition.GetDescription(_levels[conditionIndex]);
+                var desc = "";
+                if (condition is TurnSkipCondition turnSkipCondition)
+                    desc += turnSkipCondition.GetDescription(_levels[conditionIndex]);
+                else 
+                    desc += condition.GetDescription(_levels[conditionIndex]);
                 desc +=
                     $"\n\nExpires in {condition.TurnsLeft(_conditions[conditionIndex].Ticks, _levels[conditionIndex])} Turns";
                 tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = desc;

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 143544944754756025}
   - component: {fileID: 7726764361994183940}
   - component: {fileID: 2447912989255569191}
+  - component: {fileID: 3599002060879211868}
   - component: {fileID: 6580720188609057905}
   m_Layer: 0
   m_Name: Black Wolf
@@ -309,6 +310,37 @@ MonoBehaviour:
     speed:
       baseValue: 12
       value: 12
+--- !u!114 &3599002060879211868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0877588b6f69db542a5f75c4ecebd572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveSkills:
+    damageAdder:
+      addChance: 0
+      damageMultiplier: 0
+    conditionAdder:
+      addChance: 0
+    conditionToAdd: {fileID: 0}
+    levelOfAddedCondition: 0
+    damageReducer:
+      reductionChance: 0
+      reductionPercent: 0
+    damageReflector:
+      reflectChance: 0
+      percentOfIncomingDamage: 0
+      damageMultiplier: 0
+    conditionReflector:
+      reflectChance: 0
+    conditionToReflect: {fileID: 0}
+    levelOfReflectedCondition: 0
 --- !u!114 &6580720188609057905
 MonoBehaviour:
   m_ObjectHideFlags: 0

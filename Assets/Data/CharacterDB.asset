@@ -16,18 +16,18 @@ MonoBehaviour:
   - prefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
       type: 3}
     available: 1
-  - prefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
-      type: 3}
-    available: 1
   - prefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
       type: 3}
-    available: 1
-  - prefab: {fileID: 2259149878155014034, guid: cc2c3ea27ea37474891eac766eba5969,
+    available: 0
+  - prefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
       type: 3}
     available: 1
   - prefab: {fileID: 2259149878155014034, guid: c15c298f7edcf6a4e9bc13f2475ee618,
       type: 3}
-    available: 1
+    available: 0
+  - prefab: {fileID: 2259149878155014034, guid: cc2c3ea27ea37474891eac766eba5969,
+      type: 3}
+    available: 0
   characterStates:
   - {fileID: 11400000, guid: 58344f1b95277f8418456e389e747339, type: 2}
   - {fileID: 11400000, guid: 90bb88ec227b90f4291b8f6a6197ccde, type: 2}

@@ -1,16 +1,19 @@
 using System.Collections;
 using Core.DataTypes;
 using Core.Enums;
+using Core.SkillsAndConditions;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public IntegerVariable gold;
+    public GameObject skipTurnSkill;
     public static GameManager Instance { get; private set; }
 
     private const int StatIncrement = 3;
     private const int StatDecrement = 1;
     private const int IncrementChange = 1;
+    private Skill _skipTurnSkill;
 
     private void Awake()
     {
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
         CombatEvents.OnFinalDrop += LootGold;
         Invoke(nameof(LoadScene), 0.5f);
         Invoke(nameof(OpenLoadingScreen), 1);
+        _skipTurnSkill = skipTurnSkill.GetComponent<Skill>();
     }
 
     private void LoadScene()
@@ -95,6 +99,11 @@ public class GameManager : MonoBehaviour
     public static int GetStatDecrement()
     {
         return StatDecrement;
+    }
+
+    public Skill GetSkipTurnSkill()
+    {
+        return _skipTurnSkill;
     }
 
     private void OnDestroy()

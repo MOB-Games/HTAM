@@ -53,11 +53,25 @@ public class ConditionManager : MonoBehaviour
         _combatantEvents.StatChange(effect.AffectedStat, effect.TotalDelta);
     }
 
+    private void TurnSkipConditionEvoked(bool start, GameObject visualEffect)
+    {
+        if (start)
+        {
+            StartCoroutine(GameManager.PlayVisualEffect(visualEffect, _center));
+            _combatantEvents.MobilizationChanged(true);
+        }
+        else 
+            _combatantEvents.MobilizationChanged(false);
+    }
+
     private void ConditionRemoved(int index, ConditionWithLevel conditionWithLevel)
     {
         conditions.RemoveAt(index);
         _combatantEvents.RemoveCondition(conditionWithLevel.condition.id);
-        ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock));
+        if (conditionWithLevel.condition is TurnSkipCondition)
+            TurnSkipConditionEvoked(false, null);
+        else
+            ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock));
     }
 
     private void ConditionsChanged(GameObject conditionGo, int level)
@@ -69,7 +83,10 @@ public class ConditionManager : MonoBehaviour
         if (conditionWithLevel == null)
         {
             conditions.Add(new ConditionWithLevel(conditionGo, condition, level));
-            ConditionEvoked(condition.GetInitialEffect(level, _statBlock));
+            if (condition is TurnSkipCondition)
+                TurnSkipConditionEvoked(true, condition.visualEffect);
+            else
+                ConditionEvoked(condition.GetInitialEffect(level, _statBlock));
         }
         else
         {

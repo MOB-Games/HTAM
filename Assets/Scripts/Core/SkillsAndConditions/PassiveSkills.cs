@@ -29,6 +29,23 @@ namespace Core.SkillsAndConditions.PassiveSkills
         public ConditionReflectorParameters conditionReflector;
         public GameObject conditionToReflect;
         public int levelOfReflectedCondition;
+
+        public void Init()
+        {
+            damageAdder.addChance = 0;
+            damageAdder.damageMultiplier = 0;
+            conditionAdder.addChance = 0;
+            conditionToAdd = null;
+            levelOfAddedCondition = -1;
+            damageReducer.reductionChance = 0;
+            damageReducer.reductionPercent = 0;
+            damageReflector.reflectChance = 0;
+            damageReflector.damageMultiplier= 0;
+            damageReflector.percentOfIncomingDamage = 0;
+            conditionReflector.reflectChance = 0;
+            conditionToReflect = null;
+            levelOfReflectedCondition = -1;
+        }
         
         public DefensivePassiveSkillsResult ActivateDefensivePassiveSkills(SkillResult incomingSkill, int damage)
         {

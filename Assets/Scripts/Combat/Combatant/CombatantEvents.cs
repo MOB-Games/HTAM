@@ -14,6 +14,7 @@ public class CombatantEvents : MonoBehaviour
     public event Action<GameObject, ConditionId, int> OnConditionAdded;
     public event Action<ConditionId> OnConditionRemoved;
     public event Action<GameObject,int> OnConditionReflected;
+    public event Action<bool> OnMobilizationChanged;
     public event Action OnEndTurn;
     public event Action OnDied;
 
@@ -72,6 +73,11 @@ public class CombatantEvents : MonoBehaviour
     public void ConditionReflected(GameObject condition, int level)
     {
         OnConditionReflected?.Invoke(condition, level);
+    }
+
+    public void MobilizationChanged(bool immobilized)
+    {
+        OnMobilizationChanged?.Invoke(immobilized);
     }
     
     public void EndTurn()

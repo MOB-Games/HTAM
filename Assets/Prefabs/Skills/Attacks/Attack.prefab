@@ -151,7 +151,8 @@ MonoBehaviour:
     baseEffectValue: 0
     attackMultiplier: -1
     defenseMultiplier: 1
-    chanceToInflict: 0
+    chanceToInflict: 100
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 0}
+  conditionGo: {fileID: 4909307490870935864, guid: aa3e5ff977c3f7b409ab85000060ab4b,
+    type: 3}
   conditionRemover: {fileID: 0}

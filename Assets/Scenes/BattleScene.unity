@@ -3375,7 +3375,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 640901128}
         m_TargetAssemblyTypeName: TurnManager, Assembly-CSharp
-        m_MethodName: SkipTurn
+        m_MethodName: SkipTurnFromButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

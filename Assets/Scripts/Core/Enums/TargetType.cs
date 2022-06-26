@@ -4,7 +4,8 @@ namespace Core.Enums
     {
         Single = 0,
         Group = 1,
-        All = 2
+        All = 2,
+        Self = 3
     }
 }
 

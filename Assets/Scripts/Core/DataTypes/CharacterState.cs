@@ -47,6 +47,8 @@ namespace Core.DataTypes
             exp = 0;
             activeOffensiveSkills = initialState.initialOffensiveSkills.Select(s => new SkillWithLevel(s)).ToList();
             activeDefensiveSkills = initialState.initialDefensiveSkills.Select(s => new SkillWithLevel(s)).ToList();
+
+            passiveSkills.Init();
         }
     }
 }

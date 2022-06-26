@@ -141,7 +141,7 @@ MonoBehaviour:
   speedBasedEvasion: 0
   energyCost: 10
   hpCost: 0
-  targetType: 0
+  targetType: 3
   skillAnimation: 2
   attackStat: 5
   defenseStat: 5

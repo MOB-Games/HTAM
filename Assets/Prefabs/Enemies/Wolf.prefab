@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 5934729483843726030}
   - component: {fileID: 5708457653403262510}
   - component: {fileID: 3374165069257435726}
+  - component: {fileID: 550757383764374501}
   - component: {fileID: 8229508485637790920}
   - component: {fileID: 2264432829541233808}
   m_Layer: 0
@@ -295,6 +296,37 @@ MonoBehaviour:
     speed:
       baseValue: 4
       value: 4
+--- !u!114 &550757383764374501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0877588b6f69db542a5f75c4ecebd572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveSkills:
+    damageAdder:
+      addChance: 0
+      damageMultiplier: 0
+    conditionAdder:
+      addChance: 0
+    conditionToAdd: {fileID: 0}
+    levelOfAddedCondition: 0
+    damageReducer:
+      reductionChance: 0
+      reductionPercent: 0
+    damageReflector:
+      reflectChance: 0
+      percentOfIncomingDamage: 0
+      damageMultiplier: 0
+    conditionReflector:
+      reflectChance: 0
+    conditionToReflect: {fileID: 0}
+    levelOfReflectedCondition: 0
 --- !u!114 &8229508485637790920
 MonoBehaviour:
   m_ObjectHideFlags: 0

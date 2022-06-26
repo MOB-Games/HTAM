@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Core.SkillsAndConditions;using Core.Enums;
 using Core.SkillsAndConditions.PassiveSkills;
-using Core.Stats;
 using UnityEngine;
 
 public class SkillExecutor : MonoBehaviour
@@ -16,7 +15,8 @@ public class SkillExecutor : MonoBehaviour
     {
         _id = GetComponent<CombatId>().id;
         _combatantEvents = GetComponent<CombatantEvents>();
-        _passiveSkills = GetComponent<MemoryManager>().state.passiveSkills;
+        _passiveSkills = TryGetComponent<MemoryManager>(out var memoryManager) ? 
+            memoryManager.state.passiveSkills : GetComponent<EnemyPassiveSkills>().passiveSkills;
         _combatantEvents.OnFinishedMoving += FinishedMoving;
         CombatEvents.OnStartTurn += RegisterToSkill;
         CombatEvents.OnSkillChosen += UnregisterToSkill;
@@ -42,6 +42,7 @@ public class SkillExecutor : MonoBehaviour
     {
         switch (targetType)
         {
+            case TargetType.Self:
             case TargetType.Single:
                 return new List<CombatantId>() { targetId };
             case TargetType.Group when targetId is CombatantId.Player or CombatantId.PartyMemberTop or CombatantId.PartyMemberBottom:

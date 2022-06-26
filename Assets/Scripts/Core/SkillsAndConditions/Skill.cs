@@ -78,20 +78,14 @@ namespace Core.SkillsAndConditions
             if (affectedStat != StatType.None)
             {
                 desc += offensive ? "Attacks " : "Heals ";
-                switch (targetType)
+                desc += targetType switch
                 {
-                    case TargetType.Single:
-                        desc += "the target"; 
-                        break;
-                    case TargetType.Group:
-                        desc += "the group";
-                        break;
-                    case TargetType.All:
-                        desc += "everyone";
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
+                    TargetType.Single => "the target",
+                    TargetType.Group => "the group",
+                    TargetType.All => "everyone",
+                    TargetType.Self => "self",
+                    _ => throw new ArgumentOutOfRangeException()
+                };
                 if (affectedStat == StatType.Energy)
                     desc += "s Energy";
                 desc += offensive ? " With " : " by ";
@@ -115,8 +109,14 @@ namespace Core.SkillsAndConditions
                 else if (offensive)
                     desc += "while ignoring the targets defenses";
             }
+
             if (_condition != null)
-                desc += $"Has a chance to inflict {_condition.GetDescription(level)}\n"; 
+            {
+                if (_condition is TurnSkipCondition condition)
+                    desc += $"Has a chance to inflict {condition.GetDescription(level)}\n";
+                else 
+                    desc += $"Has a chance to inflict {_condition.GetDescription(level)}\n";
+            }
             if (energyCost > 0)
                 desc += $"\nEnergy Cost: {energyCost}\n";
             if (hpCost > 0)
@@ -153,7 +153,10 @@ namespace Core.SkillsAndConditions
             if (_condition != null)
             {
                 desc += "\nCondition:\n";
-                desc += _condition.GetLevelupDescription(level);
+                if (_condition is TurnSkipCondition condition)
+                    desc += $"Has a chance to inflict {condition.GetLevelupDescription(level)}\n";
+                else 
+                    desc += $"Has a chance to inflict {_condition.GetLevelupDescription(level)}\n";
             }
 
             return desc;
