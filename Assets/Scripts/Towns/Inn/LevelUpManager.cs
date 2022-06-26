@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Core.DataTypes;
 using Core.Enums;
-using Core.SkillsAndConditions;
 using Core.SkillsAndConditions.PassiveSkills;
 using Core.Stats;
 using TMPro;
@@ -13,6 +12,7 @@ public class LevelUpManager : MonoBehaviour
     public GameObject levelUpButton;
     public GameObject cancelButton;
     public GameObject doneButton;
+    public TextMeshProUGUI pointsText;
     
     public GameObject hpUpButton;
     public GameObject energyUpButton;
@@ -46,7 +46,7 @@ public class LevelUpManager : MonoBehaviour
     private int _offensiveSkillSlotsUnlocked;
     private int _defensiveSkillSlotsUnlocked;
     private bool _unlockOffensive;
-    private Dictionary<SkillWithLevel, int> _leveledUpSkills = new(3);
+    private readonly Dictionary<SkillWithLevel, int> _leveledUpSkills = new(3);
 
     private readonly StatBlock _stats = new StatBlock();
     private PassiveSkills _passiveSkills;
@@ -116,6 +116,14 @@ public class LevelUpManager : MonoBehaviour
         TownEvents.OnCharacterSelected -= CharacterSelected;
     }
 
+    private void ShowPoints()
+    {
+        pointsText.text = $"Stat Points: {_statPts}\n" +
+                          $"Vitality Points: {_vitalityPts}\n" +
+                          $"Skill Points: {_skillPts}";
+        pointsText.color = Color.white;
+    }
+
     private void SetVitalityButtons()
     {
         var active = _vitalityPts > 0;
@@ -143,7 +151,7 @@ public class LevelUpManager : MonoBehaviour
         var levelUps = LevelsToProgress(_selectedCharacterState.level, _selectedCharacterState.exp);
         _statPts = StatPtsPerLevel * levelUps;
         _vitalityPts = VitalityPtsPerLevel * levelUps;
-        _skillPts = SkillPtsPerLevel * levelUps + 5;
+        _skillPts = SkillPtsPerLevel * levelUps;
         _offensiveSkillSlotsUnlocked = _defensiveSkillSlotsUnlocked = 0;
         var advantage = _selectedCharacterState.stats.advantage;
         var disadvantage = _selectedCharacterState.stats.disadvantage;
@@ -161,6 +169,7 @@ public class LevelUpManager : MonoBehaviour
         SetVitalityButtons();
         SetStatButtons();
         SetUnlockButtons();
+        ShowPoints();
     }
 
     private bool DoneLevelingUp()
@@ -210,6 +219,7 @@ public class LevelUpManager : MonoBehaviour
         }
         TownEvents.StatChange(stat, change);
         doneButton.SetActive(DoneLevelingUp());
+        ShowPoints();
     }
 
     public void IncStat(int statNumber)
@@ -266,6 +276,7 @@ public class LevelUpManager : MonoBehaviour
         TownEvents.SlotUnlocked();
         SetUnlockButtons();
         doneButton.SetActive(DoneLevelingUp());
+        ShowPoints();
     }
 
     public void CancelUnlock()
@@ -313,8 +324,10 @@ public class LevelUpManager : MonoBehaviour
             _leveledUpSkills[skillTreeNode.skillWithLevel]++;
         else
             _leveledUpSkills.Add(skillTreeNode.skillWithLevel, 1);
-        
+
+        _skillPts--;
         TownEvents.RefreshSkillTree();
+        ShowPoints();
     }
 
     public void CancelLevelUp()
@@ -324,6 +337,7 @@ public class LevelUpManager : MonoBehaviour
         levelUpButton.SetActive(true);
         cancelButton.SetActive(false);
         doneButton.SetActive(false);
+        pointsText.color = Color.clear;
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }
 
@@ -333,6 +347,7 @@ public class LevelUpManager : MonoBehaviour
         levelUpButton.SetActive(false);
         cancelButton.SetActive(false);
         doneButton.SetActive(false);
+        pointsText.color = Color.clear;
         _selectedCharacterState.stats.SaveStats(_stats);
         _selectedCharacterState.stats.Reset();
         _selectedCharacterState.passiveSkills = _passiveSkills;
