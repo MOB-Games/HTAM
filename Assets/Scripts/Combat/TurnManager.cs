@@ -66,7 +66,7 @@ public class TurnManager : MonoBehaviour
     public void SkipTurnFromButton()
     {
         if (_currentTurn is CombatantId.Player or CombatantId.PartyMemberTop or CombatantId.PartyMemberBottom)
-            CombatEvents.SkillChosen(CombatantId.None, GameManager.Instance.GetSkipTurnSkill(), 0);
+            CombatEvents.SkillChosen(CombatantId.None, GameManager.Instance.skipTurnSkill, 0);
     }
 
     private static bool IsEnemy(CombatantId id)

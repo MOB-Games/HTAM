@@ -39,7 +39,7 @@ public class ActiveSkills : MonoBehaviour
     private IEnumerator DelayedSkipTurn()
     {
         yield return new WaitForSeconds(0.5f);
-        CombatEvents.SkillChosen(CombatantId.None, GameManager.Instance.GetSkipTurnSkill(), 0);
+        CombatEvents.SkillChosen(CombatantId.None, GameManager.Instance.skipTurnSkill, 0);
     }
 
     private void StartTurn(CombatantId turnId)
