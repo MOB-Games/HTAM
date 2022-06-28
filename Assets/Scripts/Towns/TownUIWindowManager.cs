@@ -10,7 +10,7 @@ public class TownUIWindowManager : MonoBehaviour, IPointerEnterHandler, IPointer
     public GameObject characterButton;
     public GameObject toolTip;
     
-    private bool _open = false;
+    private bool _open;
     
     private void Start()
     {

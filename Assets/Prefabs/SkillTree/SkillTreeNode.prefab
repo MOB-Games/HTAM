@@ -106,8 +106,9 @@ MonoBehaviour:
   dragImage: {fileID: 5472639227363579675, guid: 67d9997ba60d6a843a4684b909971194,
     type: 3}
   parents: []
+  self: {fileID: 294466672035723222}
+  content: {fileID: 1768222690818782716, guid: ee4e86305d6d43c449ebf2f9ec6fa8a6, type: 3}
   skillWithLevel:
     skillGo: {fileID: 4003426218498401328, guid: ee4e86305d6d43c449ebf2f9ec6fa8a6,
       type: 3}
     level: 0
-  content: {fileID: 1768222690818782716, guid: ee4e86305d6d43c449ebf2f9ec6fa8a6, type: 3}

@@ -4,17 +4,30 @@ using UnityEngine.EventSystems;
 
 public class SkillLevelupDescription : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [HideInInspector]
-    public string desc = "";
+    public string Desc
+    {
+        get => _desc;
+        set
+        {
+            _desc = value;
+            if (_showing)
+                ActiveSkillsManager.SkillDescChanged(_desc);
+        }
+    }
+
+    private string _desc = "";
+    private bool _showing;
 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        ActiveSkillsManager.SkillDescChanged(desc);
+        _showing = true;
+        ActiveSkillsManager.SkillDescChanged(Desc);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        _showing = false;
         ActiveSkillsManager.SkillDescChanged("");
     }
 }

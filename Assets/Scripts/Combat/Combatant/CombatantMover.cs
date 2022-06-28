@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CombatantMover : MonoBehaviour
 {
-    private bool _finishedMoving = false;
+    private bool _finishedMoving;
     private CombatantId _id;
     private Vector3 _deviation;
     private CombatantEvents _combatantEvents;

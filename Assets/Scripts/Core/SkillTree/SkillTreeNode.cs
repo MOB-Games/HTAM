@@ -13,11 +13,11 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 {
     public GameObject dragImage;
     public List<SkillTreeNode> parents;
-    public SkillWithLevel skillWithLevel;
     public SkillBase content;
+    public SkillWithLevel skillWithLevel;
 
-    private bool _clickable = false;
-    private bool _isClick = false;
+    private bool _clickable;
+    private bool _isClick;
     private bool _isPassive;
     private int _maxLevel;
     private Vector3 _dragOffset;
@@ -33,7 +33,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         _mainCamera = Camera.main;
 
         _levelupDescription = GetComponent<SkillLevelupDescription>();
-        _levelupDescription.desc = content.GetLevelupDescription(skillWithLevel.level);
+        _levelupDescription.Desc = content.GetLevelupDescription(skillWithLevel.level);
         _maxLevel = content.GetMaxLevel();
         _isPassive = content is not Skill;
         Refresh();
@@ -43,7 +43,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     private void SetDesc()
     {
-        _levelupDescription.desc = content.GetLevelupDescription(skillWithLevel.level);
+        _levelupDescription.Desc = content.GetLevelupDescription(skillWithLevel.level);
     }
 
     private void SetActivity()

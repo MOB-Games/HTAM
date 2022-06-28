@@ -47,7 +47,7 @@ namespace Core.SkillsAndConditions
         [CanBeNull] public GameObject conditionGo;
         [CanBeNull] public ConditionRemover conditionRemover;
 
-        [CanBeNull] private Condition _condition = null;
+        [CanBeNull] private Condition _condition;
 
         private void OnValidate()
         {
