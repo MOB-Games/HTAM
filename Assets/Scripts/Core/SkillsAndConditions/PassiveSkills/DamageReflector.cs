@@ -28,7 +28,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
 
         public override string GetDescription(int level)
         {
-            var desc = $"<u>{name.Split('(')[0]}</u>: Every time an enemy attacks with a melee attack there is a " +
+            var desc = $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every time an enemy attacks with a melee attack there is a " +
                        $"{parametersPerLevel[level].reflectChance}% chance to ";
             if (parametersPerLevel[level].percentOfIncomingDamage != 0)
                 desc += $"reflect {parametersPerLevel[level].percentOfIncomingDamage}% of the damage back at the attacker";

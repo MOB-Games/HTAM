@@ -18,7 +18,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
         
         public override string GetDescription(int level)
         {
-            return $"<u>{name.Split('(')[0]}</u>: Every attack there is a {parametersPerLevel[level].addChance}% " +
+            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every attack there is a {parametersPerLevel[level].addChance}% " +
                    $"chance to multiply the damage by {parametersPerLevel[level].damageMultiplier}";
         }
 

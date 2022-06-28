@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Core.SkillsAndConditions;
 using Core.SkillsAndConditions.PassiveSkills;
 using Core.Stats;
 using UnityEngine;
@@ -28,15 +28,46 @@ namespace Core.DataTypes
         // inventory
         public StatBlockSO stats;
         public List<ConditionWithLevel> conditions;
-        // for now we edit the skills from the inspector, in the future once there is a skill tree, changes made in the
-        // character editing window will change the skills and their levels
+        
         public List<SkillWithLevel> activeOffensiveSkills;
         public List<SkillWithLevel> activeDefensiveSkills;
         public PassiveSkills passiveSkills;
+        public GameObject skillTree;
 
         public CharacterInitialState initialState;
+
+        private static void InitSkillTreeNodeRecursive(GameObject node)
+        {
+            foreach (Transform childTransform in node.transform)
+                InitSkillTreeNodeRecursive(childTransform.gameObject);
+
+            node.GetComponent<SkillTreeNode>().level.value = -1;
+        }
         
-        // skill tree - should have all skills and their level, level -1 will signify locked skills. 
+        private void InitSkillTree()
+        {
+            foreach (Transform root in skillTree.transform)
+                InitSkillTreeNodeRecursive(root.gameObject);
+        }
+
+        private void InitSkills()
+        {
+            InitSkillTree();
+            foreach (var skillLevel in initialState.initialSkills)
+                skillLevel.value = 0;
+
+            foreach (Transform root in skillTree.transform)
+            {
+                var node = root.gameObject.GetComponent<SkillTreeNode>();
+                if (node.level.value == 0)
+                {
+                    if (((Skill)(node.content)).offensive)
+                        activeOffensiveSkills.Add(node.skillWithLevel);
+                    else
+                        activeDefensiveSkills.Add(node.skillWithLevel);
+                }
+            }
+        }
 
         public void Init()
         {
@@ -45,9 +76,8 @@ namespace Core.DataTypes
             conditions.Clear();
             level = 0;
             exp = 0;
-            activeOffensiveSkills = initialState.initialOffensiveSkills.Select(s => new SkillWithLevel(s)).ToList();
-            activeDefensiveSkills = initialState.initialDefensiveSkills.Select(s => new SkillWithLevel(s)).ToList();
-
+            InitSkills();
+            
             passiveSkills.Init();
         }
     }

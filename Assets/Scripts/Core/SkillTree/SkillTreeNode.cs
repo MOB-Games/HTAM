@@ -15,6 +15,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public List<SkillTreeNode> parents;
     public SkillBase content;
     public SkillWithLevel skillWithLevel;
+    public IntegerVariable level;
 
     private bool _clickable;
     private bool _isClick;
@@ -32,6 +33,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         _image = GetComponent<Image>();
         _mainCamera = Camera.main;
 
+        skillWithLevel.level = level.value;
         _levelupDescription = GetComponent<SkillLevelupDescription>();
         _levelupDescription.Desc = content.GetLevelupDescription(skillWithLevel.level);
         _maxLevel = content.GetMaxLevel();
@@ -115,5 +117,6 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     private void OnDestroy()
     {
         TownEvents.OnSkillTreeRefresh -= Refresh;
+        level.value = skillWithLevel.level;
     }
 }

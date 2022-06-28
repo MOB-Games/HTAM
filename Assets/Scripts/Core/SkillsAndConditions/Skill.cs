@@ -74,7 +74,7 @@ namespace Core.SkillsAndConditions
         {
             if (_condition == null && conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
-            var desc = $"<u>{name.Split('(')[0]}</u>: {description}\n";
+            var desc = $"<u>{name.Split('(')[0]} (lvl.{level})</u>: {description}\n";
             if (affectedStat != StatType.None)
             {
                 desc += offensive ? "Attacks " : "Heals ";

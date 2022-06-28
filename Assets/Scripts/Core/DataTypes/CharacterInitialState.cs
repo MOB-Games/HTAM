@@ -12,10 +12,7 @@ namespace Core.DataTypes
         public int initialDamage;
         public int initialDefense;
         public int initialSpeed;
-        
-        public List<GameObject> initialOffensiveSkills;
-        public List<GameObject> initialDefensiveSkills;
-        
-        // skill tree - should have all skills and their level, level -1 will signify locked skills. 
+
+        public List<IntegerVariable> initialSkills;
     }
 }

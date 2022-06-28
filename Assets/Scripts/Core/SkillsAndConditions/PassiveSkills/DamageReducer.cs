@@ -19,7 +19,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
         
         public override string GetDescription(int level)
         {
-            var desc = $"<u>{name.Split('(')[0]}</u>: Every time an enemy attacks there is a" +
+            var desc = $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every time an enemy attacks there is a" +
                    $" {parametersPerLevel[level].reductionChance}% chance to ";
             if (parametersPerLevel[level].reductionPercent == 0)
                 desc += "avoid taking damage";

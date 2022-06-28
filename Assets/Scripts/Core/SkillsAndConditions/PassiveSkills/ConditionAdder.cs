@@ -21,7 +21,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
         {
             if (_condition == null && conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
-            return $"<u>{name.Split('(')[0]}</u>: Every attack there is a " +
+            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every attack there is a " +
                        $"{parametersPerLevel[level].addChance}% chance to inflict the target with {_condition.GetDescription(level)}";
         }
 

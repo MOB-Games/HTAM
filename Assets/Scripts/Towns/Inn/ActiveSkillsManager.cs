@@ -34,6 +34,7 @@ public class ActiveSkillsManager : MonoBehaviour
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlocked += ShowActiveSkills;
+        TownEvents.OnSkillTreeRefresh += ShowActiveSkills;
         TownEvents.OnAddSkillToActive += AddSkillToActive;
         OnSkillDescChanged += ShowSkillDesc;
     }
@@ -91,7 +92,6 @@ public class ActiveSkillsManager : MonoBehaviour
 
     private void AddSkillToActive(SkillTreeNode skillTreeNode, int index, bool offensive)
     {
-        Debug.Log("add");
         var skillIsOffensive = ((Skill)(skillTreeNode.content)).offensive;
         if (offensive != skillIsOffensive) return;
         if (offensive)
@@ -138,6 +138,7 @@ public class ActiveSkillsManager : MonoBehaviour
         TownEvents.OnOpenInn -= RegisterForSelectedCharacter;
         TownEvents.OnCloseInn -= UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlocked -= ShowActiveSkills;
+        TownEvents.OnSkillTreeRefresh -= ShowActiveSkills;
         TownEvents.OnAddSkillToActive -= AddSkillToActive;
         OnSkillDescChanged -= ShowSkillDesc;
     }
