@@ -17,8 +17,6 @@ MonoBehaviour:
   initialDamage: 15
   initialDefense: 9
   initialSpeed: 3
-  initialOffensiveSkills:
-  - {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f, type: 3}
-  - {fileID: 4003426218498401328, guid: ee4e86305d6d43c449ebf2f9ec6fa8a6, type: 3}
-  - {fileID: 4003426218498401328, guid: d79d25acda7dd654899c4d7189a33eb7, type: 3}
-  initialDefensiveSkills: []
+  initialSkills:
+  - {fileID: 11400000, guid: 0cbd58913ffc96542aaca13cd5956a7c, type: 2}
+  - {fileID: 11400000, guid: b60b747fd984e974c9c0ef8c3fa787a0, type: 2}

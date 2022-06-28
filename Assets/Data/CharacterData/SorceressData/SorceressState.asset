@@ -18,4 +18,25 @@ MonoBehaviour:
   conditions: []
   activeOffensiveSkills: []
   activeDefensiveSkills: []
+  passiveSkills:
+    damageAdder:
+      addChance: 0
+      damageMultiplier: 0
+    conditionAdder:
+      addChance: 0
+    conditionToAdd: {fileID: 0}
+    levelOfAddedCondition: -1
+    damageReducer:
+      reductionChance: 0
+      reductionPercent: 0
+    damageReflector:
+      reflectChance: 0
+      percentOfIncomingDamage: 0
+      damageMultiplier: 0
+    conditionReflector:
+      reflectChance: 0
+    conditionToReflect: {fileID: 0}
+    levelOfReflectedCondition: -1
+  skillTree: {fileID: 3963080789547654881, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
+    type: 3}
   initialState: {fileID: 11400000, guid: 9c2d2e356645630468fdb7b5bf6411e7, type: 2}

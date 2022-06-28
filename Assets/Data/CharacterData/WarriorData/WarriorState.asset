@@ -46,4 +46,6 @@ MonoBehaviour:
       reflectChance: 0
     conditionToReflect: {fileID: 0}
     levelOfReflectedCondition: -1
+  skillTree: {fileID: 7201339440856181987, guid: eda0190e87e13ef44925db2f96dbc922,
+    type: 3}
   initialState: {fileID: 11400000, guid: a50e819c88f07ab44b522ffc9a55ac3c, type: 2}
