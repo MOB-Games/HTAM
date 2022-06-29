@@ -18,6 +18,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public IntegerVariable level;
 
     private bool _clickable;
+    private bool _dragable;
     private bool _isClick;
     private bool _isPassive;
     private int _maxLevel;
@@ -45,7 +46,10 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     private void SetDesc()
     {
-        _levelupDescription.Desc = content.GetLevelupDescription(skillWithLevel.level);
+        var desc = "";
+        if (!_dragable)
+            desc += "LOCKED\n";
+        _levelupDescription.Desc = desc + content.GetLevelupDescription(skillWithLevel.level);
     }
 
     private void SetActivity()
@@ -53,18 +57,20 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         if (parents.Any(stn => stn.skillWithLevel.level < 0))
         {
             _clickable = false;
+            _dragable = false;
             _image.color = new Color(1, 1, 1, 0.5f);
             return;
         }
 
         _clickable = skillWithLevel.level != _maxLevel;
+        _dragable = skillWithLevel.level >= 0;
         _image.color = Color.white;
     }
 
     private void Refresh()
     {
-        SetDesc();
         SetActivity();
+        SetDesc();
     }
 
     private Vector3 GetMousePosition()
@@ -82,7 +88,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public void OnPointerDown(PointerEventData eventData)
     {
         _isClick = true;
-        if (_isPassive) return;
+        if (_isPassive || !_dragable) return;
         _dragOffset = transform.position - GetMousePosition();
         _dragImageInstance = Instantiate(dragImage, transform.position, Quaternion.identity, transform);
         _dragImageInstance.GetComponent<Image>().sprite = _image.sprite;
@@ -90,7 +96,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (_isPassive) return;
+        if (_isPassive || !_dragable) return;
         Destroy(_dragImageInstance);
         foreach (var hoveredGo in eventData.hovered)
         {
@@ -110,7 +116,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     public void OnDrag(PointerEventData eventData)
     {
         _isClick = false;
-        if (_isPassive) return;
+        if (_isPassive || !_dragable) return;
         _dragImageInstance.transform.position = GetMousePosition() + _dragOffset;
     }
 

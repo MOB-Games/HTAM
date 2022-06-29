@@ -40,6 +40,10 @@ namespace Core.SkillsAndConditions.PassiveSkills
 
         public override string GetLevelupDescription(int level)
         {
+            if (level == -1)
+            {
+                return "<u>First Level</u>:\n" + GetDescription(0);
+            }
             var desc = GetDescription(level);
             if (level == parametersPerLevel.Count - 1)
                 return desc + "\n\n<b>Level Maxed</b>";

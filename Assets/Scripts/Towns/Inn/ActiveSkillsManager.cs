@@ -20,6 +20,7 @@ public class ActiveSkillsManager : MonoBehaviour
     public Sprite emptySkillHolder;
     public List<SkillAppearance> offensiveSkillAppearances;
     public List<SkillAppearance> defensiveSkillAppearances;
+    public GameObject skillTree;
 
     private static event Action<string> OnSkillDescChanged;
     
@@ -27,6 +28,7 @@ public class ActiveSkillsManager : MonoBehaviour
     private TextMeshProUGUI _skillToolTipText;
     
     private CharacterTownInfo _selectedCharacterTownInfo;
+    private GameObject _skillTreeInstance;
 
     private void Start()
     {
@@ -48,6 +50,8 @@ public class ActiveSkillsManager : MonoBehaviour
     {
         _selectedCharacterTownInfo = characterTownInfo;
         ShowActiveSkills();
+        Destroy(_skillTreeInstance);
+        _skillTreeInstance = Instantiate(_selectedCharacterTownInfo.State.skillTree, skillTree.transform);
     }
 
     private void ShowActiveSkills()
@@ -97,7 +101,8 @@ public class ActiveSkillsManager : MonoBehaviour
         if (offensive)
         {
             var offensiveSkills = _selectedCharacterTownInfo.State.activeOffensiveSkills;
-            if (offensiveSkills.Contains(skillTreeNode.skillWithLevel)) return;
+            var skillName = skillTreeNode.skillWithLevel.skillGo.name;
+            if (offensiveSkills.Any(s => s.skillGo.name == skillName)) return;
             if (index >= offensiveSkills.Count) return;
             offensiveSkills[index] = skillTreeNode.skillWithLevel;
         }

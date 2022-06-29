@@ -9,7 +9,7 @@ public class PartyManager : MonoBehaviour
     public GameObject bottomMark;
 
     public GameObject partyEditor;
-    //public GameObject skillTree;
+    public GameObject skillTree;
 
     public GameObject removeFromPartyButton;
     public GameObject makeTopButton;
@@ -105,14 +105,14 @@ public class PartyManager : MonoBehaviour
 
     public void OpenEditor()
     {
-        //skillTree.SetActive(false);
+        skillTree.SetActive(false);
         UpdateEditorOptions();
         partyEditor.SetActive(true);
     }
     
     public void CloseEditor()
     {
-        //skillTree.SetActive(true);
+        skillTree.SetActive(true);
         partyEditor.SetActive(false);
     }
 

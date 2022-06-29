@@ -18,5 +18,6 @@ MonoBehaviour:
   initialDefense: 9
   initialSpeed: 3
   initialSkills:
+  - {fileID: 11400000, guid: 5417adb40ee264e4388244e855a5994f, type: 2}
   - {fileID: 11400000, guid: 0cbd58913ffc96542aaca13cd5956a7c, type: 2}
   - {fileID: 11400000, guid: b60b747fd984e974c9c0ef8c3fa787a0, type: 2}

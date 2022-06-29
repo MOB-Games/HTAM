@@ -3016,6 +3016,7 @@ MonoBehaviour:
     description: {fileID: 691456895}
   - image: {fileID: 1369632055}
     description: {fileID: 1369632054}
+  skillTree: {fileID: 1903396836}
   skillToolTip: {fileID: 1710705493}
 --- !u!114 &436181931
 MonoBehaviour:
@@ -13228,6 +13229,7 @@ MonoBehaviour:
   topMark: {fileID: 985171705}
   bottomMark: {fileID: 2005159169}
   partyEditor: {fileID: 1978634372}
+  skillTree: {fileID: 1903396836}
   removeFromPartyButton: {fileID: 1900269408}
   makeTopButton: {fileID: 1445591382}
   makeBottomButton: {fileID: 1292064997}
@@ -14768,7 +14770,6 @@ GameObject:
   - component: {fileID: 1903396837}
   - component: {fileID: 1903396838}
   - component: {fileID: 1903396839}
-  - component: {fileID: 1903396840}
   m_Layer: 5
   m_Name: SkillTree
   m_TagString: Untagged
@@ -14834,20 +14835,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1903396840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1903396836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b679b78e311b40a4296e6c622e7fd340, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillTreeNode: {fileID: 294466672035723216, guid: e6bd8c8df08c9664a8d938253913a134,
-    type: 3}
 --- !u!1 &1927175907
 GameObject:
   m_ObjectHideFlags: 0

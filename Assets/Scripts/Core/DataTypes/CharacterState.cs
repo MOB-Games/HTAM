@@ -55,7 +55,9 @@ namespace Core.DataTypes
             InitSkillTree();
             foreach (var skillLevel in initialState.initialSkills)
                 skillLevel.value = 0;
-
+            
+            activeOffensiveSkills.Clear();
+            activeDefensiveSkills.Clear();
             foreach (Transform root in skillTree.transform)
             {
                 var node = root.gameObject.GetComponent<SkillTreeNode>();
