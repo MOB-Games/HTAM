@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: Ice Blast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 996c0eaa7107e5d48a3e14e24efef9be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4184495d79c523148bd19006e6e88b2d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,24 +134,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Basic Attack
-  melee: 1
+  description: Shard of ice pierce the target with a chance of freezing it solid
+  melee: 0
   offensive: 1
   animateAttacked: 1
   speedBasedEvasion: 1
-  energyCost: 0
+  energyCost: 12
   hpCost: 0
   targetType: 0
-  skillAnimation: 0
-  attackStat: 2
+  skillAnimation: 2
+  attackStat: 5
   defenseStat: 3
   affectedStat: 0
   parametersPerLevel:
   - accuracy: 90
-    baseEffectValue: 0
-    attackMultiplier: -1
-    defenseMultiplier: 1
-    chanceToInflict: 0
-  visualEffect: {fileID: 0}
-  conditionGo: {fileID: 0}
+    baseEffectValue: 12
+    attackMultiplier: 0
+    defenseMultiplier: 0.5
+    chanceToInflict: 20
+  - accuracy: 90
+    baseEffectValue: 17
+    attackMultiplier: 0
+    defenseMultiplier: 0.5
+    chanceToInflict: 33
+  visualEffect: {fileID: 2135462378506688423, guid: aca9881d6b3095a409c207121d4fedf2,
+    type: 3}
+  conditionGo: {fileID: 4909307490870935864, guid: 08f87a59621dc51419c817c74c7002e2,
+    type: 3}
   conditionRemover: {fileID: 0}

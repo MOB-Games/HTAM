@@ -91,7 +91,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
                 return;
             if (Random.Range(0, 100) < damageAdder.addChance)
             {
-                outgoingSkill.Delta *= damageAdder.damageMultiplier;
+                outgoingSkill.Delta = (int)(outgoingSkill.Delta * damageAdder.damageMultiplier);
             }
 
             if (outgoingSkill.Condition != null && Random.Range(0, 100) < conditionAdder.addChance)

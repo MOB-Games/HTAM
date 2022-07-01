@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1613161850524436607}
   - component: {fileID: 3709444797487759871}
   - component: {fileID: 4796694792708283170}
-  - component: {fileID: 1768222690818782716}
+  - component: {fileID: -1611577860195201636}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 996c0eaa7107e5d48a3e14e24efef9be, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6eb3a65093113aa429cee0614429af75, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1768222690818782716
+--- !u!114 &-1611577860195201636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,27 +131,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4003426218498401328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
+  m_Script: {fileID: 11500000, guid: dc301f474c60d4141886e42b28a44516, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Basic Attack
-  melee: 1
-  offensive: 1
-  animateAttacked: 1
-  speedBasedEvasion: 1
-  energyCost: 0
-  hpCost: 0
-  targetType: 0
-  skillAnimation: 0
-  attackStat: 2
-  defenseStat: 3
-  affectedStat: 0
   parametersPerLevel:
-  - accuracy: 90
-    baseEffectValue: 0
-    attackMultiplier: -1
-    defenseMultiplier: 1
-    chanceToInflict: 0
-  visualEffect: {fileID: 0}
-  conditionGo: {fileID: 0}
-  conditionRemover: {fileID: 0}
+  - reflectChance: 5
+    percentOfIncomingDamage: 10
+    damageMultiplier: 0
+  - reflectChance: 10
+    percentOfIncomingDamage: 15
+    damageMultiplier: 0
+  - reflectChance: 10
+    percentOfIncomingDamage: 20
+    damageMultiplier: 0
+  - reflectChance: 15
+    percentOfIncomingDamage: 25
+    damageMultiplier: 0

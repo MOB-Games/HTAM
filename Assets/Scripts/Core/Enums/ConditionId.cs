@@ -8,5 +8,6 @@ namespace Core.Enums
         LightFeet,
         Steadfast,
         TurnSkip,
+        Bleed,
     }
 }

@@ -9,8 +9,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
     {
         [Range(0, 100)] 
         public int addChance;
-        [Range(0,100)]
-        public int damageMultiplier;
+        public float damageMultiplier;
     }
     public class DamageAdder : SkillBase
     {
