@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 107
+  controlID: 39
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 95
+  controlID: 40
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 96
+  controlID: 19
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -215,8 +215,8 @@ MonoBehaviour:
     y: 0
     width: 1110
     height: 608
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -243,15 +243,15 @@ MonoBehaviour:
     y: 608
     width: 1448
     height: 339
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
-  m_ActualView: {fileID: 16}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
   - {fileID: 18}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -402,10 +402,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 26}
-      m_SelectedIDs: 02280100
-      m_LastClickedID: 75778
-      m_ExpandedIDs: 908dfffff097ffff789affff9ac7ffff22cafffffefaffff2c6100004061000076620000f0630000726400007aca0000f2ca0000b0cb00002acd00007ccd0000accd0000e4240100f62401001a2601009427010016280100
+      scrollPos: {x: 0, y: 10}
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 1ea7fffff4b6ffff10bafffff0bcffff4eccffff6accfffffad3ffffe6dcfffffefaffff26880000388800005c890000d68a0000588b000022ae000058af0000d2b0000054b10000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1002,22 +1002,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/SkillTrees
+    - Assets/Data/CharacterData/SorceressData
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Prefabs/SkillTrees
+  - Assets/Data/CharacterData/SorceressData
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\mmirb\Documents\MOB-Games\HTAM
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 360}
-    m_SelectedIDs: 386e0000
-    m_LastClickedID: 28216
-    m_ExpandedIDs: 00000000da6d0000dc6d0000e06d0000e26d0000e46d0000e66d0000e86d0000ea6d0000ec6d0000ee6d0000f06d0000f26d0000f86d0000046e0000066e0000086e00000a6e0000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: ba6e0000
+    m_LastClickedID: 28346
+    m_ExpandedIDs: 000000009a6e00009c6e00009e6e0000a06e0000a26e0000a46e0000a66e0000a86e0000aa6e0000ac6e0000ae6e0000b06e0000b26e0000b46e0000b66e0000b86e0000ba6e0000f26e0000f86e0000006f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1045,7 +1045,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000da6d0000dc6d0000de6d0000e06d0000e26d0000e46d0000e66d0000e86d0000ea6d0000ec6d0000ee6d0000f06d0000f26d0000f46d0000f66d0000f86d0000
+    m_ExpandedIDs: 000000009a6e00009c6e00009e6e0000a06e0000a26e0000a46e0000a66e0000a86e0000aa6e0000ac6e0000ae6e0000b06e0000b26e0000b46e0000b66e0000b86e0000ba6e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1070,10 +1070,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: c8650000
+    m_LastClickedInstanceID: 26056
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000505f00009e6100009261000006630000b468000058610000c0600000c49c00001a670000a461000030d20000446100009a76000098760000cc70000016630000966800001a6e00006e6b000000000000ec6500005e650000a669000090650000926a000006660000706500002c6700002e6700005e67000046670000886f000068680000486700005c670000a67100000c770000666e000078770000ce7700009c670000ae670000d8670000e2670000f0670000e4670000ce670000
+    m_ExpandedInstanceIDs: c6230000505f00009e6100009261000006630000b468000058610000c0600000c49c00001a670000a461000030d20000446100009a76000098760000cc70000016630000966800001a6e00006e6b000000000000ec6500005e650000a669000090650000926a000006660000706500002c6700002e6700005e67000046670000886f000068680000486700005c670000a67100000c770000666e000078770000ce7700009c670000ae670000d8670000e2670000f0670000e4670000ce670000ac670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1161,7 +1161,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -14544
+  m_LastSelectedObjectID: 35542
 --- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52

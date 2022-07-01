@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: CharacterDB
   m_EditorClassIdentifier: 
   characterGameInfos:
-  - prefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
+  - prefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
       type: 3}
     available: 1
-  - prefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
+  - prefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
       type: 3}
     available: 1
   - prefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
@@ -34,7 +34,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6039359d89458ca458cd1a5dad2f65e4, type: 2}
   - {fileID: 11400000, guid: 6454be70976e8ee489d6939157eb0787, type: 2}
   - {fileID: 11400000, guid: d19dd2cff441581409810763491a7d92, type: 2}
-  playerPrefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
+  playerPrefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
     type: 3}
   partyMemberTopPrefab: {fileID: 0}
   partyMemberBottomPrefab: {fileID: 0}
