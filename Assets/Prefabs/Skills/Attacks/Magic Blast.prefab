@@ -147,18 +147,18 @@ MonoBehaviour:
   defenseStat: 5
   affectedStat: 0
   parametersPerLevel:
-  - accuracy: 90
-    baseEffectValue: 10
+  - accuracy: 80
+    baseEffectValue: -5
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
-  - accuracy: 90
-    baseEffectValue: 20
+  - accuracy: 80
+    baseEffectValue: -10
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
-  - accuracy: 90
-    baseEffectValue: 25
+  - accuracy: 80
+    baseEffectValue: -15
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0

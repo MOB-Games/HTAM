@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5049795257290006475}
   - component: {fileID: 8335700882252621066}
+  - component: {fileID: 3733113094694834685}
   - component: {fileID: -4175312710524176848}
-  - component: {fileID: 7297561215346059561}
   m_Layer: 5
-  m_Name: TurnSkip
+  m_Name: Cold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9725fb87facc42a4984598500f76e0fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 419ca2604dd7a2d41bb881bfe1ba1acb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,6 +86,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3733113094694834685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909307490870935864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61bd1f2f4f06b343b458b082e5deaa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  recurring: 0
+  offensive: 1
+  affectedStat: 3
+  visualEffect: {fileID: 8248039152672512555, guid: 97273bceda3a5164dacec65ba7319620,
+    type: 3}
+  parametersPerLevel:
+  - duration: 3
+    delta: -1
+    percentDelta: -15
+  - duration: 3
+    delta: -3
+    percentDelta: -20
 --- !u!61 &-4175312710524176848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -103,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 4.74, y: 4.74}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -112,24 +137,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
---- !u!114 &7297561215346059561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4909307490870935864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beed1dc1f38d8ed48b457eb4c81590b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 5
-  recurring: 0
-  offensive: 1
-  affectedStat: 0
-  visualEffect: {fileID: 0}
-  parametersPerLevel:
-  - duration: 2
-    delta: 0
-    percentDelta: 0

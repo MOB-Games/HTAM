@@ -134,10 +134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Shard of ice pierce the target with a chance of freezing it solid
+  description: Shards of ice pierce the target with a chance of freezing it solid
   melee: 0
   offensive: 1
   animateAttacked: 1
+  speedBasedAccuracy: 0
   speedBasedEvasion: 1
   energyCost: 12
   hpCost: 0
@@ -148,14 +149,14 @@ MonoBehaviour:
   affectedStat: 0
   parametersPerLevel:
   - accuracy: 90
-    baseEffectValue: 12
+    baseEffectValue: -12
     attackMultiplier: 0
-    defenseMultiplier: 0.5
+    defenseMultiplier: 1
     chanceToInflict: 20
   - accuracy: 90
-    baseEffectValue: 17
+    baseEffectValue: -17
     attackMultiplier: 0
-    defenseMultiplier: 0.5
+    defenseMultiplier: 1
     chanceToInflict: 33
   visualEffect: {fileID: 2135462378506688423, guid: aca9881d6b3095a409c207121d4fedf2,
     type: 3}

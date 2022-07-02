@@ -294,6 +294,7 @@ public class LevelUpManager : MonoBehaviour
             case DamageAdder damageAdder:
                 _passiveSkills.damageAdder.addChance = damageAdder.parametersPerLevel[level].addChance;
                 _passiveSkills.damageAdder.damageMultiplier = damageAdder.parametersPerLevel[level].damageMultiplier;
+                _passiveSkills.damageAdderVFX = damageAdder.visualEffect;
                 break;
             case ConditionAdder conditionAdder:
                 _passiveSkills.conditionAdder.addChance = conditionAdder.parametersPerLevel[level].addChance;
@@ -311,6 +312,7 @@ public class LevelUpManager : MonoBehaviour
                     damageReflector.parametersPerLevel[level].percentOfIncomingDamage;
                 _passiveSkills.damageReflector.damageMultiplier =
                     damageReflector.parametersPerLevel[level].damageMultiplier;
+                _passiveSkills.damageReflectorVFX = damageReflector.visualEffect;
                 break;
             case ConditionReflector conditionReflector:
                 _passiveSkills.conditionReflector.reflectChance = 

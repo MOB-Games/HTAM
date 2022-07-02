@@ -30,6 +30,7 @@ namespace Core.SkillsAndConditions
         public bool melee;
         public bool offensive;
         public bool animateAttacked;
+        public bool speedBasedAccuracy;
         public bool speedBasedEvasion;
         public int energyCost;
         public int hpCost;
@@ -178,8 +179,11 @@ namespace Core.SkillsAndConditions
                     $"Tried to use skill {name} with level {level}, but it has a max level of {parametersPerLevel.Count - 1}");
             var attackerStats = CombatantInfo.GetStatBlock(attackerId);
             var defenderStats = CombatantInfo.GetStatBlock(defenderId);
-            var chanceToHit = parametersPerLevel[level].accuracy + 
-                              (speedBasedEvasion ? attackerStats.speed.value - defenderStats.speed.value : 0);
+            var chanceToHit = parametersPerLevel[level].accuracy;
+            if (speedBasedAccuracy)
+                chanceToHit += attackerStats.speed.value;
+            if (speedBasedEvasion)
+                chanceToHit -= defenderStats.speed.value;
             if (Random.Range(0, 100) > chanceToHit)
                 return new SkillResult();
             

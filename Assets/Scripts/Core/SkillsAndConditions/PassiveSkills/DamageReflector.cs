@@ -17,6 +17,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
     }
     public class DamageReflector : SkillBase
     {
+        public GameObject visualEffect;
         public List<DamageReflectorParameters> parametersPerLevel;
 
         private void OnValidate()

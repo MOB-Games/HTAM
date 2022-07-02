@@ -78,7 +78,8 @@ public class SkillExecutor : MonoBehaviour
             var result = skill.GetResult(_id, id, level);
             if (result.Hit)
             {
-                _passiveSkills.ActivateOffensivePassiveSkills(result);
+                var vfx = _passiveSkills.ActivateOffensivePassiveSkills(result);
+                StartCoroutine(GameManager.PlayVisualEffect(vfx, transform.position));
                 CombatEvents.SkillUsed(id, result);
             }
         }

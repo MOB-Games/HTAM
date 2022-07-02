@@ -13,6 +13,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
     }
     public class DamageAdder : SkillBase
     {
+        public GameObject visualEffect;
         public List<DamageAdderParameters> parametersPerLevel;
         
         public override string GetDescription(int level)

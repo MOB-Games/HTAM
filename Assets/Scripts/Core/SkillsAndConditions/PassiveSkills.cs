@@ -9,11 +9,13 @@ namespace Core.SkillsAndConditions.PassiveSkills
     {
         public bool Reduce;
         public bool Counter;
+        public GameObject vfx;
 
         public DefensivePassiveSkillsResult()
         {
             Reduce = false;
             Counter = false;
+            vfx = null;
         }
     }
     
@@ -21,11 +23,13 @@ namespace Core.SkillsAndConditions.PassiveSkills
     public class PassiveSkills
     {
         public DamageAdderParameters damageAdder;
+        public GameObject damageAdderVFX;
         public ConditionAdderParameters conditionAdder;
         public GameObject conditionToAdd;
         public int levelOfAddedCondition;
         public DamageReducerParameters damageReducer;
         public DamageReflectorParameters damageReflector;
+        public GameObject damageReflectorVFX;
         public ConditionReflectorParameters conditionReflector;
         public GameObject conditionToReflect;
         public int levelOfReflectedCondition;
@@ -59,6 +63,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
                 GameObject reflectedCondition = null;
                 if (Random.Range(0, 100) < damageReflector.reflectChance)
                 {
+                    result.vfx = damageReflectorVFX;
                     reflectedDamage = damageReflector.percentOfIncomingDamage / 100 * incomingSkill.Delta;
                     if (reflectedDamage != 0)
                         incomingSkill.Delta += reflectedDamage;
@@ -85,13 +90,15 @@ namespace Core.SkillsAndConditions.PassiveSkills
             return result;
         }
 
-        public void ActivateOffensivePassiveSkills(SkillResult outgoingSkill)
+        public GameObject ActivateOffensivePassiveSkills(SkillResult outgoingSkill)
         {
+            GameObject vfx = null;
             if (outgoingSkill.AffectedStat != StatType.Hp || outgoingSkill.Delta > 0)
-                return;
+                return null;
             if (Random.Range(0, 100) < damageAdder.addChance)
             {
                 outgoingSkill.Delta = (int)(outgoingSkill.Delta * damageAdder.damageMultiplier);
+                vfx = damageAdderVFX;
             }
 
             if (outgoingSkill.Condition != null && Random.Range(0, 100) < conditionAdder.addChance)
@@ -99,6 +106,8 @@ namespace Core.SkillsAndConditions.PassiveSkills
                 outgoingSkill.Condition = conditionToAdd;
                 outgoingSkill.ConditionLevel = levelOfAddedCondition;
             }
+
+            return vfx;
         }
 
         public PassiveSkills Copy()

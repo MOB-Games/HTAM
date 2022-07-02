@@ -138,6 +138,7 @@ MonoBehaviour:
   melee: 1
   offensive: 1
   animateAttacked: 1
+  speedBasedAccuracy: 1
   speedBasedEvasion: 1
   energyCost: 0
   hpCost: 0

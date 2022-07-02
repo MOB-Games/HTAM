@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Core.Enums;
-using Core.Stats;
 
 public static class TownEvents
 {
