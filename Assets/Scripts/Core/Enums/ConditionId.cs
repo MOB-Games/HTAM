@@ -11,5 +11,6 @@ namespace Core.Enums
         Bleed,
         Burn,
         Slow,
+        Paralyzed,
     }
 }
