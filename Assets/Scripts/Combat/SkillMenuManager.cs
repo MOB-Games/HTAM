@@ -37,7 +37,6 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void SetupMenu(CombatantId userId, CombatantId targetId, List<SkillWithLevel> skillsWithLevels)
     {
-        Debug.Log($"setup {skillsWithLevels.Count}");
         var targetDimensions = CombatantInfo.GetDimensions(targetId);
         var targetLocation = CombatantInfo.GetLocation(targetId);
         var offsetDirectionVector = new Vector3(targetLocation.x > 0 ? -1 : 1, 1 , 0);
