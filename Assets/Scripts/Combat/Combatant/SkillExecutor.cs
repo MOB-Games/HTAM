@@ -69,7 +69,6 @@ public class SkillExecutor : MonoBehaviour
             yield return new WaitUntil(() => !_moving);
             yield return new WaitForSeconds(0.2f);
         }
-        
         _combatantEvents.AnimateSkill(skill.skillAnimation);
         yield return new WaitForSeconds(0.15f);
         foreach (var  id in GetAllTargets(targetId, skill.targetType))

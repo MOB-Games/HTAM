@@ -1149,6 +1149,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8899490018613369220, guid: 2730da8d641e1af47b56a832897edbc6,
+        type: 3}
+      propertyPath: skipTurnSkill
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 6dbe73e44e3cb7f42be651e4a4fc7557,
+        type: 3}
     - target: {fileID: 8899490018613369221, guid: 2730da8d641e1af47b56a832897edbc6,
         type: 3}
       propertyPath: m_Name
@@ -2072,8 +2078,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8c959f18f09e5458a1c4d830ea71ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipTurn: {fileID: 1768222690818782716, guid: 6dbe73e44e3cb7f42be651e4a4fc7557,
-    type: 3}
 --- !u!4 &640901129
 Transform:
   m_ObjectHideFlags: 0

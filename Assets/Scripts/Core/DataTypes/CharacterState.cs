@@ -36,18 +36,10 @@ namespace Core.DataTypes
 
         public CharacterInitialState initialState;
 
-        private static void InitSkillTreeNodeRecursive(GameObject node)
-        {
-            foreach (Transform childTransform in node.transform)
-                InitSkillTreeNodeRecursive(childTransform.gameObject);
-
-            node.GetComponent<SkillTreeNode>().level.value = -1;
-        }
-        
         private void InitSkillTree()
         {
-            foreach (Transform root in skillTree.transform)
-                InitSkillTreeNodeRecursive(root.gameObject);
+            foreach (var skillTreeNode in skillTree.GetComponentsInChildren<SkillTreeNode>())
+                skillTreeNode.level.value = -1;
         }
 
         private void InitSkills()
@@ -58,15 +50,14 @@ namespace Core.DataTypes
             
             activeOffensiveSkills.Clear();
             activeDefensiveSkills.Clear();
-            foreach (Transform root in skillTree.transform)
+            foreach (var skillTreeNode in skillTree.GetComponentsInChildren<SkillTreeNode>())
             {
-                var node = root.gameObject.GetComponent<SkillTreeNode>();
-                if (node.level.value == 0)
+                if (skillTreeNode.level.value == 0)
                 {
-                    if (((Skill)(node.content)).offensive)
-                        activeOffensiveSkills.Add(node.skillWithLevel);
+                    if (((Skill)(skillTreeNode.content)).offensive)
+                        activeOffensiveSkills.Add(skillTreeNode.skillWithLevel);
                     else
-                        activeDefensiveSkills.Add(node.skillWithLevel);
+                        activeDefensiveSkills.Add(skillTreeNode.skillWithLevel);
                 }
             }
         }
