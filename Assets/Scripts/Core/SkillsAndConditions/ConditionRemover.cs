@@ -10,7 +10,7 @@ namespace Core.SkillsAndConditions
     {
         public bool removeAllBuffs;
         public bool removeAllDebuffs;
-        public List<ConditionId> specificConditionsToRemove = new List<ConditionId>();
+        public List<ConditionId> specificConditionsToRemove = new();
         [CanBeNull] public GameObject visualEffect;
 
         public bool Removes(ConditionWithLevel conditionWithLevel)

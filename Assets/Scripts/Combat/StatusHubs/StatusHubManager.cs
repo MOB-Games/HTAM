@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StatusHubManager : MonoBehaviour
 {
-    private readonly List<GameObject> _activeCombatants = new List<GameObject>();
-    private readonly Dictionary<CombatantId, GameObject> _statusHubConnectors = new Dictionary<CombatantId, GameObject>(6);
+    private readonly List<GameObject> _activeCombatants = new();
+    private readonly Dictionary<CombatantId, GameObject> _statusHubConnectors = new(6);
     
     private void Start()
     {

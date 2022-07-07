@@ -16,6 +16,7 @@ public class ActiveSkills : MonoBehaviour
     
     
     private int _mobilization;
+    private int _silence;
     private CombatantId _id;
     private CombatantEvents _combatantEvents;
     private List<SkillWithLevel> _allySkills;
@@ -27,6 +28,7 @@ public class ActiveSkills : MonoBehaviour
             .ToList();
         _combatantEvents = GetComponent<CombatantEvents>();
         _combatantEvents.OnMobilizationChanged += MobilizationChanged;
+        _combatantEvents.OnSilenceChanged += SilenceChanged;
         CombatEvents.OnStartTurn += StartTurn;
         CombatEvents.OnSkillChosen += UnregisterToClick;
     }
@@ -34,6 +36,11 @@ public class ActiveSkills : MonoBehaviour
     private void MobilizationChanged(bool immobilized)
     {
         _mobilization += immobilized ? -1 : 1;
+    }
+    
+    private void SilenceChanged(bool silenced)
+    {
+        _silence += silenced ? -1 : 1;
     }
     
     private IEnumerator DelayedSkipTurn()
@@ -74,13 +81,14 @@ public class ActiveSkills : MonoBehaviour
         else
             skillsToShow = defensiveSkills;
 
-        CombatEvents.OpenMenu(_id, targetId, skillsToShow);
+        CombatEvents.OpenMenu(_id, targetId, skillsToShow, _silence < 0);
     }
     
 
     private void OnDestroy()
     {
         _combatantEvents.OnMobilizationChanged -= MobilizationChanged;
+        _combatantEvents.OnSilenceChanged -= SilenceChanged;
         CombatEvents.OnStartTurn -= StartTurn;
         CombatEvents.OnSkillChosen -= UnregisterToClick;
     }

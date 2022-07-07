@@ -13,9 +13,10 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public GameObject skillMenu;
     public GameObject tooltipBox;
 
-    private readonly List<GameObject> _buttons = new List<GameObject>();
+    private bool _silenced;
+    private readonly List<GameObject> _buttons = new();
 
-    private readonly List<Vector3> _buttonOffsets = new List<Vector3>()
+    private readonly List<Vector3> _buttonOffsets = new()
     {
         new Vector3(0.5f,0,0),
         new Vector3(0.5f,0.75f,0),
@@ -26,7 +27,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         new Vector3(-0.25f,-1.5f,0)
     };
 
-    private readonly Dictionary<Vector3, int> _locationToLevel = new Dictionary<Vector3, int>();
+    private readonly Dictionary<Vector3, int> _locationToLevel = new();
 
 
     private void Start()
@@ -35,8 +36,9 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
         CombatEvents.OnSkillChosen += CloseMenu;
     }
 
-    private void SetupMenu(CombatantId userId, CombatantId targetId, List<SkillWithLevel> skillsWithLevels)
+    private void SetupMenu(CombatantId userId, CombatantId targetId, List<SkillWithLevel> skillsWithLevels, bool silenced)
     {
+        _silenced = silenced;
         var targetDimensions = CombatantInfo.GetDimensions(targetId);
         var targetLocation = CombatantInfo.GetLocation(targetId);
         var offsetDirectionVector = new Vector3(targetLocation.x > 0 ? -1 : 1, 1 , 0);
@@ -58,7 +60,8 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
             _locationToLevel.Add(inst.transform.position, skillWithLevel.level);
             var skill = inst.GetComponent<Skill>();
             var button = inst.GetComponent<Button>();
-            button.interactable = skill.energyCost <= energy.value && skill.hpCost <= hp.value;
+            button.interactable = skill.energyCost <= energy.value && skill.hpCost <= hp.value &&
+                                  !(skill.skillAnimation == SkillAnimation.Spell && silenced);
             if (button.interactable)
                 button.onClick.AddListener(() => CombatEvents.SkillChosen(targetId, skill, skillWithLevel.level));
             else
@@ -77,7 +80,10 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
                 var message = skill.GetDescription(_locationToLevel[skill.gameObject.transform.position]);
                 if (!hoveredGo.GetComponent<Button>().interactable)
                 {
-                    message += $"\n\n<color=red>*Insufficient {(skill.energyCost > 0 ? "energy" : "Hp")}</color>";
+                    if (_silenced && skill.skillAnimation == SkillAnimation.Spell)
+                        message += "\n\nSILENCED";
+                    else
+                        message += $"\n\n<color=red>*Insufficient {(skill.energyCost > 0 ? "energy" : "Hp")}</color>";
                 }
                 tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = message;
                 tooltipBox.SetActive(true);
@@ -93,6 +99,7 @@ public class SkillMenuManager : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void CloseMenu(CombatantId targetId, Skill skill, int level)
     {
+        _silenced = false;
         skillMenu.SetActive(false);
     }
 

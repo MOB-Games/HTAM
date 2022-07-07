@@ -16,7 +16,7 @@ public static class CombatEvents
     public static event Action<CombatantId> OnStartTurn;
     public static event Action OnEndTurn;
     public static event Action<PointerEventData> OnClick;
-    public static event Action<CombatantId, CombatantId, List<SkillWithLevel>> OnOpenMenu;
+    public static event Action<CombatantId, CombatantId, List<SkillWithLevel>, bool> OnOpenMenu;
     public static event Action<CombatantId, Skill, int> OnSkillChosen;
     public static event Action<CombatantId, SkillResult> OnSkillUsed;
     public static event Action<int, GameObject, int> OnReflection;
@@ -66,9 +66,9 @@ public static class CombatEvents
         OnClick?.Invoke(eventData);
     }
     
-    public static void OpenMenu(CombatantId userId, CombatantId targetId, List<SkillWithLevel> skillsWithLevels)
+    public static void OpenMenu(CombatantId userId, CombatantId targetId, List<SkillWithLevel> skillsWithLevels, bool silenced)
     {
-        OnOpenMenu?.Invoke(userId, targetId, skillsWithLevels);
+        OnOpenMenu?.Invoke(userId, targetId, skillsWithLevels, silenced);
     }
     
     public static void SkillChosen(CombatantId targetId, Skill skill, int level)

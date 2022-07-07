@@ -8,7 +8,7 @@ public class PartySpawner : MonoBehaviour
 {
     public CharacterDB characters;
 
-    private readonly Dictionary<CombatantId, GameObject> _partyMemberPrefabs = new Dictionary<CombatantId, GameObject>(3);
+    private readonly Dictionary<CombatantId, GameObject> _partyMemberPrefabs = new(3);
 
     private void Start()
     {

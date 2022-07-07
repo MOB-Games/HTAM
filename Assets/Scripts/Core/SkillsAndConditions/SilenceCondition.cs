@@ -1,7 +1,7 @@
 using System.Data;
 using Core.SkillsAndConditions;
 
-public class TurnSkipCondition : Condition
+public class SilenceCondition : Condition
 {
     private void OnValidate()
     {
@@ -10,13 +10,13 @@ public class TurnSkipCondition : Condition
         if (parametersPerLevel.Exists(p => p.duration <= 0))
             throw new ConstraintException($"{name}: A condition duration must be positive for all levels");
         if (recurring)
-            throw new ConstraintException($"{name}: Turn skip condition can't be recurring");
+            throw new ConstraintException($"{name}: Silence condition can't be recurring");
         if (!offensive)
-            throw new ConstraintException($"{name}: Turn skip condition can't defensive");
+            throw new ConstraintException($"{name}: Silence condition can't defensive");
     }
     public new string GetDescription(int level)
     {
-        return $"<u>{id}</u>: Target loses {parametersPerLevel[level].duration} turns";
+        return $"<u>{id}</u>: Target can't use non physical attacks for {parametersPerLevel[level].duration} turns";
     }
 
     public new string GetLevelupDescription(int level)

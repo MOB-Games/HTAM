@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
     [Range(0,100)]
     public int probabilityFor2Enemy;
 
-    private readonly List<CombatantId> _enemyIds = new List<CombatantId>()
+    private readonly List<CombatantId> _enemyIds = new()
         { CombatantId.EnemyCenter, CombatantId.EnemyTop, CombatantId.EnemyBottom };
 
     private void OnValidate()

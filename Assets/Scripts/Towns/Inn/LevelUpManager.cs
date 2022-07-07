@@ -48,7 +48,7 @@ public class LevelUpManager : MonoBehaviour
     private bool _unlockOffensive;
     private readonly Dictionary<SkillWithLevel, int> _leveledUpSkills = new(3);
 
-    private readonly StatBlock _stats = new StatBlock();
+    private readonly StatBlock _stats = new();
     private PassiveSkills _passiveSkills;
 
     private CharacterTownInfo _selectedCharacterTownInfo;

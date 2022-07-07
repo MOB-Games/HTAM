@@ -24,7 +24,7 @@ public class ConditionWithLevel
 
 public class ConditionManager : MonoBehaviour
 {
-    [HideInInspector] public List<ConditionWithLevel> conditions = new List<ConditionWithLevel>();
+    [HideInInspector] public List<ConditionWithLevel> conditions = new();
     
     private CombatantId _id;
     private StatBlock _statBlock;
@@ -63,15 +63,34 @@ public class ConditionManager : MonoBehaviour
         else 
             _combatantEvents.MobilizationChanged(false);
     }
+    
+    private void SilenceConditionEvoked(bool start, GameObject visualEffect)
+    {
+        if (start)
+        {
+            StartCoroutine(GameManager.PlayVisualEffect(visualEffect, _center));
+            _combatantEvents.SilenceChanged(true);
+        }
+        else 
+            _combatantEvents.SilenceChanged(false);
+    }
 
     private void ConditionRemoved(int index, ConditionWithLevel conditionWithLevel)
     {
         conditions.RemoveAt(index);
         _combatantEvents.RemoveCondition(conditionWithLevel.condition.id);
-        if (conditionWithLevel.condition is TurnSkipCondition)
-            TurnSkipConditionEvoked(false, null);
-        else
-            ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock));
+        switch (conditionWithLevel.condition)
+        {
+            case TurnSkipCondition:
+                TurnSkipConditionEvoked(false, null);
+                break;
+            case SilenceCondition:
+                SilenceConditionEvoked(false, null);
+                break;
+            default:
+                ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock));
+                break;
+        }
     }
 
     private void ConditionsChanged(GameObject conditionGo, int level)
@@ -83,10 +102,18 @@ public class ConditionManager : MonoBehaviour
         if (conditionWithLevel == null)
         {
             conditions.Add(new ConditionWithLevel(conditionGo, condition, level));
-            if (condition is TurnSkipCondition)
-                TurnSkipConditionEvoked(true, condition.visualEffect);
-            else
-                ConditionEvoked(condition.GetInitialEffect(level, _statBlock));
+            switch (condition)
+            {
+                case TurnSkipCondition:
+                    TurnSkipConditionEvoked(true, condition.visualEffect);
+                    break;
+                case SilenceCondition:
+                    SilenceConditionEvoked(true, condition.visualEffect);
+                    break;
+                default:
+                    ConditionEvoked(condition.GetInitialEffect(level, _statBlock));
+                    break;
+            }
         }
         else
         {

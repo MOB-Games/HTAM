@@ -34,9 +34,9 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private bool _inCombat = true; 
     private const int NumberOfIconsInFirstRow = 8;
     [CanBeNull] private CombatantEvents _combatantEvents;
-    private readonly List<ConditionIcon> _conditions = new List<ConditionIcon>();
+    private readonly List<ConditionIcon> _conditions = new();
 
-    private readonly List<int> _levels = new List<int>();
+    private readonly List<int> _levels = new();
 
     private void Start()
     {

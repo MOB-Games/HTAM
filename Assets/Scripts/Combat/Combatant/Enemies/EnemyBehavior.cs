@@ -20,6 +20,7 @@ public class EnemyBehavior : MonoBehaviour
     public int probabilityToTargetPlayer;
 
     private int _mobilization;
+    private int _silence;
     private CombatantId _id;
     private StatBlock _stats;
     private CombatantEvents _combatantEvents;
@@ -29,6 +30,7 @@ public class EnemyBehavior : MonoBehaviour
         _stats = GetComponent<StatModifier>().stats;
         _combatantEvents = GetComponent<CombatantEvents>();
         _combatantEvents.OnMobilizationChanged += MobilizationChanged;
+        _combatantEvents.OnSilenceChanged += SilenceChanged;
         CombatEvents.OnStartTurn += PlayTurn;
     }
 
@@ -48,6 +50,11 @@ public class EnemyBehavior : MonoBehaviour
     private void MobilizationChanged(bool immobilized)
     {
         _mobilization += immobilized ? -1 : 1;
+    }
+    
+    private void SilenceChanged(bool silenced)
+    {
+        _silence += silenced ? -1 : 1;
     }
 
     private CombatantId ChooseTarget()
@@ -104,16 +111,16 @@ public class EnemyBehavior : MonoBehaviour
         }
         var chosenSkill = ChooseSkill();
         var skill = chosenSkill.skillGo.GetComponent<Skill>();
-        if (_stats.energy.value < skill.energyCost || _stats.hp.value < skill.hpCost)
-        {
+        if (_stats.energy.value < skill.energyCost || _stats.hp.value < skill.hpCost ||
+            (_silence < 0 && skill.skillAnimation == SkillAnimation.Spell))
             skill = skillsWithLevels.First().skillGo.GetComponent<Skill>();
-        }
         StartCoroutine(DelayedSkillChosen(ChooseTarget(), skill, chosenSkill.level));
     }
 
     private void OnDestroy()
     {
         _combatantEvents.OnMobilizationChanged -= MobilizationChanged;
+        _combatantEvents.OnSilenceChanged -= SilenceChanged;
         CombatEvents.OnStartTurn -= PlayTurn;
     }
 }
