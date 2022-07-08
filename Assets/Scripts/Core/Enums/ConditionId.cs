@@ -12,5 +12,8 @@ namespace Core.Enums
         Burn,
         Slow,
         Paralyzed,
+        SluggishMind,
+        Frail,
+        Silenced,
     }
 }

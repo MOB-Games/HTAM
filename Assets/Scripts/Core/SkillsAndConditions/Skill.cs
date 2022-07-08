@@ -60,7 +60,7 @@ namespace Core.SkillsAndConditions
                 throw new ConstraintException($"{name}: Skill can't have a chance to inflict but not have a condition to inflict");
             if (energyCost > 0 && hpCost > 0)
                 throw new ConstraintException($"{name}: Skill can't cost both energy and hp");
-            if (conditionGo != null && conditionGo.GetComponent<Condition>().parametersPerLevel.Count !=
+            if (conditionGo != null && conditionGo.GetComponent<Condition>().parametersPerLevel.Count <
                 parametersPerLevel.Count)
                 throw new ConstraintException($"{name}: Mismatch between skill levels and condition levels");
         }

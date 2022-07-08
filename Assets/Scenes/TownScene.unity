@@ -9947,10 +9947,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2525284465744489249, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525284465744489249, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -87
+      objectReference: {fileID: 0}
     - target: {fileID: 3963080789547654881, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
         type: 3}
       propertyPath: m_Name
       value: SorceressSkillTree
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506982745485152815, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 183
+      objectReference: {fileID: 0}
+    - target: {fileID: 5506982745485152815, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -170
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257310332451984490, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257310332451984490, guid: 82dd1e4e067dd9b4f83b2cab29df332e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82dd1e4e067dd9b4f83b2cab29df332e, type: 3}

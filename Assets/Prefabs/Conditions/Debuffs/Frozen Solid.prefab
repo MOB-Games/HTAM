@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -4175312710524176848}
   - component: {fileID: 7297561215346059561}
   m_Layer: 5
-  m_Name: Frozen
+  m_Name: Frozen Solid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,9 +131,9 @@ MonoBehaviour:
   visualEffect: {fileID: 2135462378506688423, guid: a5ebc18d25b218b43b82cb1bf0579aa8,
     type: 3}
   parametersPerLevel:
-  - duration: 1
+  - duration: 2
     delta: 0
     percentDelta: 0
-  - duration: 1
+  - duration: 2
     delta: 0
     percentDelta: 0
