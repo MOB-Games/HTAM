@@ -146,7 +146,7 @@ MonoBehaviour:
   skillAnimation: 2
   attackStat: 5
   defenseStat: 5
-  affectedStat: 1
+  affectedStat: 0
   parametersPerLevel:
   - accuracy: 100
     baseEffectValue: -10

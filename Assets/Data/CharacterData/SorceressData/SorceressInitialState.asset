@@ -20,4 +20,4 @@ MonoBehaviour:
   initialSkills:
   - {fileID: 11400000, guid: 5417adb40ee264e4388244e855a5994f, type: 2}
   - {fileID: 11400000, guid: b13b758aef47ced4ea5a49103b921fa5, type: 2}
-  - {fileID: 11400000, guid: 7ed11cf11744848459a36a56799720d0, type: 2}
+  - {fileID: 11400000, guid: cbe06fce55441df4fa95a95ea3470e7e, type: 2}
