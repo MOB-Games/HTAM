@@ -36,7 +36,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d19dd2cff441581409810763491a7d92, type: 2}
   playerPrefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
     type: 3}
-  partyMemberTopPrefab: {fileID: 2259149878155014034, guid: 7d800d065babcca4ba4333d8d30aa31a,
+  partyMemberTopPrefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
     type: 3}
-  partyMemberBottomPrefab: {fileID: 2259149878155014034, guid: 199d9d37bc22bf24d9284974d387b6cf,
+  partyMemberBottomPrefab: {fileID: 2259149878155014034, guid: e612b0dce9da6ed428323416b9e9d9dc,
     type: 3}

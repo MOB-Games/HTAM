@@ -85,7 +85,7 @@ public class EnemySpawner : MonoBehaviour
         for (var i = 0; i < enemyPrefabs.Count - 1; i++)
         {
             chance += enemyProbabilities[i];
-            if (chance < random)
+            if (random <= chance)
                 return enemyPrefabs[i];
         }
         return enemyPrefabs.Last();

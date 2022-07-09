@@ -82,7 +82,7 @@ public class SkillExecutor : MonoBehaviour
                 CombatEvents.SkillUsed(id, result);
             }
         }
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.8f);
         if (skill.melee)
         {
             var localScale = transform.localScale;

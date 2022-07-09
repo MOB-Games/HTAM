@@ -83,6 +83,7 @@ public class GameManager : MonoBehaviour
     {
         if (visualEffect == null) yield break;
         var inst = Instantiate(visualEffect, location, Quaternion.identity);
+        inst.transform.localEulerAngles = new Vector3(0, location.x < 0 ? 180 : 0, 0); 
         yield return new WaitForSeconds(2f);
         Destroy(inst);
     }

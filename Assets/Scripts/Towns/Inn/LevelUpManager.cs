@@ -33,7 +33,7 @@ public class LevelUpManager : MonoBehaviour
 
     private const int StatPtsPerLevel = 3;
     private const int VitalityPtsPerLevel = 2;
-    private const int SkillPtsPerLevel = 60;
+    private const int SkillPtsPerLevel = 3;
 
     private int _statPts;
     private int _vitalityPts;
@@ -141,7 +141,8 @@ public class LevelUpManager : MonoBehaviour
 
     private void SetUnlockButtons()
     {
-        var active = _skillPts >= GetCostOfSlot();
+        var cost = GetCostOfSlot();
+        var active = _skillPts >= cost && cost >= 0;
         unlockOffSlot.SetActive(active);
         unlockDefSlot.SetActive(active);
     }
@@ -342,6 +343,8 @@ public class LevelUpManager : MonoBehaviour
         levelUpButton.SetActive(true);
         cancelButton.SetActive(false);
         doneButton.SetActive(false);
+        unlockOffSlot.SetActive(false);
+        unlockDefSlot.SetActive(false);
         pointsText.color = Color.clear;
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }

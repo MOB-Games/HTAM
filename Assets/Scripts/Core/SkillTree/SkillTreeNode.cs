@@ -51,7 +51,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
         _locked = parentInactive;
         
 
-        _image.color = _draggable? Color.white : new Color(1, 1, 1, 0.5f);
+        _image.color = skillWithLevel.level >= 0 ? Color.white : new Color(1, 1, 1, 0.5f);
     }
 
     private void SetDesc()

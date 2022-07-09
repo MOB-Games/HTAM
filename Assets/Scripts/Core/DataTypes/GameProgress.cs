@@ -12,8 +12,8 @@ namespace Core.DataTypes
 
         public void Init()
         {
-            maxClearedPath = currentPath = lastTown = 0;
-            currentStage =-1;
+             currentPath = lastTown = 0;
+             maxClearedPath = currentStage =-1;
         }
     }
 }

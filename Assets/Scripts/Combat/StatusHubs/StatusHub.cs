@@ -52,6 +52,8 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void Connect(GameObject combatant)
     {
+        var pos = transform.position;
+        transform.position = new Vector3(pos.x, combatant.transform.position.y, pos.z);
         nameText.text = combatant.name.Split("(")[0];
         var stats = combatant.GetComponent<StatModifier>().stats;
         _combatantEvents = combatant.GetComponent<CombatantEvents>();
@@ -125,11 +127,10 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void RemoveConditionIcon(ConditionId conditionId)
     {
-        var conditionIcon = _conditions.Find(c => c.Id == conditionId);
         var conditionIndex = _conditions.FindIndex(c => c.Id == conditionId);
+        Destroy(_conditions[conditionIndex].ConditionGo);
         _levels.RemoveAt(conditionIndex);
-        _conditions.Remove(conditionIcon);
-        Destroy(conditionIcon.ConditionGo);
+        _conditions.RemoveAt(conditionIndex);
         foreach (var (condition, index) in _conditions.Select((c,i)=> (c,i)))
         {
             condition.ConditionGo.transform.localPosition = GetConditionIconLocation(index);
@@ -152,10 +153,12 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             {
                 var conditionIndex = _conditions.FindIndex(c => c.ConditionGo == condition.gameObject);
                 var desc = "";
-                if (condition is TurnSkipCondition turnSkipCondition)
-                    desc += turnSkipCondition.GetDescription(_levels[conditionIndex]);
-                else 
-                    desc += condition.GetDescription(_levels[conditionIndex]);
+                desc += condition switch
+                {
+                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetDescription(_levels[conditionIndex]),
+                    SilenceCondition silenceCondition => silenceCondition.GetDescription(_levels[conditionIndex]),
+                    _ => condition.GetDescription(_levels[conditionIndex])
+                };
                 desc +=
                     $"\n\nExpires in {condition.TurnsLeft(_conditions[conditionIndex].Ticks, _levels[conditionIndex])} Turns";
                 tooltipBox.GetComponentInChildren<TextMeshProUGUI>().text = desc;

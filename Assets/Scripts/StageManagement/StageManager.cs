@@ -43,6 +43,9 @@ public class StageManager : MonoBehaviour
     {
         if (gameProgress.currentPath == gameProgress.lastTown) // return to last town
         {
+            if (gameProgress.currentStage == _currentPath.Info.length - 1 &&
+                gameProgress.currentPath > gameProgress.maxClearedPath)
+                gameProgress.maxClearedPath++;
             gameProgress.currentStage = -1;
             gameProgress.lastTown++; // so that mirror will be true
         }
@@ -60,7 +63,7 @@ public class StageManager : MonoBehaviour
 
     private bool IsPathCleared()
     {
-        return gameProgress.maxClearedPath > gameProgress.currentPath;
+        return gameProgress.maxClearedPath >= gameProgress.currentPath;
     }
 
     public void ActivateStatusHubs()

@@ -113,10 +113,14 @@ namespace Core.SkillsAndConditions
 
             if (_condition != null)
             {
-                if (_condition is TurnSkipCondition condition)
-                    desc += $"Has a chance to inflict {condition.GetDescription(level)}\n";
-                else 
-                    desc += $"Has a chance to inflict {_condition.GetDescription(level)}\n";
+                desc += "Has a chance to inflict ";
+                desc += _condition switch
+                {
+                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetDescription(level),
+                    SilenceCondition silenceCondition => silenceCondition.GetDescription(level),
+                    _ => _condition.GetDescription(level)
+                };
+                desc += "\n";
             }
             if (energyCost > 0)
                 desc += $"\nEnergy Cost: {energyCost}\n";
@@ -158,10 +162,14 @@ namespace Core.SkillsAndConditions
             if (_condition != null)
             {
                 desc += "\nCondition:\n";
-                if (_condition is TurnSkipCondition condition)
-                    desc += $"Has a chance to inflict {condition.GetLevelupDescription(level)}\n";
-                else 
-                    desc += $"Has a chance to inflict {_condition.GetLevelupDescription(level)}\n";
+                desc += "Has a chance to inflict ";
+                desc += _condition switch
+                {
+                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetLevelupDescription(level),
+                    SilenceCondition silenceCondition => silenceCondition.GetLevelupDescription(level),
+                    _ => _condition.GetLevelupDescription(level)
+                };
+                desc += "\n";
             }
 
             return desc;

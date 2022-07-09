@@ -97,18 +97,18 @@ public class ActiveSkillsManager : MonoBehaviour
     {
         var skillIsOffensive = ((Skill)(skillTreeNode.content)).offensive;
         if (offensive != skillIsOffensive) return;
-        if (offensive)
+        var skillName = skillTreeNode.skillWithLevel.skillGo.name;
+        if (offensive) 
         {
             var offensiveSkills = _selectedCharacterTownInfo.State.activeOffensiveSkills;
-            var skillName = skillTreeNode.skillWithLevel.skillGo.name;
-            if (offensiveSkills.Any(s => s.skillGo.name == skillName)) return;
+            if (offensiveSkills.Any(s => s.skillGo != null && s.skillGo.name == skillName)) return;
             if (index >= offensiveSkills.Count) return;
             offensiveSkills[index] = skillTreeNode.skillWithLevel;
         }
         else
         {
             var defensiveSkills = _selectedCharacterTownInfo.State.activeDefensiveSkills;
-            if (defensiveSkills.Contains(skillTreeNode.skillWithLevel)) return;
+            if (defensiveSkills.Any(s => s.skillGo != null && s.skillGo.name == skillName)) return;
             if (index >= defensiveSkills.Count) return;
             defensiveSkills[index] = skillTreeNode.skillWithLevel;
         }
