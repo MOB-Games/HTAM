@@ -24,6 +24,9 @@ public class LevelUpManager : MonoBehaviour
     public GameObject unlockDefSlot;
     public GameObject unlockTextGo;
     public TextMeshProUGUI unlockText;
+
+    public GameObject areYouSure;
+    public TextMeshProUGUI lostPoints;
     
     private TextMeshProUGUI _damageChangeText;
     private TextMeshProUGUI _defenseChangeText;
@@ -98,6 +101,7 @@ public class LevelUpManager : MonoBehaviour
     {
         if (_selectedCharacterState != null)
             UndoChanges();
+        areYouSure.SetActive(false);
         cancelButton.SetActive(false);
         doneButton.SetActive(false);
         _statPts = 0;
@@ -167,15 +171,11 @@ public class LevelUpManager : MonoBehaviour
         
         levelUpButton.SetActive(false);
         cancelButton.SetActive(true);
+        doneButton.SetActive(true);
         SetVitalityButtons();
         SetStatButtons();
         SetUnlockButtons();
         ShowPoints();
-    }
-
-    private bool DoneLevelingUp()
-    {
-        return _statPts == 0 && _vitalityPts == 0 && _skillPts == 0;
     }
 
     private void IncStat(StatType stat)
@@ -219,7 +219,6 @@ public class LevelUpManager : MonoBehaviour
                 throw new ArgumentOutOfRangeException(nameof(stat), stat, null);
         }
         TownEvents.StatChange(stat, change);
-        doneButton.SetActive(DoneLevelingUp());
         ShowPoints();
     }
 
@@ -277,7 +276,6 @@ public class LevelUpManager : MonoBehaviour
         unlockTextGo.SetActive(false);
         TownEvents.SlotUnlocked();
         SetUnlockButtons();
-        doneButton.SetActive(DoneLevelingUp());
         ShowPoints();
     }
 
@@ -332,7 +330,6 @@ public class LevelUpManager : MonoBehaviour
         _skillPts--;
         TownEvents.RefreshSkillTree();
         SetUnlockButtons();
-        doneButton.SetActive(DoneLevelingUp());
         ShowPoints();
     }
 
@@ -349,8 +346,27 @@ public class LevelUpManager : MonoBehaviour
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }
 
+    public void DoneLevelUp()
+    {
+        if (_skillPts == 0 && _statPts == 0 && _vitalityPts == 0)
+            SubmitLevelUp();
+        else
+        {
+            lostPoints.text = $"{_statPts} Stat Points\n" +
+                              $"{_vitalityPts} Vitality Points\n" +
+                              $"{_skillPts} Skill Points";
+            areYouSure.SetActive(true);
+        }
+    }
+
+    public void NotSure()
+    {
+        areYouSure.SetActive(false);
+    }
+
     public void SubmitLevelUp()
     {
+        areYouSure.SetActive(false);
         _selectedCharacterState.level = ConvertExpToLevel(_selectedCharacterState.exp);
         levelUpButton.SetActive(false);
         cancelButton.SetActive(false);
@@ -360,6 +376,7 @@ public class LevelUpManager : MonoBehaviour
         _selectedCharacterState.stats.Reset();
         _selectedCharacterState.passiveSkills = _passiveSkills;
         _offensiveSkillSlotsUnlocked = _defensiveSkillSlotsUnlocked = 0;
+        _skillPts = _vitalityPts = _statPts = 0;
         _leveledUpSkills.Clear();
         TownEvents.CharacterSelected(_selectedCharacterTownInfo);
     }

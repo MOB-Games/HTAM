@@ -56,7 +56,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
 
     private void SetDesc()
     {
-        _levelupDescription.Desc = _locked ? "LOCKED\n" : "" + content.GetLevelupDescription(skillWithLevel.level);
+        _levelupDescription.Desc = (_locked ? "LOCKED\n" : "") + content.GetLevelupDescription(skillWithLevel.level);
     }
 
     private void Refresh()
