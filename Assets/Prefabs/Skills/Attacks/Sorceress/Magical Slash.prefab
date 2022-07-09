@@ -143,7 +143,7 @@ MonoBehaviour:
   energyCost: 5
   hpCost: 0
   targetType: 0
-  skillAnimation: 0
+  skillAnimation: 1
   attackStat: 2
   defenseStat: 3
   affectedStat: 0
