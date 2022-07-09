@@ -13,15 +13,25 @@ MonoBehaviour:
   m_Name: SorceressState
   m_EditorClassIdentifier: 
   level: 0
-  exp: 0
+  exp: 50
   stats: {fileID: 11400000, guid: d79a865101d1b0f47a278791ae39bfc3, type: 2}
   conditions: []
-  activeOffensiveSkills: []
-  activeDefensiveSkills: []
+  activeOffensiveSkills:
+  - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
+      type: 3}
+    level: 0
+  - skillGo: {fileID: 4003426218498401328, guid: d4f9c5d25a315cf41bea74c2cb281de6,
+      type: 3}
+    level: 0
+  activeDefensiveSkills:
+  - skillGo: {fileID: 4003426218498401328, guid: b72ad545057409b4e9b6b9aba9e230d4,
+      type: 3}
+    level: 0
   passiveSkills:
     damageAdder:
       addChance: 0
       damageMultiplier: 0
+    damageAdderVFX: {fileID: 0}
     conditionAdder:
       addChance: 0
     conditionToAdd: {fileID: 0}
@@ -33,6 +43,7 @@ MonoBehaviour:
       reflectChance: 0
       percentOfIncomingDamage: 0
       damageMultiplier: 0
+    damageReflectorVFX: {fileID: 0}
     conditionReflector:
       reflectChance: 0
     conditionToReflect: {fileID: 0}

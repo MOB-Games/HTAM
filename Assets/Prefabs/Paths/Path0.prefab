@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 5217080582421210112, guid: 20b494c7758e6e64aa9608c964e842b8, type: 3}
   enemiesForStages:
     stages:
-    - enemyPrefabIndices: 00000000
+    - enemyPrefabIndices: 000000000000000000000000
     - enemyPrefabIndices: 0000000000000000
     - enemyPrefabIndices: 01000000
     - enemyPrefabIndices: 010000000000000000000000
@@ -87,7 +87,5 @@ MonoBehaviour:
     blacksmithInfo:
       price: 10
       maxDamage: 15
-      minEnergyEfficiency: -6
-      maxEnergyEfficiency: 6
-      maxDefence: 15
+      maxDefense: 0
       maxSpeed: 15

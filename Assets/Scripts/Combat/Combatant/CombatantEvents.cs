@@ -28,6 +28,7 @@ public class CombatantEvents : MonoBehaviour
 
     public void StatChange(StatType affectedStat, int delta)
     {
+        return;
         OnStatChange?.Invoke(affectedStat, delta);
     }
  
