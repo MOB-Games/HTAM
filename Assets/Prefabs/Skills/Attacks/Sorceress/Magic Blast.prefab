@@ -149,17 +149,17 @@ MonoBehaviour:
   affectedStat: 0
   parametersPerLevel:
   - accuracy: 80
-    baseEffectValue: -5
+    baseEffectValue: -12
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
   - accuracy: 80
-    baseEffectValue: -7
+    baseEffectValue: -17
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
   - accuracy: 80
-    baseEffectValue: -10
+    baseEffectValue: -20
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
