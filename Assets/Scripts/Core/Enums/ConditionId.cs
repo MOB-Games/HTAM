@@ -15,5 +15,6 @@ namespace Core.Enums
         SluggishMind,
         Frail,
         Silenced,
+        StoneSkin,
     }
 }

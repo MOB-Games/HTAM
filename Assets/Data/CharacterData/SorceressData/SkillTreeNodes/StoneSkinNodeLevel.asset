@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3890dca07f43d974fbbc05934949e312, type: 3}
-  m_Name: LavaTossNodeLevel
+  m_Name: StoneSkinNodeLevel
   m_EditorClassIdentifier: 
   value: 0
