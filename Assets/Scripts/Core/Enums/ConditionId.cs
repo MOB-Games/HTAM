@@ -16,5 +16,6 @@ namespace Core.Enums
         Frail,
         Silenced,
         StoneSkin,
+        Fear,
     }
 }

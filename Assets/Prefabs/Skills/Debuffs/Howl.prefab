@@ -138,6 +138,7 @@ MonoBehaviour:
   melee: 0
   offensive: 1
   animateAttacked: 0
+  speedBasedAccuracy: 0
   speedBasedEvasion: 0
   energyCost: 5
   hpCost: 0
@@ -153,6 +154,6 @@ MonoBehaviour:
     defenseMultiplier: 0
     chanceToInflict: 90
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: 432aa904747f5de47b2924d56c16340b,
+  conditionGo: {fileID: 4909307490870935864, guid: 42fc7338aa1e80342aeb337b0b6d6612,
     type: 3}
   conditionRemover: {fileID: 0}
