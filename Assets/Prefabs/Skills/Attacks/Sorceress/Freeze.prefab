@@ -134,32 +134,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Freeze the target for 1 turn
+  description: Freeze the target solid
   melee: 0
   offensive: 1
-  animateAttacked: 1
+  animateAttacked: 0
   speedBasedAccuracy: 0
   speedBasedEvasion: 0
-  energyCost: 12
+  remainingEnergySkill: 0
+  deficitSkill: 0
+  energyCost: 15
   hpCost: 0
   targetType: 0
   skillAnimation: 2
   attackStat: 5
   defenseStat: 5
-  affectedStat: 0
+  affectedStat: 5
   parametersPerLevel:
-  - accuracy: 100
-    baseEffectValue: -15
+  - accuracy: 70
+    baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 75
-  - accuracy: 100
-    baseEffectValue: -20
+    chanceToInflict: 100
+  - accuracy: 80
+    baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 85
+    chanceToInflict: 100
   visualEffect: {fileID: 8248039152672512555, guid: 098e539a31f45f644a620e4ab82dda2b,
     type: 3}
-  conditionGo: {fileID: 4909307490870935864, guid: 3a315e036220bde43aeba2dba5d7d8c2,
+  conditionGo: {fileID: 4909307490870935864, guid: 08f87a59621dc51419c817c74c7002e2,
     type: 3}
   conditionRemover: {fileID: 0}

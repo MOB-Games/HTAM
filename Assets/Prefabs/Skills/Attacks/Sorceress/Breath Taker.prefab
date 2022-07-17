@@ -140,6 +140,8 @@ MonoBehaviour:
   animateAttacked: 1
   speedBasedAccuracy: 0
   speedBasedEvasion: 0
+  remainingEnergySkill: 0
+  deficitSkill: 0
   energyCost: 10
   hpCost: 0
   targetType: 0
@@ -149,17 +151,17 @@ MonoBehaviour:
   affectedStat: 1
   parametersPerLevel:
   - accuracy: 100
-    baseEffectValue: -7
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 0
-  - accuracy: 100
-    baseEffectValue: -12
+    baseEffectValue: -15
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
   - accuracy: 100
     baseEffectValue: -20
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 0
+  - accuracy: 100
+    baseEffectValue: -25
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
