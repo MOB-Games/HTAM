@@ -32,6 +32,8 @@ namespace Core.SkillsAndConditions
         public bool animateAttacked;
         public bool speedBasedAccuracy;
         public bool speedBasedEvasion;
+        public bool remainingEnergySkill;
+        public bool deficitSkill;
         public int energyCost;
         public int hpCost;
         public TargetType targetType;
@@ -63,6 +65,10 @@ namespace Core.SkillsAndConditions
             if (conditionGo != null && conditionGo.GetComponent<Condition>().parametersPerLevel.Count <
                 parametersPerLevel.Count)
                 throw new ConstraintException($"{name}: Mismatch between skill levels and condition levels");
+            if (remainingEnergySkill && deficitSkill)
+                throw new ConstraintException($"{name}: Skill can't be both deficit based and remaining energy based");
+            if (remainingEnergySkill && energyCost > 0)
+                throw new ConstraintException($"{name}: Remaining energy skill can't have an energy cost");
         }
 
         private void Awake()
@@ -194,9 +200,16 @@ namespace Core.SkillsAndConditions
                 chanceToHit -= defenderStats.speed.value;
             if (Random.Range(0, 100) > chanceToHit)
                 return new SkillResult();
-            
+
+            int attackerBaseValue;
+            if (remainingEnergySkill)
+                attackerBaseValue = attackerStats.GetStatValue(StatType.Energy);
+            else if (deficitSkill)
+                attackerBaseValue = attackerStats.GetStatBaseValue(attackStat) - attackerStats.GetStatValue(attackStat);
+            else
+                attackerBaseValue = attackerStats.GetStatValue(attackStat);
             var delta = parametersPerLevel[level].baseEffectValue +
-                        parametersPerLevel[level].attackMultiplier * attackerStats.GetStatValue(attackStat) +
+                        parametersPerLevel[level].attackMultiplier * attackerBaseValue +
                         parametersPerLevel[level].defenseMultiplier * defenderStats.GetStatValue(defenseStat);
             
             if (offensive)

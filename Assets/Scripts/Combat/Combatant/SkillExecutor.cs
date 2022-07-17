@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Core.SkillsAndConditions;using Core.Enums;
@@ -94,7 +95,7 @@ public class SkillExecutor : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         _combatantEvents.StatChange(StatType.Hp, -skill.hpCost);
-        _combatantEvents.StatChange(StatType.Energy, -skill.energyCost);
+        _combatantEvents.StatChange(StatType.Energy, skill.remainingEnergySkill ? -int.MaxValue : -skill.energyCost);
         _combatantEvents.EndTurn();
     }
 
