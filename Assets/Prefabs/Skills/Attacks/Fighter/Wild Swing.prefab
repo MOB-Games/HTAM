@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Power Strike
+  m_Name: Wild Swing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e32aad571b880e549a22b1cc2f2f84a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00fbb4588136cde4fbf9001df788bcfb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,13 +134,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A reckless attack that causes very high damage but has a lower chance
-    of hitting the target
+  description: Swing Your sword wildly causing a lot of damage, but only if you connect
   melee: 1
   offensive: 1
   animateAttacked: 1
   speedBasedAccuracy: 1
   speedBasedEvasion: 1
+  remainingEnergySkill: 0
+  deficitSkill: 0
   energyCost: 10
   hpCost: 0
   targetType: 0
@@ -149,24 +150,19 @@ MonoBehaviour:
   defenseStat: 3
   affectedStat: 0
   parametersPerLevel:
-  - accuracy: 85
-    baseEffectValue: 0
-    attackMultiplier: -1.25
-    defenseMultiplier: 1
-    chanceToInflict: 0
-  - accuracy: 80
+  - accuracy: 50
     baseEffectValue: 0
     attackMultiplier: -1.5
     defenseMultiplier: 1
     chanceToInflict: 0
-  - accuracy: 75
+  - accuracy: 45
     baseEffectValue: 0
     attackMultiplier: -1.75
     defenseMultiplier: 1
     chanceToInflict: 0
   - accuracy: 70
     baseEffectValue: 0
-    attackMultiplier: -2
+    attackMultiplier: -1.5
     defenseMultiplier: 1
     chanceToInflict: 0
   visualEffect: {fileID: 0}

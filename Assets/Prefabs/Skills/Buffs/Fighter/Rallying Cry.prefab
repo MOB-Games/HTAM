@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1613161850524436607}
   - component: {fileID: 3709444797487759871}
   - component: {fileID: 4796694792708283170}
-  - component: {fileID: -6260300144627648331}
+  - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Slasher
+  m_Name: Rallying Cry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8d295e878eff7f740927ee30f243e6a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 790cb7e99e167e94e888a148f5102dbd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-6260300144627648331
+--- !u!114 &1768222690818782716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,12 +131,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 4003426218498401328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 074232dc00f0d274da2c54c27dd9b13e, type: 3}
+  m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conditionGo: {fileID: 4909307490870935864, guid: 83bc6743a8849774195f831f95dc65df,
-    type: 3}
+  description: Rally the party to attack
+  melee: 0
+  offensive: 0
+  animateAttacked: 0
+  speedBasedAccuracy: 0
+  speedBasedEvasion: 0
+  remainingEnergySkill: 0
+  deficitSkill: 0
+  energyCost: 12
+  hpCost: 0
+  targetType: 1
+  skillAnimation: 2
+  attackStat: 5
+  defenseStat: 5
+  affectedStat: 5
   parametersPerLevel:
-  - addChance: 5
-  - addChance: 10
-  - addChance: 15
+  - accuracy: 100
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 90
+  - accuracy: 100
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 90
+  - accuracy: 100
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 90
+  visualEffect: {fileID: 0}
+  conditionGo: {fileID: 4909307490870935864, guid: 6bb1d5d20df7f7a4cab51ce0f5d5db70,
+    type: 3}
+  conditionRemover: {fileID: 0}

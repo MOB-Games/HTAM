@@ -39,7 +39,6 @@ namespace Core.SkillsAndConditions
         public TargetType targetType;
         public SkillAnimation skillAnimation;
         [Header("Stats For Skill")]
-        [EnumOrder("2,3,4,5")]
         public StatType attackStat;
         [EnumOrder("2,3,4,5")]
         public StatType defenseStat;
@@ -103,8 +102,13 @@ namespace Core.SkillsAndConditions
                     desc += $"{baseValue} ";
                 if (baseValue != 0 && attackerPercent != 0)
                     desc += "+ ";
-                if (attackStat != StatType.None && attackerPercent != 0)
-                    desc += $"{attackerPercent}% of users {attackStat} ";
+                if ((attackStat != StatType.None && attackerPercent != 0) || remainingEnergySkill)
+                {
+                    desc += $"{attackerPercent}% of ";
+                    if (deficitSkill)
+                        desc += "the damage done to ";
+                    desc += $"users {(remainingEnergySkill ? "remaining energy" : attackStat)} ";
+                }
                 if (defenseStat != StatType.None && defensePercent != 0)
                 {
                     if (parametersPerLevel[level].defenseMultiplier > 0)

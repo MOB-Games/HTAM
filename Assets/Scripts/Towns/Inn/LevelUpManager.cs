@@ -36,7 +36,7 @@ public class LevelUpManager : MonoBehaviour
 
     private const int StatPtsPerLevel = 3;
     private const int VitalityPtsPerLevel = 2;
-    private const int SkillPtsPerLevel = 3;
+    private const int SkillPtsPerLevel = 2;
 
     private int _statPts;
     private int _vitalityPts;

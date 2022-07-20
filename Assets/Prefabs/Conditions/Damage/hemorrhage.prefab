@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3733113094694834685}
   - component: {fileID: 4578075450960214653}
   m_Layer: 5
-  m_Name: Bleed
+  m_Name: hemorrhage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: c95b2b831f6886546b9e6cbce09a1229, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c203d437c569b64ebaa24eaa192746a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61bd1f2f4f06b343b458b082e5deaa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 6
+  id: 16
   recurring: 1
   offensive: 1
   affectedStat: 0
@@ -106,13 +106,13 @@ MonoBehaviour:
     type: 3}
   parametersPerLevel:
   - duration: 3
-    delta: -1
-    percentDelta: 0
-  - duration: 4
-    delta: -3
-    percentDelta: 0
-  - duration: 5
     delta: -5
+    percentDelta: 0
+  - duration: 3
+    delta: -7
+    percentDelta: 0
+  - duration: 3
+    delta: -10
     percentDelta: 0
 --- !u!61 &4578075450960214653
 BoxCollider2D:

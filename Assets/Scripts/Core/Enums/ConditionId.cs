@@ -17,5 +17,10 @@ namespace Core.Enums
         Silenced,
         StoneSkin,
         Fear,
+        Crippled,
+        Hemorrhage,
+        FiredUp,
+        Reckless,
+        Broken,
     }
 }

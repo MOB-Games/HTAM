@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1613161850524436607}
   - component: {fileID: 3709444797487759871}
   - component: {fileID: 4796694792708283170}
-  - component: {fileID: -1611577860195201636}
+  - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Counter
+  m_Name: Settle Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6eb3a65093113aa429cee0614429af75, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 15336579c9beefa489150c03f7b00bd1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-1611577860195201636
+--- !u!114 &1768222690818782716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,19 +131,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 4003426218498401328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc301f474c60d4141886e42b28a44516, type: 3}
+  m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: Calm down and remove all status changes
+  melee: 0
+  offensive: 0
+  animateAttacked: 0
+  speedBasedAccuracy: 0
+  speedBasedEvasion: 0
+  remainingEnergySkill: 0
+  deficitSkill: 0
+  energyCost: 10
+  hpCost: 0
+  targetType: 3
+  skillAnimation: 2
+  attackStat: 5
+  defenseStat: 5
+  affectedStat: 5
   parametersPerLevel:
-  - reflectChance: 5
-    percentOfIncomingDamage: 10
-    damageMultiplier: 0
-  - reflectChance: 10
-    percentOfIncomingDamage: 15
-    damageMultiplier: 0
-  - reflectChance: 10
-    percentOfIncomingDamage: 20
-    damageMultiplier: 0
-  - reflectChance: 15
-    percentOfIncomingDamage: 25
-    damageMultiplier: 0
+  - accuracy: 100
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 0
+  visualEffect: {fileID: 2135462378506688423, guid: 3c3324aca7981fd4884a9193274a553b,
+    type: 3}
+  conditionGo: {fileID: 0}
+  conditionRemover: {fileID: 11400000, guid: e9cd565aee79e8842b3e5221a61052ae, type: 2}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Wound
+  m_Name: Master at Arms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 912f2333824ee3946814a450e92ab11a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d473e35d9c998d443a00d04000f893e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,13 +134,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Does less damage but wounds the target causing it to bleed
+  description: Become a master of attacks, dealing more damage with every blow while
+    saving your energy
   melee: 1
   offensive: 1
   animateAttacked: 1
   speedBasedAccuracy: 1
   speedBasedEvasion: 1
-  energyCost: 10
+  remainingEnergySkill: 0
+  deficitSkill: 0
+  energyCost: 0
   hpCost: 0
   targetType: 0
   skillAnimation: 0
@@ -150,21 +153,24 @@ MonoBehaviour:
   parametersPerLevel:
   - accuracy: 90
     baseEffectValue: 0
-    attackMultiplier: -0.75
+    attackMultiplier: -1.05
     defenseMultiplier: 1
-    chanceToInflict: 70
+    chanceToInflict: 0
   - accuracy: 90
     baseEffectValue: 0
-    attackMultiplier: -0.75
+    attackMultiplier: -1.1
     defenseMultiplier: 1
-    chanceToInflict: 80
+    chanceToInflict: 0
   - accuracy: 90
     baseEffectValue: 0
-    attackMultiplier: -0.75
+    attackMultiplier: -1.15
     defenseMultiplier: 1
-    chanceToInflict: 90
-  visualEffect: {fileID: 2477361452466471390, guid: d02321dfbc04cbb489772a7e986fb2ae,
-    type: 3}
-  conditionGo: {fileID: 4909307490870935864, guid: 83bc6743a8849774195f831f95dc65df,
-    type: 3}
+    chanceToInflict: 0
+  - accuracy: 90
+    baseEffectValue: 0
+    attackMultiplier: -1.2
+    defenseMultiplier: 1
+    chanceToInflict: 0
+  visualEffect: {fileID: 0}
+  conditionGo: {fileID: 0}
   conditionRemover: {fileID: 0}
