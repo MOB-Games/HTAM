@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Battle Cry
+  m_Name: Battlecry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

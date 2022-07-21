@@ -142,7 +142,7 @@ MonoBehaviour:
   speedBasedEvasion: 0
   remainingEnergySkill: 0
   deficitSkill: 0
-  energyCost: 12
+  energyCost: 10
   hpCost: 0
   targetType: 2
   skillAnimation: 2

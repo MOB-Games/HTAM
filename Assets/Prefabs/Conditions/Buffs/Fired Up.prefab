@@ -110,10 +110,10 @@ MonoBehaviour:
     percentDelta: 5
   - duration: 4
     delta: 4
-    percentDelta: 10
+    percentDelta: 7
   - duration: 5
     delta: 5
-    percentDelta: 12
+    percentDelta: 10
 --- !u!61 &4578075450960214653
 BoxCollider2D:
   m_ObjectHideFlags: 0

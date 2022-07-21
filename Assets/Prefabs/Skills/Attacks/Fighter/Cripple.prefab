@@ -157,12 +157,12 @@ MonoBehaviour:
     chanceToInflict: 70
   - accuracy: 90
     baseEffectValue: 0
-    attackMultiplier: -0.6
+    attackMultiplier: -0.7
     defenseMultiplier: 1
     chanceToInflict: 75
   - accuracy: 90
     baseEffectValue: 0
-    attackMultiplier: -0.75
+    attackMultiplier: -0.8
     defenseMultiplier: 1
     chanceToInflict: 80
   visualEffect: {fileID: 0}

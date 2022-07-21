@@ -144,7 +144,7 @@ MonoBehaviour:
   remainingEnergySkill: 0
   deficitSkill: 0
   energyCost: 0
-  hpCost: 15
+  hpCost: 10
   targetType: 0
   skillAnimation: 1
   attackStat: 2

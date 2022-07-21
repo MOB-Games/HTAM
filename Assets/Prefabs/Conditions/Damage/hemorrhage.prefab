@@ -112,7 +112,7 @@ MonoBehaviour:
     delta: -7
     percentDelta: 0
   - duration: 3
-    delta: -10
+    delta: -9
     percentDelta: 0
 --- !u!61 &4578075450960214653
 BoxCollider2D:
