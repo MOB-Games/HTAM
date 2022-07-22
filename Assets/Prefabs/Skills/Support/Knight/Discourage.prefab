@@ -154,17 +154,17 @@ MonoBehaviour:
     baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
+    chanceToInflict: 10
+  - accuracy: 100
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 20
+  - accuracy: 100
+    baseEffectValue: 0
+    attackMultiplier: 0
+    defenseMultiplier: 0
     chanceToInflict: 30
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 40
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 50
   visualEffect: {fileID: 2135462378506688423, guid: 51362bccadde7254ba174285ad471611,
     type: 3}
   conditionGo: {fileID: 4909307490870935864, guid: 9e55279702710cf47ac2e3f129fc2c83,

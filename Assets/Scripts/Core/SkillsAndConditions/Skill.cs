@@ -107,7 +107,9 @@ namespace Core.SkillsAndConditions
                     desc += $"{attackerPercent}% of ";
                     if (deficitSkill)
                         desc += "the damage done to ";
-                    desc += $"users {(remainingEnergySkill ? "remaining energy" : attackStat)} ";
+                    desc += $"users {attackStat} ";
+                    if (remainingEnergySkill)
+                        desc += "in addiotion to all the users remaining energy";
                 }
                 if (defenseStat != StatType.None && defensePercent != 0)
                 {
@@ -206,12 +208,12 @@ namespace Core.SkillsAndConditions
                 return new SkillResult();
 
             int attackerBaseValue;
-            if (remainingEnergySkill)
-                attackerBaseValue = attackerStats.GetStatValue(StatType.Energy);
-            else if (deficitSkill)
+            if (deficitSkill)
                 attackerBaseValue = attackerStats.GetStatBaseValue(attackStat) - attackerStats.GetStatValue(attackStat);
             else
                 attackerBaseValue = attackerStats.GetStatValue(attackStat);
+            if (remainingEnergySkill)
+                attackerBaseValue += attackerStats.GetStatValue(StatType.Energy);
             var delta = parametersPerLevel[level].baseEffectValue +
                         parametersPerLevel[level].attackMultiplier * attackerBaseValue +
                         parametersPerLevel[level].defenseMultiplier * defenderStats.GetStatValue(defenseStat);

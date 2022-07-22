@@ -22,5 +22,6 @@ namespace Core.Enums
         FiredUp,
         Reckless,
         Broken,
+        Discouraged,
     }
 }

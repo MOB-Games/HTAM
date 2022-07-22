@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3733113094694834685}
   - component: {fileID: 4578075450960214653}
   m_Layer: 5
-  m_Name: Steadfast
+  m_Name: Discouraged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4909307490870935864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_LocalScale: {x: 0.0533103, y: 0.058915198, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9608ba804535d74469f3240eb67cc84e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92dfbc6631a63a145a053de1f3196675, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,22 +98,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61bd1f2f4f06b343b458b082e5deaa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 4
-  recurring: 0
-  offensive: 0
-  affectedStat: 3
-  visualEffect: {fileID: 8248039152672512555, guid: 2a71c2a463c6f0447bbd149798afc5b8,
-    type: 3}
+  id: 20
+  recurring: 1
+  offensive: 1
+  affectedStat: 1
+  visualEffect: {fileID: 0}
   parametersPerLevel:
-  - duration: 2
-    delta: 0
-    percentDelta: 100
-  - duration: 2
-    delta: 0
-    percentDelta: 250
-  - duration: 2
-    delta: 0
-    percentDelta: 400
+  - duration: 3
+    delta: -1
+    percentDelta: 0
+  - duration: 3
+    delta: -2
+    percentDelta: 0
+  - duration: 4
+    delta: -2
+    percentDelta: 0
 --- !u!61 &4578075450960214653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +130,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 4.74, y: 4.37}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
