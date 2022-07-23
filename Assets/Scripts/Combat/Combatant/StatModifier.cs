@@ -19,6 +19,7 @@ public class StatModifier : MonoBehaviour
         switch (affectedStat)
         {
             case StatType.Hp:
+                if (GameManager.Pacified() && delta < 0) return;
                 stats.hp.value += delta;
                 if (stats.hp.value <= 0)
                 {

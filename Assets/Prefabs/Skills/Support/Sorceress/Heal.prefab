@@ -173,4 +173,4 @@ MonoBehaviour:
   visualEffect: {fileID: 2135462378506688423, guid: c4091fca83658da49a098e786d812896,
     type: 3}
   conditionGo: {fileID: 0}
-  conditionRemover: {fileID: 0}
+  conditionRemover: {fileID: 11400000, guid: b979740dd61af2147b80fc58900b14e8, type: 2}

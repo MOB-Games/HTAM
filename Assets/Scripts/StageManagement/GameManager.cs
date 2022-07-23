@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private const int StatDecrement = 1;
     private const int IncrementChange = 1;
 
+    private static int _pacified = 0;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -98,6 +100,16 @@ public class GameManager : MonoBehaviour
     public static int GetStatDecrement()
     {
         return StatDecrement;
+    }
+
+    public static void PacificationChanged(bool pacified)
+    {
+        _pacified += pacified ? -1 : 1;
+    }
+
+    public static bool Pacified()
+    {
+        return _pacified > 0;
     }
 
     private void OnDestroy()

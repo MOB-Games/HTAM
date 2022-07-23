@@ -1,6 +1,4 @@
 using Core.Enums;
-using JetBrains.Annotations;
-using UnityEngine;
 
 namespace Core.SkillsAndConditions
 {
@@ -8,20 +6,17 @@ namespace Core.SkillsAndConditions
     {
         public readonly StatType AffectedStat;
         public readonly int TotalDelta;
-        [CanBeNull] public readonly GameObject VisualEffect;
 
-        public ConditionEffect(StatType affectedStat, int totalDelta, GameObject visualEffect = null)
+        public ConditionEffect(StatType affectedStat, int totalDelta)
         {
             AffectedStat = affectedStat;
             TotalDelta = totalDelta;
-            VisualEffect = visualEffect;
         }
 
-        public ConditionEffect(GameObject visualEffect = null)
+        public ConditionEffect()
         {
             AffectedStat = StatType.Hp;
             TotalDelta = 0;
-            VisualEffect = visualEffect;
         }
     }
 }

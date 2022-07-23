@@ -15,7 +15,7 @@ namespace Core.SkillsAndConditions
 
         public bool Removes(ConditionWithLevel conditionWithLevel)
         {
-            if (removeAllBuffs && removeAllDebuffs)
+            if (removeAllBuffs && removeAllDebuffs && !conditionWithLevel.condition.recurring)
                 return true;
             if (removeAllBuffs && !conditionWithLevel.condition.offensive && !conditionWithLevel.condition.recurring)
                 return true;

@@ -155,8 +155,9 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                 var desc = "";
                 desc += condition switch
                 {
-                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetDescription(_levels[conditionIndex]),
                     SilenceCondition silenceCondition => silenceCondition.GetDescription(_levels[conditionIndex]),
+                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetDescription(_levels[conditionIndex]),
+                    PacifyCondition pacifyCondition => pacifyCondition.GetDescription(_levels[conditionIndex]),
                     _ => condition.GetDescription(_levels[conditionIndex])
                 };
                 desc +=

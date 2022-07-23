@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 74
+  controlID: 111
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 75
+  controlID: 19
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 76
+  controlID: 64
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -402,10 +402,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 79}
-      m_SelectedIDs: 9a620000
-      m_LastClickedID: 25242
-      m_ExpandedIDs: fefaffff646100009a6200003a640000b6640000d6640000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 1a880000
+      m_LastClickedID: 0
+      m_ExpandedIDs: fad1fffffefaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -677,9 +677,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 4.513083, y: 0.45476022, z: -0.00519513}
+    m_Target: {x: 2.492248, y: -0.57758236, z: -0.03708849}
     speed: 2
-    m_Value: {x: 4.513083, y: 0.45476022, z: -0.00519513}
+    m_Value: {x: 1.9034764, y: -0.59093595, z: -0.040463306}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -730,9 +730,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.9727688
+    m_Target: 7.162104
     speed: 2
-    m_Value: 3.9727688
+    m_Value: 7.4995856
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1002,22 +1002,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/SkillTrees
+    - Assets/Data/ConditionRemovers
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Prefabs/SkillTrees
+  - Assets/Data/ConditionRemovers
   m_LastFoldersGridSize: 96
   m_LastProjectPath: C:\Users\mmirb\Documents\MOB-Games\HTAM
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 521}
-    m_SelectedIDs: 1a7d0000
-    m_LastClickedID: 32026
-    m_ExpandedIDs: 00000000447c0000467c0000487c00004a7c00004c7c00004e7c0000507c0000527c0000547c0000567c0000587c00005a7c00005c7c00005e7c0000607c0000627c0000647c0000667c0000687c00006a7c00006c7c00006e7c0000707c0000727c0000747c0000767c0000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: c27b0000
+    m_LastClickedID: 31682
+    m_ExpandedIDs: 00000000747a0000767a0000787a00007a7a00007c7a00007e7a0000807a0000827a0000847a0000867a00008a7a00008c7a00008e7a0000907a0000927a0000947a0000967a0000987a00009a7a00009c7a00009e7a0000a07a0000a27a0000a47a0000a67a0000ae7a0000ce7b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1045,7 +1045,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000447c0000467c0000487c00004a7c00004c7c00004e7c0000507c0000527c0000547c0000567c0000587c00005a7c00005c7c00005e7c0000607c0000627c0000647c0000667c0000687c00006a7c00006c7c00006e7c0000707c0000727c0000747c0000767c0000
+    m_ExpandedIDs: 00000000747a0000767a0000787a00007a7a00007c7a00007e7a0000807a0000827a0000847a0000867a0000887a00008a7a00008c7a00008e7a0000907a0000927a0000947a0000967a0000987a00009a7a00009c7a00009e7a0000a07a0000a27a0000a47a0000a67a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1073,7 +1073,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000505f00009e6100009261000006630000b4680000c0600000c49c00001a670000a461000030d20000446100009a76000098760000cc700000166300006e6b0000ec6500005e65000090650000926a000006660000706500005e670000886f0000686800000c770000666e000078770000ae670000f0670000e4670000ce67000004770000327700000000000076700000
+    m_ExpandedInstanceIDs: c6230000505f00009e6100009261000006630000b4680000c0600000c49c00001a670000a461000030d20000446100009a76000098760000cc700000166300006e6b0000ec6500005e65000090650000926a000006660000706500005e670000886f0000686800000c770000666e000078770000ae670000f0670000e4670000ce67000004770000327700000000000076700000d2740000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1198,7 +1198,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 142
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

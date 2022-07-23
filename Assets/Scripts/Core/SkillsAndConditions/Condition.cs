@@ -89,11 +89,10 @@ namespace Core.SkillsAndConditions
         public ConditionEffect GetInitialEffect(int level, StatBlock statBlock)
         {
             return recurring
-                ? new ConditionEffect(visualEffect)
+                ? new ConditionEffect()
                 : new ConditionEffect(affectedStat, 
                     GameManager.CalculateTotalDelta(parametersPerLevel[level].delta,
-                        parametersPerLevel[level].percentDelta, statBlock.GetStatBaseValue(affectedStat)),
-                    visualEffect);
+                        parametersPerLevel[level].percentDelta, statBlock.GetStatBaseValue(affectedStat)));
         }
 
         public ConditionEffect GetRecurringEffect(int level, StatBlock statBlock)

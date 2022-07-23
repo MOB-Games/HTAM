@@ -130,6 +130,12 @@ MonoBehaviour:
   affectedStat: 5
   visualEffect: {fileID: 0}
   parametersPerLevel:
+  - duration: 1
+    delta: 0
+    percentDelta: 0
+  - duration: 2
+    delta: 0
+    percentDelta: 0
   - duration: 3
     delta: 0
     percentDelta: 0

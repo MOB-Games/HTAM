@@ -102,7 +102,7 @@ MonoBehaviour:
   recurring: 0
   offensive: 0
   affectedStat: 3
-  visualEffect: {fileID: 8248039152672512555, guid: 2a71c2a463c6f0447bbd149798afc5b8,
+  visualEffect: {fileID: 8248039152672512555, guid: cbc578b584bd8544c8f156345997882b,
     type: 3}
   parametersPerLevel:
   - duration: 2

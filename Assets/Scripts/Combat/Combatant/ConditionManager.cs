@@ -47,32 +47,26 @@ public class ConditionManager : MonoBehaviour
         _center = GetComponent<BoxCollider2D>().bounds.center;
     }
 
-    private void ConditionEvoked(ConditionEffect effect)
+    private void ConditionEvoked(Condition condition, int level)
     {
-        StartCoroutine(GameManager.PlayVisualEffect(effect.VisualEffect, _center));
-        _combatantEvents.StatChange(effect.AffectedStat, effect.TotalDelta);
-    }
-
-    private void TurnSkipConditionEvoked(bool start, GameObject visualEffect)
-    {
-        if (start)
+        var vfx = condition.visualEffect;
+        StartCoroutine(GameManager.PlayVisualEffect(vfx, _center));
+        switch (condition)
         {
-            StartCoroutine(GameManager.PlayVisualEffect(visualEffect, _center));
-            _combatantEvents.MobilizationChanged(true);
+            case SilenceCondition:
+                _combatantEvents.SilenceChanged(true);
+                break;
+            case TurnSkipCondition:
+                _combatantEvents.MobilizationChanged(true);
+                break;
+            case PacifyCondition:
+                GameManager.PacificationChanged(true);
+                break;
+            default:
+                var effect = condition.GetInitialEffect(level, _statBlock);
+                _combatantEvents.StatChange(effect.AffectedStat, effect.TotalDelta);
+                break;
         }
-        else 
-            _combatantEvents.MobilizationChanged(false);
-    }
-    
-    private void SilenceConditionEvoked(bool start, GameObject visualEffect)
-    {
-        if (start)
-        {
-            StartCoroutine(GameManager.PlayVisualEffect(visualEffect, _center));
-            _combatantEvents.SilenceChanged(true);
-        }
-        else 
-            _combatantEvents.SilenceChanged(false);
     }
 
     private void ConditionRemoved(int index, ConditionWithLevel conditionWithLevel)
@@ -81,14 +75,18 @@ public class ConditionManager : MonoBehaviour
         _combatantEvents.RemoveCondition(conditionWithLevel.condition.id);
         switch (conditionWithLevel.condition)
         {
-            case TurnSkipCondition:
-                TurnSkipConditionEvoked(false, null);
-                break;
             case SilenceCondition:
-                SilenceConditionEvoked(false, null);
+                _combatantEvents.SilenceChanged(false);
+                break;
+            case TurnSkipCondition:
+                _combatantEvents.MobilizationChanged(false);
+                break;
+            case PacifyCondition:
+                GameManager.PacificationChanged(false);
                 break;
             default:
-                ConditionEvoked(conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock));
+                var effect = conditionWithLevel.condition.GetRevertEffect(conditionWithLevel.level, _statBlock);
+                _combatantEvents.StatChange(effect.AffectedStat, effect.TotalDelta);
                 break;
         }
     }
@@ -102,24 +100,12 @@ public class ConditionManager : MonoBehaviour
         if (conditionWithLevel == null)
         {
             conditions.Add(new ConditionWithLevel(conditionGo, condition, level));
-            switch (condition)
-            {
-                case TurnSkipCondition:
-                    TurnSkipConditionEvoked(true, condition.visualEffect);
-                    break;
-                case SilenceCondition:
-                    SilenceConditionEvoked(true, condition.visualEffect);
-                    break;
-                default:
-                    ConditionEvoked(condition.GetInitialEffect(level, _statBlock));
-                    break;
-            }
+            ConditionEvoked(condition, level);
         }
         else
         {
             conditionWithLevel.ticks = 0;
-            StartCoroutine(GameManager.PlayVisualEffect(condition.GetInitialEffect(level, _statBlock).VisualEffect,
-                _center));
+            StartCoroutine(GameManager.PlayVisualEffect(condition.visualEffect, _center));
         }
     }
 
@@ -149,7 +135,8 @@ public class ConditionManager : MonoBehaviour
         for (var i = conditions.Count - 1; i >= 0; i--)
         {
             var conditionWithLevel = conditions[i];
-            ConditionEvoked(conditionWithLevel.condition.GetRecurringEffect(conditionWithLevel.level, _statBlock));
+            var effect = conditionWithLevel.condition.GetRecurringEffect(conditionWithLevel.level, _statBlock);
+            _combatantEvents.StatChange(effect.AffectedStat, effect.TotalDelta);
             conditionWithLevel.ticks++;
             if (conditionWithLevel.condition.Expired(conditionWithLevel.ticks, conditionWithLevel.level))
             {

@@ -128,8 +128,9 @@ namespace Core.SkillsAndConditions
                 desc += "Has a chance to inflict ";
                 desc += _condition switch
                 {
-                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetDescription(level),
                     SilenceCondition silenceCondition => silenceCondition.GetDescription(level),
+                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetDescription(level),
+                    PacifyCondition pacifyCondition => pacifyCondition.GetDescription(level),
                     _ => _condition.GetDescription(level)
                 };
                 desc += "\n";
@@ -177,8 +178,9 @@ namespace Core.SkillsAndConditions
                 desc += "Has a chance to inflict ";
                 desc += _condition switch
                 {
-                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetLevelupDescription(level),
                     SilenceCondition silenceCondition => silenceCondition.GetLevelupDescription(level),
+                    TurnSkipCondition turnSkipCondition => turnSkipCondition.GetLevelupDescription(level),
+                    PacifyCondition pacifyCondition => pacifyCondition.GetLevelupDescription(level),
                     _ => _condition.GetLevelupDescription(level)
                 };
                 desc += "\n";

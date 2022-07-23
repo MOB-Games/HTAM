@@ -23,5 +23,6 @@ namespace Core.Enums
         Reckless,
         Broken,
         Discouraged,
+        Pacify,
     }
 }
