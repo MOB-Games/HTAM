@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Battlecry
+  m_Name: Blood Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b54826ea6d6b3d64ea4fbec625a6d3a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66abc9f1d2138f9499fe2d7930fbfd37, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -136,15 +136,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   melee: 0
-  offensive: 1
+  offensive: 0
   animateAttacked: 0
   speedBasedAccuracy: 0
   speedBasedEvasion: 0
   remainingEnergySkill: 0
   deficitSkill: 0
-  energyCost: 7
-  hpCost: 0
-  targetType: 1
+  energyCost: 0
+  hpCost: 12
+  targetType: 0
   skillAnimation: 2
   attackStat: 5
   defenseStat: 5
@@ -154,18 +154,18 @@ MonoBehaviour:
     baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 90
+    chanceToInflict: 100
   - accuracy: 100
     baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 90
+    chanceToInflict: 100
   - accuracy: 100
     baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 90
+    chanceToInflict: 100
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: 42fc7338aa1e80342aeb337b0b6d6612,
+  conditionGo: {fileID: 4909307490870935864, guid: cd0a93987e4c64e4c9169cd351ed5d25,
     type: 3}
   conditionRemover: {fileID: 0}

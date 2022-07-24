@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1613161850524436607}
   - component: {fileID: 3709444797487759871}
   - component: {fileID: 4796694792708283170}
-  - component: {fileID: 1768222690818782716}
+  - component: {fileID: 4178119563317850483}
   m_Layer: 0
-  m_Name: Battlecry
+  m_Name: Blunt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b54826ea6d6b3d64ea4fbec625a6d3a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e0888ab2d75af99488551d363035f2a8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1768222690818782716
+--- !u!114 &4178119563317850483
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,41 +131,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4003426218498401328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 21457247ece7f4a4cb38dd9d174e1720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 
-  melee: 0
-  offensive: 1
-  animateAttacked: 0
-  speedBasedAccuracy: 0
-  speedBasedEvasion: 0
-  remainingEnergySkill: 0
-  deficitSkill: 0
-  energyCost: 7
-  hpCost: 0
-  targetType: 1
-  skillAnimation: 2
-  attackStat: 5
-  defenseStat: 5
-  affectedStat: 5
-  parametersPerLevel:
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 90
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 90
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 90
-  visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: 42fc7338aa1e80342aeb337b0b6d6612,
+  conditionGo: {fileID: 4909307490870935864, guid: f9e1e4a67e620484a8012819a77c5e77,
     type: 3}
-  conditionRemover: {fileID: 0}
+  parametersPerLevel:
+  - reflectChance: 5
+  - reflectChance: 7
+  - reflectChance: 10

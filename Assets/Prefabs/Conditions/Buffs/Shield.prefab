@@ -99,21 +99,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  isBuff: 1
-  isDebuff: 0
+  recurring: 0
+  offensive: 0
   affectedStat: 3
   visualEffect: {fileID: 8248039152672512555, guid: 3e52bf63a3d3be543bcd600588c3513d,
     type: 3}
   parametersPerLevel:
   - duration: 3
     delta: 2
-    percentDelta: 15
+    percentDelta: 10
   - duration: 3
     delta: 5
-    percentDelta: 25
+    percentDelta: 15
   - duration: 3
     delta: 7
-    percentDelta: 33
+    percentDelta: 20
 --- !u!61 &4578075450960214653
 BoxCollider2D:
   m_ObjectHideFlags: 0

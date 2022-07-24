@@ -11,8 +11,8 @@ public class PacifyCondition : Condition
             throw new ConstraintException($"{name}: A condition duration must be positive for all levels");
         if (recurring)
             throw new ConstraintException($"{name}: Pacify condition can't be recurring");
-        if (!offensive)
-            throw new ConstraintException($"{name}: Pacify condition can't defensive");
+        if (offensive)
+            throw new ConstraintException($"{name}: Pacify condition can't offensive");
     }
     
     public new string GetDescription(int level)

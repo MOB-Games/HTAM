@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Battlecry
+  m_Name: Calm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b54826ea6d6b3d64ea4fbec625a6d3a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0731d34326826d743a828c57f176380d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,15 +134,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 
+  description: Calm the party removing all debbufs
   melee: 0
-  offensive: 1
+  offensive: 0
   animateAttacked: 0
   speedBasedAccuracy: 0
   speedBasedEvasion: 0
   remainingEnergySkill: 0
   deficitSkill: 0
-  energyCost: 7
+  energyCost: 25
   hpCost: 0
   targetType: 1
   skillAnimation: 2
@@ -154,18 +154,8 @@ MonoBehaviour:
     baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 90
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 90
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 90
-  visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: 42fc7338aa1e80342aeb337b0b6d6612,
+    chanceToInflict: 0
+  visualEffect: {fileID: 2135462378506688423, guid: 430a0636a0859a243b7bb02d68ba6dde,
     type: 3}
-  conditionRemover: {fileID: 0}
+  conditionGo: {fileID: 0}
+  conditionRemover: {fileID: 11400000, guid: 49fd9cae0b1ec4b4f954c56c9c037c81, type: 2}

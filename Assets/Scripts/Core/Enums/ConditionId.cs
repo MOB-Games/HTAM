@@ -24,5 +24,12 @@ namespace Core.Enums
         Broken,
         Discouraged,
         Pacify,
+        Blunt,
+        Steady,
+        Dizzy,
+        Downed,
+        OutOfBreath,
+        Brace,
+        Protect,
     }
 }

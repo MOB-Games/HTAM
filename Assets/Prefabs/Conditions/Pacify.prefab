@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5049795257290006475}
   - component: {fileID: 8335700882252621066}
-  - component: {fileID: 3733113094694834685}
   - component: {fileID: 4578075450960214653}
+  - component: {fileID: 7101368716570934914}
   m_Layer: 5
-  m_Name: Brace
+  m_Name: Pacify
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b066c869b51f9384fa8ac9cce36b4648, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46ae47e70cc407f41bdff0fbd9742f41, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,34 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3733113094694834685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4909307490870935864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a61bd1f2f4f06b343b458b082e5deaa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 27
-  recurring: 0
-  offensive: 0
-  affectedStat: 3
-  visualEffect: {fileID: 8248039152672512555, guid: cbc578b584bd8544c8f156345997882b,
-    type: 3}
-  parametersPerLevel:
-  - duration: 2
-    delta: 0
-    percentDelta: 100
-  - duration: 2
-    delta: 0
-    percentDelta: 250
-  - duration: 2
-    delta: 0
-    percentDelta: 400
 --- !u!61 &4578075450960214653
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -131,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 4.74, y: 4.74}
     newSize: {x: 2.56, y: 2.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -140,3 +112,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
+--- !u!114 &7101368716570934914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909307490870935864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e63412505d0744da1725357bf9fe78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 21
+  recurring: 0
+  offensive: 0
+  affectedStat: 5
+  visualEffect: {fileID: 0}
+  parametersPerLevel:
+  - duration: 1
+    delta: 0
+    percentDelta: 0

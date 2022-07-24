@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Battlecry
+  m_Name: Pacify
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b54826ea6d6b3d64ea4fbec625a6d3a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 46ae47e70cc407f41bdff0fbd9742f41, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,17 +134,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 
+  description: Pacify everyone on the battlefield nullifing all damage to hp for
+    1 round
   melee: 0
-  offensive: 1
+  offensive: 0
   animateAttacked: 0
   speedBasedAccuracy: 0
   speedBasedEvasion: 0
   remainingEnergySkill: 0
   deficitSkill: 0
-  energyCost: 7
+  energyCost: 30
   hpCost: 0
-  targetType: 1
+  targetType: 3
   skillAnimation: 2
   attackStat: 5
   defenseStat: 5
@@ -154,18 +155,8 @@ MonoBehaviour:
     baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 90
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 90
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 90
+    chanceToInflict: 100
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: 42fc7338aa1e80342aeb337b0b6d6612,
+  conditionGo: {fileID: 4909307490870935864, guid: 9c45ca810619d134fa813c9172154107,
     type: 3}
   conditionRemover: {fileID: 0}
