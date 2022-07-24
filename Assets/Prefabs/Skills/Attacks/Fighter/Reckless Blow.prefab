@@ -134,8 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A reckless attack that causes very high damage but hurts the attacker
-    as well as the target
+  description: Reckleslly attack taking damage while dealing damage to the enemy
   melee: 1
   offensive: 1
   animateAttacked: 1

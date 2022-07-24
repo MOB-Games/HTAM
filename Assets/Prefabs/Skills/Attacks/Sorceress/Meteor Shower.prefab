@@ -134,13 +134,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A meteor shower surrounds the target dealing damage with a chance
-    tu burn it
+  description: Call forth a meteor shower to surround the enemy dealing damage with
+    a chance to burn
   melee: 0
   offensive: 1
   animateAttacked: 1
   speedBasedAccuracy: 0
   speedBasedEvasion: 1
+  remainingEnergySkill: 0
+  deficitSkill: 0
   energyCost: 10
   hpCost: 0
   targetType: 0

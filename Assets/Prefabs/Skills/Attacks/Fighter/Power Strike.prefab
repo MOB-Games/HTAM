@@ -134,8 +134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Attack that causes very high damage but has a lower chance of hitting
-    the target
+  description: 'Attack the enemy with little regard to accuracy, causing more damage
+
+    but
+    only if you hit'
   melee: 1
   offensive: 1
   animateAttacked: 1

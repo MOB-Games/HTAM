@@ -134,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A desperate attack that more powerful the less hp remains
+  description: Desperately attack the enemy dealing more damage the more desperate
+    you are
   melee: 1
   offensive: 1
   animateAttacked: 1

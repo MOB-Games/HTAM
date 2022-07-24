@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Half sword to improve the accuracy of this attack
+  description: Attack the enemy using the half sword technique
   melee: 1
   offensive: 1
   animateAttacked: 1

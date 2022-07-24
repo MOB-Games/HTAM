@@ -134,12 +134,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: A snow storm covers the battlefield and enhances everyones pain
+  description: Manifest a snow storm to cover the battlefield and cause everyone
+    to fell more pain
   melee: 0
   offensive: 1
   animateAttacked: 0
   speedBasedAccuracy: 0
   speedBasedEvasion: 0
+  remainingEnergySkill: 0
+  deficitSkill: 0
   energyCost: 10
   hpCost: 0
   targetType: 2

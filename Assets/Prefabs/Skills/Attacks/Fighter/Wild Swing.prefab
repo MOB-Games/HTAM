@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Swing Your sword wildly causing a lot of damage, but only if you connect
+  description: Swing your sword wildly in the enemies general direction
   melee: 1
   offensive: 1
   animateAttacked: 1
