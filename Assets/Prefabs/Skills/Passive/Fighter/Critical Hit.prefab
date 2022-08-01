@@ -134,6 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef61f640289a8964b9ff56194968a29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 4
+  description: Attacks might find a weak point in the enemies armor causing more
+    damage
   visualEffect: {fileID: 0}
   parametersPerLevel:
   - addChance: 5

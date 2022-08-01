@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21457247ece7f4a4cb38dd9d174e1720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 6
+  description: Armor might blunt the weapons that hit it
   conditionGo: {fileID: 4909307490870935864, guid: f9e1e4a67e620484a8012819a77c5e77,
     type: 3}
   parametersPerLevel:

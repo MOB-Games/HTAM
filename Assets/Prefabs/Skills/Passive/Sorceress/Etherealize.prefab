@@ -134,6 +134,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae24ac87b05208a4bb007eea6e476d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 5
+  description: Might cross the line between this plane and another avoiding some
+    damage
   parametersPerLevel:
   - reductionChance: 3
     reductionPercent: 33

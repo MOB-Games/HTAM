@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 4
   description: Shoulder charge the enemy utilizing your armor to cause damage
   melee: 1
   offensive: 1
@@ -143,7 +144,7 @@ MonoBehaviour:
   remainingEnergySkill: 0
   deficitSkill: 0
   energyCost: 0
-  hpCost: 12
+  hpCost: 10
   targetType: 0
   skillAnimation: 0
   attackStat: 3

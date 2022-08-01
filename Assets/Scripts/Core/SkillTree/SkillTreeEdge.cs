@@ -10,12 +10,12 @@ public class SkillTreeEdge : MonoBehaviour
     {
         _image = GetComponent<Image>();
         TownEvents.OnSkillTreeRefresh += Refresh;
-        Refresh();
+        Refresh(0);
         if (source.level.value >= 0)
             _image.color = Color.white;
     }
 
-    private void Refresh()
+    private void Refresh(int _)
     {
         _image.color = source.skillWithLevel.level >= 0 ? Color.white : Color.black;
     }

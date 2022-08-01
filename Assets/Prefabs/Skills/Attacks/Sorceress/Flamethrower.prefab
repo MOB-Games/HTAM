@@ -134,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: manifest a stream of fire that hits the enemy
+  minLevel: 3
+  description: Manifest a stream of fire that hits the enemy
   melee: 0
   offensive: 1
   animateAttacked: 1

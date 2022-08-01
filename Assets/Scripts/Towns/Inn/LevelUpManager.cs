@@ -248,7 +248,7 @@ public class LevelUpManager : MonoBehaviour
         foreach (var leveledUpSkill in _leveledUpSkills)
             leveledUpSkill.Key.level -= leveledUpSkill.Value;
         _leveledUpSkills.Clear();
-        TownEvents.RefreshSkillTree();
+        TownEvents.RefreshSkillTree(_selectedCharacterState.level);
     }
 
     public void AskUnlock(bool offensive)
@@ -328,7 +328,7 @@ public class LevelUpManager : MonoBehaviour
             _leveledUpSkills.Add(skillTreeNode.skillWithLevel, 1);
 
         _skillPts--;
-        TownEvents.RefreshSkillTree();
+        TownEvents.RefreshSkillTree(_selectedCharacterState.level);
         SetUnlockButtons();
         ShowPoints();
     }

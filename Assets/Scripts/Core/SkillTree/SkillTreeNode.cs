@@ -25,6 +25,7 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     private Vector3 _dragOffset;
     private SkillLevelupDescription _levelupDescription;
     private Image _image;
+    private Image _backgroundImage;
     private Camera _mainCamera;
     private GameObject _dragImageInstance;
     
@@ -32,36 +33,37 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     private void Start()
     {
         _image = GetComponent<Image>();
+        _backgroundImage = GetComponentInChildren<Image>();
         _mainCamera = Camera.main;
 
         skillWithLevel.level = level.value;
         _levelupDescription = GetComponent<SkillLevelupDescription>();
         _maxLevel = content.GetMaxLevel();
         _isPassive = content is not Skill;
-        Refresh();
+        Refresh(0);
 
         TownEvents.OnSkillTreeRefresh += Refresh;
     }
 
-    private void SetActivity()
+    private void SetActivity(int characterLevel)
     {
         var parentInactive = parents.Any(stn => stn.skillWithLevel.level < 0);
-        _clickable = skillWithLevel.level != _maxLevel && !parentInactive;
+        _locked = parentInactive || characterLevel < content.minLevel;
+        _clickable = skillWithLevel.level != _maxLevel && !_locked;
         _draggable = skillWithLevel.level >= 0 && !_isPassive && !parentInactive;
-        _locked = parentInactive;
         
 
-        _image.color = skillWithLevel.level >= 0 ? Color.white : new Color(1, 1, 1, 0.5f);
+        _backgroundImage.color = skillWithLevel.level >= 0 ? Color.white : Color.black;
     }
 
     private void SetDesc()
     {
-        _levelupDescription.Desc = (_locked ? "LOCKED\n" : "") + content.GetLevelupDescription(skillWithLevel.level);
+        _levelupDescription.Desc = (_locked ? $"LOCKED! lvl.{content.minLevel}\n" : "") + content.GetLevelupDescription(skillWithLevel.level);
     }
 
-    private void Refresh()
+    private void Refresh(int characterLevel)
     {
-        SetActivity();
+        SetActivity(characterLevel);
         SetDesc();
     }
 

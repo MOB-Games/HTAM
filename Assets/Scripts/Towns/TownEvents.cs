@@ -20,7 +20,7 @@ public static class TownEvents
     public static event Action OnSlotUnlocked;
     public static event Action<SkillTreeNode, int, bool> OnAddSkillToActive;
     public static event Action<SkillTreeNode> OnSkillLevelUp;
-    public static event Action OnSkillTreeRefresh;
+    public static event Action<int> OnSkillTreeRefresh;
    
     public static void PublishTownInfo(TownInfo townInfo, bool pathCleared, string previousPathSignpost)
     {
@@ -102,8 +102,8 @@ public static class TownEvents
         OnSkillLevelUp?.Invoke(skillTreeNode);
     }
     
-    public static void RefreshSkillTree()
+    public static void RefreshSkillTree(int characterLevel)
     {
-        OnSkillTreeRefresh?.Invoke();
+        OnSkillTreeRefresh?.Invoke(characterLevel);
     }
 }

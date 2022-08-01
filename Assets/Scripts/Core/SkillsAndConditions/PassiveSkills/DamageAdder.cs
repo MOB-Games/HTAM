@@ -13,12 +13,14 @@ namespace Core.SkillsAndConditions.PassiveSkills
     }
     public class DamageAdder : SkillBase
     {
+        [Multiline] public string description;
         public GameObject visualEffect;
         public List<DamageAdderParameters> parametersPerLevel;
         
         public override string GetDescription(int level)
         {
-            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every attack there is a {parametersPerLevel[level].addChance}% " +
+            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: {description}\n" +
+                   $"Every attack there is a {parametersPerLevel[level].addChance}% " +
                    $"chance to multiply the damage by {parametersPerLevel[level].damageMultiplier}";
         }
 

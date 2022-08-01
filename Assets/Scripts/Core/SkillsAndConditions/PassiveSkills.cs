@@ -83,7 +83,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
 
             if (Random.Range(0, 100) < damageReducer.reductionChance)
             {
-                incomingSkill.Delta *= damageReducer.reductionPercent / 100;
+                incomingSkill.Delta -= incomingSkill.Delta * damageReducer.reductionPercent / 100;
                 result.Reduce = true;
             }
 

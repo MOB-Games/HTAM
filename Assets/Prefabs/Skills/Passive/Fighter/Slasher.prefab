@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074232dc00f0d274da2c54c27dd9b13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 5
+  description: Attacks may wound the enemy causing it to bleed
   conditionGo: {fileID: 4909307490870935864, guid: 83bc6743a8849774195f831f95dc65df,
     type: 3}
   parametersPerLevel:

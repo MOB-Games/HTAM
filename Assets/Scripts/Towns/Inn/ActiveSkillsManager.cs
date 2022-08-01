@@ -35,7 +35,7 @@ public class ActiveSkillsManager : MonoBehaviour
         TownEvents.OnOpenInn += RegisterForSelectedCharacter;
         TownEvents.OnCloseInn += UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlocked += ShowActiveSkills;
-        TownEvents.OnSkillTreeRefresh += ShowActiveSkills;
+        TownEvents.OnSkillTreeRefresh += Refresh;
         TownEvents.OnAddSkillToActive += AddSkillToActive;
         OnSkillDescChanged += ShowSkillDesc;
     }
@@ -51,6 +51,11 @@ public class ActiveSkillsManager : MonoBehaviour
         ShowActiveSkills();
         Destroy(_skillTreeInstance);
         _skillTreeInstance = Instantiate(_selectedCharacterTownInfo.State.skillTree, skillTree.transform);
+    }
+
+    private void Refresh(int _)
+    {
+        ShowActiveSkills();
     }
 
     private void ShowActiveSkills()
@@ -142,7 +147,7 @@ public class ActiveSkillsManager : MonoBehaviour
         TownEvents.OnOpenInn -= RegisterForSelectedCharacter;
         TownEvents.OnCloseInn -= UnregisterForSelectedCharacter;
         TownEvents.OnSlotUnlocked -= ShowActiveSkills;
-        TownEvents.OnSkillTreeRefresh -= ShowActiveSkills;
+        TownEvents.OnSkillTreeRefresh -= Refresh;
         TownEvents.OnAddSkillToActive -= AddSkillToActive;
         OnSkillDescChanged -= ShowSkillDesc;
     }

@@ -15,16 +15,18 @@ namespace Core.SkillsAndConditions.PassiveSkills
     }
     public class DamageReducer : SkillBase
     {
+        [Multiline] public string description;
         public List<DamageReducerParameters> parametersPerLevel;
         
         public override string GetDescription(int level)
         {
-            var desc = $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every time an enemy attacks there is a" +
+            var desc = $"<u>{name.Split('(')[0]} (lvl.{level})</u>: {description}\n" +
+                       $"Every time an enemy attacks there is a" +
                    $" {parametersPerLevel[level].reductionChance}% chance to ";
-            if (parametersPerLevel[level].reductionPercent == 0)
+            if (parametersPerLevel[level].reductionPercent == 100)
                 desc += "avoid taking damage";
             else
-                desc += $"take only {parametersPerLevel[level].reductionPercent}% of the damage";
+                desc += $"reduce incoming damage by {parametersPerLevel[level].reductionPercent}%";
 
             return desc;
         }

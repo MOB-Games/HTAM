@@ -12,6 +12,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
     }
     public class ConditionReflector : SkillBase
     {
+        [Multiline] public string description;
         public GameObject conditionGo;
         public List<ConditionReflectorParameters> parametersPerLevel;
         
@@ -21,7 +22,8 @@ namespace Core.SkillsAndConditions.PassiveSkills
         {
             if (_condition == null && conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
-            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every time an enemy attacks with a melee attack there is a " +
+            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: {description}\n" +
+                   $"Every time an enemy attacks with a melee attack there is a " +
                    $"{parametersPerLevel[level].reflectChance}% chance to inflict the attacking enemy with" +
                    $" {_condition.GetDescription(level)}";
         }

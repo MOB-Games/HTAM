@@ -12,6 +12,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
     }
     public class ConditionAdder : SkillBase
     {
+        [Multiline] public string description;
         public GameObject conditionGo;
         public List<ConditionAdderParameters> parametersPerLevel;
         
@@ -21,7 +22,8 @@ namespace Core.SkillsAndConditions.PassiveSkills
         {
             if (_condition == null && conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
-            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: Every attack there is a " +
+            return $"<u>{name.Split('(')[0]} (lvl.{level})</u>: {description}\n" +
+                   $"Every attack there is a " +
                        $"{parametersPerLevel[level].addChance}% chance to inflict the target with {_condition.GetDescription(level)}";
         }
 
