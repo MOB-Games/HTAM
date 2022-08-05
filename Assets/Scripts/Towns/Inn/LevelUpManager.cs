@@ -38,6 +38,7 @@ public class LevelUpManager : MonoBehaviour
     private const int VitalityPtsPerLevel = 2;
     private const int SkillPtsPerLevel = 2;
 
+    private int _potentialLevel;
     private int _statPts;
     private int _vitalityPts;
     private int _skillPts;
@@ -154,6 +155,7 @@ public class LevelUpManager : MonoBehaviour
     public void LevelUp()
     {
         var levelUps = LevelsToProgress(_selectedCharacterState.level, _selectedCharacterState.exp);
+        _potentialLevel = _selectedCharacterState.level + levelUps;
         _statPts = StatPtsPerLevel * levelUps;
         _vitalityPts = VitalityPtsPerLevel * levelUps;
         _skillPts = SkillPtsPerLevel * levelUps;
@@ -176,7 +178,7 @@ public class LevelUpManager : MonoBehaviour
         SetStatButtons();
         SetUnlockButtons();
         ShowPoints();
-        TownEvents.RefreshSkillTree(_selectedCharacterState.level + levelUps);
+        TownEvents.RefreshSkillTree(_potentialLevel);
     }
 
     private void IncStat(StatType stat)
@@ -329,7 +331,7 @@ public class LevelUpManager : MonoBehaviour
             _leveledUpSkills.Add(skillTreeNode.skillWithLevel, 1);
 
         _skillPts--;
-        TownEvents.RefreshSkillTree(_selectedCharacterState.level);
+        TownEvents.RefreshSkillTree(_potentialLevel);
         SetUnlockButtons();
         ShowPoints();
     }
