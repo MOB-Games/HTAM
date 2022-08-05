@@ -33,7 +33,8 @@ public class SkillTreeNode : MonoBehaviour, IPointerClickHandler, IPointerDownHa
     private void Start()
     {
         _image = GetComponent<Image>();
-        _backgroundImage = GetComponentInChildren<Image>();
+        //_backgroundImage = GetComponentInChildren<Image>();
+        _backgroundImage = transform.GetChild(0).GetComponent<Image>();
         _mainCamera = Camera.main;
 
         skillWithLevel.level = level.value;

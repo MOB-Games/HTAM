@@ -176,6 +176,7 @@ public class LevelUpManager : MonoBehaviour
         SetStatButtons();
         SetUnlockButtons();
         ShowPoints();
+        TownEvents.RefreshSkillTree(_selectedCharacterState.level + levelUps);
     }
 
     private void IncStat(StatType stat)

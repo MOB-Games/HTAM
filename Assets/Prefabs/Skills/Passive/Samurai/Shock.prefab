@@ -136,7 +136,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minLevel: 7
   description: An attacking enemy might be shocked by you and lose a turn
-  conditionGo: {fileID: 0}
+  conditionGo: {fileID: 4909307490870935864, guid: 41c1ab2d59c25234aad12f1c01b75c58,
+    type: 3}
   parametersPerLevel:
   - reflectChance: 2
   - reflectChance: 5
