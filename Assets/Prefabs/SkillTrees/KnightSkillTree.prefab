@@ -197,6 +197,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: e6a3690fdb92e9a4db82d4d60c1314d6,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -205,6 +211,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 3225988470517099032}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: e6a3690fdb92e9a4db82d4d60c1314d6,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -356,6 +368,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: a69143a14aeab8f46924da26f71a8200,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -364,6 +382,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 4335648522238742561}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: a69143a14aeab8f46924da26f71a8200,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -633,6 +657,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: -6230597016068803171, guid: 74da1abdad33dae489614a29a086f90f,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -641,6 +671,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 7820142160459032555}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 74da1abdad33dae489614a29a086f90f,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -1050,6 +1086,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c7200976fdfa9ee409b1afc293ed8275,
         type: 2}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: b567f0a9ca16a5d47b0ca848c49234d4,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: b567f0a9ca16a5d47b0ca848c49234d4,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -1199,6 +1247,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ed753028752089b4da3a280f451574e9,
         type: 2}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: f15dee42d877c3146815d192d60ff690,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: f15dee42d877c3146815d192d60ff690,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -1348,6 +1408,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8917014330acad94698852b639ee4a53,
         type: 2}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 3b5ddcd24a05ee34197b76188caf4400,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 3b5ddcd24a05ee34197b76188caf4400,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -1617,6 +1689,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: ed1b5d1d3790b9643adadc4b2a697811,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1625,6 +1703,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 7445182407340493857}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: ed1b5d1d3790b9643adadc4b2a697811,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -1904,6 +1988,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4c1e3b159b9b5aa4cb59facb5477f9ce,
         type: 2}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 7617113144d786d488a661506091f9dc,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 7617113144d786d488a661506091f9dc,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -2575,6 +2671,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 08d122c0b4a3f1e4996ec9e998a726f3,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2583,6 +2685,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 3536951174788539882}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 08d122c0b4a3f1e4996ec9e998a726f3,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -2994,6 +3102,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 074f1342c9154ae42b95cfd9f2bfadb9,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3002,6 +3116,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 5626450434426685193}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 074f1342c9154ae42b95cfd9f2bfadb9,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -3141,6 +3261,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 4178119563317850483, guid: 76a5417640eb0634c8b3c9992be63f3c,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3149,6 +3275,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 1874657074639397245}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 76a5417640eb0634c8b3c9992be63f3c,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -3413,6 +3545,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 5948a3c189dca04449262599994c8957,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3421,6 +3559,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 9093421195687047212}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 5948a3c189dca04449262599994c8957,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -3570,6 +3714,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 70b59885d2202974c86033d3d602784c,
         type: 2}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 68eb2441cc531394bbcbab8ecc6ffc46,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 68eb2441cc531394bbcbab8ecc6ffc46,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -3719,6 +3875,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 31748027e42469a47b6f51cda6218d52,
         type: 2}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: cfae434f49ebf7a49bd111140c9a1d29,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: cfae434f49ebf7a49bd111140c9a1d29,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -3858,6 +4026,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 1d62113eeccb5ed4fa8b2fa73b65368d,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3866,6 +4040,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 7560356364777895437}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 1d62113eeccb5ed4fa8b2fa73b65368d,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -4407,6 +4587,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 258e94a2a6a4b6646a4875ed52600182,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4415,6 +4601,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 4980758260774459373}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 258e94a2a6a4b6646a4875ed52600182,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -4696,6 +4888,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: dfbb6e1987cc1964293c8aee6c685d43,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4704,6 +4902,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 410844566156358858}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: dfbb6e1987cc1964293c8aee6c685d43,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -4843,6 +5047,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 7273f3b5315baa7469e81bb89b2c0731,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4851,6 +5061,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 4980758260774459373}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 7273f3b5315baa7469e81bb89b2c0731,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -5002,6 +5218,12 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 8f0b0ed4cf2c8a448b309f267c990f17,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
       propertyPath: parents.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5010,6 +5232,12 @@ PrefabInstance:
       propertyPath: parents.Array.data[0]
       value: 
       objectReference: {fileID: 6618874646475293717}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 8f0b0ed4cf2c8a448b309f267c990f17,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
@@ -5147,6 +5375,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 550857bb49b794545a9dd5dbe229707f,
         type: 2}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: content
+      value: 
+      objectReference: {fileID: 1768222690818782716, guid: 5568670b916fb29499e29381e656c95a,
+        type: 3}
+    - target: {fileID: 294466672035723222, guid: e6bd8c8df08c9664a8d938253913a134,
+        type: 3}
+      propertyPath: skillWithLevel.skillGo
+      value: 
+      objectReference: {fileID: 4003426218498401328, guid: 5568670b916fb29499e29381e656c95a,
+        type: 3}
     - target: {fileID: 7355803966498641441, guid: e6bd8c8df08c9664a8d938253913a134,
         type: 3}
       propertyPath: m_Sprite
