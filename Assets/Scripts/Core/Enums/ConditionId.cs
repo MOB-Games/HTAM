@@ -28,5 +28,10 @@ namespace Core.Enums
         Hot,
         BloodGuard,
         BloodFrenzy,
+        Shocked,
+        SpeedDemon,
+        Poisoned,
+        FightingStance,
+        Haste,
     }
 }

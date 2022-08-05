@@ -68,7 +68,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
                     if (reflectedDamage != 0)
                         incomingSkill.Delta += reflectedDamage;
                     else
-                        reflectedDamage = damageReflector.damageMultiplier / 100 * damage;
+                        reflectedDamage = (int)damageReflector.damageMultiplier / 100 * damage;
                 }
 
                 if (Random.Range(0, 100) < conditionReflector.reflectChance)

@@ -13,7 +13,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
         public int reflectChance;
         [Range(0,100)]
         public int percentOfIncomingDamage;
-        public int damageMultiplier;
+        public float damageMultiplier;
     }
     public class DamageReflector : SkillBase
     {

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1613161850524436607}
   - component: {fileID: 3709444797487759871}
   - component: {fileID: 4796694792708283170}
-  - component: {fileID: -6230597016068803171}
+  - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Wind Walker
+  m_Name: Backstab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0c136515f7aa49e43ba0840df48c1f4d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6abac1393b073a04ba6348f31ec6f953, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-6230597016068803171
+--- !u!114 &1768222690818782716
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,13 +131,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 4003426218498401328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae24ac87b05208a4bb007eea6e476d02, type: 3}
+  m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 0
+  description: Attack using your incredible speed to get behind the enemy and attack
+    him before he can defend himself
+  melee: 1
+  offensive: 1
+  animateAttacked: 1
+  speedBasedAccuracy: 1
+  speedBasedEvasion: 1
+  remainingEnergySkill: 0
+  deficitSkill: 0
+  energyCost: 12
+  hpCost: 0
+  targetType: 0
+  skillAnimation: 0
+  attackStat: 2
+  defenseStat: 3
+  affectedStat: 0
   parametersPerLevel:
-  - reductionChance: 5
-    reductionPercent: 100
-  - reductionChance: 7
-    reductionPercent: 100
-  - reductionChance: 10
-    reductionPercent: 100
+  - accuracy: 85
+    baseEffectValue: 0
+    attackMultiplier: -1.2
+    defenseMultiplier: 0
+    chanceToInflict: 0
+  - accuracy: 90
+    baseEffectValue: 0
+    attackMultiplier: -1.5
+    defenseMultiplier: 0
+    chanceToInflict: 0
+  - accuracy: 95
+    baseEffectValue: 0
+    attackMultiplier: -1.75
+    defenseMultiplier: 0
+    chanceToInflict: 0
+  visualEffect: {fileID: 3635704315800260675, guid: 2edfc1ecb43a8c14ba7c621598b21ce8,
+    type: 3}
+  conditionGo: {fileID: 0}
+  conditionRemover: {fileID: 0}

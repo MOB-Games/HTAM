@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Cripple
+  m_Name: Fighting Stance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b7c5f4ba14d7dfc40af5dc85843a22d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd6ab744a13821741bae075ba578bce0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,38 +134,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Target the enemies legs to slow it down
-  melee: 1
-  offensive: 1
-  animateAttacked: 1
-  speedBasedAccuracy: 1
-  speedBasedEvasion: 1
+  minLevel: 3
+  description: Position yourself in a fighting stance to prepare for a powerful attack
+  melee: 0
+  offensive: 0
+  animateAttacked: 0
+  speedBasedAccuracy: 0
+  speedBasedEvasion: 0
   remainingEnergySkill: 0
   deficitSkill: 0
-  energyCost: 10
+  energyCost: 7
   hpCost: 0
-  targetType: 0
-  skillAnimation: 0
-  attackStat: 2
-  defenseStat: 3
-  affectedStat: 0
+  targetType: 3
+  skillAnimation: 2
+  attackStat: 5
+  defenseStat: 5
+  affectedStat: 5
   parametersPerLevel:
-  - accuracy: 90
+  - accuracy: 100
     baseEffectValue: 0
-    attackMultiplier: -0.5
-    defenseMultiplier: 1
-    chanceToInflict: 70
-  - accuracy: 90
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 90
+  - accuracy: 100
     baseEffectValue: 0
-    attackMultiplier: -0.7
-    defenseMultiplier: 1
-    chanceToInflict: 75
-  - accuracy: 90
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 90
+  - accuracy: 100
     baseEffectValue: 0
-    attackMultiplier: -0.8
-    defenseMultiplier: 1
-    chanceToInflict: 80
+    attackMultiplier: 0
+    defenseMultiplier: 0
+    chanceToInflict: 90
   visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: e1dc903fa91271d48b0f3bae09012f14,
+  conditionGo: {fileID: 4909307490870935864, guid: bf41e1b18619fa049a30ee8a4b6c4b77,
     type: 3}
   conditionRemover: {fileID: 0}

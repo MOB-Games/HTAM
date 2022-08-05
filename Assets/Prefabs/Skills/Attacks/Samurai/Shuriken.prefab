@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Break
+  m_Name: Shuriken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ac3caea1cadcac48a3addac40113ce4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f14889722028b814a8d793fc6fe10c24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,28 +134,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Break the target causing it to lose a turn
-  melee: 1
+  minLevel: 3
+  description: Throw shuriken at the enemies
+  melee: 0
   offensive: 1
   animateAttacked: 1
   speedBasedAccuracy: 1
   speedBasedEvasion: 1
   remainingEnergySkill: 0
   deficitSkill: 0
-  energyCost: 10
+  energyCost: 15
   hpCost: 0
-  targetType: 0
-  skillAnimation: 0
-  attackStat: 5
-  defenseStat: 5
-  affectedStat: 5
+  targetType: 1
+  skillAnimation: 2
+  attackStat: 2
+  defenseStat: 3
+  affectedStat: 0
   parametersPerLevel:
-  - accuracy: 100
-    baseEffectValue: 0
-    attackMultiplier: 0
-    defenseMultiplier: 0
-    chanceToInflict: 85
-  visualEffect: {fileID: 0}
-  conditionGo: {fileID: 4909307490870935864, guid: b49eae5511bebb241b38323e1ce65e25,
+  - accuracy: 75
+    baseEffectValue: -7
+    attackMultiplier: -1
+    defenseMultiplier: 1
+    chanceToInflict: 0
+  - accuracy: 80
+    baseEffectValue: -10
+    attackMultiplier: -1.2
+    defenseMultiplier: 1
+    chanceToInflict: 0
+  - accuracy: 85
+    baseEffectValue: -12
+    attackMultiplier: -1.3
+    defenseMultiplier: 1
+    chanceToInflict: 0
+  visualEffect: {fileID: 3635704315800260675, guid: 5f3b5268f57307a4d850506c9d005a64,
     type: 3}
+  conditionGo: {fileID: 0}
   conditionRemover: {fileID: 0}
