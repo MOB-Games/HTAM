@@ -22,12 +22,12 @@ GameObject:
   - component: {fileID: 4576326412941814250}
   - component: {fileID: 5934729483843726030}
   - component: {fileID: 5708457653403262510}
-  - component: {fileID: 3374165069257435726}
   - component: {fileID: 550757383764374501}
+  - component: {fileID: 3374165069257435726}
   - component: {fileID: 8229508485637790920}
   - component: {fileID: 2264432829541233808}
   m_Layer: 0
-  m_Name: Wolf
+  m_Name: Rat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,7 +42,7 @@ Transform:
   m_GameObject: {fileID: 5217080582421210112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.04, y: 0.15, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,18 +61,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00022368133, y: -0.039304286}
+  m_Offset: {x: 0.00022372603, y: -0.04361765}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.31}
-    newSize: {x: 0.64, y: 0.31}
+    oldSize: {x: 0.66, y: 0.3}
+    newSize: {x: 0.66, y: 0.3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6613221, y: 0.3406914}
+  m_Size: {x: 0.64406866, y: 0.21991703}
   m_EdgeRadius: 0
 --- !u!212 &-7587503399132701461
 SpriteRenderer:
@@ -115,12 +115,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1599873002, guid: 4f293e39fe4c85649ab36faf862656ea, type: 3}
+  m_Sprite: {fileID: -1193310794, guid: af6dd19bfdd5f4e479a2cc9af557afd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.31}
+  m_Size: {x: 0.66, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -136,7 +136,7 @@ Animator:
   m_GameObject: {fileID: 5217080582421210112}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d4543d1cacba18c4b806a9d25fe3683e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6145bebb26075df4bb8b8ba03212b201, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -268,34 +268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7366c3495be66644ca1fada78adad313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3374165069257435726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217080582421210112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f1163dff68233488e7111f21eecdbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats:
-    hp:
-      baseValue: 15
-      value: 15
-    energy:
-      baseValue: 1
-      value: 1
-    damage:
-      baseValue: 9
-      value: 9
-    defense:
-      baseValue: 5
-      value: 5
-    speed:
-      baseValue: 7
-      value: 7
 --- !u!114 &550757383764374501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +301,34 @@ MonoBehaviour:
       reflectChance: 0
     conditionToReflect: {fileID: 0}
     levelOfReflectedCondition: 0
+--- !u!114 &3374165069257435726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f1163dff68233488e7111f21eecdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    hp:
+      baseValue: 12
+      value: 12
+    energy:
+      baseValue: 1
+      value: 1
+    damage:
+      baseValue: 6
+      value: 6
+    defense:
+      baseValue: 0
+      value: 0
+    speed:
+      baseValue: 7
+      value: 7
 --- !u!114 &8229508485637790920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expDrop: 3
-  goldDrop: 0
+  goldDrop: 1
 --- !u!114 &2264432829541233808
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -95,9 +95,9 @@ namespace Core.SkillsAndConditions
                 if (affectedStat == StatType.Energy)
                     desc += "s Energy";
                 desc += offensive ? " With " : " by ";
-                var baseValue = Math.Abs(parametersPerLevel[level].baseEffectValue);
-                var attackerPercent = Math.Abs(parametersPerLevel[level].attackMultiplier) * 100;
-                var defensePercent = Math.Abs(parametersPerLevel[level].defenseMultiplier) * 100;
+                var baseValue = MultiplierToPercent(parametersPerLevel[level].baseEffectValue);
+                var attackerPercent = MultiplierToPercent(parametersPerLevel[level].attackMultiplier);
+                var defensePercent = MultiplierToPercent(parametersPerLevel[level].defenseMultiplier);
                 if (baseValue != 0)
                     desc += $"{baseValue} ";
                 if (baseValue != 0 && attackerPercent != 0)
@@ -109,7 +109,7 @@ namespace Core.SkillsAndConditions
                         desc += "the damage done to ";
                     desc += $"users {attackStat} ";
                     if (remainingEnergySkill)
-                        desc += "in addiotion to all the users remaining energy";
+                        desc += "in addition to all the users remaining energy";
                 }
                 if (defenseStat != StatType.None && defensePercent != 0)
                 {
@@ -120,12 +120,22 @@ namespace Core.SkillsAndConditions
                     desc += $" to {defensePercent}% of targets {defenseStat}\n";
                 }
                 else if (offensive)
-                    desc += "while ignoring the targets defenses";
+                    desc += "while ignoring the targets defenses\n";
+
+                desc += $"has a base accuracy of {MultiplierToPercent(parametersPerLevel[level].accuracy)}%";
             }
 
             if (_condition != null)
             {
-                desc += "Has a chance to inflict ";
+                var inflictionChance = parametersPerLevel[level].chanceToInflict;
+                if (inflictionChance == 100)
+                {
+                    desc += "Inflicts ";
+                }
+                else
+                {
+                    desc += $"Has a {inflictionChance}% chance to inflict ";
+                }
                 desc += _condition switch
                 {
                     SilenceCondition silenceCondition => silenceCondition.GetDescription(level),
@@ -142,9 +152,9 @@ namespace Core.SkillsAndConditions
             return desc;
         }
 
-        private static int MultiplierToPercent(double multiplier)
+        private static double MultiplierToPercent(double multiplier)
         {
-            return (int)(Math.Abs(multiplier) * 100);
+            return Math.Abs(multiplier * 100);
         }
 
         public override string GetLevelupDescription(int level)
@@ -168,14 +178,13 @@ namespace Core.SkillsAndConditions
                     $"User Percent: {MultiplierToPercent(currentParams.attackMultiplier)}% -> {MultiplierToPercent(nextParams.attackMultiplier)}%\n";
             if (Math.Abs(currentParams.defenseMultiplier - nextParams.defenseMultiplier) > 0.0001)
                 desc +=
-                    $"Target Percent: {MultiplierToPercent(currentParams.attackMultiplier)}% -> {MultiplierToPercent(nextParams.attackMultiplier)}%\n";
+                    $"Target Percent: {MultiplierToPercent(currentParams.defenseMultiplier)}% -> {MultiplierToPercent(nextParams.defenseMultiplier)}%\n";
             if (Math.Abs(currentParams.chanceToInflict - nextParams.chanceToInflict) > 0.0001)
                 desc += $"Chance to inflict condition: {currentParams.chanceToInflict}% -> {nextParams.chanceToInflict}%\n";
 
             if (_condition != null)
             {
                 desc += "\nCondition:\n";
-                desc += "Has a chance to inflict ";
                 desc += _condition switch
                 {
                     SilenceCondition silenceCondition => silenceCondition.GetLevelupDescription(level),

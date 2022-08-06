@@ -288,11 +288,11 @@ MonoBehaviour:
       baseValue: 30
       value: 30
     damage:
-      baseValue: 15
-      value: 15
+      baseValue: 17
+      value: 17
     defense:
-      baseValue: 0
-      value: 0
+      baseValue: 5
+      value: 5
     speed:
       baseValue: 10
       value: 10
@@ -312,6 +312,7 @@ MonoBehaviour:
     damageAdder:
       addChance: 0
       damageMultiplier: 0
+    damageAdderVFX: {fileID: 0}
     conditionAdder:
       addChance: 0
     conditionToAdd: {fileID: 0}
@@ -323,6 +324,7 @@ MonoBehaviour:
       reflectChance: 0
       percentOfIncomingDamage: 0
       damageMultiplier: 0
+    damageReflectorVFX: {fileID: 0}
     conditionReflector:
       reflectChance: 0
     conditionToReflect: {fileID: 0}
@@ -358,4 +360,4 @@ MonoBehaviour:
       type: 3}
     level: 0
   skillProbabilities: 
-  probabilityToTargetPlayer: 100
+  probabilityToTargetPlayer: 85

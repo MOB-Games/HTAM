@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1512379111522927262}
   - component: {fileID: 1512379111522927260}
   m_Layer: 0
-  m_Name: Path0
+  m_Name: Rat Route
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,17 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 5217080582421210112, guid: cb723807f500edc43ad59ddd79e2c788, type: 3}
-  - {fileID: 5217080582421210112, guid: 0e97a2e8dcf8fa045a26a7d9036b0ca5, type: 3}
-  - {fileID: 5217080582421210112, guid: 20b494c7758e6e64aa9608c964e842b8, type: 3}
+  - {fileID: 5217080582421210112, guid: 4ddd9eba85ff3b049a62ee444751598b, type: 3}
+  - {fileID: 5217080582421210112, guid: 60e1352f6cf773f4d88a671a129ec813, type: 3}
   enemiesForStages:
     stages:
-    - enemyPrefabIndices: 000000000000000000000000
+    - enemyPrefabIndices: 00000000
     - enemyPrefabIndices: 0000000000000000
+    - enemyPrefabIndices: 000000000000000000000000
     - enemyPrefabIndices: 01000000
-    - enemyPrefabIndices: 010000000000000000000000
-    - enemyPrefabIndices: 020000000100000000000000
-  enemyProbabilities: 4b00000019000000
+  enemyProbabilities: 64000000
   probabilityFor1Enemy: 35
   probabilityFor2Enemy: 50
 --- !u!114 &1512379111522927260
@@ -71,21 +69,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9db2448baae2546438177bbab44b5299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  length: 5
-  combatBackground: {fileID: 21300000, guid: f7833c66434249e4f81ed21bb1bc2a3d, type: 3}
+  length: 4
+  combatBackground: {fileID: 21300000, guid: f9e876f9b827f3244bdfb524bebebf28, type: 3}
   townInfo:
-    signpost: 'This path is the territory of the Golden Wolf Pack.
-
-      Their howls
-      are known to make even experienced fighters think twice about attacking'
-    signpostCleared: The Golden Wolf has been defeated but this path is still infested
-      with wolves
-    townBackground: {fileID: 21300000, guid: f7833c66434249e4f81ed21bb1bc2a3d, type: 3}
+    signpost: This path is infested with rats
+    signpostCleared: This path is infested with rats
+    townBackground: {fileID: 21300000, guid: f9e876f9b827f3244bdfb524bebebf28, type: 3}
     innSprite: {fileID: 21300000, guid: fb9152503bcf5be42b04fbcee201d4c9, type: 3}
     blacksmithSprite: {fileID: 21300000, guid: 11b3014dd1e13ad44a75d7356134fa3b, type: 3}
     shopSprite: {fileID: 21300000, guid: 87ed8e09a47f8b4408936f70549c9ffd, type: 3}
     blacksmithInfo:
-      price: 10
-      maxDamage: 15
-      maxDefense: 0
-      maxSpeed: 15
+      price: 5
+      maxStat: 10

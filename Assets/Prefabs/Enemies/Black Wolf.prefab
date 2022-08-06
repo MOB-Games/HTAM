@@ -302,14 +302,14 @@ MonoBehaviour:
       baseValue: 10
       value: 10
     damage:
-      baseValue: 11
-      value: 11
-    defense:
-      baseValue: 0
-      value: 0
-    speed:
       baseValue: 12
       value: 12
+    defense:
+      baseValue: 3
+      value: 3
+    speed:
+      baseValue: 14
+      value: 14
 --- !u!114 &3599002060879211868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,6 +326,7 @@ MonoBehaviour:
     damageAdder:
       addChance: 0
       damageMultiplier: 0
+    damageAdderVFX: {fileID: 0}
     conditionAdder:
       addChance: 0
     conditionToAdd: {fileID: 0}
@@ -337,6 +338,7 @@ MonoBehaviour:
       reflectChance: 0
       percentOfIncomingDamage: 0
       damageMultiplier: 0
+    damageReflectorVFX: {fileID: 0}
     conditionReflector:
       reflectChance: 0
     conditionToReflect: {fileID: 0}
@@ -361,4 +363,4 @@ MonoBehaviour:
       type: 3}
     level: 0
   skillProbabilities: 43000000
-  probabilityToTargetPlayer: 80
+  probabilityToTargetPlayer: 70

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PathList
   m_EditorClassIdentifier: 
   pathPrefabs:
+  - {fileID: 1512379111522927263, guid: 0eea51c946973f64f88b5f79fe97c4d7, type: 3}
   - {fileID: 1512379111522927263, guid: 28a0e316f0a6807468a31783a58d4ef6, type: 3}

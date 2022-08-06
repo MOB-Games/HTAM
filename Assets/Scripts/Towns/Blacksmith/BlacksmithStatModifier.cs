@@ -87,19 +87,19 @@ public class BlacksmithStatModifier : MonoBehaviour
         var stats = _selectedCharacterTownInfo.State.stats;
         var dec = GameManager.GetStatDecrement();
         var inc = GameManager.GetStatIncrement(StatType.Damage, stats.advantage, stats.disadvantage);
-        var maxed = stats.damage.value + inc > _blacksmithInfo.maxDamage;
+        var maxed = stats.damage.value + inc > _blacksmithInfo.maxStat;
         weaponBulkUpButton.interactable = !maxed && stats.speed.value - dec >= 0;
         _weaponBulkUpText.text = weaponBulkUpButton.interactable ? "BULK-UP" : maxed ? "Maxed" : "Blocked";
         
         
         inc = GameManager.GetStatIncrement(StatType.Defense, stats.advantage, stats.disadvantage);
-        maxed = stats.defense.value + inc > _blacksmithInfo.maxDefense;
+        maxed = stats.defense.value + inc > _blacksmithInfo.maxStat;
         armorBulkUpButton.interactable = !maxed && stats.speed.value - dec >= 0;
         _armorBulkUpText.text = armorBulkUpButton.interactable ? "BULK-UP" : maxed ? "Maxed" : "Blocked";
         
         
         inc = GameManager.GetStatIncrement(StatType.Speed, stats.advantage, stats.disadvantage);
-        maxed = stats.speed.value + inc > _blacksmithInfo.maxSpeed;
+        maxed = stats.speed.value + inc > _blacksmithInfo.maxStat;
         weaponStripDownButton.interactable = !maxed && stats.damage.value - dec >= 0;
         _weaponStripDownText.text = weaponStripDownButton.interactable ? "strip-down" : maxed ? "Maxed" : "Blocked";
         
