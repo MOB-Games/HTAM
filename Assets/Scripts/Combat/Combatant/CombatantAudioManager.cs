@@ -39,6 +39,7 @@ public class CombatantAudioManager : MonoBehaviour
 
     private void InitSound(Sound sound)
     {
+        if (sound.audioClip == null) return;
         sound.source = gameObject.AddComponent<AudioSource>();
         sound.source.clip = sound.audioClip;
         sound.source.volume = sound.volume;
