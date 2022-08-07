@@ -32,7 +32,7 @@ public class LevelUpManager : MonoBehaviour
     private TextMeshProUGUI _defenseChangeText;
     private TextMeshProUGUI _speedChangeText;
 
-    private static readonly List<int> ExpForLevel = new() { 0, 40, 100 };
+    private static readonly List<int> ExpForLevel = new() { 0, 25, 125 };
 
     private const int StatPtsPerLevel = 3;
     private const int VitalityPtsPerLevel = 2;

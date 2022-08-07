@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public Skill skipTurnSkill;
     public static GameManager Instance { get; private set; }
 
-    private const int StatIncrement = 3;
+    private const int StatIncrement = 2;
     private const int StatDecrement = 1;
     private const int IncrementChange = 1;
 
