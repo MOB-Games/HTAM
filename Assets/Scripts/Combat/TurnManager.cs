@@ -48,6 +48,7 @@ public class TurnManager : MonoBehaviour
     private void SetTurnOrderForRound()
     {
         _turnOrder = _combatantsSpeed.OrderByDescending(c => c.Value.value)
+            .ThenBy(c => Random.Range(0, 100))
             .Select(c => c.Key).ToList();
     }
 

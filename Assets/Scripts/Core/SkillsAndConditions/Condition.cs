@@ -117,7 +117,7 @@ namespace Core.SkillsAndConditions
         {
             return recurring ? new ConditionEffect()
                 : new ConditionEffect(affectedStat, 
-                    GameManager.CalculateTotalDelta(parametersPerLevel[level].delta,
+                    -GameManager.CalculateTotalDelta(parametersPerLevel[level].delta,
                         parametersPerLevel[level].percentDelta, statBlock.GetStatBaseValue(affectedStat)));
         }
     }

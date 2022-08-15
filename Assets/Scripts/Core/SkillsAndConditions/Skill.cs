@@ -102,7 +102,7 @@ namespace Core.SkillsAndConditions
                 if (affectedStat == StatType.Energy)
                     desc += "s Energy";
                 desc += offensive ? " With " : " by ";
-                var baseValue = MultiplierToPercent(parametersPerLevel[level].baseEffectValue);
+                var baseValue = Math.Abs(parametersPerLevel[level].baseEffectValue);
                 var attackerPercent = MultiplierToPercent(parametersPerLevel[level].attackMultiplier);
                 var defensePercent = MultiplierToPercent(parametersPerLevel[level].defenseMultiplier);
                 if (baseValue != 0)
@@ -129,7 +129,7 @@ namespace Core.SkillsAndConditions
                 else if (offensive)
                     desc += "while ignoring the targets defenses\n";
 
-                desc += $"has a base accuracy of {MultiplierToPercent(parametersPerLevel[level].accuracy)}%";
+                desc += $"has a base accuracy of {parametersPerLevel[level].accuracy}%";
             }
 
             if (_condition != null)
