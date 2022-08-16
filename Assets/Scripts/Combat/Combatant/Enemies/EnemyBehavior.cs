@@ -97,7 +97,7 @@ public class EnemyBehavior : MonoBehaviour
     
     private IEnumerator DelayedSkillChosen(CombatantId targetId, Skill skill, int level)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         CombatEvents.SkillChosen(targetId, skill, level);
     }
 

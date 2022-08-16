@@ -20,6 +20,13 @@ public class ConditionIcon
         ConditionGo = conditionGo;
         Ticks = 0;
     }
+    
+    public ConditionIcon(GameObject conditionGo, ConditionId id, int ticks)
+    {
+        Id = id;
+        ConditionGo = conditionGo;
+        Ticks = ticks;
+    }
 }
 
 public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -73,7 +80,7 @@ public class StatusHub : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             var conditionId = condition.conditionGo.GetComponent<Condition>().id;
             var inst = Instantiate(condition.conditionGo, Vector3.zero, Quaternion.identity, transform);
             inst.transform.localPosition = GetConditionIconLocation(_conditions.Count);
-            _conditions.Add(new ConditionIcon(inst, conditionId));
+            _conditions.Add(new ConditionIcon(inst, conditionId, condition.ticks));
             _levels.Add(condition.level);
         }
     }
