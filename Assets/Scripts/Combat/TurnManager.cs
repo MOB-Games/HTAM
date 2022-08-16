@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Core.Enums;
@@ -52,6 +53,12 @@ public class TurnManager : MonoBehaviour
             .Select(c => c.Key).ToList();
     }
 
+    private IEnumerator DelayedTurnStart()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CombatEvents.StartTurn(_currentTurn);
+    }
+
     private void NextTurn()
     {
         if (_battleFinished) 
@@ -60,7 +67,7 @@ public class TurnManager : MonoBehaviour
             SetTurnOrderForRound();
         _currentTurn = _turnOrder[0];
         _turnOrder.RemoveAt(0);
-        CombatEvents.StartTurn(_currentTurn);
+        StartCoroutine(DelayedTurnStart());
     }
 
     public void SkipTurnFromButton()

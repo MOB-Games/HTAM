@@ -25,7 +25,8 @@ public class ConditionWithLevel
 public class ConditionManager : MonoBehaviour
 {
     [HideInInspector] public List<ConditionWithLevel> conditions = new();
-    
+
+    private bool _myTurn;
     private CombatantId _id;
     private StatBlock _statBlock;
     private CombatantEvents _combatantEvents;
@@ -39,12 +40,18 @@ public class ConditionManager : MonoBehaviour
         CombatEvents.OnSkillUsed += SkillUsed;
         _combatantEvents.OnConditionReflected += Reflection;
         _combatantEvents.OnEndTurn += Tick;
+        CombatEvents.OnStartTurn += TurnStart;
         CombatEvents.OnStartCombat += RegisterCenter;
     }
     
     private void RegisterCenter()
     {
         _center = GetComponent<BoxCollider2D>().bounds.center;
+    }
+
+    private void TurnStart(CombatantId id)
+    {
+        _myTurn = id == _id;
     }
 
     private void ConditionEvoked(Condition condition, int level)
@@ -99,12 +106,15 @@ public class ConditionManager : MonoBehaviour
         _combatantEvents.AddCondition(conditionGo, condition.id, level);
         if (conditionWithLevel == null)
         {
-            conditions.Add(new ConditionWithLevel(conditionGo, condition, level));
+            conditionWithLevel = new ConditionWithLevel(conditionGo, condition, level);
+            conditions.Add(conditionWithLevel);
+            if (_myTurn)
+                conditionWithLevel.ticks--;
             ConditionEvoked(condition, level);
         }
         else
         {
-            conditionWithLevel.ticks = 0;
+            conditionWithLevel.ticks = _myTurn ? -1 : 0;
             StartCoroutine(GameManager.PlayVisualEffect(condition.visualEffect, _center));
         }
     }
@@ -143,6 +153,8 @@ public class ConditionManager : MonoBehaviour
                 ConditionRemoved(i, conditionWithLevel);
             }
         }
+
+        _myTurn = false;
         CombatEvents.EndTurn();
     }
 
@@ -152,5 +164,6 @@ public class ConditionManager : MonoBehaviour
         _combatantEvents.OnConditionReflected -= Reflection;
         _combatantEvents.OnEndTurn -= Tick;
         CombatEvents.OnStartCombat -= RegisterCenter;
+        CombatEvents.OnStartTurn -= TurnStart;
     }
 }

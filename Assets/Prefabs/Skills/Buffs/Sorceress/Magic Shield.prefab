@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4796694792708283170}
   - component: {fileID: 1768222690818782716}
   m_Layer: 0
-  m_Name: Health Transfer
+  m_Name: Magic Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c1d35b40e3fb0f9438f23087432d9765, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f6b8b85cbdc82ce439a41ae3d56d57ee, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minLevel: 3
-  description: 'Transfer hp to an ally '
+  minLevel: 0
+  description: Shield an Ally
   melee: 0
   offensive: 0
   animateAttacked: 0
@@ -143,32 +143,32 @@ MonoBehaviour:
   speedBasedEvasion: 0
   remainingEnergySkill: 0
   deficitSkill: 0
-  energyCost: 0
-  hpCost: 10
-  targetType: 0
+  energyCost: 5
+  hpCost: 0
+  targetType: 3
   skillAnimation: 2
   attackStat: 5
   defenseStat: 5
-  affectedStat: 0
+  affectedStat: 5
   parametersPerLevel:
   - accuracy: 100
-    baseEffectValue: 7
+    baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 0
+    chanceToInflict: 90
   - accuracy: 100
-    baseEffectValue: 10
+    baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 0
+    chanceToInflict: 90
   - accuracy: 100
-    baseEffectValue: 12
+    baseEffectValue: 0
     attackMultiplier: 0
     defenseMultiplier: 0
-    chanceToInflict: 0
-  visualEffect: {fileID: 2135462378506688423, guid: c4091fca83658da49a098e786d812896,
+    chanceToInflict: 90
+  visualEffect: {fileID: 0}
+  conditionGo: {fileID: 4909307490870935864, guid: 651419ad820752840a4914a530033aba,
     type: 3}
-  conditionGo: {fileID: 0}
   conditionRemover: {fileID: 0}
   audioSource: {fileID: 0}
   hasAudio: 0

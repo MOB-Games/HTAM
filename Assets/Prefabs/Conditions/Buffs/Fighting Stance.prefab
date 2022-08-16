@@ -104,13 +104,13 @@ MonoBehaviour:
   affectedStat: 2
   visualEffect: {fileID: 0}
   parametersPerLevel:
-  - duration: 2
+  - duration: 1
     delta: 7
     percentDelta: 15
-  - duration: 2
+  - duration: 1
     delta: 10
     percentDelta: 18
-  - duration: 2
+  - duration: 1
     delta: 12
     percentDelta: 25
 --- !u!61 &4578075450960214653

@@ -33,5 +33,6 @@ namespace Core.Enums
         Poisoned,
         FightingStance,
         Haste,
+        MagicShield,
     }
 }

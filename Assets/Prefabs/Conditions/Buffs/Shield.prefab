@@ -106,13 +106,13 @@ MonoBehaviour:
     type: 3}
   parametersPerLevel:
   - duration: 3
-    delta: 2
+    delta: 5
     percentDelta: 10
   - duration: 3
-    delta: 5
+    delta: 7
     percentDelta: 15
   - duration: 3
-    delta: 7
+    delta: 10
     percentDelta: 20
 --- !u!61 &4578075450960214653
 BoxCollider2D:
