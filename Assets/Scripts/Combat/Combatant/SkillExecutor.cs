@@ -83,8 +83,8 @@ public class SkillExecutor : MonoBehaviour
             {
                 var vfx = _passiveSkills.ActivateOffensivePassiveSkills(result);
                 StartCoroutine(GameManager.PlayVisualEffect(vfx, transform.position));
-                CombatEvents.SkillUsed(id, result);
             }
+            CombatEvents.SkillUsed(id, result);
         }
         yield return new WaitForSeconds(0.8f);
         if (skill.melee)

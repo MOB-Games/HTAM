@@ -288,14 +288,14 @@ MonoBehaviour:
       baseValue: 30
       value: 30
     damage:
-      baseValue: 17
-      value: 17
+      baseValue: 11
+      value: 11
     defense:
-      baseValue: 5
-      value: 5
+      baseValue: 4
+      value: 4
     speed:
-      baseValue: 10
-      value: 10
+      baseValue: 13
+      value: 13
 --- !u!114 &1034969609046894467
 MonoBehaviour:
   m_ObjectHideFlags: 0

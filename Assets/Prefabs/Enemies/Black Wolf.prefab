@@ -296,20 +296,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     hp:
+      baseValue: 30
+      value: 30
+    energy:
       baseValue: 25
       value: 25
-    energy:
-      baseValue: 10
-      value: 10
     damage:
-      baseValue: 12
-      value: 12
+      baseValue: 9
+      value: 9
     defense:
-      baseValue: 3
-      value: 3
+      baseValue: 1
+      value: 1
     speed:
-      baseValue: 14
-      value: 14
+      baseValue: 15
+      value: 15
 --- !u!114 &3599002060879211868
 MonoBehaviour:
   m_ObjectHideFlags: 0

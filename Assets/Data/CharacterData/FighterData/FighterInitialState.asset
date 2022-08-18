@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHp: 40
   initialEnergy: 30
-  initialDamage: 18
+  initialDamage: 14
   initialDefense: 4
-  initialSpeed: 11
+  initialSpeed: 10
   initialSkills:
   - {fileID: 11400000, guid: 5417adb40ee264e4388244e855a5994f, type: 2}
   - {fileID: 11400000, guid: 0cbd58913ffc96542aaca13cd5956a7c, type: 2}

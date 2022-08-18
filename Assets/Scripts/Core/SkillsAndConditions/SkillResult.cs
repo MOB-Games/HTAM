@@ -18,11 +18,11 @@ namespace Core.SkillsAndConditions
         [CanBeNull] public GameObject Condition;
         [CanBeNull] public readonly ConditionRemover ConditionRemover;
 
-        public SkillResult()
+        public SkillResult(bool melee)
         {
             Hit = false;
             AnimateAttacked = false;
-            Melee = false;
+            Melee = melee;
             AffectedStat = StatType.None;
             Delta = 0;
             Level = ConditionLevel = 0;

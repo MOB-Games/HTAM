@@ -22,34 +22,31 @@ public class TurnManager : MonoBehaviour
 
     private void StartCombat()
     {
-        // getting active party members
-        foreach (var id in new List<CombatantId>()
-                 { CombatantId.Player, CombatantId.PartyMemberTop, CombatantId.PartyMemberBottom })
+        var ids = new List<CombatantId>()
         {
-            try
-            { _combatantsSpeed.Add(id, CombatantInfo.GetStatBlock(id).speed); }
-            catch (KeyNotFoundException)
-            { /*ignored*/ }
-        }
-        // getting enemies
-        foreach (var id in new List<CombatantId>()
-                 { CombatantId.EnemyCenter, CombatantId.EnemyTop, CombatantId.EnemyBottom })
+            CombatantId.Player, CombatantId.PartyMemberTop, CombatantId.PartyMemberBottom, CombatantId.EnemyCenter,
+            CombatantId.EnemyTop, CombatantId.EnemyBottom
+        };
+        ids = ids.OrderBy(x => Random.Range(0, 100)).ToList();
+
+        foreach (var id in ids)
         {
             try
             {
                 _combatantsSpeed.Add(id, CombatantInfo.GetStatBlock(id).speed);
-                _numEnemies++;
+                if (id is CombatantId.EnemyBottom or CombatantId.EnemyCenter or CombatantId.EnemyTop)
+                    _numEnemies++;
             }
             catch (KeyNotFoundException)
             { /*ignored*/ }
         }
+
         NextTurn();
     }
 
     private void SetTurnOrderForRound()
     {
         _turnOrder = _combatantsSpeed.OrderByDescending(c => c.Value.value)
-            .ThenBy(c => Random.Range(0, 100))
             .Select(c => c.Key).ToList();
     }
 

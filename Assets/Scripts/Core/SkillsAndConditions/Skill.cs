@@ -223,7 +223,7 @@ namespace Core.SkillsAndConditions
             if (speedBasedEvasion)
                 chanceToHit -= defenderStats.speed.value;
             if (Random.Range(0, 100) > chanceToHit)
-                return new SkillResult();
+                return new SkillResult(melee);
 
             int attackerBaseValue;
             if (deficitSkill)

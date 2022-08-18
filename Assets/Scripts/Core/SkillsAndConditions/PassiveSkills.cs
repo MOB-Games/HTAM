@@ -54,7 +54,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
         public DefensivePassiveSkillsResult ActivateDefensivePassiveSkills(SkillResult incomingSkill, int damage)
         {
             var result = new DefensivePassiveSkillsResult();
-            if (incomingSkill.AffectedStat != StatType.Hp || incomingSkill.Delta >= 0)
+            if (incomingSkill.AffectedStat == StatType.Energy || incomingSkill.Delta > 0)
                 return result;
             // can only reflect melee attacks that target hp
             if (incomingSkill.Melee)
@@ -65,7 +65,7 @@ namespace Core.SkillsAndConditions.PassiveSkills
                 {
                     result.vfx = damageReflectorVFX;
                     reflectedDamage = damageReflector.percentOfIncomingDamage / 100 * incomingSkill.Delta;
-                    if (reflectedDamage != 0)
+                    if (reflectedDamage != 0 && incomingSkill.Hit)
                         incomingSkill.Delta += reflectedDamage;
                     else
                         reflectedDamage = (int)damageReflector.damageMultiplier / 100 * damage;
