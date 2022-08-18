@@ -14,24 +14,15 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     public TextMeshProUGUI defenseChangeText;
     public TextMeshProUGUI speedChangeText;
     
-    private BlacksmithInfo _blacksmithInfo;
     private StatType _advantage = StatType.None;
     private StatType _disadvantage = StatType.None;
-    private IntegerVariable _gold;
 
     private void Start()
     {
-        _gold = GameManager.Instance.gold;
-        TownEvents.OnPublishTownInfo += RegisterBlacksmithInfo;
         TownEvents.OnOpenBlacksmith += RegisterForSelectedCharacter;
         TownEvents.OnCloseBlacksmith += UnregisterForSelectedCharacter;
     }
-    
-    private void RegisterBlacksmithInfo(TownInfo townInfo, bool _, string __)
-    {
-        _blacksmithInfo = townInfo.blacksmithInfo;
-    }
-    
+
     private void RegisterForSelectedCharacter()
     {
         TownEvents.OnCharacterSelected += CharacterSelected;
@@ -86,7 +77,6 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
 
     private void OnDestroy()
     {
-        TownEvents.OnPublishTownInfo -= RegisterBlacksmithInfo;
         TownEvents.OnOpenBlacksmith -= RegisterForSelectedCharacter;
         TownEvents.OnCloseBlacksmith -= UnregisterForSelectedCharacter;
     }

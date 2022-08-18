@@ -70,10 +70,6 @@ public class SkillExecutor : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         _combatantEvents.AnimateSkill(skill.skillAnimation);
-        if (skill.hasAudio)
-        {
-            skill.audioSource!.Play();
-        }
         yield return new WaitForSeconds(0.15f);
         foreach (var  id in GetAllTargets(targetId, skill.targetType))
         {

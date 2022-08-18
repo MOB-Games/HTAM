@@ -105,7 +105,7 @@ public class BlacksmithStatModifier : MonoBehaviour
         
         
         armorStripDownButton.interactable = !maxed && stats.defense.value - dec >= 0;
-        _weaponStripDownText.text = weaponStripDownButton.interactable ? "strip-down" : maxed ? "Maxed" : "Blocked";
+        _armorStripDownText.text = armorStripDownButton.interactable ? "strip-down" : maxed ? "Maxed" : "Blocked";
     }
 
     private void IncStat(StatType statType, StatSO stat)

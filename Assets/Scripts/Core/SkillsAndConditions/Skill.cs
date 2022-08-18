@@ -49,11 +49,6 @@ namespace Core.SkillsAndConditions
         [CanBeNull] public GameObject conditionGo;
         [CanBeNull] public ConditionRemover conditionRemover;
 
-        [HideInInspector]
-        [CanBeNull] public AudioSource audioSource;
-        [HideInInspector]
-        public bool hasAudio;
-        
         [CanBeNull] private Condition _condition;
 
         private void OnValidate()
@@ -79,8 +74,6 @@ namespace Core.SkillsAndConditions
         {
             if (conditionGo != null)
                 _condition = conditionGo.GetComponent<Condition>();
-            audioSource = GetComponent<AudioSource>();
-            hasAudio = audioSource != null;
         }
 
         public override string GetDescription(int level)
