@@ -8,7 +8,8 @@ public class GameSaverAndLoader : MonoBehaviour
     public CharacterDB characterDB;
     public GameProgress gameProgress;
     public SaveSlots saveSlots;
-    public GameObject ruSure;
+    public GameObject ruSureSave;
+    public GameObject ruSureLoad;
 
     private SaveSlot _selectedSaveSlot;
 
@@ -18,7 +19,7 @@ public class GameSaverAndLoader : MonoBehaviour
         {
             _selectedSaveSlot = saveSlots.saveSlots[saveSlotIndex];
             if (_selectedSaveSlot.full)
-                ruSure.SetActive(true);
+                ruSureSave.SetActive(true);
             else 
                 Save();
         }
@@ -27,15 +28,15 @@ public class GameSaverAndLoader : MonoBehaviour
                 $"{saveSlotIndex} is not a valid save slot index. Only -1, 0, 1, 2 are allowed");
     }
 
-    public void Sure()
+    public void YesSave()
     {
         Save();
-        ruSure.SetActive(false);
+        ruSureSave.SetActive(false);
     }
 
-    public void NotSure()
+    public void NoSave()
     {
-        ruSure.SetActive(false);
+        ruSureSave.SetActive(false);
     }
 
     private void Save()
@@ -57,17 +58,33 @@ public class GameSaverAndLoader : MonoBehaviour
     {
         if (saveSlotIndex is 0 or 1 or 2)
         {
-            var savedSlot = saveSlots.saveSlots[saveSlotIndex];
-            if (!savedSlot.full)
+            _selectedSaveSlot = saveSlots.saveSlots[saveSlotIndex];
+            if (!_selectedSaveSlot.full)
             {
                 throw new DataMisalignedException("There is no saves state in this save slot");
             }
-            gameProgress.Init(savedSlot);
-            GameManager.Instance.gold.value = savedSlot.gold;
-            characterDB.Init(savedSlot);
+            ruSureLoad.SetActive(true);
         }
         else
             throw new IndexOutOfRangeException(
                 $"{saveSlotIndex} is not a valid save slot index. Only -1, 0, 1, 2 are allowed");
+    }
+    
+    public void YesLoad()
+    {
+        Load();
+        ruSureLoad.SetActive(false);
+    }
+
+    public void NoLoad()
+    {
+        ruSureLoad.SetActive(false);
+    }
+
+    private void Load()
+    {
+        gameProgress.Init(_selectedSaveSlot);
+        GameManager.Instance.gold.value = _selectedSaveSlot.gold;
+        characterDB.Init(_selectedSaveSlot);
     }
 }

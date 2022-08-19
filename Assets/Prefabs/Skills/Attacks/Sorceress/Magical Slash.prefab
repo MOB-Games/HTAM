@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 0
   description: Reinforce your sword with magic and attack
   melee: 1
   offensive: 1
@@ -152,17 +153,17 @@ MonoBehaviour:
   parametersPerLevel:
   - accuracy: 90
     baseEffectValue: -5
-    attackMultiplier: -1
+    attackMultiplier: -1.15
     defenseMultiplier: 1
     chanceToInflict: 0
   - accuracy: 90
     baseEffectValue: -10
-    attackMultiplier: -1
+    attackMultiplier: -1.25
     defenseMultiplier: 1
     chanceToInflict: 0
   - accuracy: 90
     baseEffectValue: -15
-    attackMultiplier: -1
+    attackMultiplier: -1.5
     defenseMultiplier: 1
     chanceToInflict: 0
   visualEffect: {fileID: 0}

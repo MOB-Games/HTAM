@@ -19,12 +19,6 @@ namespace Core.DataTypes
             skillGo = gameObject;
             level = lvl;
         }
-
-        public SkillWithLevel(SkillWithLevel skillWithLevel)
-        {
-            skillGo = skillWithLevel.skillGo;
-            level = skillWithLevel.level;
-        }
     }
 
     [CreateAssetMenu]

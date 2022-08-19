@@ -37,9 +37,9 @@ namespace Core.DataTypes
             {
                 skills.Add(new SkillWithLevel(skillTreeNode.skillWithLevel.skillGo, skillTreeNode.skillWithLevel.level));
             }
-
+            
             skills = state.skillTree.GetComponentsInChildren<SkillTreeNode>().Select(stn =>
-                new SkillWithLevel(stn.skillWithLevel)).ToList();
+                new SkillWithLevel(stn.skillWithLevel.skillGo, stn.level.value)).ToList();
         }
     }
 
@@ -70,7 +70,7 @@ namespace Core.DataTypes
     [CreateAssetMenu]
     public class SaveSlots : ScriptableObject
     {
-        public readonly List<SaveSlot> saveSlots = new(3)
+        public List<SaveSlot> saveSlots = new(3)
         {
             new SaveSlot(), new SaveSlot(), new SaveSlot()
         };
