@@ -10,11 +10,23 @@ public class TownUIWindowManager : MonoBehaviour, IPointerEnterHandler, IPointer
     public GameObject characterButton;
     public GameObject toolTip;
     
-    private bool _open;
+    private bool _windowOpen;
     
     private void Start()
     {
         TownEvents.OnLoadedCharacters += SetUpSelectButtons;
+        
+        TownEvents.OnOpenSignpost += WindowWasOpened;
+        TownEvents.OnOpenInn += WindowWasOpened;
+        TownEvents.OnOpenShop += WindowWasOpened;
+        TownEvents.OnOpenBlacksmith += WindowWasOpened;
+        TownEvents.OnOpenMenu += WindowWasOpened;
+        
+        TownEvents.OnCloseSignpost += WindowWasClosed;
+        TownEvents.OnCloseInn += WindowWasClosed;
+        TownEvents.OnCloseShop += WindowWasClosed;
+        TownEvents.OnCloseBlacksmith += WindowWasClosed;
+        TownEvents.OnCloseMenu += WindowWasClosed;
     }
     
     private void SetUpSelectButtons(List<CharacterTownInfo> characterTownInfos)
@@ -37,19 +49,27 @@ public class TownUIWindowManager : MonoBehaviour, IPointerEnterHandler, IPointer
     
     public void Open()
     {
-        _open = true;
         parentScreen.SetActive(true);
     }
     
     public void Close()
     {
-        _open = false;
         parentScreen.SetActive(false);
+    }
+
+    private void WindowWasOpened()
+    {
+        _windowOpen = true;
+    }
+
+    private void WindowWasClosed()
+    {
+        _windowOpen = false;
     }
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(!_open)
+        if(!_windowOpen)
             toolTip.SetActive(true);
     }
 
@@ -61,5 +81,17 @@ public class TownUIWindowManager : MonoBehaviour, IPointerEnterHandler, IPointer
     private void OnDestroy()
     {
         TownEvents.OnLoadedCharacters -= SetUpSelectButtons;
+        
+        TownEvents.OnOpenSignpost -= WindowWasOpened;
+        TownEvents.OnOpenInn -= WindowWasOpened;
+        TownEvents.OnOpenShop -= WindowWasOpened;
+        TownEvents.OnOpenBlacksmith -= WindowWasOpened;
+        TownEvents.OnOpenMenu -= WindowWasOpened;
+        
+        TownEvents.OnCloseSignpost -= WindowWasClosed;
+        TownEvents.OnCloseInn -= WindowWasClosed;
+        TownEvents.OnCloseShop -= WindowWasClosed;
+        TownEvents.OnCloseBlacksmith -= WindowWasClosed;
+        TownEvents.OnCloseMenu -= WindowWasClosed;
     }
 }

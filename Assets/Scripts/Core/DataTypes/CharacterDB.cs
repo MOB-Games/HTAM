@@ -12,6 +12,12 @@ namespace Core.DataTypes
     {
         public GameObject prefab;
         public bool available;
+
+        public CharacterGameInfo(GameObject go, bool isAvailable)
+        {
+            prefab = go;
+            available = isAvailable;
+        }
     }
     
     [CreateAssetMenu]
@@ -44,6 +50,20 @@ namespace Core.DataTypes
             playerPrefab = player;
             partyMemberTopPrefab = null;
             partyMemberBottomPrefab = null;
+        }
+
+        public void Init(SaveSlot saveSlot)
+        {
+            characterGameInfos = saveSlot.characterGameInfos
+                .Select(cs => new CharacterGameInfo(cs.prefab, cs.available))
+                .ToList();
+
+            for (var i = 0; i < 5; i++)
+                characterStates[i].Init(saveSlot.characterStates[i]);
+
+            playerPrefab = saveSlot.playerPrefab;
+            partyMemberBottomPrefab = saveSlot.partyMemberBottomPrefab;
+            partyMemberTopPrefab = saveSlot.partyMemberTopPrefab;
         }
     }
 }

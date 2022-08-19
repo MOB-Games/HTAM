@@ -10,10 +10,19 @@ namespace Core.DataTypes
         public int lastTown;
         public int maxClearedPath;
 
-        public void Init()
+        public void Init(SaveSlot saveSlot = null)
         {
-             currentPath = lastTown = 0;
-             maxClearedPath = currentStage =-1;
+            if (saveSlot == null)
+            {
+                 currentPath = lastTown = 0;
+                 maxClearedPath = currentStage =-1;
+            }
+            else
+            {
+                currentPath = lastTown = saveSlot.currentPath;
+                maxClearedPath = saveSlot.maxClearedPath;
+                currentStage = -1;
+            }
         }
     }
 }

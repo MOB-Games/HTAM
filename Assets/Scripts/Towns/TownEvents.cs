@@ -14,6 +14,8 @@ public static class TownEvents
     public static event Action OnCloseShop;
     public static event Action OnOpenBlacksmith;
     public static event Action OnCloseBlacksmith;
+    public static event Action OnOpenMenu;
+    public static event Action OnCloseMenu;
     public static event Action<CharacterTownInfo> OnCharacterSelected;
     public static event Action<int> OnGoldSpent;
     public static event Action<StatType, int> OnStatChange;
@@ -70,6 +72,16 @@ public static class TownEvents
     public static void CloseBlacksmith()
     {
         OnCloseBlacksmith?.Invoke();
+    }
+    
+    public static void OpenMenu()
+    {
+        OnOpenMenu?.Invoke();
+    }
+    
+    public static void CloseMenu()
+    {
+        OnCloseMenu?.Invoke();
     }
     
     public static void CharacterSelected(CharacterTownInfo characterTownInfo)

@@ -4,31 +4,26 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
-    private readonly List<Button> _buttons = new();
+    public List<Button> buttons = new();
 
     private void Start()
     {
-        foreach (Transform child in transform)
-        {
-            var button = child.gameObject.GetComponent<Button>();
-            if (button != null)
-                _buttons.Add(button);
-        }
-
         TownEvents.OnOpenSignpost += DisableButtons;
         TownEvents.OnOpenInn += DisableButtons;
         TownEvents.OnOpenShop += DisableButtons;
         TownEvents.OnOpenBlacksmith += DisableButtons;
+        TownEvents.OnOpenMenu += DisableButtons;
         
         TownEvents.OnCloseSignpost += EnableButtons;
         TownEvents.OnCloseInn += EnableButtons;
         TownEvents.OnCloseShop += EnableButtons;
         TownEvents.OnCloseBlacksmith += EnableButtons;
+        TownEvents.OnCloseMenu += EnableButtons;
     }
 
     private void DisableButtons()
     {
-        foreach (var button in _buttons)
+        foreach (var button in buttons)
         {
             button.interactable = false;
         }
@@ -36,7 +31,7 @@ public class ButtonManager : MonoBehaviour
     
     private void EnableButtons()
     {
-        foreach (var button in _buttons)
+        foreach (var button in buttons)
         {
             button.interactable = true;
         }
@@ -48,10 +43,12 @@ public class ButtonManager : MonoBehaviour
         TownEvents.OnOpenInn -= DisableButtons;
         TownEvents.OnOpenShop -= DisableButtons;
         TownEvents.OnOpenBlacksmith -= DisableButtons;
+        TownEvents.OnOpenMenu -= DisableButtons;
         
         TownEvents.OnCloseSignpost -= EnableButtons;
         TownEvents.OnCloseInn -= EnableButtons;
         TownEvents.OnCloseShop -= EnableButtons;
         TownEvents.OnCloseBlacksmith -= EnableButtons;
+        TownEvents.OnCloseMenu -= EnableButtons;
     }
 }

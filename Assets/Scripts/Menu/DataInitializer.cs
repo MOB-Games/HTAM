@@ -1,3 +1,4 @@
+using System;
 using Core.DataTypes;
 using UnityEngine;
 
@@ -6,10 +7,8 @@ using UnityEngine;
 public class DataInitializer : MonoBehaviour
 {
     public CharacterDB characterDB;
-    public PathList pathList;
     public GameProgress gameProgress;
-    public GameObject playerSelector;
-
+    public SaveSlots saveSlots;
     private GameObject _player;
 
     private void Start()
@@ -23,20 +22,31 @@ public class DataInitializer : MonoBehaviour
         _player = player;
     }
 
-    public void InitializeData()
+    public void InitializeData(int saveSlotIndex)
     {
-        GameManager.Instance.gold.value = 0;
-        characterDB.Init(_player);
-    }
-
-    public void OpenPlayerSelector()
-    {
-        playerSelector.SetActive(true);
-    }
-    
-    public void ClosePlayerSelector()
-    {
-        playerSelector.SetActive(false);
+        switch (saveSlotIndex)
+        {
+            case -1:
+                gameProgress.Init();
+                GameManager.Instance.gold.value = 0;
+                characterDB.Init(_player);
+                break;
+            case 0 or 1 or 2:
+            {
+                var savedSlot = saveSlots.saveSlots[saveSlotIndex];
+                if (!savedSlot.full)
+                {
+                    throw new DataMisalignedException("There is no saves state in this save slot");
+                }
+                gameProgress.Init(savedSlot);
+                GameManager.Instance.gold.value = savedSlot.gold;
+                characterDB.Init(savedSlot);
+                break;
+            }
+            default:
+                throw new IndexOutOfRangeException(
+                    $"{saveSlotIndex} is not a valid save slot index. Only -1, 0, 1, 2 are allowed");
+        }
     }
 
     private void OnDestroy()

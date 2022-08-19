@@ -14,9 +14,6 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     public TextMeshProUGUI defenseChangeText;
     public TextMeshProUGUI speedChangeText;
     
-    private StatType _advantage = StatType.None;
-    private StatType _disadvantage = StatType.None;
-
     private void Start()
     {
         TownEvents.OnOpenBlacksmith += RegisterForSelectedCharacter;
@@ -31,8 +28,6 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     private void CharacterSelected(CharacterTownInfo characterTownInfo)
     {
         var stats = characterTownInfo.State.stats;
-        _advantage = stats.advantage;
-        _disadvantage = stats.disadvantage;
     }
     
     private void UnregisterForSelectedCharacter()
@@ -50,29 +45,29 @@ public class BlacksmithStatChangePresenter : MonoBehaviour
     public void BulkUpWeapon()
     {
         if(!weaponBulkUpButton.interactable) return;
-        damageChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Damage, _advantage, _disadvantage)}";
-        speedChangeText.text = $"-{GameManager.GetStatDecrement()}";
+        damageChangeText.text = $"+2";
+        speedChangeText.text = $"-1";
     }
 
     public void StripDownWeapon()
     {
         if(!weaponStripDownButton.interactable) return;
-        speedChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Speed, _advantage, _disadvantage)}";
-        damageChangeText.text = $"-{GameManager.GetStatDecrement()}";
+        speedChangeText.text = $"+2";
+        damageChangeText.text = $"-1";
     }
     
     public void BulkUpArmor()
     {
         if(!armorBulkUpButton.interactable) return;
-        defenseChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Defense, _advantage, _disadvantage)}";
-        speedChangeText.text = $"-{GameManager.GetStatDecrement()}";
+        defenseChangeText.text = $"+2";
+        speedChangeText.text = $"-1";
     }
 
     public void StripDownArmor()
     {
         if(!armorStripDownButton.interactable) return;
-        speedChangeText.text = $"+{GameManager.GetStatIncrement(StatType.Speed, _advantage, _disadvantage)}";
-        defenseChangeText.text = $"-{GameManager.GetStatDecrement()}";
+        speedChangeText.text = $"+2";
+        defenseChangeText.text = $"-1";
     }
 
     private void OnDestroy()

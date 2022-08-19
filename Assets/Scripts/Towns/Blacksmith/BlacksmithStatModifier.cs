@@ -108,19 +108,16 @@ public class BlacksmithStatModifier : MonoBehaviour
         _armorStripDownText.text = armorStripDownButton.interactable ? "strip-down" : maxed ? "Maxed" : "Blocked";
     }
 
-    private void IncStat(StatType statType, StatSO stat)
+    private static void IncStat(StatType statType, StatSO stat)
     {
-        var stats = _selectedCharacterTownInfo.State.stats;
-        var inc = GameManager.GetStatIncrement(statType, stats.advantage, stats.disadvantage);
-        stat.value += inc;
-        stat.baseValue += inc;
+        stat.value += 2;
+        stat.baseValue += 2;
     }
     
-    private void DecStat(StatSO stat)
+    private static void DecStat(StatSO stat)
     {
-        var dec = GameManager.GetStatDecrement();
-        stat.value -= dec;
-        stat.baseValue -= dec;
+        stat.value -= 1;
+        stat.baseValue -= 1;
     }
 
     private void ModifyStats(StatType statToIncType, StatSO statToInc, StatSO statToDec)

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Core.SkillsAndConditions;
 using Core.SkillsAndConditions.PassiveSkills;
 using Core.Stats;
@@ -13,10 +14,16 @@ namespace Core.DataTypes
         public GameObject skillGo;
         public int level;
 
-        public SkillWithLevel(GameObject gameObject = null)
+        public SkillWithLevel(GameObject gameObject = null, int lvl = 0)
         {
             skillGo = gameObject;
-            level = 0;
+            level = lvl;
+        }
+
+        public SkillWithLevel(SkillWithLevel skillWithLevel)
+        {
+            skillGo = skillWithLevel.skillGo;
+            level = skillWithLevel.level;
         }
     }
 
@@ -69,9 +76,39 @@ namespace Core.DataTypes
             conditions.Clear();
             level = 0;
             exp = 0;
-            InitSkills();
-            
             passiveSkills.Init();
+            InitSkills();
+        }
+
+        public void Init(CharacterSaveState saveState)
+        {
+            stats.SaveStats(saveState.stats);
+            conditions.Clear();
+            level = saveState.level;
+            exp = saveState.exp;
+            passiveSkills = saveState.passiveSkills.Copy();
+            activeOffensiveSkills.Clear();
+            activeDefensiveSkills.Clear();
+
+            foreach (var skillTreeNode in skillTree.GetComponentsInChildren<SkillTreeNode>())
+            {
+                var savedSkill = saveState.skills.Find(s => s.skillGo == skillTreeNode.skillWithLevel.skillGo);
+                skillTreeNode.level.value = savedSkill.level;
+                skillTreeNode.skillWithLevel.level = savedSkill.level;
+                
+                if (saveState.activeOffensiveSkills.Any(s => s.skillGo == skillTreeNode.skillWithLevel.skillGo))
+                    activeOffensiveSkills.Add(skillTreeNode.skillWithLevel);
+                else if (saveState.activeDefensiveSkills.Any(s => s.skillGo == skillTreeNode.skillWithLevel.skillGo))
+                    activeDefensiveSkills.Add(skillTreeNode.skillWithLevel);
+            }
+
+            activeDefensiveSkills = activeDefensiveSkills.OrderBy(s =>
+                saveState.activeDefensiveSkills.IndexOf(
+                    saveState.activeDefensiveSkills.Find(s2 => s2.skillGo == s.skillGo))).ToList();
+            
+            activeOffensiveSkills = activeOffensiveSkills.OrderBy(s =>
+                saveState.activeOffensiveSkills.IndexOf(
+                    saveState.activeOffensiveSkills.Find(s2 => s2.skillGo == s.skillGo))).ToList();
         }
     }
 }
