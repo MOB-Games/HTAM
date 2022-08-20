@@ -5182,7 +5182,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1758856168}
         m_TargetAssemblyTypeName: GameSaverAndLoader, Assembly-CSharp
-        m_MethodName: YesSave
+        m_MethodName: Sure
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5677,9 +5677,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856168}
-        m_TargetAssemblyTypeName: GameSaverAndLoader, Assembly-CSharp
-        m_MethodName: YesLoad
+      - m_Target: {fileID: 1758856172}
+        m_TargetAssemblyTypeName: GameLoader, Assembly-CSharp
+        m_MethodName: Sure
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6493,9 +6493,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856167}
-        m_TargetAssemblyTypeName: TownMenuManager, Assembly-CSharp
-        m_MethodName: ReturnToMenu
+      - m_Target: {fileID: 1758856173}
+        m_TargetAssemblyTypeName: ReturnToMenu, Assembly-CSharp
+        m_MethodName: Return
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8454,8 +8454,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856168}
-        m_TargetAssemblyTypeName: GameSaverAndLoader, Assembly-CSharp
+      - m_Target: {fileID: 1758856172}
+        m_TargetAssemblyTypeName: GameLoader, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 3
         m_Arguments:
@@ -18069,6 +18069,9 @@ GameObject:
   - component: {fileID: 1758856171}
   - component: {fileID: 1758856167}
   - component: {fileID: 1758856168}
+  - component: {fileID: 1758856172}
+  - component: {fileID: 1758856173}
+  - component: {fileID: 1758856174}
   - component: {fileID: 1758856170}
   - component: {fileID: 1758856169}
   m_Layer: 0
@@ -18091,7 +18094,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuGo: {fileID: 426115979}
-  loadSlotSelector: {fileID: 284847335}
   saveSlotSelector: {fileID: 287064335}
 --- !u!114 &1758856168
 MonoBehaviour:
@@ -18108,8 +18110,7 @@ MonoBehaviour:
   characterDB: {fileID: 11400000, guid: a5d4a2915f33b1e46b79f2141bf6e26c, type: 2}
   gameProgress: {fileID: 11400000, guid: 2a17cb0ab18c24c4fac94a8cb8dad114, type: 2}
   saveSlots: {fileID: 11400000, guid: ec34f3a7e0f08b5448de6d05015041cc, type: 2}
-  ruSureSave: {fileID: 1114241959}
-  ruSureLoad: {fileID: 191656996}
+  ruSure: {fileID: 1114241959}
 --- !u!114 &1758856169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18169,6 +18170,47 @@ RectTransform:
   m_AnchoredPosition: {x: -10.720034, y: -9.377914}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1758856172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758856165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2184738de8ff7d7448ad4438956a3e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDB: {fileID: 11400000, guid: a5d4a2915f33b1e46b79f2141bf6e26c, type: 2}
+  gameProgress: {fileID: 11400000, guid: 2a17cb0ab18c24c4fac94a8cb8dad114, type: 2}
+  saveSlots: {fileID: 11400000, guid: ec34f3a7e0f08b5448de6d05015041cc, type: 2}
+  ruSure: {fileID: 191656996}
+--- !u!114 &1758856173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758856165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebd396e5163cb649884ab4a746ff5a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1758856174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1758856165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b510eda2c9d45ac47af132b732892bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadSlotSelector: {fileID: 284847335}
 --- !u!1 &1766663511
 GameObject:
   m_ObjectHideFlags: 0
@@ -18390,7 +18432,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1758856168}
         m_TargetAssemblyTypeName: GameSaverAndLoader, Assembly-CSharp
-        m_MethodName: NoSave
+        m_MethodName: NotSure
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -18522,8 +18564,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856168}
-        m_TargetAssemblyTypeName: GameSaverAndLoader, Assembly-CSharp
+      - m_Target: {fileID: 1758856172}
+        m_TargetAssemblyTypeName: GameLoader, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 3
         m_Arguments:
@@ -18704,8 +18746,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856167}
-        m_TargetAssemblyTypeName: TownMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 1758856174}
+        m_TargetAssemblyTypeName: LoadSelectorManager, Assembly-CSharp
         m_MethodName: OpenLoadSlotSelector
         m_Mode: 1
         m_Arguments:
@@ -19614,9 +19656,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856168}
-        m_TargetAssemblyTypeName: GameSaverAndLoader, Assembly-CSharp
-        m_MethodName: NoLoad
+      - m_Target: {fileID: 1758856172}
+        m_TargetAssemblyTypeName: GameLoader, Assembly-CSharp
+        m_MethodName: NotSure
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19748,8 +19790,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856168}
-        m_TargetAssemblyTypeName: GameSaverAndLoader, Assembly-CSharp
+      - m_Target: {fileID: 1758856172}
+        m_TargetAssemblyTypeName: GameLoader, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 3
         m_Arguments:
@@ -22689,8 +22731,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1758856167}
-        m_TargetAssemblyTypeName: TownMenuManager, Assembly-CSharp
+      - m_Target: {fileID: 1758856174}
+        m_TargetAssemblyTypeName: LoadSelectorManager, Assembly-CSharp
         m_MethodName: CloseLoadSlotSelector
         m_Mode: 1
         m_Arguments:

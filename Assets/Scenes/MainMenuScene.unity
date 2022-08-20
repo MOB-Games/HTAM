@@ -444,6 +444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 141131580}
   - component: {fileID: 141131579}
+  - component: {fileID: 141131581}
   m_Layer: 0
   m_Name: MenuGameObject
   m_TagString: Untagged
@@ -464,7 +465,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSelector: {fileID: 574761445}
-  loadSlotSelector: {fileID: 1594034667}
 --- !u!4 &141131580
 Transform:
   m_ObjectHideFlags: 0
@@ -480,6 +480,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &141131581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141131578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b510eda2c9d45ac47af132b732892bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadSlotSelector: {fileID: 1593198822}
 --- !u!1 &151262302
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,8 +1497,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 141131579}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 141131581}
+        m_TargetAssemblyTypeName: LoadSelectorManager, Assembly-CSharp
         m_MethodName: CloseLoadSlotSelector
         m_Mode: 1
         m_Arguments:
@@ -3495,8 +3508,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 141131579}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 141131581}
+        m_TargetAssemblyTypeName: LoadSelectorManager, Assembly-CSharp
         m_MethodName: OpenLoadSlotSelector
         m_Mode: 1
         m_Arguments:
