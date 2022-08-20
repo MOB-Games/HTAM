@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90ef5011a58e8c4889d97f47bf4bd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expDrop: 10
-  goldDrop: 0
+  expDrop: 20
+  goldDrop: 20
 --- !u!114 &6580720188609057905
 MonoBehaviour:
   m_ObjectHideFlags: 0

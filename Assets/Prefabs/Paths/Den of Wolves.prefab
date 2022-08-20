@@ -85,5 +85,5 @@ MonoBehaviour:
     blacksmithSprite: {fileID: 21300000, guid: 11b3014dd1e13ad44a75d7356134fa3b, type: 3}
     shopSprite: {fileID: 21300000, guid: 87ed8e09a47f8b4408936f70549c9ffd, type: 3}
     blacksmithInfo:
-      price: 12
-      maxStat: 15
+      price: 10
+      maxStat: 12

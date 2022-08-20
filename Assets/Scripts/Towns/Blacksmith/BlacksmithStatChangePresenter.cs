@@ -1,5 +1,3 @@
-using Core.DataTypes;
-using Core.Enums;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -152,22 +152,20 @@ MonoBehaviour:
   affectedStat: 0
   parametersPerLevel:
   - accuracy: 90
-    baseEffectValue: 0
-    attackMultiplier: -0.85
+    baseEffectValue: -5
+    attackMultiplier: -0.9
     defenseMultiplier: 1
     chanceToInflict: 0
   - accuracy: 90
-    baseEffectValue: 0
+    baseEffectValue: -8
     attackMultiplier: -1
     defenseMultiplier: 1
     chanceToInflict: 0
   - accuracy: 90
-    baseEffectValue: 0
+    baseEffectValue: -10
     attackMultiplier: -1.15
     defenseMultiplier: 1
     chanceToInflict: 0
   visualEffect: {fileID: 0}
   conditionGo: {fileID: 0}
   conditionRemover: {fileID: 0}
-  audioSource: {fileID: 0}
-  hasAudio: 0

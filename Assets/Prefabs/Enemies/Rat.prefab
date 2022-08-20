@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expDrop: 3
-  goldDrop: 1
+  goldDrop: 2
 --- !u!114 &2264432829541233808
 MonoBehaviour:
   m_ObjectHideFlags: 0
