@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gold: {fileID: 11400000, guid: f762dce7a5515414f989c445eb01d6c7, type: 2}
-  skipTurnSkill: {fileID: 4003426218498401328, guid: 6dbe73e44e3cb7f42be651e4a4fc7557,
+  skipTurnSkill: {fileID: 1768222690818782716, guid: 6dbe73e44e3cb7f42be651e4a4fc7557,
     type: 3}
+  missVfx: {fileID: 2135462378506688423, guid: 6d5f2544875aba44fb3b10e10ec0be36, type: 3}

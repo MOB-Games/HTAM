@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public IntegerVariable gold;
     public Skill skipTurnSkill;
+    public GameObject missVfx;
     public static GameManager Instance { get; private set; }
 
     private const int StatIncrement = 2;
@@ -86,8 +87,13 @@ public class GameManager : MonoBehaviour
         if (visualEffect == null) yield break;
         var inst = Instantiate(visualEffect, location, Quaternion.identity);
         inst.transform.localEulerAngles = new Vector3(0, location.x < 0 ? 180 : 0, 0); 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         Destroy(inst);
+    }
+
+    public void PlayMissVisualEffect(Vector3 location)
+    {
+        StartCoroutine(PlayVisualEffect(missVfx, location));
     }
     
     public static int GetStatIncrement(StatType statToInc, StatType advantage, StatType disadvantage)

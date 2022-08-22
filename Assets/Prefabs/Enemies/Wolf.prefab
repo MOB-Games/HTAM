@@ -355,9 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dcc661d47cb9f34c9a0d0871110cc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillsWithLevels:
-  - skillGo: {fileID: 4003426218498401328, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
-      type: 3}
-    level: 0
-  skillProbabilities: 
+  specialSkills: []
+  defaultSkill: {fileID: 1768222690818782716, guid: a3b68dc8a1669c64da0d3f250bc26f0f,
+    type: 3}
   probabilityToTargetPlayer: 70

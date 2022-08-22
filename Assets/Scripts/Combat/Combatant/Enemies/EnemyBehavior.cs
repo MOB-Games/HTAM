@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Core.DataTypes;
 using System.Collections.Generic;
@@ -9,12 +10,35 @@ using Core.SkillsAndConditions;
 using Core.Stats;
 using Random = UnityEngine.Random;
 
+public class SkillComponentWithLevel
+{
+    public readonly Skill Skill;
+    public readonly int Level;
+
+    public SkillComponentWithLevel(Skill skill, int level = 0)
+    {
+        Skill = skill;
+        Level = level;
+    }
+}
+
+[Serializable]
+public class EnemySkill
+{
+    public SkillWithLevel skillWithLevel;
+    [HideInInspector] 
+    public Skill skill;
+    [Range(0,100)]
+    public int probability;
+    public int cooldown;
+    [HideInInspector] 
+    public int cooldownLeft;
+}
+
 public class EnemyBehavior : MonoBehaviour
 {
-    public List<SkillWithLevel> skillsWithLevels;
-
-    [Range(0, 100)] 
-    public List<int> skillProbabilities;
+    public List<EnemySkill> specialSkills;
+    public Skill defaultSkill;
 
     [Range(0,100)]
     public int probabilityToTargetPlayer;
@@ -31,20 +55,23 @@ public class EnemyBehavior : MonoBehaviour
         _combatantEvents = GetComponent<CombatantEvents>();
         _combatantEvents.OnMobilizationChanged += MobilizationChanged;
         _combatantEvents.OnSilenceChanged += SilenceChanged;
+        _combatantEvents.OnEndTurn += Tick;
         CombatEvents.OnStartTurn += PlayTurn;
+
+        foreach (var specialSkill in specialSkills)
+        {
+            specialSkill.skill = specialSkill.skillWithLevel.skillGo.GetComponent<Skill>();
+        }
     }
 
     private void OnValidate()
     {
-        if (skillsWithLevels.Count == 0)
-            throw new ConstraintException($"{name}: Enemy has no skills");
-        if (skillProbabilities.Count != skillsWithLevels.Count - 1)
-            throw new ConstraintException($"{name}: Number of probabilities for skills must be number of skills minus 1");
-        if (skillProbabilities.Sum() > 100)
+        if (defaultSkill == null)
+            throw new ConstraintException($"{name}: Enemy must have default skill");
+        if (specialSkills.Sum(ss => ss.probability) > 100)
             throw new ConstraintException($"{name}: Sum of probabilities exceeds 100");
-        var firstSkill = skillsWithLevels.First().skillGo.GetComponent<Skill>();
-        if (firstSkill.energyCost != 0 || firstSkill.hpCost != 0)
-            throw new ConstraintException( $"{name}: First skill of enemy must be without cost");
+        if (defaultSkill.energyCost != 0 || defaultSkill.hpCost != 0)
+            throw new ConstraintException( $"{name}: Default skill of enemy must be without cost");
     }
 
     private void MobilizationChanged(bool immobilized)
@@ -76,17 +103,34 @@ public class EnemyBehavior : MonoBehaviour
         };
     }
 
-    private SkillWithLevel ChooseSkill()
+    private SkillComponentWithLevel ChooseSkill()
     {
+        var usableSpecialSkills = specialSkills.FindAll(specialSkill =>
+            specialSkill.skill.energyCost <= _stats.energy.value &&
+            specialSkill.skill.hpCost < _stats.hp.value &&
+            specialSkill.cooldownLeft == 0);
+        if (_silence < 0)
+            usableSpecialSkills =
+                usableSpecialSkills.FindAll(specialSkill => specialSkill.skill.skillAnimation != SkillAnimation.Spell);
+        var numUsableSpecialSkills = usableSpecialSkills.Count;
+        if (numUsableSpecialSkills == 0)
+            return new SkillComponentWithLevel(defaultSkill);
+        var unusableSpecialSkills = specialSkills.Except(usableSpecialSkills);
+        var additionalChance = unusableSpecialSkills.Sum(unusableSpecialSkill => unusableSpecialSkill.probability / (numUsableSpecialSkills + 1));
+        
         var random = Random.Range(0, 100);
         var chance = 0;
-        for (var i = 0; i < skillsWithLevels.Count - 1; i++)
+        foreach (var specialSkill in usableSpecialSkills)
         {
-            chance += skillProbabilities[i];
+            chance += specialSkill.probability + additionalChance;
             if (random < chance)
-                return skillsWithLevels[i];
+            {
+                specialSkill.cooldownLeft = specialSkill.cooldown;
+                return new SkillComponentWithLevel(specialSkill.skill, specialSkill.skillWithLevel.level);
+            }
         }
-        return skillsWithLevels.Last();
+
+        return new SkillComponentWithLevel(defaultSkill);
     }
     
     private IEnumerator DelayedSkipTurn()
@@ -110,17 +154,22 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
         var chosenSkill = ChooseSkill();
-        var skill = chosenSkill.skillGo.GetComponent<Skill>();
-        if (_stats.energy.value < skill.energyCost || _stats.hp.value < skill.hpCost ||
-            (_silence < 0 && skill.skillAnimation == SkillAnimation.Spell))
-            skill = skillsWithLevels.First().skillGo.GetComponent<Skill>();
-        StartCoroutine(DelayedSkillChosen(ChooseTarget(), skill, chosenSkill.level));
+        StartCoroutine(DelayedSkillChosen(ChooseTarget(), chosenSkill.Skill, chosenSkill.Level));
+    }
+
+    private void Tick()
+    {
+        foreach (var specialSkill in specialSkills.Where(specialSkill => specialSkill.cooldownLeft > 0))
+        {
+            specialSkill.cooldownLeft--;
+        }
     }
 
     private void OnDestroy()
     {
         _combatantEvents.OnMobilizationChanged -= MobilizationChanged;
         _combatantEvents.OnSilenceChanged -= SilenceChanged;
+        _combatantEvents.OnEndTurn -= Tick;
         CombatEvents.OnStartTurn -= PlayTurn;
     }
 }
