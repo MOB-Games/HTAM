@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 5934729483843726030}
   - component: {fileID: 5708457653403262510}
   - component: {fileID: 550757383764374501}
+  - component: {fileID: 3631525995469027051}
   - component: {fileID: 3374165069257435726}
   - component: {fileID: 8229508485637790920}
   - component: {fileID: 2264432829541233808}
@@ -301,6 +302,60 @@ MonoBehaviour:
       reflectChance: 0
     conditionToReflect: {fileID: 0}
     levelOfReflectedCondition: 0
+--- !u!114 &3631525995469027051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db0e500db53224ab67a26577addcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSound:
+    audioClip: {fileID: 8300000, guid: c5eada6bf4f5f1e48a4fafc3d42fb537, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  attackSound:
+    audioClip: {fileID: 8300000, guid: 86bf433872f16f1448488941d2e11ac8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  powerAttackSound:
+    audioClip: {fileID: 8300000, guid: 86bf433872f16f1448488941d2e11ac8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  spellSound:
+    audioClip: {fileID: 8300000, guid: 86bf433872f16f1448488941d2e11ac8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  hurtSound:
+    audioClip: {fileID: 8300000, guid: 5f6932fad39c01246aec3e7721d113b5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  defendSound:
+    audioClip: {fileID: 8300000, guid: 86bf433872f16f1448488941d2e11ac8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  dieSound:
+    audioClip: {fileID: 8300000, guid: 5b8208b3fa4aa6441bcb242fe7416a12, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &3374165069257435726
 MonoBehaviour:
   m_ObjectHideFlags: 0

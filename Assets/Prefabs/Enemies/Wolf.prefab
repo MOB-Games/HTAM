@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 4576326412941814250}
   - component: {fileID: 5934729483843726030}
   - component: {fileID: 5708457653403262510}
-  - component: {fileID: 3374165069257435726}
   - component: {fileID: 550757383764374501}
+  - component: {fileID: -6771106719369271732}
+  - component: {fileID: 3374165069257435726}
   - component: {fileID: 8229508485637790920}
   - component: {fileID: 2264432829541233808}
   m_Layer: 0
@@ -268,34 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7366c3495be66644ca1fada78adad313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3374165069257435726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217080582421210112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f1163dff68233488e7111f21eecdbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats:
-    hp:
-      baseValue: 30
-      value: 30
-    energy:
-      baseValue: 25
-      value: 25
-    damage:
-      baseValue: 6
-      value: 6
-    defense:
-      baseValue: 1
-      value: 1
-    speed:
-      baseValue: 12
-      value: 12
 --- !u!114 &550757383764374501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +302,88 @@ MonoBehaviour:
       reflectChance: 0
     conditionToReflect: {fileID: 0}
     levelOfReflectedCondition: 0
+--- !u!114 &-6771106719369271732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db0e500db53224ab67a26577addcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSound:
+    audioClip: {fileID: 8300000, guid: 3236dfbf58e848b45a405c53a94936d1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  attackSound:
+    audioClip: {fileID: 8300000, guid: c95302c529e59b2489bd61a652bb7047, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  powerAttackSound:
+    audioClip: {fileID: 8300000, guid: c95302c529e59b2489bd61a652bb7047, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  spellSound:
+    audioClip: {fileID: 8300000, guid: 3b617067cf4e1df48b8089442f9d54ac, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  hurtSound:
+    audioClip: {fileID: 8300000, guid: 927e135de2b48184690473dca594586d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  defendSound:
+    audioClip: {fileID: 8300000, guid: 927e135de2b48184690473dca594586d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  dieSound:
+    audioClip: {fileID: 8300000, guid: 0c9d92860de4eb847aa573b246ecc976, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!114 &3374165069257435726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f1163dff68233488e7111f21eecdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    hp:
+      baseValue: 30
+      value: 30
+    energy:
+      baseValue: 25
+      value: 25
+    damage:
+      baseValue: 6
+      value: 6
+    defense:
+      baseValue: 1
+      value: 1
+    speed:
+      baseValue: 12
+      value: 12
 --- !u!114 &8229508485637790920
 MonoBehaviour:
   m_ObjectHideFlags: 0

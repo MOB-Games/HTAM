@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 143544944754756025}
   - component: {fileID: 2567700967219336251}
   - component: {fileID: 4095699319752990290}
-  - component: {fileID: 2447912989255569191}
   - component: {fileID: 1034969609046894467}
+  - component: {fileID: -8715992011352039708}
   - component: {fileID: 7726764361994183940}
+  - component: {fileID: 2447912989255569191}
   - component: {fileID: 6580720188609057905}
   m_Layer: 0
   m_Name: Golded Wolf
@@ -268,34 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b30441c472d52544bdfe21d0cc77f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2447912989255569191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5217080582421210112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1f1163dff68233488e7111f21eecdbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats:
-    hp:
-      baseValue: 40
-      value: 40
-    energy:
-      baseValue: 30
-      value: 30
-    damage:
-      baseValue: 11
-      value: 11
-    defense:
-      baseValue: 4
-      value: 4
-    speed:
-      baseValue: 13
-      value: 13
 --- !u!114 &1034969609046894467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +302,60 @@ MonoBehaviour:
       reflectChance: 0
     conditionToReflect: {fileID: 0}
     levelOfReflectedCondition: 0
+--- !u!114 &-8715992011352039708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db0e500db53224ab67a26577addcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSound:
+    audioClip: {fileID: 8300000, guid: 3236dfbf58e848b45a405c53a94936d1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  attackSound:
+    audioClip: {fileID: 8300000, guid: c95302c529e59b2489bd61a652bb7047, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  powerAttackSound:
+    audioClip: {fileID: 8300000, guid: c95302c529e59b2489bd61a652bb7047, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  spellSound:
+    audioClip: {fileID: 8300000, guid: 3b617067cf4e1df48b8089442f9d54ac, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  hurtSound:
+    audioClip: {fileID: 8300000, guid: 927e135de2b48184690473dca594586d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  defendSound:
+    audioClip: {fileID: 8300000, guid: 927e135de2b48184690473dca594586d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  dieSound:
+    audioClip: {fileID: 8300000, guid: 0c9d92860de4eb847aa573b246ecc976, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!114 &7726764361994183940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,6 +370,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expDrop: 20
   goldDrop: 20
+--- !u!114 &2447912989255569191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5217080582421210112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1f1163dff68233488e7111f21eecdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    hp:
+      baseValue: 40
+      value: 40
+    energy:
+      baseValue: 30
+      value: 30
+    damage:
+      baseValue: 11
+      value: 11
+    defense:
+      baseValue: 4
+      value: 4
+    speed:
+      baseValue: 13
+      value: 13
 --- !u!114 &6580720188609057905
 MonoBehaviour:
   m_ObjectHideFlags: 0
