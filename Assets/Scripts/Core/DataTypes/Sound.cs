@@ -13,4 +13,19 @@ public class Sound
 
     [HideInInspector] 
     public AudioSource source;
+
+    [HideInInspector]
+    public bool hasSource;
+
+    public void Play()
+    {
+        if (hasSource)
+            source.Play();
+    }
+
+    public void Stop()
+    {
+        if (hasSource)
+            source.Stop();
+    }
 }

@@ -41,6 +41,7 @@ public class CombatantAudioManager : MonoBehaviour
     {
         if (sound.audioClip == null) return;
         sound.source = gameObject.AddComponent<AudioSource>();
+        sound.hasSource = sound.source != null;
         sound.source.clip = sound.audioClip;
         sound.source.volume = sound.volume;
         sound.source.pitch = sound.pitch;
@@ -54,12 +55,12 @@ public class CombatantAudioManager : MonoBehaviour
 
     private void StartMovementAudio(CombatantId _)
     {
-        moveSound.source.Play();
+        moveSound.Play();
     }
 
     private void StopMovementAudio()
     {
-        moveSound.source.Stop();
+        moveSound.Stop();
     }
 
     private void TriggerSkillAudio(SkillAnimation skillAnimation)
@@ -67,13 +68,13 @@ public class CombatantAudioManager : MonoBehaviour
         switch (skillAnimation)
         {
             case SkillAnimation.Attack:
-                attackSound.source.Play();
+                attackSound.Play();
                 break;
             case SkillAnimation.PowerAttack:
-                powerAttackSound.source.Play();
+                powerAttackSound.Play();
                 break;
             case SkillAnimation.Spell:
-                spellSound.source.Play();
+                spellSound.Play();
                 break;
             case SkillAnimation.None:
                 return;
@@ -84,17 +85,17 @@ public class CombatantAudioManager : MonoBehaviour
 
     private void TriggerHurtAudio()
     {
-        hurtSound.source.Play();
+        hurtSound.Play();
     }
 
     private void TriggerDefendAudio()
     {
-        defendSound.source.Play();
+        defendSound.Play();
     }
 
     private void TriggerDieAudio()
     {
-        dieSound.source.Play();
+        dieSound.Play();
     }
 
     private void OnDestroy()
