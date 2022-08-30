@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 2260828069875980788}
   - component: {fileID: 8457177750202765845}
   - component: {fileID: 2821279785301995791}
+  - component: {fileID: 4118278882384985092}
   m_Layer: 0
   m_Name: Finn the Fighter
   m_TagString: Untagged
@@ -324,3 +325,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 11400000, guid: 58344f1b95277f8418456e389e747339, type: 2}
+--- !u!114 &4118278882384985092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259149878155014034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db0e500db53224ab67a26577addcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSound:
+    audioClip: {fileID: 8300000, guid: 04272304e780652448ae665d647453c1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    hasSource: 0
+  attackSound:
+    audioClip: {fileID: 8300000, guid: 7d7fc97b142add344bdaa7c64e9c8673, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  powerAttackSound:
+    audioClip: {fileID: 8300000, guid: 33b254c7c6a9bd544942d22f9324246a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  hurtSound:
+    audioClip: {fileID: 8300000, guid: 3595d1cd0cf73e747ad9d5b4df9a41de, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  defendSound:
+    audioClip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  dieSound:
+    audioClip: {fileID: 8300000, guid: 7cf9167a5239d254a84b44cf35c8d481, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0

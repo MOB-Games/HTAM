@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 8411756077233433764}
   - component: {fileID: 8457177750202765845}
   - component: {fileID: 2821279785301995791}
+  - component: {fileID: 6613386132709103840}
   m_Layer: 0
   m_Name: Sarah the sorceress
   m_TagString: Untagged
@@ -325,3 +326,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 11400000, guid: 6454be70976e8ee489d6939157eb0787, type: 2}
+--- !u!114 &6613386132709103840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259149878155014034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db0e500db53224ab67a26577addcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSound:
+    audioClip: {fileID: 8300000, guid: 418ae9c231e6bb143b56aedac504acfa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    hasSource: 0
+  attackSound:
+    audioClip: {fileID: 8300000, guid: 08c98562ab5548c4da516b81e4e0e763, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  powerAttackSound:
+    audioClip: {fileID: 8300000, guid: 6887475b4a3065e4b97da27ea75f6bc7, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  hurtSound:
+    audioClip: {fileID: 8300000, guid: 1a492cf361e5d4745a9af4900d6690d8, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  defendSound:
+    audioClip: {fileID: 0}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  dieSound:
+    audioClip: {fileID: 8300000, guid: a4ebfdb0804584c448d4733344430491, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0

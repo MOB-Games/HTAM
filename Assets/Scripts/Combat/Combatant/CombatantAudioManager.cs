@@ -7,7 +7,6 @@ public class CombatantAudioManager : MonoBehaviour
     public Sound moveSound;
     public Sound attackSound;
     public Sound powerAttackSound;
-    public Sound spellSound;
     public Sound hurtSound;
     public Sound defendSound;
     public Sound dieSound;
@@ -19,7 +18,6 @@ public class CombatantAudioManager : MonoBehaviour
         InitSound(moveSound);
         InitSound(attackSound);
         InitSound(powerAttackSound);
-        InitSound(spellSound);
         InitSound(hurtSound);
         InitSound(defendSound);
         InitSound(dieSound);
@@ -74,8 +72,6 @@ public class CombatantAudioManager : MonoBehaviour
                 powerAttackSound.Play();
                 break;
             case SkillAnimation.Spell:
-                spellSound.Play();
-                break;
             case SkillAnimation.None:
                 return;
             default:

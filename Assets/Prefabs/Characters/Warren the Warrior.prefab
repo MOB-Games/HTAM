@@ -21,10 +21,11 @@ GameObject:
   - component: {fileID: 5426751752755848512}
   - component: {fileID: 2644192328384462784}
   - component: {fileID: 2872685095243890139}
+  - component: {fileID: 6578633823741896436}
   - component: {fileID: 2260828069875980788}
   - component: {fileID: 8457177750202765845}
-  - component: {fileID: 6578633823741896436}
   - component: {fileID: 2821279785301995791}
+  - component: {fileID: -2632822304118867185}
   m_Layer: 0
   m_Name: Warren the Warrior
   m_TagString: Untagged
@@ -255,6 +256,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee123870d7ed5b43be402eacaf138fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6578633823741896436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259149878155014034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7366c3495be66644ca1fada78adad313, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2260828069875980788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,18 +312,6 @@ MonoBehaviour:
     speed:
       baseValue: 0
       value: 0
---- !u!114 &6578633823741896436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2259149878155014034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7366c3495be66644ca1fada78adad313, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2821279785301995791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,3 +325,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 11400000, guid: 6039359d89458ca458cd1a5dad2f65e4, type: 2}
+--- !u!114 &-2632822304118867185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259149878155014034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db0e500db53224ab67a26577addcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSound:
+    audioClip: {fileID: 8300000, guid: 7a1da8275935858428d3af22a10ab810, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    hasSource: 0
+  attackSound:
+    audioClip: {fileID: 8300000, guid: db45929ec88d0474397b3fece1760aa5, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  powerAttackSound:
+    audioClip: {fileID: 8300000, guid: 49238cd4341434e4bb785ced1f4978af, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  hurtSound:
+    audioClip: {fileID: 8300000, guid: 487489d944ca7d34aa3ece26d44a2053, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  defendSound:
+    audioClip: {fileID: 8300000, guid: 918f83b22a83106499b56f98ef8934cc, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  dieSound:
+    audioClip: {fileID: 8300000, guid: bafcb19f2a20cb5488c15c47a4785f8e, type: 3}
+    volume: 1
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0

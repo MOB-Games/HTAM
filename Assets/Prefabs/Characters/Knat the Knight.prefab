@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 8457177750202765845}
   - component: {fileID: 5793060972731675468}
   - component: {fileID: 2821279785301995791}
+  - component: {fileID: 2745149425657713989}
   m_Layer: 0
   m_Name: Knat the Knight
   m_TagString: Untagged
@@ -324,3 +325,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 11400000, guid: 90bb88ec227b90f4291b8f6a6197ccde, type: 2}
+--- !u!114 &2745149425657713989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2259149878155014034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4db0e500db53224ab67a26577addcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSound:
+    audioClip: {fileID: 8300000, guid: 47760e49fd4a22249961ef8d5ca376a1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+    hasSource: 0
+  attackSound:
+    audioClip: {fileID: 8300000, guid: 160fdb708b67b05499c4006d10440d65, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  powerAttackSound:
+    audioClip: {fileID: 8300000, guid: 31e79e44d15ea3944a18c347b7c52239, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  hurtSound:
+    audioClip: {fileID: 8300000, guid: db55032df8baf334390bbb5ca8f56fcf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  defendSound:
+    audioClip: {fileID: 8300000, guid: d3b11b80263d8a145ad7641f5e978ff4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
+  dieSound:
+    audioClip: {fileID: 8300000, guid: c9e5af32f6078f5478442418af8d898f, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    hasSource: 0
