@@ -84,22 +84,43 @@ public class EnemyBehavior : MonoBehaviour
         _silence += silenced ? -1 : 1;
     }
 
-    private CombatantId ChooseTarget()
+    private CombatantId ChooseTarget(bool offensive, bool self)
     {
-        var probabilityToTargetParty = 100 - probabilityToTargetPlayer;
-        var partyMembers = new List<CombatantId>();
-        if (CombatantInfo.CombatantIsActive(CombatantId.PartyMemberTop))
-            partyMembers.Add(CombatantId.PartyMemberTop);
-        if (CombatantInfo.CombatantIsActive(CombatantId.PartyMemberBottom))
-            partyMembers.Add(CombatantId.PartyMemberBottom);
-        
-        var random = Random.Range(0, 100);
-        return partyMembers.Count switch
+        if (self)
+            return _id;
+        if (offensive)
         {
-            1 when random < probabilityToTargetParty => partyMembers[0],
-            2 when random < probabilityToTargetParty / 2 => CombatantId.PartyMemberBottom,
-            2 when random < probabilityToTargetPlayer => CombatantId.PartyMemberTop,
-            _ => CombatantId.Player
+            var probabilityToTargetParty = 100 - probabilityToTargetPlayer;
+            var partyMembers = new List<CombatantId>();
+            if (CombatantInfo.CombatantIsActive(CombatantId.PartyMemberTop))
+                partyMembers.Add(CombatantId.PartyMemberTop);
+            if (CombatantInfo.CombatantIsActive(CombatantId.PartyMemberBottom))
+                partyMembers.Add(CombatantId.PartyMemberBottom);
+            
+            var random = Random.Range(0, 100);
+            return partyMembers.Count switch
+            {
+                1 when random < probabilityToTargetParty => partyMembers[0],
+                2 when random < probabilityToTargetParty / 2 => CombatantId.PartyMemberBottom,
+                2 when random < probabilityToTargetPlayer => CombatantId.PartyMemberTop,
+                _ => CombatantId.Player
+            };
+        }
+
+        var topEnemy = CombatantInfo.CombatantIsActive(CombatantId.EnemyTop);
+        if (!topEnemy)
+            return CombatantId.EnemyCenter;
+        var bottomEnemy = CombatantInfo.CombatantIsActive(CombatantId.EnemyBottom);
+        if (!bottomEnemy)
+        {
+            return Random.Range(0, 100) < 50 ? CombatantId.EnemyCenter : CombatantId.EnemyTop;
+        }
+
+        return Random.Range(0, 100) switch
+        {
+            < 33 => CombatantId.EnemyCenter,
+            < 66 => CombatantId.EnemyTop,
+            _ => CombatantId.EnemyBottom
         };
     }
 
@@ -154,7 +175,9 @@ public class EnemyBehavior : MonoBehaviour
             return;
         }
         var chosenSkill = ChooseSkill();
-        StartCoroutine(DelayedSkillChosen(ChooseTarget(), chosenSkill.Skill, chosenSkill.Level));
+        StartCoroutine(DelayedSkillChosen(
+            ChooseTarget(chosenSkill.Skill.offensive, chosenSkill.Skill.targetType == TargetType.Self),
+            chosenSkill.Skill, chosenSkill.Level));
     }
 
     private void Tick()
