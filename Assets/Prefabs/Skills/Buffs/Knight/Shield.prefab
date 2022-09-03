@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 0
   description: Shield an Ally
   melee: 0
   offensive: 0
@@ -165,7 +166,7 @@ MonoBehaviour:
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 90
-  visualEffect: {fileID: 0}
+  sfx: {fileID: 8248039152672512555, guid: 3e52bf63a3d3be543bcd600588c3513d, type: 3}
   conditionGo: {fileID: 4909307490870935864, guid: 4bd073b32e670cd4ca4250551968610b,
     type: 3}
   conditionRemover: {fileID: 0}

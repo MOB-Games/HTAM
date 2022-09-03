@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 0
   description: 'Brush off any physical ailments '
   melee: 0
   offensive: 0
@@ -155,7 +156,6 @@ MonoBehaviour:
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
-  visualEffect: {fileID: 2135462378506688423, guid: a342282ea3c1b304997741fbce56c8ef,
-    type: 3}
+  sfx: {fileID: 2135462378506688423, guid: a342282ea3c1b304997741fbce56c8ef, type: 3}
   conditionGo: {fileID: 0}
   conditionRemover: {fileID: 11400000, guid: 49fd9cae0b1ec4b4f954c56c9c037c81, type: 2}

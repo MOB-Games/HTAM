@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716275a6dc6df564f8e874a9bc37c0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minLevel: 0
   description: Cuase all combatants to fight recklessly
   melee: 0
   offensive: 1
@@ -165,7 +166,7 @@ MonoBehaviour:
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 100
-  visualEffect: {fileID: 0}
+  sfx: {fileID: 2477361452466471390, guid: 5076b178bc4e33b40a1c7b3432f3d3eb, type: 3}
   conditionGo: {fileID: 4909307490870935864, guid: fa0b4b72a888f3b47a8ad432a1508b64,
     type: 3}
   conditionRemover: {fileID: 0}

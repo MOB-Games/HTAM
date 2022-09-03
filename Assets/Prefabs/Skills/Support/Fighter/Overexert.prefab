@@ -171,7 +171,6 @@ MonoBehaviour:
     attackMultiplier: 0
     defenseMultiplier: 0
     chanceToInflict: 0
-  visualEffect: {fileID: 2135462378506688423, guid: a757e6dc3a090df4982db6e011c10d23,
-    type: 3}
+  sfx: {fileID: 2135462378506688423, guid: a757e6dc3a090df4982db6e011c10d23, type: 3}
   conditionGo: {fileID: 0}
   conditionRemover: {fileID: 0}

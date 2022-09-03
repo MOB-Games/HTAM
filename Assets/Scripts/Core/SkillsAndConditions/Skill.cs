@@ -45,7 +45,7 @@ namespace Core.SkillsAndConditions
         [EnumOrder("0,1,5")]
         public StatType affectedStat;
         public List<SkillParameters> parametersPerLevel;
-        [CanBeNull] public GameObject visualEffect;
+        [CanBeNull] public GameObject sfx;
         [CanBeNull] public GameObject conditionGo;
         [CanBeNull] public ConditionRemover conditionRemover;
 
@@ -240,7 +240,7 @@ namespace Core.SkillsAndConditions
                     delta = 1; // should always help
             }
             return new SkillResult(animateAttacked, affectedStat, (int)delta, melee,
-                visualEffect, level, InflictedCondition(level), conditionRemover);
+                sfx, level, InflictedCondition(level), conditionRemover);
         }
 
         private GameObject InflictedCondition(int level)
